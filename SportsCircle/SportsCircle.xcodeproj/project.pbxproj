@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		702BBACA1B5547FE00C09B9B /* SignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 702BBAC91B5547FE00C09B9B /* SignUpViewController.m */; };
+		70D60FC21B5569BA001BB4C9 /* TrendViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70D60FC11B5569BA001BB4C9 /* TrendViewController.m */; };
+		70D60FC41B55739C001BB4C9 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 70D60FC31B55739C001BB4C9 /* QuartzCore.framework */; };
 		D34A63451B4CED0700710B1F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D34A63441B4CED0700710B1F /* main.m */; };
 		D34A63481B4CED0700710B1F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D34A63471B4CED0700710B1F /* AppDelegate.m */; };
 		D34A634B1B4CED0700710B1F /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D34A634A1B4CED0700710B1F /* ViewController.m */; };
@@ -27,6 +30,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		702BBAC81B5547FE00C09B9B /* SignUpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignUpViewController.h; sourceTree = "<group>"; };
+		702BBAC91B5547FE00C09B9B /* SignUpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignUpViewController.m; sourceTree = "<group>"; };
+		70D60FC01B5569BA001BB4C9 /* TrendViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TrendViewController.h; sourceTree = "<group>"; };
+		70D60FC11B5569BA001BB4C9 /* TrendViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TrendViewController.m; sourceTree = "<group>"; };
+		70D60FC31B55739C001BB4C9 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		D34A633F1B4CED0700710B1F /* SportsCircle.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SportsCircle.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D34A63431B4CED0700710B1F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D34A63441B4CED0700710B1F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -47,6 +55,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				70D60FC41B55739C001BB4C9 /* QuartzCore.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -63,6 +72,7 @@
 		D34A63361B4CED0700710B1F = {
 			isa = PBXGroup;
 			children = (
+				70D60FC31B55739C001BB4C9 /* QuartzCore.framework */,
 				D34A63411B4CED0700710B1F /* SportsCircle */,
 				D34A635B1B4CED0700710B1F /* SportsCircleTests */,
 				D34A63401B4CED0700710B1F /* Products */,
@@ -85,6 +95,10 @@
 				D34A63471B4CED0700710B1F /* AppDelegate.m */,
 				D34A63491B4CED0700710B1F /* ViewController.h */,
 				D34A634A1B4CED0700710B1F /* ViewController.m */,
+				702BBAC81B5547FE00C09B9B /* SignUpViewController.h */,
+				702BBAC91B5547FE00C09B9B /* SignUpViewController.m */,
+				70D60FC01B5569BA001BB4C9 /* TrendViewController.h */,
+				70D60FC11B5569BA001BB4C9 /* TrendViewController.m */,
 				D34A634C1B4CED0700710B1F /* Main.storyboard */,
 				D34A634F1B4CED0700710B1F /* Images.xcassets */,
 				D34A63511B4CED0700710B1F /* LaunchScreen.xib */,
@@ -219,8 +233,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				70D60FC21B5569BA001BB4C9 /* TrendViewController.m in Sources */,
 				D34A634B1B4CED0700710B1F /* ViewController.m in Sources */,
 				D34A63481B4CED0700710B1F /* AppDelegate.m in Sources */,
+				702BBACA1B5547FE00C09B9B /* SignUpViewController.m in Sources */,
 				D34A63451B4CED0700710B1F /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -418,6 +434,7 @@
 				D34A63641B4CED0700710B1F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		D34A63651B4CED0700710B1F /* Build configuration list for PBXNativeTarget "SportsCircleTests" */ = {
 			isa = XCConfigurationList;
@@ -426,6 +443,7 @@
 				D34A63671B4CED0700710B1F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
