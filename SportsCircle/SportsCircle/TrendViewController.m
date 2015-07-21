@@ -11,6 +11,7 @@
 @interface TrendViewController ()
 @property (weak, nonatomic) IBOutlet UIView *theListView;
 @property (strong, nonatomic) IBOutlet UIView *theTrendView;
+@property (weak, nonatomic) IBOutlet UIButton *goButton;
 
 @end
 
@@ -33,6 +34,10 @@
     toLeft.direction = UISwipeGestureRecognizerDirectionLeft;
     [_theTrendView addGestureRecognizer:toLeft];
     
+    UITapGestureRecognizer *toTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(toTap)];
+    [_theTrendView addGestureRecognizer:toTap];
+    
+    
     //允許ImageView接受使用者互動
     _theTrendView.userInteractionEnabled = YES;
     
@@ -50,7 +55,7 @@
     
     CATransition *transition=[CATransition animation];
     //catransition為Q的一個物件
-    transition.duration=1.0;
+    transition.duration=0.7;
     //動畫時間長度
     transition.timingFunction=[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
     //動畫效果為進出緩慢中間快速
@@ -65,6 +70,16 @@
     }//subtype為動畫方向
     [_theListView.layer addAnimation:transition forKey:nil];
     //layer為比UIView更低階的uiview元件.可研究CAlayer
+    
+    //當theListView展開時 goButton無效
+    if (_theListView.isHidden) {
+        _goButton.userInteractionEnabled = YES;
+    }else {
+        _goButton.userInteractionEnabled = NO;
+    }
+    
+    
+    
 }
 
 
@@ -84,11 +99,30 @@
         [self barListBtnPressed:nil];
     }
 }
+
 -(void) toLeft{
     if (!_theListView.isHidden) {
         [self barListBtnPressed:nil];
+    }else{
+        [self showMapBtnPressed:nil];//theListView未顯示時 右滑出現map
     }
-    
+}
+
+-(void)toTap {
+    if (!_theListView.isHidden) {
+        [self barListBtnPressed:nil];
+    }
+}
+
+- (IBAction)showMapBtnPressed:(id)sender {
+    //在theListView展開時按下showMapBtnPressed需要把theListView一起隱藏
+    //若使用segue到下一頁 無法達成此要求 所以這裡手動進入下一頁
+    if (!_theListView.isHidden) {
+        [self barListBtnPressed:nil];
+    }
+    UIViewController *mapViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"mapViewController"];
+    [self showViewController:mapViewController sender:self];
+    //[self performSegueWithIdentifier:@"showMapSegue" sender:nil];
 }
 
 /*

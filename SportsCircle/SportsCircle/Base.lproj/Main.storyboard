@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -101,6 +101,64 @@
             </objects>
             <point key="canvasLocation" x="-819" y="740"/>
         </scene>
+        <!--個人詳細資料-->
+        <scene sceneID="dha-7B-zIL">
+            <objects>
+                <viewController title="個人詳細資料" id="poa-uB-Zhd" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="K3f-QT-v25"/>
+                        <viewControllerLayoutGuide type="bottom" id="ofy-eK-kBP"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="dJp-Lr-Q4C">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dfc-5U-QLO" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1771" y="2732"/>
+        </scene>
+        <!--個人頁面-->
+        <scene sceneID="leg-oe-moK">
+            <objects>
+                <viewController title="個人頁面" id="zsz-7e-l9R" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Ty5-p0-lC6"/>
+                        <viewControllerLayoutGuide type="bottom" id="xiH-x1-tHz"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="fKK-qL-nob">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Uzv-fs-h6e">
+                                <rect key="frame" x="308" y="339" width="46" height="30"/>
+                                <state key="normal" title="Button">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="poa-uB-Zhd" kind="show" id="78u-mR-xbe"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <outlet property="searchDisplayController" destination="yNw-GS-8tq" id="cuz-3X-teb"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wSU-21-bAR" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <searchDisplayController id="yNw-GS-8tq">
+                    <connections>
+                        <outlet property="delegate" destination="zsz-7e-l9R" id="Sg6-XK-gN2"/>
+                        <outlet property="searchContentsController" destination="zsz-7e-l9R" id="Sxx-S4-Rno"/>
+                        <outlet property="searchResultsDataSource" destination="zsz-7e-l9R" id="scM-6r-8bK"/>
+                        <outlet property="searchResultsDelegate" destination="zsz-7e-l9R" id="ID7-N3-RZA"/>
+                    </connections>
+                </searchDisplayController>
+            </objects>
+            <point key="canvasLocation" x="-1095" y="2732"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="1Td-WE-mAg">
             <objects>
@@ -129,7 +187,16 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9Mt-Vc-98V">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="upm-6v-n03">
+                                <rect key="frame" x="285" y="285" width="30" height="30"/>
+                                <state key="normal" title="GO">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="9DL-7X-mjp" kind="show" id="1sW-0s-nbe"/>
+                                </connections>
+                            </button>
+                            <view contentMode="scaleToFill" fixedFrame="YES" restorationIdentifier="theListView" translatesAutoresizingMaskIntoConstraints="NO" id="9Mt-Vc-98V" userLabel="theListView">
                                 <rect key="frame" x="0.0" y="64" width="130" height="536"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LeF-cT-fEr">
@@ -137,6 +204,9 @@
                                         <state key="normal" title="個人動態">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <connections>
+                                            <segue destination="zsz-7e-l9R" kind="show" id="ALG-TU-RA6"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wbB-g2-19l">
                                         <rect key="frame" x="0.0" y="48" width="130" height="40"/>
@@ -161,12 +231,18 @@
                                         <state key="normal" title="活動">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <connections>
+                                            <segue destination="prw-gF-kVA" kind="show" id="oMo-kF-dT4"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fzp-Rc-kRX">
                                         <rect key="frame" x="0.0" y="192" width="130" height="40"/>
                                         <state key="normal" title="Search">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <connections>
+                                            <segue destination="Smr-kb-RBO" kind="show" id="OWe-wL-WHy"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9YV-u5-ePY">
                                         <rect key="frame" x="0.0" y="240" width="130" height="40"/>
@@ -178,17 +254,8 @@
                                         </connections>
                                     </button>
                                 </subviews>
-                                <color key="backgroundColor" red="0.82218671085858586" green="0.82218671085858586" blue="0.82218671085858586" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.37254901959999998" green="0.97254901959999995" blue="0.98431372549999996" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="upm-6v-n03">
-                                <rect key="frame" x="285" y="285" width="30" height="30"/>
-                                <state key="normal" title="GO">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <segue destination="9DL-7X-mjp" kind="show" id="1sW-0s-nbe"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <gestureRecognizers/>
@@ -200,11 +267,12 @@
                     <navigationItem key="navigationItem" id="15e-zd-Tnk">
                         <barButtonItem key="rightBarButtonItem" title="📍" id="4gP-zo-yYG">
                             <connections>
-                                <segue destination="x7F-T3-QOz" kind="show" id="sfS-3j-C3s"/>
+                                <action selector="showMapBtnPressed:" destination="tfe-cJ-TOU" id="Hq6-m8-Drj"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="goButton" destination="upm-6v-n03" id="i6f-oe-1g7"/>
                         <outlet property="theListView" destination="9Mt-Vc-98V" id="LvM-7N-jB3"/>
                         <outlet property="theTrendView" destination="TBO-iv-hb6" id="lSD-6k-DSz"/>
                     </connections>
@@ -216,7 +284,7 @@
         <!--現在位置-->
         <scene sceneID="eKh-5h-MTq">
             <objects>
-                <viewController title="現在位置" id="x7F-T3-QOz" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="mapViewController" title="現在位置" useStoryboardIdentifierAsRestorationIdentifier="YES" id="x7F-T3-QOz" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="No3-TJ-gg7"/>
                         <viewControllerLayoutGuide type="bottom" id="S9n-Wd-0gK"/>
@@ -358,6 +426,71 @@
             </objects>
             <point key="canvasLocation" x="-344" y="2737"/>
         </scene>
+        <!--Search-->
+        <scene sceneID="8wq-yT-sAM">
+            <objects>
+                <viewController title="Search" id="Smr-kb-RBO" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="G3P-kW-3te"/>
+                        <viewControllerLayoutGuide type="bottom" id="cFr-Bw-hIP"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="dOB-pR-Cev">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <searchBar contentMode="redraw" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aSx-gR-c7A">
+                                <rect key="frame" x="0.0" y="64" width="600" height="44"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="Smr-kb-RBO" id="FOH-Ha-y8X"/>
+                                </connections>
+                            </searchBar>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <outlet property="searchDisplayController" destination="pEv-ha-Qi9" id="5mz-9s-Xyx"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4VL-li-0Iy" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <searchDisplayController id="pEv-ha-Qi9">
+                    <connections>
+                        <outlet property="delegate" destination="Smr-kb-RBO" id="Xbp-4Q-aK6"/>
+                        <outlet property="searchBar" destination="aSx-gR-c7A" id="D4S-eb-e8h"/>
+                        <outlet property="searchContentsController" destination="Smr-kb-RBO" id="gyy-oH-5HN"/>
+                        <outlet property="searchResultsDataSource" destination="Smr-kb-RBO" id="vaq-AD-3c3"/>
+                        <outlet property="searchResultsDelegate" destination="Smr-kb-RBO" id="BUi-uQ-xEU"/>
+                    </connections>
+                </searchDisplayController>
+            </objects>
+            <point key="canvasLocation" x="-1083" y="3629"/>
+        </scene>
+        <!--活動-->
+        <scene sceneID="sB9-3B-tye">
+            <objects>
+                <tableViewController title="活動" id="prw-gF-kVA" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="obW-nU-U3u">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="t0M-OR-SyU">
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="t0M-OR-SyU" id="MHD-YG-EFF">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="prw-gF-kVA" id="gCU-hg-k1R"/>
+                            <outlet property="delegate" destination="prw-gF-kVA" id="sN6-Ry-8x6"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8AW-QW-6Sb" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1045" y="4586"/>
+        </scene>
         <!--設定-->
         <scene sceneID="dep-Cy-pvz">
             <objects>
@@ -441,7 +574,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="顯示時間" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iFQ-bJ-ahl">
-                                <rect key="frame" x="266" y="357" width="68" height="20.5"/>
+                                <rect key="frame" x="266" y="357" width="68" height="21"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
