@@ -10,6 +10,7 @@
 		702BBACA1B5547FE00C09B9B /* SignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 702BBAC91B5547FE00C09B9B /* SignUpViewController.m */; };
 		70D60FC21B5569BA001BB4C9 /* TrendViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70D60FC11B5569BA001BB4C9 /* TrendViewController.m */; };
 		70D60FC41B55739C001BB4C9 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 70D60FC31B55739C001BB4C9 /* QuartzCore.framework */; };
+		7666690A1B674D3900280B20 /* PostMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 766669091B674D3900280B20 /* PostMainViewController.m */; };
 		D34A63451B4CED0700710B1F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D34A63441B4CED0700710B1F /* main.m */; };
 		D34A63481B4CED0700710B1F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D34A63471B4CED0700710B1F /* AppDelegate.m */; };
 		D34A634B1B4CED0700710B1F /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D34A634A1B4CED0700710B1F /* ViewController.m */; };
@@ -51,6 +52,8 @@
 		70D60FC01B5569BA001BB4C9 /* TrendViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TrendViewController.h; sourceTree = "<group>"; };
 		70D60FC11B5569BA001BB4C9 /* TrendViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TrendViewController.m; sourceTree = "<group>"; };
 		70D60FC31B55739C001BB4C9 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		766669081B674D3900280B20 /* PostMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PostMainViewController.h; sourceTree = "<group>"; };
+		766669091B674D3900280B20 /* PostMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PostMainViewController.m; sourceTree = "<group>"; };
 		D34A633F1B4CED0700710B1F /* SportsCircle.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SportsCircle.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D34A63431B4CED0700710B1F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D34A63441B4CED0700710B1F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -149,6 +152,8 @@
 				702BBAC91B5547FE00C09B9B /* SignUpViewController.m */,
 				70D60FC01B5569BA001BB4C9 /* TrendViewController.h */,
 				70D60FC11B5569BA001BB4C9 /* TrendViewController.m */,
+				766669081B674D3900280B20 /* PostMainViewController.h */,
+				766669091B674D3900280B20 /* PostMainViewController.m */,
 				D34A634C1B4CED0700710B1F /* Main.storyboard */,
 				D34A634F1B4CED0700710B1F /* Images.xcassets */,
 				D34A63511B4CED0700710B1F /* LaunchScreen.xib */,
@@ -307,6 +312,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				70D60FC21B5569BA001BB4C9 /* TrendViewController.m in Sources */,
+				7666690A1B674D3900280B20 /* PostMainViewController.m in Sources */,
 				D34A634B1B4CED0700710B1F /* ViewController.m in Sources */,
 				D3AD4CC61B64DD4B00FC7F8E /* LoginViewController.m in Sources */,
 				D34A63481B4CED0700710B1F /* AppDelegate.m in Sources */,
