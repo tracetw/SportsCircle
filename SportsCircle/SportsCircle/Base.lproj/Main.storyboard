@@ -584,10 +584,16 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="顯示時間" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iFQ-bJ-ahl">
-                                <rect key="frame" x="266" y="357" width="68" height="21"/>
+                                <rect key="frame" x="266" y="357" width="68" height="20.5"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M4Q-fI-oe0">
+                                <rect key="frame" x="279" y="164" width="42" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
@@ -602,10 +608,15 @@
                             <constraint firstItem="bTD-6b-PHG" firstAttribute="trailing" secondItem="KWF-Za-2Br" secondAttribute="trailingMargin" id="HBk-8g-FXE"/>
                             <constraint firstItem="AJB-xm-H0h" firstAttribute="trailing" secondItem="KWF-Za-2Br" secondAttribute="trailingMargin" id="LNx-TG-r4x"/>
                             <constraint firstItem="bTD-6b-PHG" firstAttribute="leading" secondItem="KWF-Za-2Br" secondAttribute="leadingMargin" id="N63-Mk-OXs"/>
+                            <constraint firstItem="M4Q-fI-oe0" firstAttribute="top" secondItem="wVN-1N-NAX" secondAttribute="bottom" constant="100" id="Z6w-TI-Kcj"/>
                             <constraint firstItem="sPX-zp-YC2" firstAttribute="top" secondItem="bTD-6b-PHG" secondAttribute="bottom" constant="20" id="tsk-fa-eOh"/>
+                            <constraint firstAttribute="centerX" secondItem="M4Q-fI-oe0" secondAttribute="centerX" id="uEw-aP-f5c"/>
                             <constraint firstItem="AJB-xm-H0h" firstAttribute="leading" secondItem="KWF-Za-2Br" secondAttribute="leadingMargin" id="vCW-tO-STf"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="sportsNameLabel" destination="M4Q-fI-oe0" id="VpH-Dl-ENO"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2SV-y0-m9u" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
