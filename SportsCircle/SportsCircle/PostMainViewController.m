@@ -74,6 +74,8 @@
                     @"Wrestling"];
     
     [self.pickerView reloadData];
+    
+    //手勢操作tap
 }
 
 - (void)didReceiveMemoryWarning {
