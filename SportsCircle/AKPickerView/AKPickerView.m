@@ -76,7 +76,7 @@
     NSLog(@"w=%f, h=%f", f.size.width, f.size.height);
     NSLog(@"x=%f, y=%f", f.origin.x, f.origin.y);
     
-    [self.collectionView setFrame:CGRectMake(0.0, 60.0, f.size.width, 100)];//設定位置
+    [self.collectionView setFrame:CGRectMake(0.0, 60.0, f.size.width, 150)];//設定位置
 }
 
 - (id)initWithFrame:(CGRect)frame
