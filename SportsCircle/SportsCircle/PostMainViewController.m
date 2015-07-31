@@ -8,10 +8,17 @@
 
 #import "PostMainViewController.h"
 #import "AKPickerView.h"
-@interface PostMainViewController ()<AKPickerViewDataSource, AKPickerViewDelegate>
+
+@interface PostMainViewController ()<AKPickerViewDataSource, AKPickerViewDelegate,UIPopoverControllerDelegate,UINavigationControllerDelegate,UIImagePickerControllerDelegate>
+
 @property (nonatomic, strong) AKPickerView *pickerView;
 @property (nonatomic, strong) NSArray *titles;
 @property (weak, nonatomic) IBOutlet UILabel *sportsNameLabel;
+
+@property (weak, nonatomic) IBOutlet UILabel *infoLabel;
+@property (weak, nonatomic) IBOutlet UIButton *cameraBtn;
+@property (strong, nonatomic) IBOutlet UIView *postMainView;
+
 @end
 
 @implementation PostMainViewController
@@ -74,8 +81,46 @@
                     @"Wrestling"];
     
     [self.pickerView reloadData];
+    [self.view sendSubviewToBack:_pickerView];
     
-    //手勢操作tap
+    //顯示時間
+    NSDateFormatter *format=[[NSDateFormatter alloc]init];
+    [format setDateFormat:@"EEE d MMM h m a"];
+    NSDate *today=[NSDate date];
+    _infoLabel.text=[format stringFromDate:today];
+    
+    //相機
+    [_cameraBtn setBackgroundImage:[UIImage imageNamed:@"camera.png"] forState: UIControlStateNormal];//用圖片在按鈕上
+    
+    //手勢操作
+    UITapGestureRecognizer *toTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(toTap)];
+    [_postMainView addGestureRecognizer:toTap];
+    
+    //允許ImageView接受使用者互動
+    _postMainView.userInteractionEnabled = YES;
+    
+    // initialize popover view
+    popView = [[[NSBundle mainBundle] loadNibNamed:@"PopView" owner:nil options:nil] lastObject];
+    [popView.popPicBtn setBackgroundImage:[UIImage imageNamed:@"camera"] forState: UIControlStateNormal];
+    popView2 = [[[NSBundle mainBundle] loadNibNamed:@"PopView2" owner:nil options:nil] lastObject];
+    [popView2.popPicBtn2 setBackgroundImage:[UIImage imageNamed:@"camera"] forState: UIControlStateNormal];
+    popView3 = [[[NSBundle mainBundle] loadNibNamed:@"PopView3" owner:nil options:nil] lastObject];
+    [popView3.popPicBtn3 setBackgroundImage:[UIImage imageNamed:@"camera"] forState: UIControlStateNormal];
+    popView4 = [[[NSBundle mainBundle] loadNibNamed:@"PopView4" owner:nil options:nil] lastObject];
+    [popView4.popPicBtn4 setBackgroundImage:[UIImage imageNamed:@"camera"] forState: UIControlStateNormal];
+    
+    
+
+    
+}
+
+-(void)toTap {
+    if (!popView.isHidden) {
+        [popView removeFromSuperview];
+        [popView2 removeFromSuperview];
+        [popView3 removeFromSuperview];
+        [popView4 removeFromSuperview];
+    }
 }
 
 - (void)didReceiveMemoryWarning {
@@ -162,6 +207,96 @@
     // Too noisy...
     // NSLog(@"%f", scrollView.contentOffset.x);
 }
+
+- (IBAction)theCameraBtnPressed:(id)sender {
+    if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera])
+    {
+        UIImagePickerController *imagePicker=[[UIImagePickerController alloc]init];
+        
+        //設定相片來源為裝置上的相機
+        imagePicker.sourceType=UIImagePickerControllerSourceTypeCamera;
+        //設定imagePicker的delegate為viewcontroller
+        imagePicker.delegate=self;
+        //開啟相機拍照介面
+        [self presentViewController:imagePicker animated:YES completion:nil];
+    }
+}
+//相機開啟後～使用者可以選擇拍照或取消 選拍照時
+-(void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
+{
+    //取得使用者的相片
+    UIImage *image=[info valueForKey:UIImagePickerControllerOriginalImage];
+    //存檔
+    UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil);
+    //關閉拍照
+    [self dismissViewControllerAnimated:YES completion:nil];
+    
+}
+
+-(void)imagePickerControllerDidCancel:(UIImagePickerController *)picker
+{
+    //當使用者按下取消後關閉拍照
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+
+
+- (IBAction)ballBtnPressed:(id)sender
+{
+    //    UIPopoverController *pop=[[UIPopoverController alloc]initWithContentViewController:popView];
+    //    [pop setDelegate:self];
+    //    [pop presentPopoverFromRect:popBtn.frame inView:self.view permittedArrowDirections:UIPopoverArrowDirectionUp animated:YES];
+    //設定popover的位置跟
+    
+    //UIButton * button = (UIButton*)sender;
+    //CGPoint btn_point = button.frame.origin;
+    //CGRect rect = CGRectZero;
+    //rect.origin = btn_point;
+    //rect.size = CGSizeMake(50, 50);
+    //上面是蛤蜊教的
+    
+    CGRect rect=CGRectMake(100, 331, 50, 50);
+    [popView setFrame:rect];
+    [self.view addSubview:popView];
+    [self.view sendSubviewToBack:popView];
+    
+    [popView2 removeFromSuperview];
+    [popView3 removeFromSuperview];
+    [popView4 removeFromSuperview];
+    
+}
+
+- (IBAction)TshirtBtnPressed:(id)sender {
+    CGRect rect=CGRectMake(165, 331, 50, 50);
+    [popView2 setFrame:rect];
+    [self.view addSubview:popView2];
+    [self.view sendSubviewToBack:popView2];
+    
+    [popView removeFromSuperview];
+    [popView3 removeFromSuperview];
+    [popView4 removeFromSuperview];
+}
+- (IBAction)PantsBtnPressed:(id)sender {
+    CGRect rect=CGRectMake(230, 331, 50, 50);
+    [popView3 setFrame:rect];
+    [self.view addSubview:popView3];
+    [self.view sendSubviewToBack:popView3];
+    
+    [popView removeFromSuperview];
+    [popView2 removeFromSuperview];
+    [popView4 removeFromSuperview];
+}
+- (IBAction)shoesBtnPressed:(id)sender {
+    CGRect rect=CGRectMake(295, 331, 50, 50);
+    [popView4 setFrame:rect];
+    [self.view addSubview:popView4];
+    [self.view sendSubviewToBack:popView4];
+    
+    [popView removeFromSuperview];
+    [popView2 removeFromSuperview];
+    [popView3 removeFromSuperview];
+}
+
 
 /*
 #pragma mark - Navigation
