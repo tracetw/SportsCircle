@@ -27,7 +27,11 @@
 		70E3C0C81B6B9A6C00A5C14E /* PopView2.m in Sources */ = {isa = PBXBuildFile; fileRef = 70E3C0C21B6B9A6C00A5C14E /* PopView2.m */; };
 		70E3C0C91B6B9A6C00A5C14E /* PopView3.m in Sources */ = {isa = PBXBuildFile; fileRef = 70E3C0C41B6B9A6C00A5C14E /* PopView3.m */; };
 		70E3C0CA1B6B9A6C00A5C14E /* PopView4.m in Sources */ = {isa = PBXBuildFile; fileRef = 70E3C0C61B6B9A6C00A5C14E /* PopView4.m */; };
-		70E3C0CE1B6BA05800A5C14E /* ballPopoverController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70E3C0CD1B6BA05800A5C14E /* ballPopoverController.m */; };
+		70E3C0D11B6BB14E00A5C14E /* scheduleTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70E3C0D01B6BB14E00A5C14E /* scheduleTableViewController.m */; };
+		70E3C0D51B6BB17200A5C14E /* scheduleTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 70E3C0D41B6BB17200A5C14E /* scheduleTableViewCell.m */; };
+		70E3C0DB1B6BB1F700A5C14E /* scheduleDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70E3C0DA1B6BB1F700A5C14E /* scheduleDetailViewController.m */; };
+		70E3C0DD1B6CDCE500A5C14E /* edit.png in Resources */ = {isa = PBXBuildFile; fileRef = 70E3C0DC1B6CDCE500A5C14E /* edit.png */; };
+		70E3C0DF1B6CDFFC00A5C14E /* edit1x.png in Resources */ = {isa = PBXBuildFile; fileRef = 70E3C0DE1B6CDFFC00A5C14E /* edit1x.png */; };
 		7666690A1B674D3900280B20 /* PostMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 766669091B674D3900280B20 /* PostMainViewController.m */; };
 		D34A63451B4CED0700710B1F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D34A63441B4CED0700710B1F /* main.m */; };
 		D34A63481B4CED0700710B1F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D34A63471B4CED0700710B1F /* AppDelegate.m */; };
@@ -93,8 +97,14 @@
 		70E3C0C41B6B9A6C00A5C14E /* PopView3.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PopView3.m; sourceTree = "<group>"; };
 		70E3C0C51B6B9A6C00A5C14E /* PopView4.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PopView4.h; sourceTree = "<group>"; };
 		70E3C0C61B6B9A6C00A5C14E /* PopView4.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PopView4.m; sourceTree = "<group>"; };
-		70E3C0CC1B6BA05800A5C14E /* ballPopoverController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ballPopoverController.h; sourceTree = "<group>"; };
-		70E3C0CD1B6BA05800A5C14E /* ballPopoverController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ballPopoverController.m; sourceTree = "<group>"; };
+		70E3C0CF1B6BB14E00A5C14E /* scheduleTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = scheduleTableViewController.h; sourceTree = "<group>"; };
+		70E3C0D01B6BB14E00A5C14E /* scheduleTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = scheduleTableViewController.m; sourceTree = "<group>"; };
+		70E3C0D31B6BB17200A5C14E /* scheduleTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = scheduleTableViewCell.h; sourceTree = "<group>"; };
+		70E3C0D41B6BB17200A5C14E /* scheduleTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = scheduleTableViewCell.m; sourceTree = "<group>"; };
+		70E3C0D91B6BB1F700A5C14E /* scheduleDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = scheduleDetailViewController.h; sourceTree = "<group>"; };
+		70E3C0DA1B6BB1F700A5C14E /* scheduleDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = scheduleDetailViewController.m; sourceTree = "<group>"; };
+		70E3C0DC1B6CDCE500A5C14E /* edit.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = edit.png; sourceTree = "<group>"; };
+		70E3C0DE1B6CDFFC00A5C14E /* edit1x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = edit1x.png; sourceTree = "<group>"; };
 		766669081B674D3900280B20 /* PostMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PostMainViewController.h; sourceTree = "<group>"; };
 		766669091B674D3900280B20 /* PostMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PostMainViewController.m; sourceTree = "<group>"; };
 		D34A633F1B4CED0700710B1F /* SportsCircle.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SportsCircle.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -170,6 +180,8 @@
 		70E3C0B21B6B954C00A5C14E /* pic */ = {
 			isa = PBXGroup;
 			children = (
+				70E3C0DC1B6CDCE500A5C14E /* edit.png */,
+				70E3C0DE1B6CDFFC00A5C14E /* edit1x.png */,
 				70E3C0A61B6B954800A5C14E /* popFrame.png */,
 				70E3C0A71B6B954800A5C14E /* map-pin-746123_640.png */,
 				70E3C0A81B6B954800A5C14E /* time.png */,
@@ -193,6 +205,19 @@
 				70E3C0C61B6B9A6C00A5C14E /* PopView4.m */,
 			);
 			name = PopView;
+			sourceTree = "<group>";
+		};
+		70E3C0D21B6BB15500A5C14E /* schedule */ = {
+			isa = PBXGroup;
+			children = (
+				70E3C0CF1B6BB14E00A5C14E /* scheduleTableViewController.h */,
+				70E3C0D01B6BB14E00A5C14E /* scheduleTableViewController.m */,
+				70E3C0D31B6BB17200A5C14E /* scheduleTableViewCell.h */,
+				70E3C0D41B6BB17200A5C14E /* scheduleTableViewCell.m */,
+				70E3C0D91B6BB1F700A5C14E /* scheduleDetailViewController.h */,
+				70E3C0DA1B6BB1F700A5C14E /* scheduleDetailViewController.m */,
+			);
+			name = schedule;
 			sourceTree = "<group>";
 		};
 		D34A63361B4CED0700710B1F = {
@@ -228,13 +253,12 @@
 				702BBAC91B5547FE00C09B9B /* SignUpViewController.m */,
 				70D60FC01B5569BA001BB4C9 /* TrendViewController.h */,
 				70D60FC11B5569BA001BB4C9 /* TrendViewController.m */,
-				766669081B674D3900280B20 /* PostMainViewController.h */,
-				766669091B674D3900280B20 /* PostMainViewController.m */,
-				70E3C0CC1B6BA05800A5C14E /* ballPopoverController.h */,
-				70E3C0CD1B6BA05800A5C14E /* ballPopoverController.m */,
-				70E3C0CB1B6B9A7300A5C14E /* PopView */,
 				70E3C0A31B6B94E500A5C14E /* mapViewController.h */,
 				70E3C0A41B6B94E500A5C14E /* mapViewController.m */,
+				766669081B674D3900280B20 /* PostMainViewController.h */,
+				766669091B674D3900280B20 /* PostMainViewController.m */,
+				70E3C0CB1B6B9A7300A5C14E /* PopView */,
+				70E3C0D21B6BB15500A5C14E /* schedule */,
 				D34A634C1B4CED0700710B1F /* Main.storyboard */,
 				D34A634F1B4CED0700710B1F /* Images.xcassets */,
 				D34A63511B4CED0700710B1F /* LaunchScreen.xib */,
@@ -395,7 +419,9 @@
 				70E3C0B11B6B954800A5C14E /* camera.png in Resources */,
 				70E3C0AF1B6B954800A5C14E /* location.png in Resources */,
 				70E3C0BB1B6B9A3300A5C14E /* PopView.xib in Resources */,
+				70E3C0DD1B6CDCE500A5C14E /* edit.png in Resources */,
 				70E3C0B01B6B954800A5C14E /* pen.png in Resources */,
+				70E3C0DF1B6CDFFC00A5C14E /* edit1x.png in Resources */,
 				70E3C0BC1B6B9A3300A5C14E /* PopView2.xib in Resources */,
 				D34A63531B4CED0700710B1F /* LaunchScreen.xib in Resources */,
 				70E3C0BD1B6B9A3300A5C14E /* PopView3.xib in Resources */,
@@ -418,7 +444,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				70E3C0CE1B6BA05800A5C14E /* ballPopoverController.m in Sources */,
+				70E3C0D51B6BB17200A5C14E /* scheduleTableViewCell.m in Sources */,
 				70D60FC21B5569BA001BB4C9 /* TrendViewController.m in Sources */,
 				70E3C0A51B6B94E500A5C14E /* mapViewController.m in Sources */,
 				7666690A1B674D3900280B20 /* PostMainViewController.m in Sources */,
@@ -426,9 +452,11 @@
 				70E3C0C81B6B9A6C00A5C14E /* PopView2.m in Sources */,
 				70E3C0C71B6B9A6C00A5C14E /* PopView.m in Sources */,
 				70E3C0C91B6B9A6C00A5C14E /* PopView3.m in Sources */,
+				70E3C0DB1B6BB1F700A5C14E /* scheduleDetailViewController.m in Sources */,
 				D3AD4CC61B64DD4B00FC7F8E /* LoginViewController.m in Sources */,
 				70E3C0CA1B6B9A6C00A5C14E /* PopView4.m in Sources */,
 				D34A63481B4CED0700710B1F /* AppDelegate.m in Sources */,
+				70E3C0D11B6BB14E00A5C14E /* scheduleTableViewController.m in Sources */,
 				702BBACA1B5547FE00C09B9B /* SignUpViewController.m in Sources */,
 				D38158E01B6901D600C68B17 /* AKPickerView.m in Sources */,
 				D34A63451B4CED0700710B1F /* main.m in Sources */,
