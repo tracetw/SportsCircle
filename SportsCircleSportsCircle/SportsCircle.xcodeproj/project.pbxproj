@@ -8,6 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		702BBACA1B5547FE00C09B9B /* SignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 702BBAC91B5547FE00C09B9B /* SignUpViewController.m */; };
+		7076B5D11B6F2450004E81EF /* scheduleDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7076B5CC1B6F2450004E81EF /* scheduleDetailViewController.m */; };
+		7076B5D21B6F2450004E81EF /* scheduleTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7076B5CE1B6F2450004E81EF /* scheduleTableViewCell.m */; };
+		7076B5D31B6F2450004E81EF /* scheduleTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7076B5D01B6F2450004E81EF /* scheduleTableViewController.m */; };
+		7076B5D61B6F247D004E81EF /* edit.png in Resources */ = {isa = PBXBuildFile; fileRef = 7076B5D41B6F247D004E81EF /* edit.png */; };
+		7076B5D71B6F247D004E81EF /* edit1x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7076B5D51B6F247D004E81EF /* edit1x.png */; };
 		70D60FC21B5569BA001BB4C9 /* TrendViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70D60FC11B5569BA001BB4C9 /* TrendViewController.m */; };
 		70D60FC41B55739C001BB4C9 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 70D60FC31B55739C001BB4C9 /* QuartzCore.framework */; };
 		70E3C0A51B6B94E500A5C14E /* mapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70E3C0A41B6B94E500A5C14E /* mapViewController.m */; };
@@ -27,12 +32,10 @@
 		70E3C0C81B6B9A6C00A5C14E /* PopView2.m in Sources */ = {isa = PBXBuildFile; fileRef = 70E3C0C21B6B9A6C00A5C14E /* PopView2.m */; };
 		70E3C0C91B6B9A6C00A5C14E /* PopView3.m in Sources */ = {isa = PBXBuildFile; fileRef = 70E3C0C41B6B9A6C00A5C14E /* PopView3.m */; };
 		70E3C0CA1B6B9A6C00A5C14E /* PopView4.m in Sources */ = {isa = PBXBuildFile; fileRef = 70E3C0C61B6B9A6C00A5C14E /* PopView4.m */; };
-		70E3C0D11B6BB14E00A5C14E /* scheduleTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70E3C0D01B6BB14E00A5C14E /* scheduleTableViewController.m */; };
-		70E3C0D51B6BB17200A5C14E /* scheduleTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 70E3C0D41B6BB17200A5C14E /* scheduleTableViewCell.m */; };
-		70E3C0DB1B6BB1F700A5C14E /* scheduleDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70E3C0DA1B6BB1F700A5C14E /* scheduleDetailViewController.m */; };
-		70E3C0DD1B6CDCE500A5C14E /* edit.png in Resources */ = {isa = PBXBuildFile; fileRef = 70E3C0DC1B6CDCE500A5C14E /* edit.png */; };
-		70E3C0DF1B6CDFFC00A5C14E /* edit1x.png in Resources */ = {isa = PBXBuildFile; fileRef = 70E3C0DE1B6CDFFC00A5C14E /* edit1x.png */; };
 		7666690A1B674D3900280B20 /* PostMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 766669091B674D3900280B20 /* PostMainViewController.m */; };
+		768A20261B6EFD3F005A7E66 /* RecordingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 768A20251B6EFD3F005A7E66 /* RecordingViewController.m */; };
+		768A20291B6F0505005A7E66 /* MapRecordingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 768A20281B6F0505005A7E66 /* MapRecordingViewController.m */; };
+		768A202C1B6F090E005A7E66 /* EndRecordingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 768A202B1B6F090E005A7E66 /* EndRecordingViewController.m */; };
 		D34A63451B4CED0700710B1F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D34A63441B4CED0700710B1F /* main.m */; };
 		D34A63481B4CED0700710B1F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D34A63471B4CED0700710B1F /* AppDelegate.m */; };
 		D34A634B1B4CED0700710B1F /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D34A634A1B4CED0700710B1F /* ViewController.m */; };
@@ -72,6 +75,14 @@
 /* Begin PBXFileReference section */
 		702BBAC81B5547FE00C09B9B /* SignUpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignUpViewController.h; sourceTree = "<group>"; };
 		702BBAC91B5547FE00C09B9B /* SignUpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignUpViewController.m; sourceTree = "<group>"; };
+		7076B5CB1B6F2450004E81EF /* scheduleDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = scheduleDetailViewController.h; path = ../../SportsCircle/SportsCircle/scheduleDetailViewController.h; sourceTree = "<group>"; };
+		7076B5CC1B6F2450004E81EF /* scheduleDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = scheduleDetailViewController.m; path = ../../SportsCircle/SportsCircle/scheduleDetailViewController.m; sourceTree = "<group>"; };
+		7076B5CD1B6F2450004E81EF /* scheduleTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = scheduleTableViewCell.h; path = ../../SportsCircle/SportsCircle/scheduleTableViewCell.h; sourceTree = "<group>"; };
+		7076B5CE1B6F2450004E81EF /* scheduleTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = scheduleTableViewCell.m; path = ../../SportsCircle/SportsCircle/scheduleTableViewCell.m; sourceTree = "<group>"; };
+		7076B5CF1B6F2450004E81EF /* scheduleTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = scheduleTableViewController.h; path = ../../SportsCircle/SportsCircle/scheduleTableViewController.h; sourceTree = "<group>"; };
+		7076B5D01B6F2450004E81EF /* scheduleTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = scheduleTableViewController.m; path = ../../SportsCircle/SportsCircle/scheduleTableViewController.m; sourceTree = "<group>"; };
+		7076B5D41B6F247D004E81EF /* edit.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = edit.png; path = ../../SportsCircle/SportsCircle/edit.png; sourceTree = "<group>"; };
+		7076B5D51B6F247D004E81EF /* edit1x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = edit1x.png; path = ../../SportsCircle/SportsCircle/edit1x.png; sourceTree = "<group>"; };
 		70D60FC01B5569BA001BB4C9 /* TrendViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TrendViewController.h; sourceTree = "<group>"; };
 		70D60FC11B5569BA001BB4C9 /* TrendViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TrendViewController.m; sourceTree = "<group>"; };
 		70D60FC31B55739C001BB4C9 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
@@ -97,16 +108,14 @@
 		70E3C0C41B6B9A6C00A5C14E /* PopView3.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PopView3.m; sourceTree = "<group>"; };
 		70E3C0C51B6B9A6C00A5C14E /* PopView4.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PopView4.h; sourceTree = "<group>"; };
 		70E3C0C61B6B9A6C00A5C14E /* PopView4.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PopView4.m; sourceTree = "<group>"; };
-		70E3C0CF1B6BB14E00A5C14E /* scheduleTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = scheduleTableViewController.h; sourceTree = "<group>"; };
-		70E3C0D01B6BB14E00A5C14E /* scheduleTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = scheduleTableViewController.m; sourceTree = "<group>"; };
-		70E3C0D31B6BB17200A5C14E /* scheduleTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = scheduleTableViewCell.h; sourceTree = "<group>"; };
-		70E3C0D41B6BB17200A5C14E /* scheduleTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = scheduleTableViewCell.m; sourceTree = "<group>"; };
-		70E3C0D91B6BB1F700A5C14E /* scheduleDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = scheduleDetailViewController.h; sourceTree = "<group>"; };
-		70E3C0DA1B6BB1F700A5C14E /* scheduleDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = scheduleDetailViewController.m; sourceTree = "<group>"; };
-		70E3C0DC1B6CDCE500A5C14E /* edit.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = edit.png; sourceTree = "<group>"; };
-		70E3C0DE1B6CDFFC00A5C14E /* edit1x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = edit1x.png; sourceTree = "<group>"; };
 		766669081B674D3900280B20 /* PostMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PostMainViewController.h; sourceTree = "<group>"; };
 		766669091B674D3900280B20 /* PostMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PostMainViewController.m; sourceTree = "<group>"; };
+		768A20241B6EFD3F005A7E66 /* RecordingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecordingViewController.h; sourceTree = "<group>"; };
+		768A20251B6EFD3F005A7E66 /* RecordingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecordingViewController.m; sourceTree = "<group>"; };
+		768A20271B6F0505005A7E66 /* MapRecordingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapRecordingViewController.h; sourceTree = "<group>"; };
+		768A20281B6F0505005A7E66 /* MapRecordingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapRecordingViewController.m; sourceTree = "<group>"; };
+		768A202A1B6F090E005A7E66 /* EndRecordingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EndRecordingViewController.h; sourceTree = "<group>"; };
+		768A202B1B6F090E005A7E66 /* EndRecordingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EndRecordingViewController.m; sourceTree = "<group>"; };
 		D34A633F1B4CED0700710B1F /* SportsCircle.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SportsCircle.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D34A63431B4CED0700710B1F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D34A63441B4CED0700710B1F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -180,8 +189,8 @@
 		70E3C0B21B6B954C00A5C14E /* pic */ = {
 			isa = PBXGroup;
 			children = (
-				70E3C0DC1B6CDCE500A5C14E /* edit.png */,
-				70E3C0DE1B6CDFFC00A5C14E /* edit1x.png */,
+				7076B5D41B6F247D004E81EF /* edit.png */,
+				7076B5D51B6F247D004E81EF /* edit1x.png */,
 				70E3C0A61B6B954800A5C14E /* popFrame.png */,
 				70E3C0A71B6B954800A5C14E /* map-pin-746123_640.png */,
 				70E3C0A81B6B954800A5C14E /* time.png */,
@@ -210,12 +219,12 @@
 		70E3C0D21B6BB15500A5C14E /* schedule */ = {
 			isa = PBXGroup;
 			children = (
-				70E3C0CF1B6BB14E00A5C14E /* scheduleTableViewController.h */,
-				70E3C0D01B6BB14E00A5C14E /* scheduleTableViewController.m */,
-				70E3C0D31B6BB17200A5C14E /* scheduleTableViewCell.h */,
-				70E3C0D41B6BB17200A5C14E /* scheduleTableViewCell.m */,
-				70E3C0D91B6BB1F700A5C14E /* scheduleDetailViewController.h */,
-				70E3C0DA1B6BB1F700A5C14E /* scheduleDetailViewController.m */,
+				7076B5CB1B6F2450004E81EF /* scheduleDetailViewController.h */,
+				7076B5CC1B6F2450004E81EF /* scheduleDetailViewController.m */,
+				7076B5CD1B6F2450004E81EF /* scheduleTableViewCell.h */,
+				7076B5CE1B6F2450004E81EF /* scheduleTableViewCell.m */,
+				7076B5CF1B6F2450004E81EF /* scheduleTableViewController.h */,
+				7076B5D01B6F2450004E81EF /* scheduleTableViewController.m */,
 			);
 			name = schedule;
 			sourceTree = "<group>";
@@ -257,6 +266,12 @@
 				70E3C0A41B6B94E500A5C14E /* mapViewController.m */,
 				766669081B674D3900280B20 /* PostMainViewController.h */,
 				766669091B674D3900280B20 /* PostMainViewController.m */,
+				768A20241B6EFD3F005A7E66 /* RecordingViewController.h */,
+				768A20251B6EFD3F005A7E66 /* RecordingViewController.m */,
+				768A20271B6F0505005A7E66 /* MapRecordingViewController.h */,
+				768A20281B6F0505005A7E66 /* MapRecordingViewController.m */,
+				768A202A1B6F090E005A7E66 /* EndRecordingViewController.h */,
+				768A202B1B6F090E005A7E66 /* EndRecordingViewController.m */,
 				70E3C0CB1B6B9A7300A5C14E /* PopView */,
 				70E3C0D21B6BB15500A5C14E /* schedule */,
 				D34A634C1B4CED0700710B1F /* Main.storyboard */,
@@ -413,15 +428,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				70E3C0AD1B6B954800A5C14E /* map-pin-746123_640.png in Resources */,
+				7076B5D61B6F247D004E81EF /* edit.png in Resources */,
 				D34A634E1B4CED0700710B1F /* Main.storyboard in Resources */,
 				70E3C0AE1B6B954800A5C14E /* time.png in Resources */,
 				70E3C0AC1B6B954800A5C14E /* popFrame.png in Resources */,
 				70E3C0B11B6B954800A5C14E /* camera.png in Resources */,
 				70E3C0AF1B6B954800A5C14E /* location.png in Resources */,
 				70E3C0BB1B6B9A3300A5C14E /* PopView.xib in Resources */,
-				70E3C0DD1B6CDCE500A5C14E /* edit.png in Resources */,
+				7076B5D71B6F247D004E81EF /* edit1x.png in Resources */,
 				70E3C0B01B6B954800A5C14E /* pen.png in Resources */,
-				70E3C0DF1B6CDFFC00A5C14E /* edit1x.png in Resources */,
 				70E3C0BC1B6B9A3300A5C14E /* PopView2.xib in Resources */,
 				D34A63531B4CED0700710B1F /* LaunchScreen.xib in Resources */,
 				70E3C0BD1B6B9A3300A5C14E /* PopView3.xib in Resources */,
@@ -444,7 +459,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				70E3C0D51B6BB17200A5C14E /* scheduleTableViewCell.m in Sources */,
+				768A20291B6F0505005A7E66 /* MapRecordingViewController.m in Sources */,
+				768A202C1B6F090E005A7E66 /* EndRecordingViewController.m in Sources */,
 				70D60FC21B5569BA001BB4C9 /* TrendViewController.m in Sources */,
 				70E3C0A51B6B94E500A5C14E /* mapViewController.m in Sources */,
 				7666690A1B674D3900280B20 /* PostMainViewController.m in Sources */,
@@ -452,12 +468,14 @@
 				70E3C0C81B6B9A6C00A5C14E /* PopView2.m in Sources */,
 				70E3C0C71B6B9A6C00A5C14E /* PopView.m in Sources */,
 				70E3C0C91B6B9A6C00A5C14E /* PopView3.m in Sources */,
-				70E3C0DB1B6BB1F700A5C14E /* scheduleDetailViewController.m in Sources */,
 				D3AD4CC61B64DD4B00FC7F8E /* LoginViewController.m in Sources */,
 				70E3C0CA1B6B9A6C00A5C14E /* PopView4.m in Sources */,
 				D34A63481B4CED0700710B1F /* AppDelegate.m in Sources */,
-				70E3C0D11B6BB14E00A5C14E /* scheduleTableViewController.m in Sources */,
+				768A20261B6EFD3F005A7E66 /* RecordingViewController.m in Sources */,
+				7076B5D31B6F2450004E81EF /* scheduleTableViewController.m in Sources */,
+				7076B5D11B6F2450004E81EF /* scheduleDetailViewController.m in Sources */,
 				702BBACA1B5547FE00C09B9B /* SignUpViewController.m in Sources */,
+				7076B5D21B6F2450004E81EF /* scheduleTableViewCell.m in Sources */,
 				D38158E01B6901D600C68B17 /* AKPickerView.m in Sources */,
 				D34A63451B4CED0700710B1F /* main.m in Sources */,
 			);
