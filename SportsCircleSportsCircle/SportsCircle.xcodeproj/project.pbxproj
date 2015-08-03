@@ -29,6 +29,9 @@
 		70E3C0CA1B6B9A6C00A5C14E /* PopView4.m in Sources */ = {isa = PBXBuildFile; fileRef = 70E3C0C61B6B9A6C00A5C14E /* PopView4.m */; };
 		70E3C0CE1B6BA05800A5C14E /* ballPopoverController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70E3C0CD1B6BA05800A5C14E /* ballPopoverController.m */; };
 		7666690A1B674D3900280B20 /* PostMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 766669091B674D3900280B20 /* PostMainViewController.m */; };
+		768A20261B6EFD3F005A7E66 /* RecordingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 768A20251B6EFD3F005A7E66 /* RecordingViewController.m */; };
+		768A20291B6F0505005A7E66 /* MapRecordingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 768A20281B6F0505005A7E66 /* MapRecordingViewController.m */; };
+		768A202C1B6F090E005A7E66 /* EndRecordingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 768A202B1B6F090E005A7E66 /* EndRecordingViewController.m */; };
 		D34A63451B4CED0700710B1F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D34A63441B4CED0700710B1F /* main.m */; };
 		D34A63481B4CED0700710B1F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D34A63471B4CED0700710B1F /* AppDelegate.m */; };
 		D34A634B1B4CED0700710B1F /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D34A634A1B4CED0700710B1F /* ViewController.m */; };
@@ -97,6 +100,12 @@
 		70E3C0CD1B6BA05800A5C14E /* ballPopoverController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ballPopoverController.m; sourceTree = "<group>"; };
 		766669081B674D3900280B20 /* PostMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PostMainViewController.h; sourceTree = "<group>"; };
 		766669091B674D3900280B20 /* PostMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PostMainViewController.m; sourceTree = "<group>"; };
+		768A20241B6EFD3F005A7E66 /* RecordingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecordingViewController.h; sourceTree = "<group>"; };
+		768A20251B6EFD3F005A7E66 /* RecordingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecordingViewController.m; sourceTree = "<group>"; };
+		768A20271B6F0505005A7E66 /* MapRecordingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapRecordingViewController.h; sourceTree = "<group>"; };
+		768A20281B6F0505005A7E66 /* MapRecordingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapRecordingViewController.m; sourceTree = "<group>"; };
+		768A202A1B6F090E005A7E66 /* EndRecordingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EndRecordingViewController.h; sourceTree = "<group>"; };
+		768A202B1B6F090E005A7E66 /* EndRecordingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EndRecordingViewController.m; sourceTree = "<group>"; };
 		D34A633F1B4CED0700710B1F /* SportsCircle.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SportsCircle.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D34A63431B4CED0700710B1F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D34A63441B4CED0700710B1F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -232,6 +241,12 @@
 				766669091B674D3900280B20 /* PostMainViewController.m */,
 				70E3C0CC1B6BA05800A5C14E /* ballPopoverController.h */,
 				70E3C0CD1B6BA05800A5C14E /* ballPopoverController.m */,
+				768A20241B6EFD3F005A7E66 /* RecordingViewController.h */,
+				768A20251B6EFD3F005A7E66 /* RecordingViewController.m */,
+				768A20271B6F0505005A7E66 /* MapRecordingViewController.h */,
+				768A20281B6F0505005A7E66 /* MapRecordingViewController.m */,
+				768A202A1B6F090E005A7E66 /* EndRecordingViewController.h */,
+				768A202B1B6F090E005A7E66 /* EndRecordingViewController.m */,
 				70E3C0CB1B6B9A7300A5C14E /* PopView */,
 				70E3C0A31B6B94E500A5C14E /* mapViewController.h */,
 				70E3C0A41B6B94E500A5C14E /* mapViewController.m */,
@@ -419,6 +434,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				70E3C0CE1B6BA05800A5C14E /* ballPopoverController.m in Sources */,
+				768A20291B6F0505005A7E66 /* MapRecordingViewController.m in Sources */,
+				768A202C1B6F090E005A7E66 /* EndRecordingViewController.m in Sources */,
 				70D60FC21B5569BA001BB4C9 /* TrendViewController.m in Sources */,
 				70E3C0A51B6B94E500A5C14E /* mapViewController.m in Sources */,
 				7666690A1B674D3900280B20 /* PostMainViewController.m in Sources */,
@@ -429,6 +446,7 @@
 				D3AD4CC61B64DD4B00FC7F8E /* LoginViewController.m in Sources */,
 				70E3C0CA1B6B9A6C00A5C14E /* PopView4.m in Sources */,
 				D34A63481B4CED0700710B1F /* AppDelegate.m in Sources */,
+				768A20261B6EFD3F005A7E66 /* RecordingViewController.m in Sources */,
 				702BBACA1B5547FE00C09B9B /* SignUpViewController.m in Sources */,
 				D38158E01B6901D600C68B17 /* AKPickerView.m in Sources */,
 				D34A63451B4CED0700710B1F /* main.m in Sources */,
