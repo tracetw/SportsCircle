@@ -44,6 +44,7 @@
 		D34A63531B4CED0700710B1F /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = D34A63511B4CED0700710B1F /* LaunchScreen.xib */; };
 		D34A635F1B4CED0700710B1F /* SportsCircleTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D34A635E1B4CED0700710B1F /* SportsCircleTests.m */; };
 		D38158E01B6901D600C68B17 /* AKPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = D38158DF1B6901D600C68B17 /* AKPickerView.m */; };
+		D38B8D3A1B71B84200124706 /* EditProfileTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D38B8D391B71B84200124706 /* EditProfileTableViewController.m */; };
 		D3AD4CA61B64DB9200FC7F8E /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3AD4CA51B64DB9200FC7F8E /* AudioToolbox.framework */; };
 		D3AD4CA81B64DBA100FC7F8E /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3AD4CA71B64DBA100FC7F8E /* CFNetwork.framework */; };
 		D3AD4CAA1B64DBA900FC7F8E /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3AD4CA91B64DBA900FC7F8E /* CoreGraphics.framework */; };
@@ -135,6 +136,8 @@
 		D34A635E1B4CED0700710B1F /* SportsCircleTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SportsCircleTests.m; sourceTree = "<group>"; };
 		D38158DE1B6901D600C68B17 /* AKPickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AKPickerView.h; sourceTree = "<group>"; };
 		D38158DF1B6901D600C68B17 /* AKPickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AKPickerView.m; sourceTree = "<group>"; };
+		D38B8D381B71B84200124706 /* EditProfileTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditProfileTableViewController.h; sourceTree = "<group>"; };
+		D38B8D391B71B84200124706 /* EditProfileTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditProfileTableViewController.m; sourceTree = "<group>"; };
 		D3AD4CA51B64DB9200FC7F8E /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		D3AD4CA71B64DBA100FC7F8E /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		D3AD4CA91B64DBA900FC7F8E /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -286,6 +289,8 @@
 				768A202B1B6F090E005A7E66 /* EndRecordingViewController.m */,
 				D3CFCC831B6F952D000B98FC /* SettingsViewController.h */,
 				D3CFCC841B6F952D000B98FC /* SettingsViewController.m */,
+				D38B8D381B71B84200124706 /* EditProfileTableViewController.h */,
+				D38B8D391B71B84200124706 /* EditProfileTableViewController.m */,
 				70E3C0CB1B6B9A7300A5C14E /* PopView */,
 				70E3C0D21B6BB15500A5C14E /* schedule */,
 				D34A634C1B4CED0700710B1F /* Main.storyboard */,
@@ -494,6 +499,7 @@
 				7076B5D11B6F2450004E81EF /* scheduleDetailViewController.m in Sources */,
 				702BBACA1B5547FE00C09B9B /* SignUpViewController.m in Sources */,
 				7076B5D21B6F2450004E81EF /* scheduleTableViewCell.m in Sources */,
+				D38B8D3A1B71B84200124706 /* EditProfileTableViewController.m in Sources */,
 				D38158E01B6901D600C68B17 /* AKPickerView.m in Sources */,
 				D34A63451B4CED0700710B1F /* main.m in Sources */,
 			);
