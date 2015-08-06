@@ -14,12 +14,16 @@
 {
     int count;
     MapRecordingViewController *mapRecordingView;
+    UISwitch *switchview;
+    CATransition *transition;
+
 }
 @property (weak, nonatomic) IBOutlet UILabel *miniSecond;
 @property (weak, nonatomic) IBOutlet UILabel *second;
 @property (weak, nonatomic) IBOutlet UILabel *minutes;
 @property (weak, nonatomic) IBOutlet UILabel *hour;
 @property (weak, nonatomic) IBOutlet UIButton *cameraButton;
+@property (weak, nonatomic) IBOutlet UIView *lockScreenView;
 
 @end
 
@@ -32,18 +36,50 @@
     [_cameraButton setBackgroundImage:[UIImage imageNamed:@"camera.png"] forState:UIControlStateNormal];
     mapRecordingView = [self.storyboard instantiateViewControllerWithIdentifier:@"MapRecordingView"];
     [mapRecordingView viewDidLoad];
+    
+    UIBarButtonItem *mapButton = [[UIBarButtonItem alloc]initWithTitle:@"Map" style:UIBarButtonItemStylePlain target:self action:@selector(mapBtnPressed:)];
+    
+    switchview = [[UISwitch alloc] initWithFrame:CGRectZero];
+    switchview.on = NO;
+    //[switchview setOnImage: [UIImage imageWithCGImage:<#(CGImageRef)#>]];
+    //[switchview setOnImage: [UIImage imageNamed:@"Unock"]];
+    [switchview addTarget:self action:@selector(lockSwitched:) forControlEvents:UIControlEventValueChanged];
+    
+    UIBarButtonItem *lockSwith = [[UIBarButtonItem alloc]initWithCustomView:switchview];
+    
+    self.navigationItem.rightBarButtonItems = @[mapButton,lockSwith];
+    
+    transition=[CATransition animation];
+    transition.duration=0.6;
+    //動畫時間長度
+    transition.timingFunction=[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
+    //動畫效果 進出緩慢中間快速
+    transition.type=kCATransitionPush;
+    
+    _lockScreenView.hidden=YES;
+
 }
+
+
 - (IBAction)pauseBtnPressed:(id)sender {
     if ([counter isValid]) {
         [counter invalidate];
-    }else {
-        counter = [NSTimer scheduledTimerWithTimeInterval:0.01 target:self selector:@selector(addNumber:) userInfo:NULL repeats:YES];//每0.01秒更新一次
+    }else{
+        counter = [NSTimer scheduledTimerWithTimeInterval:0.01 target:self selector:@selector(addNumber:) userInfo:NULL repeats:YES];
     }
 }
-- (IBAction)stopBtnLongPressed:(id)sender {
-    [counter invalidate];
-    EndRecordingViewController *endRecordingView = [self.storyboard instantiateViewControllerWithIdentifier:@"endRecordingView"];
-    [self.navigationController showDetailViewController:endRecordingView sender:nil];
+
+-(void)viewDidAppear:(BOOL)animated{
+    counter = [NSTimer scheduledTimerWithTimeInterval:0.01 target:self selector:@selector(addNumber:) userInfo:NULL repeats:YES];//每0.01秒更新一次
+}
+
+- (IBAction)stopButtonLongPressed:(UILongPressGestureRecognizer*)recognizer {
+    
+    if (recognizer.state == UIGestureRecognizerStateBegan) {
+        [counter invalidate];
+        EndRecordingViewController *endRecordingView = [self.storyboard instantiateViewControllerWithIdentifier:@"endRecordingView"];
+        [self.navigationController pushViewController:endRecordingView animated:YES];
+    }
 }
 
 - (IBAction)cameraBtnPressed:(id)sender {
@@ -73,6 +109,21 @@
     _miniSecond.text = [NSString stringWithFormat:@"%02d",ms];
     
 }
+
+-(void) lockSwitched:(id)sender{
+    if ([switchview isOn])  {
+        
+        _lockScreenView.hidden=NO;
+        transition.subtype=kCATransitionFade;
+        
+    } else {
+        _lockScreenView.hidden=YES;
+        transition.subtype=kCATransitionFade;
+        [_lockScreenView.layer addAnimation:transition forKey:nil];
+    }
+}
+
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
