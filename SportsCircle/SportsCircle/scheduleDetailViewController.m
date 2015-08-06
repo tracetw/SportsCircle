@@ -26,6 +26,13 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    NSDateFormatter *format=[[NSDateFormatter alloc]init];
+    [format setDateFormat:@"M/d HH:mm"];
+    //NSLog(@"設定時間為: %@",[format stringFromDate:sender.date]);
+    
+    scTime = [format stringFromDate:[NSDate date]];
+    // Convert date to string
+    
     
 }
 -(void)viewDidAppear:(BOOL)animated

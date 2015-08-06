@@ -15,7 +15,8 @@
 @interface scheduleTableViewController ()<UITableViewDelegate,UITableViewDataSource>
 {
     NSMutableArray *datas;
-    NSArray *userSchedules;
+    //NSArray *userSchedules;
+    PFQuery *query;
 }
 
 //@property NSMutableArray *objects;
@@ -25,13 +26,12 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
-    
     
     UIImage *image = [[UIImage imageNamed:@"edit.png"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
     
@@ -40,11 +40,17 @@
     self.navigationItem.rightBarButtonItem=addButton;
 
     
+   // if (!userSchedules) {
+    //    userSchedules = [[NSArray alloc] init];
+   // }
     if (!datas) {
-        datas = [[NSMutableArray alloc] init];
+        datas=[[NSMutableArray alloc]init];
     }
     
-    [self fetchDataFromParse];
+
+
+    
+//    [self fetchDataFromParse];
     
 //    PFUser *currentUser=[PFUser currentUser];//抓到目前user的objId
 //    PFQuery *query = [PFQuery queryWithClassName:@"schedule"];
@@ -69,21 +75,27 @@
 
 -(void)viewDidAppear:(BOOL)animated
 {
+    datas=[[NSMutableArray alloc]init];
     PFUser *currentUser=[PFUser currentUser];//抓到目前user的objId
-    PFQuery *query = [PFQuery queryWithClassName:@"schedule"];
+    query = [PFQuery queryWithClassName:@"schedule"];
     //query為指向sc類別
     [query whereKey:@"user" equalTo:currentUser];
     //類別為sc且key為user時value為currentUser
-    userSchedules = [query findObjects];//抓出資料有兩筆
+    for (NSObject *object in [query findObjects]) {
+        [datas addObject:object];
+    }
+    //datas = [query findObjects];//抓出資料有兩筆
     //NSDictionary *userSchedulesA=userSchedules[0];//cheatMode
     //NSDictionary *userSchedulesB=userSchedules[1];//cheatMode
     //每一筆為NSDictionary
     //NSLog(@"this id is: %@",userSchedulesA[@"scheduleDetail"]);
     //NSLog(@"this id is: %@",userSchedulesB[@"scheduleDetail"]);
-    [self fetchDataFromParse];
-    [self.tableView reloadData];
-}
+    //[self fetchDataFromParse];
 
+    [self.tableView reloadData];
+    
+}
+/*
 -(void)fetchDataFromParse
 {
     for (int i=0 ;i<userSchedules.count ; i++) {
@@ -94,7 +106,7 @@
         [self.tableView insertRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
     }
 }
-
+*/
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -104,16 +116,6 @@
     //Add into db first
     
      [self performSegueWithIdentifier:@"goDetail" sender:nil];
-    
-    //[datas insertObject:[NSDate date] atIndex:0];
-    //日期存到datas.atindex放在0表示插在最前面
-    //先跟新資料庫(此為新增data)在更新UI
-    
-    //Insert into TabView 此為新增的動作
-    //NSIndexPath *insertIndexPath=[NSIndexPath indexPathForRow:0 inSection:0];//標示位子
-    //[self.tableView insertRowsAtIndexPaths:@[insertIndexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
-    //@[]表array,可多個
-    
 }
 
 #pragma mark - Table view data source
@@ -137,10 +139,12 @@
     // Configure the cell...
     NSLog(@"indexPath:%@",indexPath.description);
     
-        NSDictionary *userSchedulesA=userSchedules[indexPath.row];
+        NSDictionary *userSchedulesA=datas[indexPath.row];
+        //取得userSchedules[indexPath.row]裡面的NSDictionary
     
         cell.scheduleName.text=userSchedulesA[@"scheduleName"];
         cell.scheduleTime.text=userSchedulesA[@"scheduleTime"];
+    
     
     return cell;
     
@@ -159,32 +163,51 @@
 // Override to support editing the table view.
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
+        self.tableView.allowsMultipleSelectionDuringEditing = NO;
         // Delete the row from the data source
+        //for (NSObject *object in userSchedules) {
+         //   NSLog(@"%@",object);
+         //   [datas addObject:object];
+        //}
+        PFObject * deleteObject = [datas objectAtIndex:indexPath.row];
+        NSString *objectId = deleteObject.objectId;
+        NSLog(@"id: %@",objectId); // not null
+
+        PFObject *object = [PFObject objectWithoutDataWithClassName:@"schedule"
+                                                                   objectId:objectId];
+        [object deleteEventually];
+        
+        
         [datas removeObjectAtIndex:indexPath.row];
         [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+
+        //[self.tableView reloadData];
+        
+        
+        
     } else if (editingStyle == UITableViewCellEditingStyleInsert) {
         // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
     }
 }
-
-
+/*
 // Override to support rearranging the table view.
 - (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
     //如果滑出畫面的row也會更新.要調整不會更新
     //id tmpItem=datas[fromIndexPath.row];
     id tmpItem=[datas objectAtIndex:fromIndexPath.row];
+    
     [datas removeObjectAtIndex:fromIndexPath.row];//虛擬的資料庫刪除
+    
     [datas insertObject:tmpItem atIndex:toIndexPath.row];
     //然後再將原資料插入
 }
-
 
 // Override to support conditional rearranging of the table view.
 - (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
     // Return NO if you do not want the item to be re-orderable.
     return YES;
 }
-
+*/
 -(IBAction)backToSchedule:(UIStoryboardSegue *)segue//啟動逃生門所需.透過這個標記去回到login.白色的字可以改.後面的segue可以填香蕉
 {
     NSLog(@"back to schedule");

@@ -14,6 +14,8 @@
     NSString *scTime;
     NSMutableArray *datas;
     NSArray *userSchedules;
+    NSDictionary *postWallDictionary;
+    NSArray *postWallArray;
 }
 @property (weak, nonatomic) IBOutlet UITextField *scheduleName;
 @property (weak, nonatomic) IBOutlet UITextView *scheduleDetail;
@@ -25,23 +27,42 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
+    
     if (!datas) {
         datas = [[NSMutableArray alloc] init];
     }
     
-    PFUser *currentUser=[PFUser currentUser];//抓到目前user的objId
-    PFQuery *query = [PFQuery queryWithClassName:@"schedule"];
+    //PFUser *currentUser=[PFUser currentUser];//抓到目前user的objId
+    //PFQuery *query = [PFQuery queryWithClassName:@"schedule"];
     //query為指向sc類別
-    [query whereKey:@"user" equalTo:currentUser];
+    //[query whereKey:@"user" equalTo:currentUser];
     //類別為sc且key為user時value為currentUser
-    userSchedules = [query findObjects];//抓出資料有兩筆
-    NSDictionary *userSchedulesA=userSchedules[0];//cheatMode
-    NSDictionary *userSchedulesB=userSchedules[1];//cheatMode
+    //userSchedules = [query findObjects];//抓出資料有兩筆
+    //NSDictionary *userSchedulesA=userSchedules[0];//cheatMode
+    //NSDictionary *userSchedulesB=userSchedules[1];
     //每一筆為NSDictionary
-    NSLog(@"this id is: %@",userSchedulesA[@"scheduleDetail"]);
-    NSLog(@"this id is: %@",userSchedulesB[@"scheduleDetail"]);
+    //id: sA0fZxmosj
+    PFQuery *query = [PFQuery queryWithClassName:@"schedule"];
     
+    postWallArray = [NSArray new];
+    postWallArray = [query findObjects];
+    
+    postWallDictionary = [NSDictionary new];
+
+    
+    
+
+    
+    NSDateFormatter *format=[[NSDateFormatter alloc]init];
+    [format setDateFormat:@"yyyy/M/d HH:mm:ss"];
+    //NSLog(@"設定時間為: %@",[format stringFromDate:sender.date]);
+    
+    scTime = [format stringFromDate:[NSDate date]];
+    // Convert date to string
+    
+    
+    //scTime=[format stringFromDate:sender.date];
+    [self.tableView reloadData];
 }
 
 - (void)didReceiveMemoryWarning {

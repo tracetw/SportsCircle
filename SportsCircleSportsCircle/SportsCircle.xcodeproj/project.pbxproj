@@ -7,11 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		701CFA1B1B733D2F0072F615 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 701CFA191B733D2F0072F615 /* libsqlite3.dylib */; };
-		701CFA1C1B733D2F0072F615 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 701CFA1A1B733D2F0072F615 /* libz.dylib */; };
 		701F1D8D1B71BA9C00BD2673 /* searchDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 701F1D8C1B71BA9C00BD2673 /* searchDetailViewController.m */; };
+		702032251B7351790059F06C /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 702032241B7351790059F06C /* libz.dylib */; };
+		702032271B7351820059F06C /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 702032261B7351820059F06C /* libsqlite3.dylib */; };
 		702BBACA1B5547FE00C09B9B /* SignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 702BBAC91B5547FE00C09B9B /* SignUpViewController.m */; };
-		703E3E891B7201FE00768912 /* MasterTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 703E3E881B7201FE00768912 /* MasterTableViewController.m */; };
 		703E3E8C1B722B7300768912 /* TrendTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 703E3E8B1B722B7300768912 /* TrendTableViewCell.m */; };
 		7076B5D11B6F2450004E81EF /* scheduleDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7076B5CC1B6F2450004E81EF /* scheduleDetailViewController.m */; };
 		7076B5D21B6F2450004E81EF /* scheduleTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7076B5CE1B6F2450004E81EF /* scheduleTableViewCell.m */; };
@@ -76,14 +75,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		701CFA191B733D2F0072F615 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = libsqlite3.dylib; sourceTree = "<group>"; };
-		701CFA1A1B733D2F0072F615 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = libz.dylib; sourceTree = "<group>"; };
 		701F1D8B1B71BA9C00BD2673 /* searchDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = searchDetailViewController.h; sourceTree = "<group>"; };
 		701F1D8C1B71BA9C00BD2673 /* searchDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = searchDetailViewController.m; sourceTree = "<group>"; };
+		702032241B7351790059F06C /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
+		702032261B7351820059F06C /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		702BBAC81B5547FE00C09B9B /* SignUpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignUpViewController.h; sourceTree = "<group>"; };
 		702BBAC91B5547FE00C09B9B /* SignUpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignUpViewController.m; sourceTree = "<group>"; };
-		703E3E871B7201FE00768912 /* MasterTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MasterTableViewController.h; sourceTree = "<group>"; };
-		703E3E881B7201FE00768912 /* MasterTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MasterTableViewController.m; sourceTree = "<group>"; };
 		703E3E8A1B722B7300768912 /* TrendTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TrendTableViewCell.h; sourceTree = "<group>"; };
 		703E3E8B1B722B7300768912 /* TrendTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TrendTableViewCell.m; sourceTree = "<group>"; };
 		7076B5CB1B6F2450004E81EF /* scheduleDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = scheduleDetailViewController.h; path = ../../SportsCircle/SportsCircle/scheduleDetailViewController.h; sourceTree = "<group>"; };
@@ -169,16 +166,16 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				702032271B7351820059F06C /* libsqlite3.dylib in Frameworks */,
+				702032251B7351790059F06C /* libz.dylib in Frameworks */,
 				70E3C0B61B6B969000A5C14E /* AssetsLibrary.framework in Frameworks */,
 				70E3C0B41B6B959D00A5C14E /* MapKit.framework in Frameworks */,
 				D3CFCC811B6F83F5000B98FC /* FBSDKLoginKit.framework in Frameworks */,
 				D3AD4CC11B64DC5B00FC7F8E /* ParseFacebookUtils.framework in Frameworks */,
 				D3AD4CB21B64DBD500FC7F8E /* SystemConfiguration.framework in Frameworks */,
 				D3AD4CB01B64DBCB00FC7F8E /* StoreKit.framework in Frameworks */,
-				701CFA1C1B733D2F0072F615 /* libz.dylib in Frameworks */,
 				D3AD4CAE1B64DBC300FC7F8E /* Security.framework in Frameworks */,
 				D3CFCC801B6F83F5000B98FC /* FBSDKCoreKit.framework in Frameworks */,
-				701CFA1B1B733D2F0072F615 /* libsqlite3.dylib in Frameworks */,
 				D3AD4CC31B64DC5B00FC7F8E /* ParseUI.framework in Frameworks */,
 				70D60FC41B55739C001BB4C9 /* QuartzCore.framework in Frameworks */,
 				D3AD4CAC1B64DBB200FC7F8E /* CoreLocation.framework in Frameworks */,
@@ -208,8 +205,6 @@
 			children = (
 				7076B5DB1B70D496004E81EF /* SearchViewController.h */,
 				7076B5DC1B70D496004E81EF /* SearchViewController.m */,
-				703E3E871B7201FE00768912 /* MasterTableViewController.h */,
-				703E3E881B7201FE00768912 /* MasterTableViewController.m */,
 				701F1D8B1B71BA9C00BD2673 /* searchDetailViewController.h */,
 				701F1D8C1B71BA9C00BD2673 /* searchDetailViewController.m */,
 			);
@@ -357,11 +352,11 @@
 		D3AD4CB71B64DC1F00FC7F8E /* framework */ = {
 			isa = PBXGroup;
 			children = (
+				702032261B7351820059F06C /* libsqlite3.dylib */,
+				702032241B7351790059F06C /* libz.dylib */,
 				D3CFCC7D1B6F83F5000B98FC /* FBSDKCoreKit.framework */,
 				D3CFCC7E1B6F83F5000B98FC /* FBSDKLoginKit.framework */,
 				D3CFCC7F1B6F83F5000B98FC /* FBSDKShareKit.framework */,
-				701CFA191B733D2F0072F615 /* libsqlite3.dylib */,
-				701CFA1A1B733D2F0072F615 /* libz.dylib */,
 				70E3C0B31B6B959D00A5C14E /* MapKit.framework */,
 				70E3C0B51B6B969000A5C14E /* AssetsLibrary.framework */,
 				D38158DD1B6901D600C68B17 /* AKPickerView */,
@@ -493,7 +488,6 @@
 				70D60FC21B5569BA001BB4C9 /* TrendViewController.m in Sources */,
 				70E3C0A51B6B94E500A5C14E /* mapViewController.m in Sources */,
 				7666690A1B674D3900280B20 /* PostMainViewController.m in Sources */,
-				703E3E891B7201FE00768912 /* MasterTableViewController.m in Sources */,
 				D34A634B1B4CED0700710B1F /* ViewController.m in Sources */,
 				70E3C0C81B6B9A6C00A5C14E /* PopView2.m in Sources */,
 				D3CFCC851B6F952D000B98FC /* SettingsViewController.m in Sources */,

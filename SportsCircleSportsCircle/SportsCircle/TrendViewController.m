@@ -14,7 +14,7 @@
 {
     NSDictionary *postWallDictionary;
     NSArray *postWallArray;
-    NSMutableArray *datas;
+    //NSMutableArray *datas;
 }
 @property (weak, nonatomic) IBOutlet UIView *theListView;
 @property (strong, nonatomic) IBOutlet UIView *theTrendView;
@@ -54,22 +54,21 @@
     //返回到grayViewControllor的按鈕名稱改為中文～返回～
 
     _theListView.hidden=YES;
-    
     _tableView.delegate=self;
     _tableView.dataSource=self;
     
-    if (!datas) {
-        datas = [[NSMutableArray alloc] init];
-    }
+    //if (!datas) {
+    //    datas = [[NSMutableArray alloc] init];
+    //}
 
-    [self fetchDataFromParse];
-    [[PFUser currentUser] refreshInBackgroundWithBlock:nil];
+    //[self fetchDataFromParse];
+   // [[PFUser currentUser] refreshInBackgroundWithBlock:nil];
 }
 
 -(void)viewDidAppear:(BOOL)animated
 {
+
     PFQuery *query = [PFQuery queryWithClassName:@"WallPost"];
-    
     postWallArray = [NSArray new];
     postWallArray = [query findObjects];
     postWallDictionary = [NSDictionary new];
@@ -83,10 +82,10 @@
     //每一筆為NSDictionary
     //NSLog(@"this id is: %@",userSchedulesA[@"scheduleDetail"]);
     //NSLog(@"this id is: %@",userSchedulesB[@"scheduleDetail"]);
-    [self fetchDataFromParse];
+    //[self fetchDataFromParse];
     [self.tableView reloadData];
 }
-
+/*
 -(void)fetchDataFromParse
 {
     for (int i=0 ;i<postWallArray.count ; i++) {
@@ -97,7 +96,7 @@
         [self.tableView insertRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
     }
 }
-
+*/
 -(IBAction) barListBtnPressed:(id)sender{
     //按下listBtn時
     
@@ -175,7 +174,7 @@
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return datas.count;
+    return postWallArray.count;
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -231,7 +230,7 @@
     
     return cell;
 }
-
+/*
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         // Delete the row from the data source
@@ -241,14 +240,14 @@
         // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
     }
 }
-
+*/
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     //以下可以辨識點擊哪一行
     UITableViewCell * cell = [_tableView cellForRowAtIndexPath:indexPath];
     NSLog(@"cell title:%@ and row:%li",cell.textLabel.text,indexPath.row);
 }
-
+/*
 // Override to support rearranging the table view.
 - (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
     //如果滑出畫面的row也會更新.要調整不會更新
@@ -258,7 +257,7 @@
     [datas insertObject:tmpItem atIndex:toIndexPath.row];
     //然後再將原資料插入
 }
-
+*/
 /*
 #pragma mark - Navigation
 
