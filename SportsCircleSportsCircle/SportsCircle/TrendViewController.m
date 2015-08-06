@@ -8,10 +8,19 @@
 
 #import "TrendViewController.h"
 #import <QuartzCore/QuartzCore.h>
-@interface TrendViewController ()
+#import <Parse/Parse.h>
+#import "TrendTableViewCell.h"
+@interface TrendViewController ()<UITableViewDelegate,UITableViewDataSource>
+{
+    NSDictionary *postWallDictionary;
+    NSArray *postWallArray;
+    NSMutableArray *datas;
+}
 @property (weak, nonatomic) IBOutlet UIView *theListView;
 @property (strong, nonatomic) IBOutlet UIView *theTrendView;
 @property (weak, nonatomic) IBOutlet UIButton *goButton;
+
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 @end
 
@@ -46,8 +55,47 @@
 
     _theListView.hidden=YES;
     
+    _tableView.delegate=self;
+    _tableView.dataSource=self;
     
+    if (!datas) {
+        datas = [[NSMutableArray alloc] init];
+    }
+
+    [self fetchDataFromParse];
+    [[PFUser currentUser] refreshInBackgroundWithBlock:nil];
+}
+
+-(void)viewDidAppear:(BOOL)animated
+{
+    PFQuery *query = [PFQuery queryWithClassName:@"WallPost"];
     
+    postWallArray = [NSArray new];
+    postWallArray = [query findObjects];
+    postWallDictionary = [NSDictionary new];
+    
+    //query為指向sc類別
+    //[query whereKey:@"user" equalTo:currentUser];
+    //類別為sc且key為user時value為currentUser
+    //userSchedules = [query findObjects];//抓出資料有兩筆
+    //NSDictionary *userSchedulesA=userSchedules[0];//cheatMode
+    //NSDictionary *userSchedulesB=userSchedules[1];//cheatMode
+    //每一筆為NSDictionary
+    //NSLog(@"this id is: %@",userSchedulesA[@"scheduleDetail"]);
+    //NSLog(@"this id is: %@",userSchedulesB[@"scheduleDetail"]);
+    [self fetchDataFromParse];
+    [self.tableView reloadData];
+}
+
+-(void)fetchDataFromParse
+{
+    for (int i=0 ;i<postWallArray.count ; i++) {
+        [datas insertObject:postWallArray atIndex:0];
+        //使用者新增幾筆就會出現幾列
+        NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
+        //這裏要改為filename
+        [self.tableView insertRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+    }
 }
 
 -(IBAction) barListBtnPressed:(id)sender{
@@ -77,12 +125,7 @@
     }else {
         _goButton.userInteractionEnabled = NO;
     }
-    
-    
-    
 }
-
-
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -123,6 +166,97 @@
     UIViewController *mapViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"mapViewController"];
     [self showViewController:mapViewController sender:self];
     //[self performSegueWithIdentifier:@"showMapSegue" sender:nil];
+}
+
+-(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return 1;
+}
+
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return datas.count;
+}
+
+-(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    static NSString* cellIdentifier=@"TrendCell";
+    TrendTableViewCell *cell=[tableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
+    /*
+    NSDictionary *userSchedulesA=postWallArray[indexPath.row];
+    //每一筆為NSDictionary
+    
+    //cell.textLabel.text=@"123";
+    cell.headImg=userSchedulesA[@"image1"];
+    cell.clockImg=userSchedulesA[@"image2"];
+    cell.contentImg=userSchedulesA[@"image3"];
+    cell.sportImg=userSchedulesA[@"image4"];
+    */
+    
+    postWallDictionary = postWallArray[indexPath.row];
+    //NSLog(@"%@",[postWallDictionary objectForKey:@"content"]);
+    cell.contentLabel.text = [postWallDictionary objectForKey:@"content"];
+    NSLog(@"%@",postWallDictionary);
+    NSString *sportType = [postWallDictionary objectForKey:@"sportsType"];
+    cell.sportTypeImage.image = [UIImage imageNamed:sportType];
+    
+    PFFile *image = [postWallDictionary objectForKey:@"image1"];
+    NSData *imageData = [image getData];
+    cell.postImage.image = [UIImage imageWithData:imageData];
+    
+    //PFFile *userImage= [postWall objectForKey:@"image"];
+    //cell.profileImage.image = [UIImage imageWithData:[profifeImg getData]];
+    
+    
+    PFObject *user = [postWallDictionary objectForKey:@"user"];
+    
+    [user fetch];
+    
+    NSString *username = user[@"username"];
+    cell.userName.text = username;
+    
+    PFFile *userImageData = user[@"userImage"];
+    NSData *userImage = [userImageData getData];
+    cell.userImage.image = [UIImage imageWithData:userImage];
+    
+    
+    
+    PFObject *postWallObject = postWallArray[indexPath.row];
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
+    NSDate *postTime = postWallObject.createdAt;
+    NSString *strDate = [dateFormatter stringFromDate:postTime];
+    cell.timeLabel.text = strDate;
+
+    
+    return cell;
+}
+
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+        // Delete the row from the data source
+        [datas removeObjectAtIndex:indexPath.row];
+        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
+        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
+    }
+}
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    //以下可以辨識點擊哪一行
+    UITableViewCell * cell = [_tableView cellForRowAtIndexPath:indexPath];
+    NSLog(@"cell title:%@ and row:%li",cell.textLabel.text,indexPath.row);
+}
+
+// Override to support rearranging the table view.
+- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
+    //如果滑出畫面的row也會更新.要調整不會更新
+    //id tmpItem=datas[fromIndexPath.row];
+    id tmpItem=[datas objectAtIndex:fromIndexPath.row];
+    [datas removeObjectAtIndex:fromIndexPath.row];//虛擬的資料庫刪除
+    [datas insertObject:tmpItem atIndex:toIndexPath.row];
+    //然後再將原資料插入
 }
 
 /*

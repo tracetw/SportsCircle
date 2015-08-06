@@ -15,10 +15,10 @@
 @interface scheduleTableViewController ()<UITableViewDelegate,UITableViewDataSource>
 {
     NSMutableArray *datas;
-    NSString *dbFilePathName;//路徑名
+    NSArray *userSchedules;
 }
 
-@property NSMutableArray *objects;
+//@property NSMutableArray *objects;
 @end
 
 @implementation scheduleTableViewController
@@ -31,33 +31,69 @@
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
-    datas=[NSMutableArray new];
     
-    UIImage *image = [[UIImage imageNamed:@"edit1x.png"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    
+    UIImage *image = [[UIImage imageNamed:@"edit.png"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
     
     UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithImage:image style:UIBarButtonItemStylePlain target:self action:@selector(addBtnPressed)];
     
     self.navigationItem.rightBarButtonItem=addButton;
 
-    PFQuery *query = [PFQuery queryWithClassName:@"schedule"];
-    [query getObjectInBackgroundWithId:@"0GJ4aUltRa" block:^(PFObject *schedule, NSError *error) {
-        // Do something with the returned PFObject in the gameScore variable.
-        NSLog(@"%@", schedule);
-        NSString *scName = schedule[@"scheduleName"];
-        NSString *scDetial = schedule[@"scheduleDetail"];
-        BOOL cheatMode = [schedule[@"cheatMode"] boolValue];
-
-            NSLog(@"Name: %@ , detail:%@ , bool:%d",scName,scDetial,cheatMode);
     
-        NSString *objectId = schedule.objectId;
-        
-        NSLog(@"this id is: %@",objectId);
-    }];
+    if (!datas) {
+        datas = [[NSMutableArray alloc] init];
+    }
     
+    [self fetchDataFromParse];
     
-    
+//    PFUser *currentUser=[PFUser currentUser];//抓到目前user的objId
+//    PFQuery *query = [PFQuery queryWithClassName:@"schedule"];
+//    //query為指向sc類別
+//    [query whereKey:@"user" equalTo:currentUser];
+//    //類別為sc且key為user時value為currentUser
+//    userSchedules = [query findObjects];//抓出資料有兩筆
+//    //NSDictionary *userSchedulesA=userSchedules[0];//cheatMode
+//    //NSDictionary *userSchedulesB=userSchedules[1];//cheatMode
+//    //每一筆為NSDictionary
+//    //NSLog(@"this id is: %@",userSchedulesA[@"scheduleDetail"]);
+//    //NSLog(@"this id is: %@",userSchedulesB[@"scheduleDetail"]);
+//    for (int i=0 ;i<userSchedules.count ; i++) {
+//        [datas insertObject:userSchedules atIndex:0];
+//        //使用者新增幾筆就會出現幾列
+//        NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
+//        //這裏要改為filename
+//        [self.tableView insertRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+//    
+//    }
 }
 
+-(void)viewDidAppear:(BOOL)animated
+{
+    PFUser *currentUser=[PFUser currentUser];//抓到目前user的objId
+    PFQuery *query = [PFQuery queryWithClassName:@"schedule"];
+    //query為指向sc類別
+    [query whereKey:@"user" equalTo:currentUser];
+    //類別為sc且key為user時value為currentUser
+    userSchedules = [query findObjects];//抓出資料有兩筆
+    //NSDictionary *userSchedulesA=userSchedules[0];//cheatMode
+    //NSDictionary *userSchedulesB=userSchedules[1];//cheatMode
+    //每一筆為NSDictionary
+    //NSLog(@"this id is: %@",userSchedulesA[@"scheduleDetail"]);
+    //NSLog(@"this id is: %@",userSchedulesB[@"scheduleDetail"]);
+    [self fetchDataFromParse];
+    [self.tableView reloadData];
+}
+
+-(void)fetchDataFromParse
+{
+    for (int i=0 ;i<userSchedules.count ; i++) {
+        [datas insertObject:userSchedules atIndex:0];
+        //使用者新增幾筆就會出現幾列
+        NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
+        //這裏要改為filename
+        [self.tableView insertRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+    }
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -69,14 +105,13 @@
     
      [self performSegueWithIdentifier:@"goDetail" sender:nil];
     
-    
-    [datas insertObject:[NSDate date] atIndex:0];
+    //[datas insertObject:[NSDate date] atIndex:0];
     //日期存到datas.atindex放在0表示插在最前面
     //先跟新資料庫(此為新增data)在更新UI
     
     //Insert into TabView 此為新增的動作
-    NSIndexPath *insertIndexPath=[NSIndexPath indexPathForRow:0 inSection:0];//標示位子
-    [self.tableView insertRowsAtIndexPaths:@[insertIndexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+    //NSIndexPath *insertIndexPath=[NSIndexPath indexPathForRow:0 inSection:0];//標示位子
+    //[self.tableView insertRowsAtIndexPaths:@[insertIndexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
     //@[]表array,可多個
     
 }
@@ -102,11 +137,10 @@
     // Configure the cell...
     NSLog(@"indexPath:%@",indexPath.description);
     
-    //    NSDate *targetItem=datas[indexPath.row];
-    //    cell.textLabel.text=targetItem.description;
-    //顯示datas出來
+        NSDictionary *userSchedulesA=userSchedules[indexPath.row];
     
-    cell.scheduleName.text=@"123";
+        cell.scheduleName.text=userSchedulesA[@"scheduleName"];
+        cell.scheduleTime.text=userSchedulesA[@"scheduleTime"];
     
     return cell;
     

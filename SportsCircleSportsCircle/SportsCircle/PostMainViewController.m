@@ -8,6 +8,7 @@
 
 #import "PostMainViewController.h"
 #import "AKPickerView.h"
+#import <Parse/Parse.h>
 
 @interface PostMainViewController ()<AKPickerViewDataSource, AKPickerViewDelegate,UIPopoverControllerDelegate,UINavigationControllerDelegate,UIImagePickerControllerDelegate>
 
@@ -108,9 +109,6 @@
     [popView3.popPicBtn3 setBackgroundImage:[UIImage imageNamed:@"camera"] forState: UIControlStateNormal];
     popView4 = [[[NSBundle mainBundle] loadNibNamed:@"PopView4" owner:nil options:nil] lastObject];
     [popView4.popPicBtn4 setBackgroundImage:[UIImage imageNamed:@"camera"] forState: UIControlStateNormal];
-    
-    
-
     
 }
 
@@ -231,6 +229,9 @@
     //關閉拍照
     [self dismissViewControllerAnimated:YES completion:nil];
     
+    //按鈕的背景換成剛拍下來的照片
+    [_cameraBtn setBackgroundImage:image forState:UIControlStateNormal];
+    
 }
 
 -(void)imagePickerControllerDidCancel:(UIImagePickerController *)picker
@@ -295,6 +296,31 @@
     [popView removeFromSuperview];
     [popView2 removeFromSuperview];
     [popView3 removeFromSuperview];
+}
+
+
+- (IBAction)goBtnPressed:(id)sender {
+    //當按下按鈕～將資料上傳到wallpost
+    /*
+    if ([PFUser currentUser]) {
+        PFObject *userName = [PFObject objectWithClassName:@"WallPost"];
+        userName[@"image1"] =@"";
+        userName[@"image2"] =@"";
+        userName[@"image3"]=@"";
+        userName[@"image4"]=@"";
+        userName[@"image5"]=@"";
+        userName[@"like"]=@"";
+        userName[@"content"]=@"";
+        userName[@"latitude"]=@"";
+        userName[@"longitude"]=@"";
+        userName[@"sportsType"]=@"";
+        //userName[@"cheatMode"] = @NO;
+        //        PFRelation * relation = [[PFRelation alloc] init];
+        //        [relation addObject:[PFUser currentUser]];
+        userName[@"user"] = [PFUser currentUser];//連結現在登入的使用者id
+        [userName saveInBackground];
+    }
+    *///等連結街設定完再開啟
 }
 
 

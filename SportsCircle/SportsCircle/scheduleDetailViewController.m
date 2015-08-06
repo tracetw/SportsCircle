@@ -8,6 +8,7 @@
 
 #import "scheduleDetailViewController.h"
 #import <Parse/Parse.h>
+#import "scheduleTableViewController.h"
 
 @interface scheduleDetailViewController ()
 {
@@ -27,7 +28,10 @@
     // Do any additional setup after loading the view.
     
 }
-
+-(void)viewDidAppear:(BOOL)animated
+{
+    //[self.view viewDidLoad];
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -36,7 +40,7 @@
 - (IBAction)timeValueChanged:(UIDatePicker *)sender {
     
     NSDateFormatter *format=[[NSDateFormatter alloc]init];
-    [format setDateFormat:@"yyyy/M/d HH:mm:ss"];
+    [format setDateFormat:@"M/d HH:mm"];
     //NSLog(@"設定時間為: %@",[format stringFromDate:sender.date]);
 
     scTime = [format stringFromDate:[NSDate date]];
@@ -58,12 +62,12 @@
         userName[@"cheatMode"] = @NO;
 //        PFRelation * relation = [[PFRelation alloc] init];
 //        [relation addObject:[PFUser currentUser]];
-        userName[@"user"] = [PFUser currentUser];
+        userName[@"user"] = [PFUser currentUser];//連結現在登入的使用者id
         [userName saveInBackground];
         NSLog(@"WTF dealloc.");
     }
     
-    
+    //[scheduleTableViewController viewDidLoad];
 
 }
 
