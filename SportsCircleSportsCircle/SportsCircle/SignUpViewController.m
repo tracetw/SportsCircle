@@ -8,7 +8,10 @@
 #define EngNum @"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789" //可以輸入英文數字
 #import "SignUpViewController.h"
 #import <Parse/Parse.h>
-@interface SignUpViewController ()<UITextFieldDelegate>
+
+#import <FBSDKCoreKit/FBSDKCoreKit.h>
+#import <FBSDKLoginKit/FBSDKLoginKit.h>
+@interface SignUpViewController ()<UITextFieldDelegate, FBSDKLoginButtonDelegate>
 @property (weak, nonatomic) IBOutlet UITextField *userTextField;    /**< 帳號 */
 @property (weak, nonatomic) IBOutlet UITextField *passwordTextField;    /**< 密碼 */
 @end
@@ -18,7 +21,55 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-        [self settingTextField];
+    
+    
+    //顯示使用者名稱
+    [[NSNotificationCenter defaultCenter]
+     addObserver:self
+     selector:@selector(updateProfile:)
+     name:FBSDKProfileDidChangeNotification
+     object:nil];
+    
+    [self settingTextField];
+    
+}
+- (void)viewDidAppear:(BOOL)animated{
+    
+    //如果parse 是登入狀態
+    PFUser *currentUser = [PFUser currentUser];
+    if (currentUser) {
+        NSLog(@"未登出%@",currentUser);
+        [self performSegueWithIdentifier:@"SignUpSuccesful" sender:nil];
+    } else {
+        NSLog(@"已登出%@",currentUser);
+    //如果FB是登入的狀態所要執行的方法
+    if ([FBSDKAccessToken currentAccessToken] && [FBSDKProfile currentProfile].userID != nil) {
+        //登入Parse
+        [PFUser logInWithUsernameInBackground:[FBSDKProfile currentProfile].name password:@"sportscircle"
+                                        block:^(PFUser *user, NSError *error) {
+                                            if (user) {
+                                                // Do stuff after successful login.
+                                                NSLog(@"登入成功%@",user.username);
+                                                [self performSegueWithIdentifier:@"SignUpSuccesful" sender:nil];
+                                            } else {
+                                                // The login failed. Check error to see why.
+                                                NSLog(@"登入失敗");
+                                            }
+                                        }];
+        
+        NSLog(@"FB userID = %@",[FBSDKProfile currentProfile].userID);
+        NSLog(@"FB name = %@",[FBSDKProfile currentProfile].name);
+        NSLog(@"FB linkURL = %@",[FBSDKProfile currentProfile].linkURL);
+        
+    }else{
+        //回到上一頁
+        NSLog(@"回到上一頁");
+    }
+    }
+}
+
+- (void)updateProfile:(NSNotification *)notification {
+    //不能刪掉
 }
 
 - (void)didReceiveMemoryWarning {
@@ -33,7 +84,7 @@
     [user signUpInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
         if (!error) {
             // Hooray! Let them use the app now.
-            [self performSegueWithIdentifier:@"SignupSuccesful" sender:sender];
+            [self performSegueWithIdentifier:@"SignUpSuccesful" sender:sender];
         } else {
             NSString *errorString = [error userInfo][@"error"];
             // Show the errorString somewhere and let the user try again.
@@ -105,5 +156,21 @@
     // Pass the selected object to the new view controller.
 }
 */
+
+#pragma mark FBloginViewDelegate
+//登入FB後執行的方法
+- (void)  loginButton:(FBSDKLoginButton *)loginButton
+didCompleteWithResult:(FBSDKLoginManagerLoginResult *)result
+                error:(NSError *)error{
+    
+    //FB登入後更新頭像狀態
+    [FBSDKProfile enableUpdatesOnAccessTokenChange:YES];
+    
+}
+//FB登入按鈕點擊時登出所要執行的方法
+- (void)loginButtonDidLogOut:(FBSDKLoginButton *)loginButton{
+    NSLog(@"已登出");
+    [self performSegueWithIdentifier:@"LogoutSuccesful" sender:nil];
+}
 
 @end
