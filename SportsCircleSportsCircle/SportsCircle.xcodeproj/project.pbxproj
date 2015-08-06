@@ -30,6 +30,10 @@
 		70E3C0C81B6B9A6C00A5C14E /* PopView2.m in Sources */ = {isa = PBXBuildFile; fileRef = 70E3C0C21B6B9A6C00A5C14E /* PopView2.m */; };
 		70E3C0C91B6B9A6C00A5C14E /* PopView3.m in Sources */ = {isa = PBXBuildFile; fileRef = 70E3C0C41B6B9A6C00A5C14E /* PopView3.m */; };
 		70E3C0CA1B6B9A6C00A5C14E /* PopView4.m in Sources */ = {isa = PBXBuildFile; fileRef = 70E3C0C61B6B9A6C00A5C14E /* PopView4.m */; };
+		764C47B61B735CBD00AC09E8 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 764C47B51B735CBD00AC09E8 /* libsqlite3.dylib */; };
+		764C47B81B735CD100AC09E8 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 764C47B71B735CD000AC09E8 /* libz.dylib */; };
+		764C47BB1B735EDE00AC09E8 /* PersonalPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 764C47BA1B735EDE00AC09E8 /* PersonalPageViewController.m */; };
+		764C47BE1B735FB700AC09E8 /* PersonalPageTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 764C47BD1B735FB700AC09E8 /* PersonalPageTableViewCell.m */; };
 		7666690A1B674D3900280B20 /* PostMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 766669091B674D3900280B20 /* PostMainViewController.m */; };
 		768A20261B6EFD3F005A7E66 /* RecordingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 768A20251B6EFD3F005A7E66 /* RecordingViewController.m */; };
 		768A20291B6F0505005A7E66 /* MapRecordingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 768A20281B6F0505005A7E66 /* MapRecordingViewController.m */; };
@@ -112,6 +116,12 @@
 		70E3C0C41B6B9A6C00A5C14E /* PopView3.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PopView3.m; sourceTree = "<group>"; };
 		70E3C0C51B6B9A6C00A5C14E /* PopView4.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PopView4.h; sourceTree = "<group>"; };
 		70E3C0C61B6B9A6C00A5C14E /* PopView4.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PopView4.m; sourceTree = "<group>"; };
+		764C47B51B735CBD00AC09E8 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
+		764C47B71B735CD000AC09E8 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
+		764C47B91B735EDE00AC09E8 /* PersonalPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersonalPageViewController.h; sourceTree = "<group>"; };
+		764C47BA1B735EDE00AC09E8 /* PersonalPageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersonalPageViewController.m; sourceTree = "<group>"; };
+		764C47BC1B735FB700AC09E8 /* PersonalPageTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersonalPageTableViewCell.h; sourceTree = "<group>"; };
+		764C47BD1B735FB700AC09E8 /* PersonalPageTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersonalPageTableViewCell.m; sourceTree = "<group>"; };
 		766669081B674D3900280B20 /* PostMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PostMainViewController.h; sourceTree = "<group>"; };
 		766669091B674D3900280B20 /* PostMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PostMainViewController.m; sourceTree = "<group>"; };
 		768A20241B6EFD3F005A7E66 /* RecordingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecordingViewController.h; sourceTree = "<group>"; };
@@ -166,6 +176,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				764C47B81B735CD100AC09E8 /* libz.dylib in Frameworks */,
+				764C47B61B735CBD00AC09E8 /* libsqlite3.dylib in Frameworks */,
 				702032271B7351820059F06C /* libsqlite3.dylib in Frameworks */,
 				702032251B7351790059F06C /* libz.dylib in Frameworks */,
 				70E3C0B61B6B969000A5C14E /* AssetsLibrary.framework in Frameworks */,
@@ -299,6 +311,10 @@
 				D38B8D391B71B84200124706 /* EditProfileTableViewController.m */,
 				D3E4B01E1B72F7160082DE6B /* FavoriteSportViewController.h */,
 				D3E4B01F1B72F7160082DE6B /* FavoriteSportViewController.m */,
+				764C47B91B735EDE00AC09E8 /* PersonalPageViewController.h */,
+				764C47BA1B735EDE00AC09E8 /* PersonalPageViewController.m */,
+				764C47BC1B735FB700AC09E8 /* PersonalPageTableViewCell.h */,
+				764C47BD1B735FB700AC09E8 /* PersonalPageTableViewCell.m */,
 				701F1D871B71BA0D00BD2673 /* Search */,
 				70E3C0CB1B6B9A7300A5C14E /* PopView */,
 				70E3C0D21B6BB15500A5C14E /* schedule */,
@@ -352,6 +368,8 @@
 		D3AD4CB71B64DC1F00FC7F8E /* framework */ = {
 			isa = PBXGroup;
 			children = (
+				764C47B71B735CD000AC09E8 /* libz.dylib */,
+				764C47B51B735CBD00AC09E8 /* libsqlite3.dylib */,
 				702032261B7351820059F06C /* libsqlite3.dylib */,
 				702032241B7351790059F06C /* libz.dylib */,
 				D3CFCC7D1B6F83F5000B98FC /* FBSDKCoreKit.framework */,
@@ -497,6 +515,7 @@
 				70E3C0CA1B6B9A6C00A5C14E /* PopView4.m in Sources */,
 				D34A63481B4CED0700710B1F /* AppDelegate.m in Sources */,
 				768A20261B6EFD3F005A7E66 /* RecordingViewController.m in Sources */,
+				764C47BB1B735EDE00AC09E8 /* PersonalPageViewController.m in Sources */,
 				7076B5DD1B70D496004E81EF /* SearchViewController.m in Sources */,
 				7076B5DA1B6FA972004E81EF /* scheduleEditViewController.m in Sources */,
 				7076B5D31B6F2450004E81EF /* scheduleTableViewController.m in Sources */,
@@ -504,6 +523,7 @@
 				702BBACA1B5547FE00C09B9B /* SignUpViewController.m in Sources */,
 				7076B5D21B6F2450004E81EF /* scheduleTableViewCell.m in Sources */,
 				D38B8D3A1B71B84200124706 /* EditProfileTableViewController.m in Sources */,
+				764C47BE1B735FB700AC09E8 /* PersonalPageTableViewCell.m in Sources */,
 				701F1D8D1B71BA9C00BD2673 /* searchDetailViewController.m in Sources */,
 				D38158E01B6901D600C68B17 /* AKPickerView.m in Sources */,
 				D34A63451B4CED0700710B1F /* main.m in Sources */,

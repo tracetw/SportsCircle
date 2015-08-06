@@ -12,10 +12,12 @@
 {
     CLLocationManager *locationManager;
     BOOL isFirstLocationReceived;
-    CLLocation *currentLocation;
-    NSMutableArray *locationArray;
-    double oldLatitude,oldLongitude,newLatitude,newLongitude;
+    CLLocation *currentLocation, *newCurrentLocation;
+    NSArray *locationArray;
+    NSMutableArray *locationMutableArray;
+    //double oldLatitude,oldLongitude,newLatitude,newLongitude;
     float totalDistance;
+    int i;
 }
 @property (weak, nonatomic) IBOutlet MKMapView *recordingMapView;
 @end
@@ -23,64 +25,100 @@
 @implementation MapRecordingViewController
 
 - (void)viewDidLoad {
-    [super viewDidLoad];
-    // Do any additional setup after loading the view.
     locationManager = [CLLocationManager new];
     if ([locationManager respondsToSelector:@selector(requestAlwaysAuthorization)]) {
-        [locationManager requestAlwaysAuthorization];
+        [locationManager requestAlwaysAuthorization];//授權
     }
     
     locationManager.desiredAccuracy = kCLLocationAccuracyBest;
     locationManager.activityType = CLActivityTypeAutomotiveNavigation;
     locationManager.delegate = self;
     [locationManager startUpdatingLocation];
-    
     _recordingMapView.delegate = self;
-}
-
--(void)viewDidAppear:(BOOL)animated
-{
-    _recordingMapView.userTrackingMode = MKUserTrackingModeFollowWithHeading;
+    
+    if (locationMutableArray == nil) {
+        locationMutableArray = [NSMutableArray new];
+    }
+    
     MKCoordinateRegion region = _recordingMapView.region;
     region.center = currentLocation.coordinate;
     region.span.latitudeDelta = 0.01;//螢幕上一個點緯度經度
     region.span.longitudeDelta = 0.01;
     
     [_recordingMapView setRegion:region animated:true];
+    _recordingMapView.userTrackingMode = MKUserTrackingModeFollowWithHeading;
 }
+
+
+-(void)viewDidAppear:(BOOL)animated
+{
+    _recordingMapView.userTrackingMode = MKUserTrackingModeFollowWithHeading;
+    MKCoordinateRegion region = _recordingMapView.region;
+    region.center = currentLocation.coordinate;
+    region.span.latitudeDelta = 0.01;
+    region.span.longitudeDelta = 0.01;
+    
+    [_recordingMapView setRegion:region animated:true];
+    
+    CLLocationCoordinate2D coordinates[i];
+    for (int x=0; x<i; x++) {
+        
+        CLLocation *drawLocation;
+        
+        drawLocation = locationMutableArray[x];
+        
+        coordinates[x]=CLLocationCoordinate2DMake(drawLocation.coordinate.latitude, drawLocation.coordinate.longitude);
+    }
+    NSLog(@"asdfsf %d",i);
+    MKPolyline *polyLine = [MKPolyline polylineWithCoordinates:coordinates count:i];
+    [_recordingMapView addOverlay:polyLine];
+
+}
+
+
 - (IBAction)locatiionBtnPressed:(id)sender {
     _recordingMapView.userTrackingMode = MKUserTrackingModeFollowWithHeading;
 }
 
-- (void)locationManager:(CLLocationManager *)manager
-    didUpdateToLocation:(CLLocation *)newLocation
-           fromLocation:(CLLocation *)oldLocation
+
+-(void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations
 {
-    oldLatitude = oldLocation.coordinate.latitude;
-    oldLongitude = oldLocation.coordinate.longitude;
-    newLatitude = newLocation.coordinate.latitude;
-    newLongitude = newLocation.coordinate.longitude;
-    currentLocation = newLocation;
-    if (oldLocation.coordinate.latitude != 0.000000 && newLocation.coordinate.longitude != 0) {
+    
+    CLLocation *location = locations.lastObject;
+    
+    if (location.coordinate.longitude != 0  && location.coordinate.latitude != 0) {
         
+        [locationMutableArray addObject:locations.lastObject];
         
-        [self drawRoute:oldLatitude and: oldLongitude toNewLocation:newLatitude and:newLongitude];
-        [self coutDistance:oldLocation to:newLocation];
-        NSLog(@"%f,%f",oldLocation.coordinate.latitude,oldLocation.coordinate.longitude);
+        i = (int)locationMutableArray.count;
+        if (i>1)
+        {
+            currentLocation = locationMutableArray[i-1];
+            newCurrentLocation = locationMutableArray[i-2];
+            
+            NSLog(@"Current Location: %.6f,%.6f",currentLocation.coordinate.latitude,currentLocation.coordinate.longitude);//.08不到8位補0
+            NSLog(@"i = %d",i);
+            [self drawRoute:currentLocation to:newCurrentLocation];
+        }
     }
 }
 
-- (void) drawRoute:(double)latitude and: (double)longtitude toNewLocation: (double)secondLatitude and: (double)secondLongtitude
+
+- (void) drawRoute:(CLLocation *)oldLocation to:(CLLocation *)newLocation
 {
-    CLLocationCoordinate2D coordinates[2];
     
-    coordinates[0]=CLLocationCoordinate2DMake(latitude, longtitude);
-    coordinates[1]=CLLocationCoordinate2DMake(secondLatitude, secondLongtitude);
+    CLLocationCoordinate2D coor[2];
     
-    MKPolyline *polyLine = [MKPolyline polylineWithCoordinates:coordinates count:2];
+    
+    coor[0]=CLLocationCoordinate2DMake(oldLocation.coordinate.latitude, oldLocation.coordinate.longitude);
+    coor[1]=CLLocationCoordinate2DMake(newLocation.coordinate.latitude, newLocation.coordinate.longitude);
+    
+    
+    MKPolyline *polyLine = [MKPolyline polylineWithCoordinates:coor count:2];
     [_recordingMapView addOverlay:polyLine];
     
 }
+
 
 -(void)coutDistance:(CLLocation*)old to:(CLLocation*)new
 {
@@ -99,6 +137,7 @@
     
     return polylineView;
 }
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
