@@ -65,6 +65,7 @@
 		D3CFCC811B6F83F5000B98FC /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3CFCC7E1B6F83F5000B98FC /* FBSDKLoginKit.framework */; };
 		D3CFCC821B6F83F5000B98FC /* FBSDKShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3CFCC7F1B6F83F5000B98FC /* FBSDKShareKit.framework */; };
 		D3CFCC851B6F952D000B98FC /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D3CFCC841B6F952D000B98FC /* SettingsViewController.m */; };
+		D3E4B0201B72F7160082DE6B /* FavoriteSportViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D3E4B01F1B72F7160082DE6B /* FavoriteSportViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -160,6 +161,8 @@
 		D3CFCC7F1B6F83F5000B98FC /* FBSDKShareKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKShareKit.framework; sourceTree = "<group>"; };
 		D3CFCC831B6F952D000B98FC /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
 		D3CFCC841B6F952D000B98FC /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
+		D3E4B01E1B72F7160082DE6B /* FavoriteSportViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FavoriteSportViewController.h; sourceTree = "<group>"; };
+		D3E4B01F1B72F7160082DE6B /* FavoriteSportViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FavoriteSportViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -291,6 +294,8 @@
 				D3CFCC841B6F952D000B98FC /* SettingsViewController.m */,
 				D38B8D381B71B84200124706 /* EditProfileTableViewController.h */,
 				D38B8D391B71B84200124706 /* EditProfileTableViewController.m */,
+				D3E4B01E1B72F7160082DE6B /* FavoriteSportViewController.h */,
+				D3E4B01F1B72F7160082DE6B /* FavoriteSportViewController.m */,
 				70E3C0CB1B6B9A7300A5C14E /* PopView */,
 				70E3C0D21B6BB15500A5C14E /* schedule */,
 				D34A634C1B4CED0700710B1F /* Main.storyboard */,
@@ -502,6 +507,7 @@
 				D38B8D3A1B71B84200124706 /* EditProfileTableViewController.m in Sources */,
 				D38158E01B6901D600C68B17 /* AKPickerView.m in Sources */,
 				D34A63451B4CED0700710B1F /* main.m in Sources */,
+				D3E4B0201B72F7160082DE6B /* FavoriteSportViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

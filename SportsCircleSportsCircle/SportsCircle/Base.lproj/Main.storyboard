@@ -261,6 +261,9 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="RmF-mu-yFS" kind="show" id="zYg-nP-Sv4"/>
+                                        </connections>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
@@ -346,6 +349,68 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="z6y-i4-SOl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1741" y="2745"/>
+        </scene>
+        <!--選擇喜好運動-->
+        <scene sceneID="8lF-sM-g0c">
+            <objects>
+                <viewController title="選擇喜好運動" id="RmF-mu-yFS" customClass="FavoriteSportViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Ukn-Yb-0aB"/>
+                        <viewControllerLayoutGuide type="bottom" id="UiF-Hr-fXH"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Mow-Vh-RSO">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="請選擇運動項目" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XAx-4u-f90">
+                                <rect key="frame" x="235" y="216" width="131" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="131" id="XWa-Pt-pXL"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mgT-km-eUR">
+                                <rect key="frame" x="255" y="244" width="90" height="30"/>
+                                <state key="normal" title="新增運動項目">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="addNewSportItemBtnPressed:" destination="RmF-mu-yFS" eventType="touchUpInside" id="MYM-Er-YCK"/>
+                                </connections>
+                            </button>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelectionDuringEditing="YES" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="irP-RV-hy1">
+                                <rect key="frame" x="0.0" y="296" width="600" height="304"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="304" id="VAf-al-fih"/>
+                                </constraints>
+                                <connections>
+                                    <outlet property="dataSource" destination="RmF-mu-yFS" id="GR3-07-lyq"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="irP-RV-hy1" firstAttribute="leading" secondItem="Mow-Vh-RSO" secondAttribute="leadingMargin" constant="-16" id="43P-qb-7z5"/>
+                            <constraint firstAttribute="centerX" secondItem="XAx-4u-f90" secondAttribute="centerX" id="FVh-aY-PvS"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="irP-RV-hy1" secondAttribute="trailing" constant="-16" id="MYB-yB-Vn0"/>
+                            <constraint firstItem="irP-RV-hy1" firstAttribute="top" secondItem="mgT-km-eUR" secondAttribute="bottom" constant="22" id="T6q-fE-uf7"/>
+                            <constraint firstItem="UiF-Hr-fXH" firstAttribute="top" secondItem="irP-RV-hy1" secondAttribute="bottom" id="Wsk-di-Fga"/>
+                            <constraint firstItem="mgT-km-eUR" firstAttribute="top" secondItem="XAx-4u-f90" secondAttribute="bottom" constant="7.5" id="YnN-j7-Wrw"/>
+                            <constraint firstItem="XAx-4u-f90" firstAttribute="top" secondItem="Ukn-Yb-0aB" secondAttribute="bottom" constant="152" id="mXw-vf-Saj"/>
+                            <constraint firstAttribute="centerX" secondItem="mgT-km-eUR" secondAttribute="centerX" id="tPz-h3-5bv"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="sportsNameLabel" destination="XAx-4u-f90" id="NNL-YX-wjZ"/>
+                        <outlet property="tableView" destination="irP-RV-hy1" id="aH5-3U-eM2"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="KQj-gt-Fb7" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2582" y="2419"/>
         </scene>
         <!--個人頁面-->
         <scene sceneID="leg-oe-moK">
@@ -997,7 +1062,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="顯示時間" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iFQ-bJ-ahl">
-                                <rect key="frame" x="266" y="357" width="68" height="21"/>
+                                <rect key="frame" x="266" y="357" width="68" height="20.5"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -1049,8 +1114,8 @@
                                     <action selector="PantsBtnPressed:" destination="9DL-7X-mjp" eventType="touchUpInside" id="bW0-Qq-teo"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M4Q-fI-oe0">
-                                <rect key="frame" x="279" y="219" width="42" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="請選擇用動項目" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M4Q-fI-oe0">
+                                <rect key="frame" x="240" y="219" width="119" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>

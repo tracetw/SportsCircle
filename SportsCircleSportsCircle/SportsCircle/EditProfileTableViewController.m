@@ -36,7 +36,56 @@
     
     
     
+//
+//    
+//    
+//    //查詢資料庫
+//    PFUser *user = [PFUser currentUser];
+//    PFQuery *query = [PFQuery queryWithClassName:@"PersionalInfo"];
+//    [query whereKey:@"user" equalTo:user];
+//    NSArray* scoreArray = [query findObjects];
+//    NSDictionary *myDictionary = scoreArray[0];
+//    [myDictionary objectForKey:@"gender"];
+//    [myDictionary objectForKey:@"age"];
+//    [myDictionary objectForKey:@"height"];
+//    [myDictionary objectForKey:@"weight"];
+//    NSArray *sportsItemArray = [myDictionary objectForKey:@"habit"];
+//    //NSLog(@"%@",[myDictionary objectForKey:@"age"]);
+//    
+//    //顯示資料至cell.textlabel
+//    if ([FBSDKAccessToken currentAccessToken]) {
+//        NSString *title = [NSString stringWithFormat:@" %@", [FBSDKProfile currentProfile].name];
+//        _nameCell.textLabel.text = [NSString stringWithFormat:@"姓名：%@",title];
+//    }
+//    
+//    if ([[NSString stringWithFormat:@"%@",[myDictionary objectForKey:@"gender"]] isEqualToString:@"1"]) {
+//        _genderCell.textLabel.text = @"性別：男性";
+//    }else if([[NSString stringWithFormat:@"%@",[myDictionary objectForKey:@"gender"]] isEqualToString:@"2"]){
+//        _genderCell.textLabel.text = @"性別：女性";
+//    }else{
+//        //....
+//    }
+//    _ageCell.textLabel.text = [NSString stringWithFormat:@"年齡：%@",[myDictionary objectForKey:@"age"]];
+//    _heightCell.textLabel.text = [NSString stringWithFormat:@"身高：%@",[myDictionary objectForKey:@"height"]];
+//    _weightCell.textLabel.text = [NSString stringWithFormat:@"體重：%@",[myDictionary objectForKey:@"weight"]];
+//    
+//    
+//    NSString *sportsItemString;
+//    for (NSString *object in sportsItemArray) {
+//        NSLog(@"%@\n",object);
+//        if (sportsItemString == nil) {
+//            sportsItemString = [NSString stringWithFormat:@"%@",object];
+//            continue;
+//        }
+//        sportsItemString = [NSString stringWithFormat:@"%@, %@",sportsItemString, object];
+//    }
+//    NSLog(@"%@\n",sportsItemString);
+//    
+//    _habitCell.textLabel.text = [NSString stringWithFormat:@"喜好運動：%@",sportsItemString];
+}
 
+-(void)viewDidAppear:(BOOL)animated{
+    
     
     
     //查詢資料庫
@@ -49,7 +98,7 @@
     [myDictionary objectForKey:@"age"];
     [myDictionary objectForKey:@"height"];
     [myDictionary objectForKey:@"weight"];
-    [myDictionary objectForKey:@"habit"];
+    NSArray *sportsItemArray = [myDictionary objectForKey:@"habit"];
     //NSLog(@"%@",[myDictionary objectForKey:@"age"]);
     
     //顯示資料至cell.textlabel
@@ -68,9 +117,20 @@
     _ageCell.textLabel.text = [NSString stringWithFormat:@"年齡：%@",[myDictionary objectForKey:@"age"]];
     _heightCell.textLabel.text = [NSString stringWithFormat:@"身高：%@",[myDictionary objectForKey:@"height"]];
     _weightCell.textLabel.text = [NSString stringWithFormat:@"體重：%@",[myDictionary objectForKey:@"weight"]];
-    _habitCell.textLabel.text = [NSString stringWithFormat:@"喜好運動：%@",[myDictionary objectForKey:@"habit"]];
-
-
+    
+    
+    NSString *sportsItemString;
+    for (NSString *object in sportsItemArray) {
+        NSLog(@"%@\n",object);
+        if (sportsItemString == nil) {
+            sportsItemString = [NSString stringWithFormat:@"%@",object];
+            continue;
+        }
+        sportsItemString = [NSString stringWithFormat:@"%@, %@",sportsItemString, object];
+    }
+    NSLog(@"%@\n",sportsItemString);
+    
+    _habitCell.textLabel.text = [NSString stringWithFormat:@"喜好運動：%@",sportsItemString];
 }
 
 - (void)didReceiveMemoryWarning {
