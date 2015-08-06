@@ -10,4 +10,6 @@
 
 @interface scheduleTableViewCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UILabel *scheduleName;
+@property (weak, nonatomic) IBOutlet UILabel *scheduleTime;
+
 @end

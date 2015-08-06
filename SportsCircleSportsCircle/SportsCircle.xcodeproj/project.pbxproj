@@ -7,21 +7,20 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		701CFA1B1B733D2F0072F615 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 701CFA191B733D2F0072F615 /* libsqlite3.dylib */; };
+		701CFA1C1B733D2F0072F615 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 701CFA1A1B733D2F0072F615 /* libz.dylib */; };
+		701F1D8D1B71BA9C00BD2673 /* searchDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 701F1D8C1B71BA9C00BD2673 /* searchDetailViewController.m */; };
 		702BBACA1B5547FE00C09B9B /* SignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 702BBAC91B5547FE00C09B9B /* SignUpViewController.m */; };
+		703E3E891B7201FE00768912 /* MasterTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 703E3E881B7201FE00768912 /* MasterTableViewController.m */; };
+		703E3E8C1B722B7300768912 /* TrendTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 703E3E8B1B722B7300768912 /* TrendTableViewCell.m */; };
 		7076B5D11B6F2450004E81EF /* scheduleDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7076B5CC1B6F2450004E81EF /* scheduleDetailViewController.m */; };
 		7076B5D21B6F2450004E81EF /* scheduleTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7076B5CE1B6F2450004E81EF /* scheduleTableViewCell.m */; };
 		7076B5D31B6F2450004E81EF /* scheduleTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7076B5D01B6F2450004E81EF /* scheduleTableViewController.m */; };
-		7076B5D61B6F247D004E81EF /* edit.png in Resources */ = {isa = PBXBuildFile; fileRef = 7076B5D41B6F247D004E81EF /* edit.png */; };
-		7076B5D71B6F247D004E81EF /* edit1x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7076B5D51B6F247D004E81EF /* edit1x.png */; };
+		7076B5DA1B6FA972004E81EF /* scheduleEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7076B5D91B6FA972004E81EF /* scheduleEditViewController.m */; };
+		7076B5DD1B70D496004E81EF /* SearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7076B5DC1B70D496004E81EF /* SearchViewController.m */; };
 		70D60FC21B5569BA001BB4C9 /* TrendViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70D60FC11B5569BA001BB4C9 /* TrendViewController.m */; };
 		70D60FC41B55739C001BB4C9 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 70D60FC31B55739C001BB4C9 /* QuartzCore.framework */; };
 		70E3C0A51B6B94E500A5C14E /* mapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70E3C0A41B6B94E500A5C14E /* mapViewController.m */; };
-		70E3C0AC1B6B954800A5C14E /* popFrame.png in Resources */ = {isa = PBXBuildFile; fileRef = 70E3C0A61B6B954800A5C14E /* popFrame.png */; };
-		70E3C0AD1B6B954800A5C14E /* map-pin-746123_640.png in Resources */ = {isa = PBXBuildFile; fileRef = 70E3C0A71B6B954800A5C14E /* map-pin-746123_640.png */; };
-		70E3C0AE1B6B954800A5C14E /* time.png in Resources */ = {isa = PBXBuildFile; fileRef = 70E3C0A81B6B954800A5C14E /* time.png */; };
-		70E3C0AF1B6B954800A5C14E /* location.png in Resources */ = {isa = PBXBuildFile; fileRef = 70E3C0A91B6B954800A5C14E /* location.png */; };
-		70E3C0B01B6B954800A5C14E /* pen.png in Resources */ = {isa = PBXBuildFile; fileRef = 70E3C0AA1B6B954800A5C14E /* pen.png */; };
-		70E3C0B11B6B954800A5C14E /* camera.png in Resources */ = {isa = PBXBuildFile; fileRef = 70E3C0AB1B6B954800A5C14E /* camera.png */; };
 		70E3C0B41B6B959D00A5C14E /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 70E3C0B31B6B959D00A5C14E /* MapKit.framework */; };
 		70E3C0B61B6B969000A5C14E /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 70E3C0B51B6B969000A5C14E /* AssetsLibrary.framework */; };
 		70E3C0BB1B6B9A3300A5C14E /* PopView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 70E3C0B71B6B9A3300A5C14E /* PopView.xib */; };
@@ -52,8 +51,6 @@
 		D3AD4CAE1B64DBC300FC7F8E /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3AD4CAD1B64DBC300FC7F8E /* Security.framework */; };
 		D3AD4CB01B64DBCB00FC7F8E /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3AD4CAF1B64DBCB00FC7F8E /* StoreKit.framework */; };
 		D3AD4CB21B64DBD500FC7F8E /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3AD4CB11B64DBD500FC7F8E /* SystemConfiguration.framework */; };
-		D3AD4CB41B64DBDE00FC7F8E /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = D3AD4CB31B64DBDE00FC7F8E /* libz.dylib */; };
-		D3AD4CB61B64DBE600FC7F8E /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = D3AD4CB51B64DBE600FC7F8E /* libsqlite3.dylib */; };
 		D3AD4CBE1B64DC5B00FC7F8E /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3AD4CB81B64DC5B00FC7F8E /* Bolts.framework */; };
 		D3AD4CBF1B64DC5B00FC7F8E /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3AD4CB91B64DC5B00FC7F8E /* Parse.framework */; };
 		D3AD4CC01B64DC5B00FC7F8E /* ParseCrashReporting.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3AD4CBA1B64DC5B00FC7F8E /* ParseCrashReporting.framework */; };
@@ -79,27 +76,31 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		701CFA191B733D2F0072F615 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = libsqlite3.dylib; sourceTree = "<group>"; };
+		701CFA1A1B733D2F0072F615 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = libz.dylib; sourceTree = "<group>"; };
+		701F1D8B1B71BA9C00BD2673 /* searchDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = searchDetailViewController.h; sourceTree = "<group>"; };
+		701F1D8C1B71BA9C00BD2673 /* searchDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = searchDetailViewController.m; sourceTree = "<group>"; };
 		702BBAC81B5547FE00C09B9B /* SignUpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignUpViewController.h; sourceTree = "<group>"; };
 		702BBAC91B5547FE00C09B9B /* SignUpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignUpViewController.m; sourceTree = "<group>"; };
+		703E3E871B7201FE00768912 /* MasterTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MasterTableViewController.h; sourceTree = "<group>"; };
+		703E3E881B7201FE00768912 /* MasterTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MasterTableViewController.m; sourceTree = "<group>"; };
+		703E3E8A1B722B7300768912 /* TrendTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TrendTableViewCell.h; sourceTree = "<group>"; };
+		703E3E8B1B722B7300768912 /* TrendTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TrendTableViewCell.m; sourceTree = "<group>"; };
 		7076B5CB1B6F2450004E81EF /* scheduleDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = scheduleDetailViewController.h; path = ../../SportsCircle/SportsCircle/scheduleDetailViewController.h; sourceTree = "<group>"; };
 		7076B5CC1B6F2450004E81EF /* scheduleDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = scheduleDetailViewController.m; path = ../../SportsCircle/SportsCircle/scheduleDetailViewController.m; sourceTree = "<group>"; };
 		7076B5CD1B6F2450004E81EF /* scheduleTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = scheduleTableViewCell.h; path = ../../SportsCircle/SportsCircle/scheduleTableViewCell.h; sourceTree = "<group>"; };
 		7076B5CE1B6F2450004E81EF /* scheduleTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = scheduleTableViewCell.m; path = ../../SportsCircle/SportsCircle/scheduleTableViewCell.m; sourceTree = "<group>"; };
 		7076B5CF1B6F2450004E81EF /* scheduleTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = scheduleTableViewController.h; path = ../../SportsCircle/SportsCircle/scheduleTableViewController.h; sourceTree = "<group>"; };
 		7076B5D01B6F2450004E81EF /* scheduleTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = scheduleTableViewController.m; path = ../../SportsCircle/SportsCircle/scheduleTableViewController.m; sourceTree = "<group>"; };
-		7076B5D41B6F247D004E81EF /* edit.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = edit.png; path = ../../SportsCircle/SportsCircle/edit.png; sourceTree = "<group>"; };
-		7076B5D51B6F247D004E81EF /* edit1x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = edit1x.png; path = ../../SportsCircle/SportsCircle/edit1x.png; sourceTree = "<group>"; };
+		7076B5D81B6FA972004E81EF /* scheduleEditViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = scheduleEditViewController.h; sourceTree = "<group>"; };
+		7076B5D91B6FA972004E81EF /* scheduleEditViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = scheduleEditViewController.m; sourceTree = "<group>"; };
+		7076B5DB1B70D496004E81EF /* SearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchViewController.h; sourceTree = "<group>"; };
+		7076B5DC1B70D496004E81EF /* SearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchViewController.m; sourceTree = "<group>"; };
 		70D60FC01B5569BA001BB4C9 /* TrendViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TrendViewController.h; sourceTree = "<group>"; };
 		70D60FC11B5569BA001BB4C9 /* TrendViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TrendViewController.m; sourceTree = "<group>"; };
 		70D60FC31B55739C001BB4C9 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		70E3C0A31B6B94E500A5C14E /* mapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mapViewController.h; sourceTree = "<group>"; };
 		70E3C0A41B6B94E500A5C14E /* mapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = mapViewController.m; sourceTree = "<group>"; };
-		70E3C0A61B6B954800A5C14E /* popFrame.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = popFrame.png; sourceTree = "<group>"; };
-		70E3C0A71B6B954800A5C14E /* map-pin-746123_640.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "map-pin-746123_640.png"; sourceTree = "<group>"; };
-		70E3C0A81B6B954800A5C14E /* time.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = time.png; sourceTree = "<group>"; };
-		70E3C0A91B6B954800A5C14E /* location.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = location.png; sourceTree = "<group>"; };
-		70E3C0AA1B6B954800A5C14E /* pen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pen.png; sourceTree = "<group>"; };
-		70E3C0AB1B6B954800A5C14E /* camera.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = camera.png; sourceTree = "<group>"; };
 		70E3C0B31B6B959D00A5C14E /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		70E3C0B51B6B969000A5C14E /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
 		70E3C0B71B6B9A3300A5C14E /* PopView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PopView.xib; sourceTree = "<group>"; };
@@ -146,8 +147,6 @@
 		D3AD4CAD1B64DBC300FC7F8E /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		D3AD4CAF1B64DBCB00FC7F8E /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		D3AD4CB11B64DBD500FC7F8E /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
-		D3AD4CB31B64DBDE00FC7F8E /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
-		D3AD4CB51B64DBE600FC7F8E /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		D3AD4CB81B64DC5B00FC7F8E /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
 		D3AD4CB91B64DC5B00FC7F8E /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
 		D3AD4CBA1B64DC5B00FC7F8E /* ParseCrashReporting.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseCrashReporting.framework; sourceTree = "<group>"; };
@@ -174,12 +173,12 @@
 				70E3C0B41B6B959D00A5C14E /* MapKit.framework in Frameworks */,
 				D3CFCC811B6F83F5000B98FC /* FBSDKLoginKit.framework in Frameworks */,
 				D3AD4CC11B64DC5B00FC7F8E /* ParseFacebookUtils.framework in Frameworks */,
-				D3AD4CB61B64DBE600FC7F8E /* libsqlite3.dylib in Frameworks */,
-				D3AD4CB41B64DBDE00FC7F8E /* libz.dylib in Frameworks */,
 				D3AD4CB21B64DBD500FC7F8E /* SystemConfiguration.framework in Frameworks */,
 				D3AD4CB01B64DBCB00FC7F8E /* StoreKit.framework in Frameworks */,
+				701CFA1C1B733D2F0072F615 /* libz.dylib in Frameworks */,
 				D3AD4CAE1B64DBC300FC7F8E /* Security.framework in Frameworks */,
 				D3CFCC801B6F83F5000B98FC /* FBSDKCoreKit.framework in Frameworks */,
+				701CFA1B1B733D2F0072F615 /* libsqlite3.dylib in Frameworks */,
 				D3AD4CC31B64DC5B00FC7F8E /* ParseUI.framework in Frameworks */,
 				70D60FC41B55739C001BB4C9 /* QuartzCore.framework in Frameworks */,
 				D3AD4CAC1B64DBB200FC7F8E /* CoreLocation.framework in Frameworks */,
@@ -204,19 +203,28 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		70E3C0B21B6B954C00A5C14E /* pic */ = {
+		701F1D871B71BA0D00BD2673 /* Search */ = {
 			isa = PBXGroup;
 			children = (
-				7076B5D41B6F247D004E81EF /* edit.png */,
-				7076B5D51B6F247D004E81EF /* edit1x.png */,
-				70E3C0A61B6B954800A5C14E /* popFrame.png */,
-				70E3C0A71B6B954800A5C14E /* map-pin-746123_640.png */,
-				70E3C0A81B6B954800A5C14E /* time.png */,
-				70E3C0A91B6B954800A5C14E /* location.png */,
-				70E3C0AA1B6B954800A5C14E /* pen.png */,
-				70E3C0AB1B6B954800A5C14E /* camera.png */,
+				7076B5DB1B70D496004E81EF /* SearchViewController.h */,
+				7076B5DC1B70D496004E81EF /* SearchViewController.m */,
+				703E3E871B7201FE00768912 /* MasterTableViewController.h */,
+				703E3E881B7201FE00768912 /* MasterTableViewController.m */,
+				701F1D8B1B71BA9C00BD2673 /* searchDetailViewController.h */,
+				701F1D8C1B71BA9C00BD2673 /* searchDetailViewController.m */,
 			);
-			name = pic;
+			name = Search;
+			sourceTree = "<group>";
+		};
+		703E3E8D1B722B7800768912 /* Trend */ = {
+			isa = PBXGroup;
+			children = (
+				70D60FC01B5569BA001BB4C9 /* TrendViewController.h */,
+				70D60FC11B5569BA001BB4C9 /* TrendViewController.m */,
+				703E3E8A1B722B7300768912 /* TrendTableViewCell.h */,
+				703E3E8B1B722B7300768912 /* TrendTableViewCell.m */,
+			);
+			name = Trend;
 			sourceTree = "<group>";
 		};
 		70E3C0CB1B6B9A7300A5C14E /* PopView */ = {
@@ -237,12 +245,14 @@
 		70E3C0D21B6BB15500A5C14E /* schedule */ = {
 			isa = PBXGroup;
 			children = (
-				7076B5CB1B6F2450004E81EF /* scheduleDetailViewController.h */,
-				7076B5CC1B6F2450004E81EF /* scheduleDetailViewController.m */,
-				7076B5CD1B6F2450004E81EF /* scheduleTableViewCell.h */,
-				7076B5CE1B6F2450004E81EF /* scheduleTableViewCell.m */,
 				7076B5CF1B6F2450004E81EF /* scheduleTableViewController.h */,
 				7076B5D01B6F2450004E81EF /* scheduleTableViewController.m */,
+				7076B5CD1B6F2450004E81EF /* scheduleTableViewCell.h */,
+				7076B5CE1B6F2450004E81EF /* scheduleTableViewCell.m */,
+				7076B5CB1B6F2450004E81EF /* scheduleDetailViewController.h */,
+				7076B5CC1B6F2450004E81EF /* scheduleDetailViewController.m */,
+				7076B5D81B6FA972004E81EF /* scheduleEditViewController.h */,
+				7076B5D91B6FA972004E81EF /* scheduleEditViewController.m */,
 			);
 			name = schedule;
 			sourceTree = "<group>";
@@ -269,7 +279,6 @@
 		D34A63411B4CED0700710B1F /* SportsCircle */ = {
 			isa = PBXGroup;
 			children = (
-				70E3C0B21B6B954C00A5C14E /* pic */,
 				D34A63461B4CED0700710B1F /* AppDelegate.h */,
 				D34A63471B4CED0700710B1F /* AppDelegate.m */,
 				D34A63491B4CED0700710B1F /* ViewController.h */,
@@ -278,8 +287,7 @@
 				D3AD4CC51B64DD4B00FC7F8E /* LoginViewController.m */,
 				702BBAC81B5547FE00C09B9B /* SignUpViewController.h */,
 				702BBAC91B5547FE00C09B9B /* SignUpViewController.m */,
-				70D60FC01B5569BA001BB4C9 /* TrendViewController.h */,
-				70D60FC11B5569BA001BB4C9 /* TrendViewController.m */,
+				703E3E8D1B722B7800768912 /* Trend */,
 				70E3C0A31B6B94E500A5C14E /* mapViewController.h */,
 				70E3C0A41B6B94E500A5C14E /* mapViewController.m */,
 				766669081B674D3900280B20 /* PostMainViewController.h */,
@@ -296,6 +304,7 @@
 				D38B8D391B71B84200124706 /* EditProfileTableViewController.m */,
 				D3E4B01E1B72F7160082DE6B /* FavoriteSportViewController.h */,
 				D3E4B01F1B72F7160082DE6B /* FavoriteSportViewController.m */,
+				701F1D871B71BA0D00BD2673 /* Search */,
 				70E3C0CB1B6B9A7300A5C14E /* PopView */,
 				70E3C0D21B6BB15500A5C14E /* schedule */,
 				D34A634C1B4CED0700710B1F /* Main.storyboard */,
@@ -351,6 +360,8 @@
 				D3CFCC7D1B6F83F5000B98FC /* FBSDKCoreKit.framework */,
 				D3CFCC7E1B6F83F5000B98FC /* FBSDKLoginKit.framework */,
 				D3CFCC7F1B6F83F5000B98FC /* FBSDKShareKit.framework */,
+				701CFA191B733D2F0072F615 /* libsqlite3.dylib */,
+				701CFA1A1B733D2F0072F615 /* libz.dylib */,
 				70E3C0B31B6B959D00A5C14E /* MapKit.framework */,
 				70E3C0B51B6B969000A5C14E /* AssetsLibrary.framework */,
 				D38158DD1B6901D600C68B17 /* AKPickerView */,
@@ -360,8 +371,6 @@
 				D3AD4CBB1B64DC5B00FC7F8E /* ParseFacebookUtils.framework */,
 				D3AD4CBC1B64DC5B00FC7F8E /* ParseFacebookUtilsV4.framework */,
 				D3AD4CBD1B64DC5B00FC7F8E /* ParseUI.framework */,
-				D3AD4CB51B64DBE600FC7F8E /* libsqlite3.dylib */,
-				D3AD4CB31B64DBDE00FC7F8E /* libz.dylib */,
 				D3AD4CB11B64DBD500FC7F8E /* SystemConfiguration.framework */,
 				D3AD4CAF1B64DBCB00FC7F8E /* StoreKit.framework */,
 				D3AD4CAD1B64DBC300FC7F8E /* Security.framework */,
@@ -423,6 +432,7 @@
 				TargetAttributes = {
 					D34A633E1B4CED0700710B1F = {
 						CreatedOnToolsVersion = 6.4;
+						DevelopmentTeam = 9BF67LQJSE;
 					};
 					D34A63571B4CED0700710B1F = {
 						CreatedOnToolsVersion = 6.4;
@@ -454,16 +464,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				70E3C0AD1B6B954800A5C14E /* map-pin-746123_640.png in Resources */,
-				7076B5D61B6F247D004E81EF /* edit.png in Resources */,
 				D34A634E1B4CED0700710B1F /* Main.storyboard in Resources */,
-				70E3C0AE1B6B954800A5C14E /* time.png in Resources */,
-				70E3C0AC1B6B954800A5C14E /* popFrame.png in Resources */,
-				70E3C0B11B6B954800A5C14E /* camera.png in Resources */,
-				70E3C0AF1B6B954800A5C14E /* location.png in Resources */,
 				70E3C0BB1B6B9A3300A5C14E /* PopView.xib in Resources */,
-				7076B5D71B6F247D004E81EF /* edit1x.png in Resources */,
-				70E3C0B01B6B954800A5C14E /* pen.png in Resources */,
 				70E3C0BC1B6B9A3300A5C14E /* PopView2.xib in Resources */,
 				D34A63531B4CED0700710B1F /* LaunchScreen.xib in Resources */,
 				70E3C0BD1B6B9A3300A5C14E /* PopView3.xib in Resources */,
@@ -491,6 +493,7 @@
 				70D60FC21B5569BA001BB4C9 /* TrendViewController.m in Sources */,
 				70E3C0A51B6B94E500A5C14E /* mapViewController.m in Sources */,
 				7666690A1B674D3900280B20 /* PostMainViewController.m in Sources */,
+				703E3E891B7201FE00768912 /* MasterTableViewController.m in Sources */,
 				D34A634B1B4CED0700710B1F /* ViewController.m in Sources */,
 				70E3C0C81B6B9A6C00A5C14E /* PopView2.m in Sources */,
 				D3CFCC851B6F952D000B98FC /* SettingsViewController.m in Sources */,
@@ -500,14 +503,18 @@
 				70E3C0CA1B6B9A6C00A5C14E /* PopView4.m in Sources */,
 				D34A63481B4CED0700710B1F /* AppDelegate.m in Sources */,
 				768A20261B6EFD3F005A7E66 /* RecordingViewController.m in Sources */,
+				7076B5DD1B70D496004E81EF /* SearchViewController.m in Sources */,
+				7076B5DA1B6FA972004E81EF /* scheduleEditViewController.m in Sources */,
 				7076B5D31B6F2450004E81EF /* scheduleTableViewController.m in Sources */,
 				7076B5D11B6F2450004E81EF /* scheduleDetailViewController.m in Sources */,
 				702BBACA1B5547FE00C09B9B /* SignUpViewController.m in Sources */,
 				7076B5D21B6F2450004E81EF /* scheduleTableViewCell.m in Sources */,
 				D38B8D3A1B71B84200124706 /* EditProfileTableViewController.m in Sources */,
+				701F1D8D1B71BA9C00BD2673 /* searchDetailViewController.m in Sources */,
 				D38158E01B6901D600C68B17 /* AKPickerView.m in Sources */,
 				D34A63451B4CED0700710B1F /* main.m in Sources */,
 				D3E4B0201B72F7160082DE6B /* FavoriteSportViewController.m in Sources */,
+				703E3E8C1B722B7300768912 /* TrendTableViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -590,6 +597,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				VALID_ARCHS = "arm64 armv7";
 			};
 			name = Debug;
 		};
@@ -628,6 +636,7 @@
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
+				VALID_ARCHS = "arm64 armv7";
 			};
 			name = Release;
 		};
@@ -635,13 +644,25 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = SportsCircle/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/AKPickerView",
+					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/Parse.framework/Headers",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.gjhhj.SportsCircle;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				VALID_ARCHS = "arm64 armv7";
 			};
 			name = Debug;
 		};
@@ -649,13 +670,25 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = SportsCircle/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/AKPickerView",
+					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/Parse.framework/Headers",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.gjhhj.SportsCircle;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				VALID_ARCHS = "arm64 armv7";
 			};
 			name = Release;
 		};
