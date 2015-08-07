@@ -4,7 +4,7 @@
 //
 //  Created by  tracetw on 2015/7/8.
 //  Copyright (c) 2015年 SportsCircle. All rights reserved.
-//
+//dd
 
 #import "ViewController.h"
 #import "SignUpViewController.h"
@@ -13,11 +13,7 @@
 @end
 
 @implementation ViewController
-<<<<<<< HEAD
-//
-=======
 
->>>>>>> 052f00c3e243e5d8a160474722547109e982df06
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
