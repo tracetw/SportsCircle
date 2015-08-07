@@ -9,4 +9,8 @@
 #import <UIKit/UIKit.h>
 
 @interface EditProfileTableViewController : UITableViewController
+<<<<<<< HEAD
+=======
+
+>>>>>>> bc471434b421d0c2ce035a7603485e478503eda2
 @end

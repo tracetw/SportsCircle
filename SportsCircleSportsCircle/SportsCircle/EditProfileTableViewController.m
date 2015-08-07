@@ -10,16 +10,23 @@
 #import <Parse/Parse.h>
 #import <FBSDKLoginKit/FBSDKLoginKit.h>
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
+<<<<<<< HEAD
 #import "FavoriteSportViewController.h"
 
+=======
+>>>>>>> bc471434b421d0c2ce035a7603485e478503eda2
 @interface EditProfileTableViewController ()<UITableViewDelegate,UITableViewDataSource>{
     NSMutableDictionary *profileDictionary; /**< 存個人資料包在Array裡面 */
     NSMutableArray *profileAndPictureArray; /**< 存個人資料及照片 */
     NSMutableDictionary *tempDictionary;    /**< 暫存的Dictionary */
+<<<<<<< HEAD
     NSArray *sportsItemArray;   /**< 運動項目Array */
     BOOL tempDidUpdateSportItem;
 }
 @property (weak, nonatomic) IBOutlet UIImageView *userImageView;
+=======
+}
+>>>>>>> bc471434b421d0c2ce035a7603485e478503eda2
 @property (weak, nonatomic) IBOutlet UITableViewCell *nameCell;
 @property (weak, nonatomic) IBOutlet UITableViewCell *genderCell;
 @property (weak, nonatomic) IBOutlet UITableViewCell *ageCell;
@@ -34,6 +41,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Uncomment the following line to preserve selection between presentations.
+<<<<<<< HEAD
 
     
     [self queryDatabase];
@@ -44,10 +52,17 @@
     if (tempDidUpdateSportItem) {
         [self queryDatabase];
     }
+=======
+}
+
+-(void)viewDidAppear:(BOOL)animated{
+    [self queryDatabase];
+>>>>>>> bc471434b421d0c2ce035a7603485e478503eda2
 }
 -(void)queryDatabase{
     //查詢資料庫
     PFUser *user = [PFUser currentUser];
+<<<<<<< HEAD
     //NSLog(@"%@",user.objectId);
     PFQuery *query = [PFQuery queryWithClassName:@"PersionalInfo"];
     [query whereKey:@"user" equalTo:user];
@@ -59,6 +74,13 @@
     NSData *userImage = [userImageData getData];
     _userImageView.image = [UIImage imageWithData:userImage];
     
+=======
+    NSLog(@"%@",user.objectId);
+    PFQuery *query = [PFQuery queryWithClassName:@"PersionalInfo"];
+    [query whereKey:@"user" equalTo:user];
+    NSArray* scoreArray = [query findObjects];
+    NSLog(@"scoreArray = %@",scoreArray);
+>>>>>>> bc471434b421d0c2ce035a7603485e478503eda2
     
     if (scoreArray.count == 0) {
         PFObject *gameScore = [PFObject objectWithClassName:@"PersionalInfo"];
@@ -72,6 +94,7 @@
     [myDictionary objectForKey:@"age"];
     [myDictionary objectForKey:@"height"];
     [myDictionary objectForKey:@"weight"];
+<<<<<<< HEAD
     sportsItemArray = [myDictionary objectForKey:@"habit"];
     //NSLog(@"%@",[myDictionary objectForKey:@"age"]);
     
@@ -83,6 +106,15 @@
         _nameCell.textLabel.text = [NSString stringWithFormat:@"姓名：%@",title];
     } else {
         // show the signup or login screen
+=======
+    NSArray *sportsItemArray = [myDictionary objectForKey:@"habit"];
+    //NSLog(@"%@",[myDictionary objectForKey:@"age"]);
+    
+    //顯示資料至cell.textlabel
+    if ([FBSDKAccessToken currentAccessToken]) {
+        NSString *title = [NSString stringWithFormat:@" %@", [FBSDKProfile currentProfile].name];
+        _nameCell.textLabel.text = [NSString stringWithFormat:@"姓名：%@",title];
+>>>>>>> bc471434b421d0c2ce035a7603485e478503eda2
     }
     
     if ([[NSString stringWithFormat:@"%@",[myDictionary objectForKey:@"gender"]] isEqualToString:@"1"]) {
@@ -92,6 +124,7 @@
     }else{
         //....
     }
+<<<<<<< HEAD
     
     if ([myDictionary objectForKey:@"age"] == nil){
         _ageCell.textLabel.text = [NSString stringWithFormat:@"年齡："];
@@ -112,17 +145,27 @@
     }
     
     
+=======
+    _ageCell.textLabel.text = [NSString stringWithFormat:@"年齡：%@",[myDictionary objectForKey:@"age"]];
+    _heightCell.textLabel.text = [NSString stringWithFormat:@"身高：%@",[myDictionary objectForKey:@"height"]];
+    _weightCell.textLabel.text = [NSString stringWithFormat:@"體重：%@",[myDictionary objectForKey:@"weight"]];
+>>>>>>> bc471434b421d0c2ce035a7603485e478503eda2
     
     
     NSString *sportsItemString;
     for (NSString *object in sportsItemArray) {
+<<<<<<< HEAD
         //NSLog(@"%@\n",object);
+=======
+        NSLog(@"%@\n",object);
+>>>>>>> bc471434b421d0c2ce035a7603485e478503eda2
         if (sportsItemString == nil) {
             sportsItemString = [NSString stringWithFormat:@"%@",object];
             continue;
         }
         sportsItemString = [NSString stringWithFormat:@"%@, %@",sportsItemString, object];
     }
+<<<<<<< HEAD
     //NSLog(@"%@\n",sportsItemString);
     if (sportsItemString == nil) {
         _habitCell.textLabel.text = [NSString stringWithFormat:@"喜好運動："];
@@ -159,6 +202,13 @@
 //    }
 //}
 
+=======
+    NSLog(@"%@\n",sportsItemString);
+    
+    _habitCell.textLabel.text = [NSString stringWithFormat:@"喜好運動：%@",sportsItemString];
+}
+
+>>>>>>> bc471434b421d0c2ce035a7603485e478503eda2
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -199,8 +249,17 @@
         case 0:{
             
         }
+<<<<<<< HEAD
             break;
         case 1:{
+=======
+            NSLog(@"0");
+            break;
+        case 1:{
+            NSLog(@"1");
+            
+
+>>>>>>> bc471434b421d0c2ce035a7603485e478503eda2
  
         }
             break;
@@ -226,6 +285,10 @@
             
             
         }
+<<<<<<< HEAD
+=======
+            NSLog(@"2");
+>>>>>>> bc471434b421d0c2ce035a7603485e478503eda2
             break;
         case 3:{
             
@@ -233,11 +296,20 @@
                 if(success == NO || value == 0){
                     return;
                 }else{
+<<<<<<< HEAD
                     //NSLog(@"%d",value);
+=======
+                    NSLog(@"%d",value);
+>>>>>>> bc471434b421d0c2ce035a7603485e478503eda2
                     cell.textLabel.text =[NSString stringWithFormat:@"年齡：%@",[NSString stringWithFormat:@"%d",value]];
                     [self updateParseData:@"age" withValue:value];
                 }
             }];
+<<<<<<< HEAD
+=======
+            
+            NSLog(@"3");
+>>>>>>> bc471434b421d0c2ce035a7603485e478503eda2
         }
             
             break;
@@ -247,7 +319,11 @@
                 if(success == NO || value == 0){
                     return;
                 }else{
+<<<<<<< HEAD
                     //NSLog(@"%d",value);
+=======
+                    NSLog(@"%d",value);
+>>>>>>> bc471434b421d0c2ce035a7603485e478503eda2
                     cell.textLabel.text =[NSString stringWithFormat:@"身高：%@",[NSString stringWithFormat:@"%d",value]];
                         [self updateParseData:@"height" withValue:value];
                     
@@ -256,6 +332,10 @@
             
             
         }
+<<<<<<< HEAD
+=======
+            NSLog(@"4");
+>>>>>>> bc471434b421d0c2ce035a7603485e478503eda2
             break;
         case 5:{
             
@@ -263,13 +343,18 @@
                 if(success == NO || value == 0){
                     return;
                 }else{
+<<<<<<< HEAD
                     //NSLog(@"%d",value);
+=======
+                    NSLog(@"%d",value);
+>>>>>>> bc471434b421d0c2ce035a7603485e478503eda2
                     cell.textLabel.text =[NSString stringWithFormat:@"體重：%@",[NSString stringWithFormat:@"%d",value]];
                     [self updateParseData:@"weight" withValue:value];
                 }
             }];
             
         }
+<<<<<<< HEAD
             break;
         case 6:{
             
@@ -281,14 +366,30 @@
 
             
         }
+=======
+            NSLog(@"5");
+            break;
+        case 6:{
+            
+        }
+            NSLog(@"6");
+>>>>>>> bc471434b421d0c2ce035a7603485e478503eda2
             break;
         case 7:{
             
         }
+<<<<<<< HEAD
+=======
+            NSLog(@"7");
+>>>>>>> bc471434b421d0c2ce035a7603485e478503eda2
             break;
         case 8:{
             
         }
+<<<<<<< HEAD
+=======
+            NSLog(@"8");
+>>>>>>> bc471434b421d0c2ce035a7603485e478503eda2
             break;
         default:
             break;
@@ -297,17 +398,29 @@
 
 //更新Parse個人資料
 -(void)updateParseData:(NSString*)profileClass withValue:(int)value{
+<<<<<<< HEAD
     //NSLog(@"%@     %d",profileClass,value);
+=======
+    NSLog(@"%@     %d",profileClass,value);
+>>>>>>> bc471434b421d0c2ce035a7603485e478503eda2
     //查詢資料庫
     PFUser *user = [PFUser currentUser];
     PFQuery *query = [PFQuery queryWithClassName:@"PersionalInfo"];
     [query whereKey:@"user" equalTo:user];
     NSArray* scoreArray = [query findObjects];
+<<<<<<< HEAD
     //NSDictionary *myDictionary = scoreArray[0];
     PFObject *persionalInfoObject = scoreArray[0];
     
     //查詢物件
     //NSLog(@"%@%@%@",scoreArray[0], persionalInfoObject.objectId, [myDictionary objectForKey:profileClass]);
+=======
+    NSDictionary *myDictionary = scoreArray[0];
+    PFObject *persionalInfoObject = scoreArray[0];
+    
+    //查詢物件
+    NSLog(@"%@%@%@",scoreArray[0], persionalInfoObject.objectId, [myDictionary objectForKey:profileClass]);
+>>>>>>> bc471434b421d0c2ce035a7603485e478503eda2
     //更新物件
     [query getObjectInBackgroundWithId:persionalInfoObject.objectId block:^(PFObject *tempObject, NSError *error) {
         tempObject[profileClass] = [NSNumber numberWithInt:value];

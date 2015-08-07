@@ -62,7 +62,11 @@
     
     
     //scTime=[format stringFromDate:sender.date];
+<<<<<<< HEAD
     //[self.tableView reloadData];
+=======
+    [self.tableView reloadData];
+>>>>>>> bc471434b421d0c2ce035a7603485e478503eda2
 }
 
 - (void)didReceiveMemoryWarning {

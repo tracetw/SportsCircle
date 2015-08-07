@@ -265,7 +265,11 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                     </tableViewCell>
+<<<<<<< HEAD
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cellIdentifier6" textLabel="U3e-Vu-Pc9" rowHeight="66" style="IBUITableViewCellStyleDefault" id="TCn-VY-Yh0">
+=======
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cellIdentifier6" textLabel="U3e-Vu-Pc9" style="IBUITableViewCellStyleDefault" id="TCn-VY-Yh0">
+>>>>>>> bc471434b421d0c2ce035a7603485e478503eda2
                                         <rect key="frame" x="0.0" y="406" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="TCn-VY-Yh0" id="1GW-nm-o4n">
@@ -281,6 +285,12 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+<<<<<<< HEAD
+=======
+                                        <connections>
+                                            <segue destination="RmF-mu-yFS" kind="show" id="zYg-nP-Sv4"/>
+                                        </connections>
+>>>>>>> bc471434b421d0c2ce035a7603485e478503eda2
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
@@ -364,7 +374,10 @@
                         <outlet property="habitCell" destination="TCn-VY-Yh0" id="yiA-co-WBC"/>
                         <outlet property="heightCell" destination="gVb-IK-0hx" id="teB-av-x4Y"/>
                         <outlet property="nameCell" destination="d9X-GE-kG3" id="xtY-Un-lm9"/>
+<<<<<<< HEAD
                         <outlet property="userImageView" destination="Vpr-S9-vYc" id="BbW-sh-yIX"/>
+=======
+>>>>>>> bc471434b421d0c2ce035a7603485e478503eda2
                         <outlet property="weightCell" destination="LJa-V1-GYw" id="AS7-gZ-EVl"/>
                     </connections>
                 </tableViewController>
@@ -375,7 +388,11 @@
         <!--選擇喜好運動-->
         <scene sceneID="8lF-sM-g0c">
             <objects>
+<<<<<<< HEAD
                 <viewController storyboardIdentifier="BViewController" title="選擇喜好運動" id="RmF-mu-yFS" customClass="FavoriteSportViewController" sceneMemberID="viewController">
+=======
+                <viewController title="選擇喜好運動" id="RmF-mu-yFS" customClass="FavoriteSportViewController" sceneMemberID="viewController">
+>>>>>>> bc471434b421d0c2ce035a7603485e478503eda2
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Ukn-Yb-0aB"/>
                         <viewControllerLayoutGuide type="bottom" id="UiF-Hr-fXH"/>
@@ -1176,7 +1193,11 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+<<<<<<< HEAD
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="點選上述地點按鈕 並於地圖中選擇" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NKr-vW-85F">
+=======
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="點選上述地點按鈕 並於地圖中選擇" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NKr-vW-85F">
+>>>>>>> bc471434b421d0c2ce035a7603485e478503eda2
                                 <rect key="frame" x="16" y="359" width="568" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="568" id="Xnj-TE-q2l"/>
@@ -1253,7 +1274,11 @@
                                     <rect key="frame" x="0.0" y="0.0" width="567" height="89"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
+<<<<<<< HEAD
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yth-VR-Na7">
+=======
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yth-VR-Na7">
+>>>>>>> bc471434b421d0c2ce035a7603485e478503eda2
                                             <rect key="frame" x="8" y="7" width="140" height="74"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="140" id="7ZY-RP-rYS"/>
@@ -1263,7 +1288,11 @@
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+<<<<<<< HEAD
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ETh-Dq-UBK">
+=======
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ETh-Dq-UBK">
+>>>>>>> bc471434b421d0c2ce035a7603485e478503eda2
                                             <rect key="frame" x="148" y="7" width="411" height="74"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="411" id="ZRi-zT-pMt"/>
@@ -1312,7 +1341,11 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="FB帳號" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tzE-E1-5eq">
+<<<<<<< HEAD
                                 <rect key="frame" x="16" y="72" width="56" height="20.5"/>
+=======
+                                <rect key="frame" x="16" y="72" width="56" height="21"/>
+>>>>>>> bc471434b421d0c2ce035a7603485e478503eda2
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -1342,7 +1375,11 @@
                                     <action selector="fbLogoutBtnPressed:" destination="hF9-Gp-btD" eventType="valueChanged" id="iP3-00-vqz"/>
                                 </connections>
                             </view>
+<<<<<<< HEAD
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Tms-9z-S4Y" customClass="FBSDKProfilePictureView">
+=======
+                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Tms-9z-S4Y" customClass="FBSDKProfilePictureView">
+>>>>>>> bc471434b421d0c2ce035a7603485e478503eda2
                                 <rect key="frame" x="16" y="100" width="80" height="80"/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -1350,8 +1387,13 @@
                                     <constraint firstAttribute="width" constant="80" id="oTd-iz-bWV"/>
                                 </constraints>
                             </view>
+<<<<<<< HEAD
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DZG-Hl-t0L">
                                 <rect key="frame" x="104" y="131" width="42" height="20.5"/>
+=======
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DZG-Hl-t0L">
+                                <rect key="frame" x="104" y="130" width="42" height="21"/>
+>>>>>>> bc471434b421d0c2ce035a7603485e478503eda2
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -1366,7 +1408,11 @@
                             <constraint firstItem="tzE-E1-5eq" firstAttribute="top" secondItem="trR-Pj-ucT" secondAttribute="bottom" constant="8" id="ZYd-2W-DQO"/>
                             <constraint firstItem="tzE-E1-5eq" firstAttribute="leading" secondItem="tjB-Na-d9G" secondAttribute="leadingMargin" id="cwS-xl-nWx"/>
                             <constraint firstItem="DZG-Hl-t0L" firstAttribute="leading" secondItem="Tms-9z-S4Y" secondAttribute="trailing" constant="8" id="eJn-v1-899"/>
+<<<<<<< HEAD
                             <constraint firstItem="DZG-Hl-t0L" firstAttribute="centerY" secondItem="Tms-9z-S4Y" secondAttribute="centerY" constant="1.25" id="rWM-qU-USe"/>
+=======
+                            <constraint firstItem="DZG-Hl-t0L" firstAttribute="centerY" secondItem="Tms-9z-S4Y" secondAttribute="centerY" id="rWM-qU-USe"/>
+>>>>>>> bc471434b421d0c2ce035a7603485e478503eda2
                         </constraints>
                     </view>
                     <connections>
@@ -1875,7 +1921,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+<<<<<<< HEAD
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="請輸入活動名稱" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="un8-FT-6hw">
+=======
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="請輸入活動名稱" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="un8-FT-6hw">
+>>>>>>> bc471434b421d0c2ce035a7603485e478503eda2
                                 <rect key="frame" x="16" y="72" width="568" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="568" id="lEg-v0-kXT"/>
@@ -1902,7 +1952,11 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
+<<<<<<< HEAD
                             <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="W04-ZN-A4G">
+=======
+                            <datePicker contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="W04-ZN-A4G">
+>>>>>>> bc471434b421d0c2ce035a7603485e478503eda2
                                 <rect key="frame" x="16" y="143" width="568" height="125"/>
                                 <color key="backgroundColor" red="0.36078431370000003" green="0.6588235294" blue="0.99607843139999996" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
@@ -1917,13 +1971,21 @@
                                     <action selector="timeValueChanged:" destination="IqB-v7-qew" eventType="valueChanged" id="KR0-Ni-k3A"/>
                                 </connections>
                             </datePicker>
+<<<<<<< HEAD
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="時間" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qv5-gg-9O7">
+=======
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="時間" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qv5-gg-9O7">
+>>>>>>> bc471434b421d0c2ce035a7603485e478503eda2
                                 <rect key="frame" x="283" y="110" width="34" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+<<<<<<< HEAD
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="點選上述地點按鈕 並於地圖中選擇" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SqG-Qt-E7f">
+=======
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="點選上述地點按鈕 並於地圖中選擇" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SqG-Qt-E7f">
+>>>>>>> bc471434b421d0c2ce035a7603485e478503eda2
                                 <rect key="frame" x="16" y="359" width="568" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="568" id="uBZ-XI-XaL"/>
@@ -1932,7 +1994,11 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+<<<<<<< HEAD
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YKP-ra-buC">
+=======
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YKP-ra-buC">
+>>>>>>> bc471434b421d0c2ce035a7603485e478503eda2
                                 <rect key="frame" x="16" y="322" width="568" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="568" id="diZ-qy-QIo"/>
