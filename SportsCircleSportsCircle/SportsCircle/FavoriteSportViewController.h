@@ -7,19 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-<<<<<<< HEAD
 typedef void(^SendBOOLBack)(BOOL tempDidUpdateSportItem);
 @interface FavoriteSportViewController : UIViewController
 @property (nonatomic,strong) SendBOOLBack block;
-=======
-<<<<<<< HEAD
-typedef void(^SendBOOLBack)(BOOL tempDidUpdateSportItem);
-@interface FavoriteSportViewController : UIViewController
-@property (nonatomic,strong) SendBOOLBack block;
-=======
-
-@interface FavoriteSportViewController : UIViewController
-
->>>>>>> bc471434b421d0c2ce035a7603485e478503eda2
->>>>>>> 052f00c3e243e5d8a160474722547109e982df06
 @end

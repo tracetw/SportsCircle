@@ -12,12 +12,6 @@
 		702032271B7351820059F06C /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 702032261B7351820059F06C /* libsqlite3.dylib */; };
 		702BBACA1B5547FE00C09B9B /* SignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 702BBAC91B5547FE00C09B9B /* SignUpViewController.m */; };
 		703E3E8C1B722B7300768912 /* TrendTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 703E3E8B1B722B7300768912 /* TrendTableViewCell.m */; };
-<<<<<<< HEAD
-=======
-		7076B5D11B6F2450004E81EF /* scheduleDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7076B5CC1B6F2450004E81EF /* scheduleDetailViewController.m */; };
-		7076B5D21B6F2450004E81EF /* scheduleTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7076B5CE1B6F2450004E81EF /* scheduleTableViewCell.m */; };
-		7076B5D31B6F2450004E81EF /* scheduleTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7076B5D01B6F2450004E81EF /* scheduleTableViewController.m */; };
->>>>>>> 052f00c3e243e5d8a160474722547109e982df06
 		7076B5DA1B6FA972004E81EF /* scheduleEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7076B5D91B6FA972004E81EF /* scheduleEditViewController.m */; };
 		7076B5DD1B70D496004E81EF /* SearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7076B5DC1B70D496004E81EF /* SearchViewController.m */; };
 		70D60FC21B5569BA001BB4C9 /* TrendViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70D60FC11B5569BA001BB4C9 /* TrendViewController.m */; };
@@ -41,7 +35,6 @@
 		768A20261B6EFD3F005A7E66 /* RecordingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 768A20251B6EFD3F005A7E66 /* RecordingViewController.m */; };
 		768A20291B6F0505005A7E66 /* MapRecordingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 768A20281B6F0505005A7E66 /* MapRecordingViewController.m */; };
 		768A202C1B6F090E005A7E66 /* EndRecordingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 768A202B1B6F090E005A7E66 /* EndRecordingViewController.m */; };
-<<<<<<< HEAD
 		D30CA2081B74A9AD00CE61AD /* scheduleDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D30CA2031B74A9AD00CE61AD /* scheduleDetailViewController.m */; };
 		D30CA2091B74A9AD00CE61AD /* scheduleTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D30CA2051B74A9AD00CE61AD /* scheduleTableViewCell.m */; };
 		D30CA20A1B74A9AD00CE61AD /* scheduleTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D30CA2071B74A9AD00CE61AD /* scheduleTableViewController.m */; };
@@ -54,8 +47,6 @@
 		D30CA21E1B74AA2100CE61AD /* ParseFacebookUtils.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D30CA2141B74AA2100CE61AD /* ParseFacebookUtils.framework */; };
 		D30CA21F1B74AA2100CE61AD /* ParseFacebookUtilsV4.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D30CA2151B74AA2100CE61AD /* ParseFacebookUtilsV4.framework */; };
 		D30CA2201B74AA2100CE61AD /* ParseUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D30CA2161B74AA2100CE61AD /* ParseUI.framework */; };
-=======
->>>>>>> 052f00c3e243e5d8a160474722547109e982df06
 		D34A63451B4CED0700710B1F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D34A63441B4CED0700710B1F /* main.m */; };
 		D34A63481B4CED0700710B1F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D34A63471B4CED0700710B1F /* AppDelegate.m */; };
 		D34A634B1B4CED0700710B1F /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D34A634A1B4CED0700710B1F /* ViewController.m */; };
@@ -63,10 +54,6 @@
 		D34A63501B4CED0700710B1F /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D34A634F1B4CED0700710B1F /* Images.xcassets */; };
 		D34A63531B4CED0700710B1F /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = D34A63511B4CED0700710B1F /* LaunchScreen.xib */; };
 		D34A635F1B4CED0700710B1F /* SportsCircleTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D34A635E1B4CED0700710B1F /* SportsCircleTests.m */; };
-<<<<<<< HEAD
-=======
-		D38158E01B6901D600C68B17 /* AKPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = D38158DF1B6901D600C68B17 /* AKPickerView.m */; };
->>>>>>> 052f00c3e243e5d8a160474722547109e982df06
 		D38B8D3A1B71B84200124706 /* EditProfileTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D38B8D391B71B84200124706 /* EditProfileTableViewController.m */; };
 		D3AD4CA61B64DB9200FC7F8E /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3AD4CA51B64DB9200FC7F8E /* AudioToolbox.framework */; };
 		D3AD4CA81B64DBA100FC7F8E /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3AD4CA71B64DBA100FC7F8E /* CFNetwork.framework */; };
@@ -75,25 +62,10 @@
 		D3AD4CAE1B64DBC300FC7F8E /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3AD4CAD1B64DBC300FC7F8E /* Security.framework */; };
 		D3AD4CB01B64DBCB00FC7F8E /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3AD4CAF1B64DBCB00FC7F8E /* StoreKit.framework */; };
 		D3AD4CB21B64DBD500FC7F8E /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3AD4CB11B64DBD500FC7F8E /* SystemConfiguration.framework */; };
-<<<<<<< HEAD
 		D3AD4CC61B64DD4B00FC7F8E /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D3AD4CC51B64DD4B00FC7F8E /* LoginViewController.m */; };
 		D3CFCC851B6F952D000B98FC /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D3CFCC841B6F952D000B98FC /* SettingsViewController.m */; };
 		D3E4B0201B72F7160082DE6B /* FavoriteSportViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D3E4B01F1B72F7160082DE6B /* FavoriteSportViewController.m */; };
 		D3F450421B74AB3B008A1486 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3F450411B74AB3B008A1486 /* Parse.framework */; };
-=======
-		D3AD4CBE1B64DC5B00FC7F8E /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3AD4CB81B64DC5B00FC7F8E /* Bolts.framework */; };
-		D3AD4CBF1B64DC5B00FC7F8E /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3AD4CB91B64DC5B00FC7F8E /* Parse.framework */; };
-		D3AD4CC01B64DC5B00FC7F8E /* ParseCrashReporting.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3AD4CBA1B64DC5B00FC7F8E /* ParseCrashReporting.framework */; };
-		D3AD4CC11B64DC5B00FC7F8E /* ParseFacebookUtils.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3AD4CBB1B64DC5B00FC7F8E /* ParseFacebookUtils.framework */; };
-		D3AD4CC21B64DC5B00FC7F8E /* ParseFacebookUtilsV4.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3AD4CBC1B64DC5B00FC7F8E /* ParseFacebookUtilsV4.framework */; };
-		D3AD4CC31B64DC5B00FC7F8E /* ParseUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3AD4CBD1B64DC5B00FC7F8E /* ParseUI.framework */; };
-		D3AD4CC61B64DD4B00FC7F8E /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D3AD4CC51B64DD4B00FC7F8E /* LoginViewController.m */; };
-		D3CFCC801B6F83F5000B98FC /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3CFCC7D1B6F83F5000B98FC /* FBSDKCoreKit.framework */; };
-		D3CFCC811B6F83F5000B98FC /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3CFCC7E1B6F83F5000B98FC /* FBSDKLoginKit.framework */; };
-		D3CFCC821B6F83F5000B98FC /* FBSDKShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3CFCC7F1B6F83F5000B98FC /* FBSDKShareKit.framework */; };
-		D3CFCC851B6F952D000B98FC /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D3CFCC841B6F952D000B98FC /* SettingsViewController.m */; };
-		D3E4B0201B72F7160082DE6B /* FavoriteSportViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D3E4B01F1B72F7160082DE6B /* FavoriteSportViewController.m */; };
->>>>>>> 052f00c3e243e5d8a160474722547109e982df06
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -115,15 +87,6 @@
 		702BBAC91B5547FE00C09B9B /* SignUpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignUpViewController.m; sourceTree = "<group>"; };
 		703E3E8A1B722B7300768912 /* TrendTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TrendTableViewCell.h; sourceTree = "<group>"; };
 		703E3E8B1B722B7300768912 /* TrendTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TrendTableViewCell.m; sourceTree = "<group>"; };
-<<<<<<< HEAD
-=======
-		7076B5CB1B6F2450004E81EF /* scheduleDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = scheduleDetailViewController.h; path = ../../SportsCircle/SportsCircle/scheduleDetailViewController.h; sourceTree = "<group>"; };
-		7076B5CC1B6F2450004E81EF /* scheduleDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = scheduleDetailViewController.m; path = ../../SportsCircle/SportsCircle/scheduleDetailViewController.m; sourceTree = "<group>"; };
-		7076B5CD1B6F2450004E81EF /* scheduleTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = scheduleTableViewCell.h; path = ../../SportsCircle/SportsCircle/scheduleTableViewCell.h; sourceTree = "<group>"; };
-		7076B5CE1B6F2450004E81EF /* scheduleTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = scheduleTableViewCell.m; path = ../../SportsCircle/SportsCircle/scheduleTableViewCell.m; sourceTree = "<group>"; };
-		7076B5CF1B6F2450004E81EF /* scheduleTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = scheduleTableViewController.h; path = ../../SportsCircle/SportsCircle/scheduleTableViewController.h; sourceTree = "<group>"; };
-		7076B5D01B6F2450004E81EF /* scheduleTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = scheduleTableViewController.m; path = ../../SportsCircle/SportsCircle/scheduleTableViewController.m; sourceTree = "<group>"; };
->>>>>>> 052f00c3e243e5d8a160474722547109e982df06
 		7076B5D81B6FA972004E81EF /* scheduleEditViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = scheduleEditViewController.h; sourceTree = "<group>"; };
 		7076B5D91B6FA972004E81EF /* scheduleEditViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = scheduleEditViewController.m; sourceTree = "<group>"; };
 		7076B5DB1B70D496004E81EF /* SearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchViewController.h; sourceTree = "<group>"; };
@@ -161,7 +124,6 @@
 		768A20281B6F0505005A7E66 /* MapRecordingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapRecordingViewController.m; sourceTree = "<group>"; };
 		768A202A1B6F090E005A7E66 /* EndRecordingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EndRecordingViewController.h; sourceTree = "<group>"; };
 		768A202B1B6F090E005A7E66 /* EndRecordingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EndRecordingViewController.m; sourceTree = "<group>"; };
-<<<<<<< HEAD
 		D30CA2021B74A9AD00CE61AD /* scheduleDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = scheduleDetailViewController.h; sourceTree = "<group>"; };
 		D30CA2031B74A9AD00CE61AD /* scheduleDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = scheduleDetailViewController.m; sourceTree = "<group>"; };
 		D30CA2041B74A9AD00CE61AD /* scheduleTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = scheduleTableViewCell.h; sourceTree = "<group>"; };
@@ -178,8 +140,6 @@
 		D30CA2141B74AA2100CE61AD /* ParseFacebookUtils.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ParseFacebookUtils.framework; path = framework/ParseFacebookUtils.framework; sourceTree = "<group>"; };
 		D30CA2151B74AA2100CE61AD /* ParseFacebookUtilsV4.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ParseFacebookUtilsV4.framework; path = framework/ParseFacebookUtilsV4.framework; sourceTree = "<group>"; };
 		D30CA2161B74AA2100CE61AD /* ParseUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ParseUI.framework; path = framework/ParseUI.framework; sourceTree = "<group>"; };
-=======
->>>>>>> 052f00c3e243e5d8a160474722547109e982df06
 		D34A633F1B4CED0700710B1F /* SportsCircle.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SportsCircle.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D34A63431B4CED0700710B1F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D34A63441B4CED0700710B1F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -193,11 +153,6 @@
 		D34A63581B4CED0700710B1F /* SportsCircleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SportsCircleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D34A635D1B4CED0700710B1F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D34A635E1B4CED0700710B1F /* SportsCircleTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SportsCircleTests.m; sourceTree = "<group>"; };
-<<<<<<< HEAD
-=======
-		D38158DE1B6901D600C68B17 /* AKPickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AKPickerView.h; sourceTree = "<group>"; };
-		D38158DF1B6901D600C68B17 /* AKPickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AKPickerView.m; sourceTree = "<group>"; };
->>>>>>> 052f00c3e243e5d8a160474722547109e982df06
 		D38B8D381B71B84200124706 /* EditProfileTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditProfileTableViewController.h; sourceTree = "<group>"; };
 		D38B8D391B71B84200124706 /* EditProfileTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditProfileTableViewController.m; sourceTree = "<group>"; };
 		D3AD4CA51B64DB9200FC7F8E /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
@@ -207,30 +162,13 @@
 		D3AD4CAD1B64DBC300FC7F8E /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		D3AD4CAF1B64DBCB00FC7F8E /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		D3AD4CB11B64DBD500FC7F8E /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
-<<<<<<< HEAD
 		D3AD4CC41B64DD4B00FC7F8E /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		D3AD4CC51B64DD4B00FC7F8E /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
-=======
-		D3AD4CB81B64DC5B00FC7F8E /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
-		D3AD4CB91B64DC5B00FC7F8E /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
-		D3AD4CBA1B64DC5B00FC7F8E /* ParseCrashReporting.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseCrashReporting.framework; sourceTree = "<group>"; };
-		D3AD4CBB1B64DC5B00FC7F8E /* ParseFacebookUtils.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseFacebookUtils.framework; sourceTree = "<group>"; };
-		D3AD4CBC1B64DC5B00FC7F8E /* ParseFacebookUtilsV4.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseFacebookUtilsV4.framework; sourceTree = "<group>"; };
-		D3AD4CBD1B64DC5B00FC7F8E /* ParseUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseUI.framework; sourceTree = "<group>"; };
-		D3AD4CC41B64DD4B00FC7F8E /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
-		D3AD4CC51B64DD4B00FC7F8E /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
-		D3CFCC7D1B6F83F5000B98FC /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
-		D3CFCC7E1B6F83F5000B98FC /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = "<group>"; };
-		D3CFCC7F1B6F83F5000B98FC /* FBSDKShareKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKShareKit.framework; sourceTree = "<group>"; };
->>>>>>> 052f00c3e243e5d8a160474722547109e982df06
 		D3CFCC831B6F952D000B98FC /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
 		D3CFCC841B6F952D000B98FC /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
 		D3E4B01E1B72F7160082DE6B /* FavoriteSportViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FavoriteSportViewController.h; sourceTree = "<group>"; };
 		D3E4B01F1B72F7160082DE6B /* FavoriteSportViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FavoriteSportViewController.m; sourceTree = "<group>"; };
-<<<<<<< HEAD
 		D3F450411B74AB3B008A1486 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Parse.framework; path = framework/Parse.framework; sourceTree = SOURCE_ROOT; };
-=======
->>>>>>> 052f00c3e243e5d8a160474722547109e982df06
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -240,7 +178,6 @@
 			files = (
 				764C47B81B735CD100AC09E8 /* libz.dylib in Frameworks */,
 				764C47B61B735CBD00AC09E8 /* libsqlite3.dylib in Frameworks */,
-<<<<<<< HEAD
 				D30CA21D1B74AA2100CE61AD /* ParseCrashReporting.framework in Frameworks */,
 				702032271B7351820059F06C /* libsqlite3.dylib in Frameworks */,
 				702032251B7351790059F06C /* libz.dylib in Frameworks */,
@@ -262,29 +199,6 @@
 				D3AD4CA81B64DBA100FC7F8E /* CFNetwork.framework in Frameworks */,
 				D30CA21A1B74AA2100CE61AD /* FBSDKLoginKit.framework in Frameworks */,
 				D3AD4CA61B64DB9200FC7F8E /* AudioToolbox.framework in Frameworks */,
-=======
-				702032271B7351820059F06C /* libsqlite3.dylib in Frameworks */,
-				702032251B7351790059F06C /* libz.dylib in Frameworks */,
-				70E3C0B61B6B969000A5C14E /* AssetsLibrary.framework in Frameworks */,
-				70E3C0B41B6B959D00A5C14E /* MapKit.framework in Frameworks */,
-				D3CFCC811B6F83F5000B98FC /* FBSDKLoginKit.framework in Frameworks */,
-				D3AD4CC11B64DC5B00FC7F8E /* ParseFacebookUtils.framework in Frameworks */,
-				D3AD4CB21B64DBD500FC7F8E /* SystemConfiguration.framework in Frameworks */,
-				D3AD4CB01B64DBCB00FC7F8E /* StoreKit.framework in Frameworks */,
-				D3AD4CAE1B64DBC300FC7F8E /* Security.framework in Frameworks */,
-				D3CFCC801B6F83F5000B98FC /* FBSDKCoreKit.framework in Frameworks */,
-				D3AD4CC31B64DC5B00FC7F8E /* ParseUI.framework in Frameworks */,
-				70D60FC41B55739C001BB4C9 /* QuartzCore.framework in Frameworks */,
-				D3AD4CAC1B64DBB200FC7F8E /* CoreLocation.framework in Frameworks */,
-				D3AD4CAA1B64DBA900FC7F8E /* CoreGraphics.framework in Frameworks */,
-				D3AD4CBE1B64DC5B00FC7F8E /* Bolts.framework in Frameworks */,
-				D3AD4CA81B64DBA100FC7F8E /* CFNetwork.framework in Frameworks */,
-				D3AD4CBF1B64DC5B00FC7F8E /* Parse.framework in Frameworks */,
-				D3CFCC821B6F83F5000B98FC /* FBSDKShareKit.framework in Frameworks */,
-				D3AD4CA61B64DB9200FC7F8E /* AudioToolbox.framework in Frameworks */,
-				D3AD4CC01B64DC5B00FC7F8E /* ParseCrashReporting.framework in Frameworks */,
-				D3AD4CC21B64DC5B00FC7F8E /* ParseFacebookUtilsV4.framework in Frameworks */,
->>>>>>> 052f00c3e243e5d8a160474722547109e982df06
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -338,28 +252,18 @@
 		70E3C0D21B6BB15500A5C14E /* schedule */ = {
 			isa = PBXGroup;
 			children = (
-<<<<<<< HEAD
 				D30CA2021B74A9AD00CE61AD /* scheduleDetailViewController.h */,
 				D30CA2031B74A9AD00CE61AD /* scheduleDetailViewController.m */,
 				D30CA2041B74A9AD00CE61AD /* scheduleTableViewCell.h */,
 				D30CA2051B74A9AD00CE61AD /* scheduleTableViewCell.m */,
 				D30CA2061B74A9AD00CE61AD /* scheduleTableViewController.h */,
 				D30CA2071B74A9AD00CE61AD /* scheduleTableViewController.m */,
-=======
-				7076B5CF1B6F2450004E81EF /* scheduleTableViewController.h */,
-				7076B5D01B6F2450004E81EF /* scheduleTableViewController.m */,
-				7076B5CD1B6F2450004E81EF /* scheduleTableViewCell.h */,
-				7076B5CE1B6F2450004E81EF /* scheduleTableViewCell.m */,
-				7076B5CB1B6F2450004E81EF /* scheduleDetailViewController.h */,
-				7076B5CC1B6F2450004E81EF /* scheduleDetailViewController.m */,
->>>>>>> 052f00c3e243e5d8a160474722547109e982df06
 				7076B5D81B6FA972004E81EF /* scheduleEditViewController.h */,
 				7076B5D91B6FA972004E81EF /* scheduleEditViewController.m */,
 			);
 			name = schedule;
 			sourceTree = "<group>";
 		};
-<<<<<<< HEAD
 		D30CA20B1B74AA2100CE61AD /* AKPickerView */ = {
 			isa = PBXGroup;
 			children = (
@@ -370,8 +274,6 @@
 			path = framework/AKPickerView;
 			sourceTree = "<group>";
 		};
-=======
->>>>>>> 052f00c3e243e5d8a160474722547109e982df06
 		D34A63361B4CED0700710B1F = {
 			isa = PBXGroup;
 			children = (
@@ -464,7 +366,6 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-<<<<<<< HEAD
 		D3AD4CB71B64DC1F00FC7F8E /* framework */ = {
 			isa = PBXGroup;
 			children = (
@@ -478,41 +379,12 @@
 				D30CA2141B74AA2100CE61AD /* ParseFacebookUtils.framework */,
 				D30CA2151B74AA2100CE61AD /* ParseFacebookUtilsV4.framework */,
 				D30CA2161B74AA2100CE61AD /* ParseUI.framework */,
-=======
-		D38158DD1B6901D600C68B17 /* AKPickerView */ = {
-			isa = PBXGroup;
-			children = (
-				D38158DE1B6901D600C68B17 /* AKPickerView.h */,
-				D38158DF1B6901D600C68B17 /* AKPickerView.m */,
-			);
-			path = AKPickerView;
-			sourceTree = "<group>";
-		};
-		D3AD4CB71B64DC1F00FC7F8E /* framework */ = {
-			isa = PBXGroup;
-			children = (
->>>>>>> 052f00c3e243e5d8a160474722547109e982df06
 				764C47B71B735CD000AC09E8 /* libz.dylib */,
 				764C47B51B735CBD00AC09E8 /* libsqlite3.dylib */,
 				702032261B7351820059F06C /* libsqlite3.dylib */,
 				702032241B7351790059F06C /* libz.dylib */,
-<<<<<<< HEAD
 				70E3C0B31B6B959D00A5C14E /* MapKit.framework */,
 				70E3C0B51B6B969000A5C14E /* AssetsLibrary.framework */,
-=======
-				D3CFCC7D1B6F83F5000B98FC /* FBSDKCoreKit.framework */,
-				D3CFCC7E1B6F83F5000B98FC /* FBSDKLoginKit.framework */,
-				D3CFCC7F1B6F83F5000B98FC /* FBSDKShareKit.framework */,
-				70E3C0B31B6B959D00A5C14E /* MapKit.framework */,
-				70E3C0B51B6B969000A5C14E /* AssetsLibrary.framework */,
-				D38158DD1B6901D600C68B17 /* AKPickerView */,
-				D3AD4CB81B64DC5B00FC7F8E /* Bolts.framework */,
-				D3AD4CB91B64DC5B00FC7F8E /* Parse.framework */,
-				D3AD4CBA1B64DC5B00FC7F8E /* ParseCrashReporting.framework */,
-				D3AD4CBB1B64DC5B00FC7F8E /* ParseFacebookUtils.framework */,
-				D3AD4CBC1B64DC5B00FC7F8E /* ParseFacebookUtilsV4.framework */,
-				D3AD4CBD1B64DC5B00FC7F8E /* ParseUI.framework */,
->>>>>>> 052f00c3e243e5d8a160474722547109e982df06
 				D3AD4CB11B64DBD500FC7F8E /* SystemConfiguration.framework */,
 				D3AD4CAF1B64DBCB00FC7F8E /* StoreKit.framework */,
 				D3AD4CAD1B64DBC300FC7F8E /* Security.framework */,
@@ -630,13 +502,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-<<<<<<< HEAD
 				D30CA2091B74A9AD00CE61AD /* scheduleTableViewCell.m in Sources */,
 				768A20291B6F0505005A7E66 /* MapRecordingViewController.m in Sources */,
 				D30CA2081B74A9AD00CE61AD /* scheduleDetailViewController.m in Sources */,
-=======
-				768A20291B6F0505005A7E66 /* MapRecordingViewController.m in Sources */,
->>>>>>> 052f00c3e243e5d8a160474722547109e982df06
 				768A202C1B6F090E005A7E66 /* EndRecordingViewController.m in Sources */,
 				70D60FC21B5569BA001BB4C9 /* TrendViewController.m in Sources */,
 				70E3C0A51B6B94E500A5C14E /* mapViewController.m in Sources */,
@@ -651,7 +519,6 @@
 				D34A63481B4CED0700710B1F /* AppDelegate.m in Sources */,
 				768A20261B6EFD3F005A7E66 /* RecordingViewController.m in Sources */,
 				764C47BB1B735EDE00AC09E8 /* PersonalPageViewController.m in Sources */,
-<<<<<<< HEAD
 				D30CA2171B74AA2100CE61AD /* AKPickerView.m in Sources */,
 				7076B5DD1B70D496004E81EF /* SearchViewController.m in Sources */,
 				7076B5DA1B6FA972004E81EF /* scheduleEditViewController.m in Sources */,
@@ -660,18 +527,6 @@
 				764C47BE1B735FB700AC09E8 /* PersonalPageTableViewCell.m in Sources */,
 				701F1D8D1B71BA9C00BD2673 /* searchDetailViewController.m in Sources */,
 				D30CA20A1B74A9AD00CE61AD /* scheduleTableViewController.m in Sources */,
-=======
-				7076B5DD1B70D496004E81EF /* SearchViewController.m in Sources */,
-				7076B5DA1B6FA972004E81EF /* scheduleEditViewController.m in Sources */,
-				7076B5D31B6F2450004E81EF /* scheduleTableViewController.m in Sources */,
-				7076B5D11B6F2450004E81EF /* scheduleDetailViewController.m in Sources */,
-				702BBACA1B5547FE00C09B9B /* SignUpViewController.m in Sources */,
-				7076B5D21B6F2450004E81EF /* scheduleTableViewCell.m in Sources */,
-				D38B8D3A1B71B84200124706 /* EditProfileTableViewController.m in Sources */,
-				764C47BE1B735FB700AC09E8 /* PersonalPageTableViewCell.m in Sources */,
-				701F1D8D1B71BA9C00BD2673 /* searchDetailViewController.m in Sources */,
-				D38158E01B6901D600C68B17 /* AKPickerView.m in Sources */,
->>>>>>> 052f00c3e243e5d8a160474722547109e982df06
 				D34A63451B4CED0700710B1F /* main.m in Sources */,
 				D3E4B0201B72F7160082DE6B /* FavoriteSportViewController.m in Sources */,
 				703E3E8C1B722B7300768912 /* TrendTableViewCell.m in Sources */,
@@ -809,23 +664,14 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
-<<<<<<< HEAD
 					"$(PROJECT_DIR)/framework",
-=======
->>>>>>> 052f00c3e243e5d8a160474722547109e982df06
 				);
 				INFOPLIST_FILE = SportsCircle/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-<<<<<<< HEAD
 					"$(PROJECT_DIR)",
-=======
-					"$(PROJECT_DIR)/AKPickerView",
-					"$(PROJECT_DIR)",
-					"$(PROJECT_DIR)/Parse.framework/Headers",
->>>>>>> 052f00c3e243e5d8a160474722547109e982df06
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.gjhhj.SportsCircle;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -843,23 +689,14 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
-<<<<<<< HEAD
 					"$(PROJECT_DIR)/framework",
-=======
->>>>>>> 052f00c3e243e5d8a160474722547109e982df06
 				);
 				INFOPLIST_FILE = SportsCircle/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-<<<<<<< HEAD
 					"$(PROJECT_DIR)",
-=======
-					"$(PROJECT_DIR)/AKPickerView",
-					"$(PROJECT_DIR)",
-					"$(PROJECT_DIR)/Parse.framework/Headers",
->>>>>>> 052f00c3e243e5d8a160474722547109e982df06
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.gjhhj.SportsCircle;
 				PRODUCT_NAME = "$(TARGET_NAME)";
