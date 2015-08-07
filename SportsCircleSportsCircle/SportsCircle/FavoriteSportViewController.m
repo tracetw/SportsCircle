@@ -9,11 +9,23 @@
 #import "FavoriteSportViewController.h"
 #import "AKPickerView.h"
 #import <Parse/Parse.h>
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 052f00c3e243e5d8a160474722547109e982df06
 
 @interface FavoriteSportViewController ()<AKPickerViewDelegate, AKPickerViewDataSource, UITableViewDelegate, UITableViewDataSource>{
     NSMutableArray * sportsItemArray;   /**< 運動項目陣列 */
     NSString *getSportsName;    /**< 選中的運動項目 */
     BOOL didUpdateItem;
+<<<<<<< HEAD
+=======
+=======
+@interface FavoriteSportViewController ()<AKPickerViewDelegate, AKPickerViewDataSource, UITableViewDelegate, UITableViewDataSource>{
+    NSMutableArray * sportsItemArray;   /**< 運動項目陣列 */
+    NSString *getSportsName;    /**< 選中的運動項目 */
+>>>>>>> bc471434b421d0c2ce035a7603485e478503eda2
+>>>>>>> 052f00c3e243e5d8a160474722547109e982df06
 }
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic, strong) AKPickerView *pickerView;
@@ -96,11 +108,20 @@
     [self.view sendSubviewToBack:_pickerView];
 }
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 052f00c3e243e5d8a160474722547109e982df06
 //返回的傳回值，如果有新增刪除過資料，返回YES
 -(void)viewWillDisappear:(BOOL)animated
 {
     self.block(didUpdateItem);
 }
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> bc471434b421d0c2ce035a7603485e478503eda2
+>>>>>>> 052f00c3e243e5d8a160474722547109e982df06
 
 //-------------------------------------Parse-----------------------------------------------------
 
@@ -119,17 +140,39 @@
 
 //更新Parse個人資料
 -(void)updateParseData:(NSString*)profileClass withValue:(NSMutableArray *)value{
+<<<<<<< HEAD
     
+=======
+<<<<<<< HEAD
+    
+=======
+    NSLog(@"%@     %@",profileClass,value);
+>>>>>>> bc471434b421d0c2ce035a7603485e478503eda2
+>>>>>>> 052f00c3e243e5d8a160474722547109e982df06
     //查詢資料庫
     PFUser *user = [PFUser currentUser];
     PFQuery *query = [PFQuery queryWithClassName:@"PersionalInfo"];
     [query whereKey:@"user" equalTo:user];
     NSArray* scoreArray = [query findObjects];
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 052f00c3e243e5d8a160474722547109e982df06
     //NSDictionary *myDictionary = scoreArray[0];
     PFObject *persionalInfoObject = scoreArray[0];
     
     //查詢物件
     //NSLog(@"%@%@%@",scoreArray[0], persionalInfoObject.objectId, [myDictionary objectForKey:profileClass]);
+<<<<<<< HEAD
+=======
+=======
+    NSDictionary *myDictionary = scoreArray[0];
+    PFObject *persionalInfoObject = scoreArray[0];
+    
+    //查詢物件
+    NSLog(@"%@%@%@",scoreArray[0], persionalInfoObject.objectId, [myDictionary objectForKey:profileClass]);
+>>>>>>> bc471434b421d0c2ce035a7603485e478503eda2
+>>>>>>> 052f00c3e243e5d8a160474722547109e982df06
     //更新物件
     [query getObjectInBackgroundWithId:persionalInfoObject.objectId block:^(PFObject *tempObject, NSError *error) {
         tempObject[profileClass] = value;
@@ -145,10 +188,20 @@
 - (void)insertNewObject:(id)sender {
     if (getSportsName == nil) {
         return;
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 052f00c3e243e5d8a160474722547109e982df06
     }else if(sportsItemArray == nil || sportsItemArray.count == 0){
         sportsItemArray = [NSMutableArray new];
     }
     didUpdateItem = YES;    //資料有變動
+<<<<<<< HEAD
+=======
+=======
+    }
+>>>>>>> bc471434b421d0c2ce035a7603485e478503eda2
+>>>>>>> 052f00c3e243e5d8a160474722547109e982df06
     NSString *numbers = getSportsName;
     [sportsItemArray insertObject:numbers atIndex:0];
     NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
@@ -159,15 +212,34 @@
 
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+<<<<<<< HEAD
     if (sportsItemArray == nil || sportsItemArray.count == 0) {
         return 0;
     }
+=======
+<<<<<<< HEAD
+    if (sportsItemArray == nil || sportsItemArray.count == 0) {
+        return 0;
+    }
+=======
+>>>>>>> bc471434b421d0c2ce035a7603485e478503eda2
+>>>>>>> 052f00c3e243e5d8a160474722547109e982df06
     return sportsItemArray.count;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+<<<<<<< HEAD
     //UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
     //NSLog(@"%@qqqqqq%@",cell,indexPath);
+=======
+<<<<<<< HEAD
+    //UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+    //NSLog(@"%@qqqqqq%@",cell,indexPath);
+=======
+    UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+    NSLog(@"%@qqqqqq%@",cell,indexPath);
+>>>>>>> bc471434b421d0c2ce035a7603485e478503eda2
+>>>>>>> 052f00c3e243e5d8a160474722547109e982df06
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -189,7 +261,14 @@
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
+<<<<<<< HEAD
         didUpdateItem = YES;    //資料有變動
+=======
+<<<<<<< HEAD
+        didUpdateItem = YES;    //資料有變動
+=======
+>>>>>>> bc471434b421d0c2ce035a7603485e478503eda2
+>>>>>>> 052f00c3e243e5d8a160474722547109e982df06
         [sportsItemArray removeObjectAtIndex:indexPath.row];
         [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
         
@@ -235,7 +314,15 @@
 #pragma mark - AKPickerViewDelegate
 //選中的運動名稱
 - (void)pickerView:(AKPickerView *)pickerView didSelectItem:(NSInteger)item{
+<<<<<<< HEAD
     //NSLog(@"%@", self.titles[item]);
+=======
+<<<<<<< HEAD
+    //NSLog(@"%@", self.titles[item]);
+=======
+    NSLog(@"%@", self.titles[item]);
+>>>>>>> bc471434b421d0c2ce035a7603485e478503eda2
+>>>>>>> 052f00c3e243e5d8a160474722547109e982df06
     _sportsNameLabel.text = self.titles[item];
     getSportsName = self.titles[item];
 }
