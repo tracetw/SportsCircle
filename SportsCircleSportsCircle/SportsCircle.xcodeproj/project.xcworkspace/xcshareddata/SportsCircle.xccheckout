@@ -10,14 +10,14 @@
 	<string>SportsCircle</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
-		<key>1072CB9DB9AB224803194A2873111A291089FEC7</key>
+		<key>E1D5E2E79ED89A3ECB3FA7790AAB68ECD4C2DB18</key>
 		<string>https://github.com/tracetw/SportsCircle.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
 	<string>SportsCircleSportsCircle/SportsCircle.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
-		<key>1072CB9DB9AB224803194A2873111A291089FEC7</key>
+		<key>E1D5E2E79ED89A3ECB3FA7790AAB68ECD4C2DB18</key>
 		<string>../../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
@@ -25,14 +25,14 @@
 	<key>IDESourceControlProjectVersion</key>
 	<integer>111</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>1072CB9DB9AB224803194A2873111A291089FEC7</string>
+	<string>E1D5E2E79ED89A3ECB3FA7790AAB68ECD4C2DB18</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>1072CB9DB9AB224803194A2873111A291089FEC7</string>
+			<string>E1D5E2E79ED89A3ECB3FA7790AAB68ECD4C2DB18</string>
 			<key>IDESourceControlWCCName</key>
 			<string>SportsCircle</string>
 		</dict>
