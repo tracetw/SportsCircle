@@ -54,6 +54,9 @@
 		D34A63501B4CED0700710B1F /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D34A634F1B4CED0700710B1F /* Images.xcassets */; };
 		D34A63531B4CED0700710B1F /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = D34A63511B4CED0700710B1F /* LaunchScreen.xib */; };
 		D34A635F1B4CED0700710B1F /* SportsCircleTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D34A635E1B4CED0700710B1F /* SportsCircleTests.m */; };
+		D3541A471B786FA3003F4D15 /* DetailImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D3541A461B786FA3003F4D15 /* DetailImageViewController.m */; };
+		D3541A4A1B786FD3003F4D15 /* ImageCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D3541A491B786FD3003F4D15 /* ImageCollectionViewCell.m */; };
+		D3541A4D1B787003003F4D15 /* CustomCellBackgroundView.m in Sources */ = {isa = PBXBuildFile; fileRef = D3541A4C1B787003003F4D15 /* CustomCellBackgroundView.m */; };
 		D38B8D3A1B71B84200124706 /* EditProfileTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D38B8D391B71B84200124706 /* EditProfileTableViewController.m */; };
 		D3AD4CA61B64DB9200FC7F8E /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3AD4CA51B64DB9200FC7F8E /* AudioToolbox.framework */; };
 		D3AD4CA81B64DBA100FC7F8E /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3AD4CA71B64DBA100FC7F8E /* CFNetwork.framework */; };
@@ -153,6 +156,12 @@
 		D34A63581B4CED0700710B1F /* SportsCircleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SportsCircleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D34A635D1B4CED0700710B1F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D34A635E1B4CED0700710B1F /* SportsCircleTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SportsCircleTests.m; sourceTree = "<group>"; };
+		D3541A451B786FA3003F4D15 /* DetailImageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailImageViewController.h; sourceTree = "<group>"; };
+		D3541A461B786FA3003F4D15 /* DetailImageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailImageViewController.m; sourceTree = "<group>"; };
+		D3541A481B786FD3003F4D15 /* ImageCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageCollectionViewCell.h; sourceTree = "<group>"; };
+		D3541A491B786FD3003F4D15 /* ImageCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageCollectionViewCell.m; sourceTree = "<group>"; };
+		D3541A4B1B787003003F4D15 /* CustomCellBackgroundView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomCellBackgroundView.h; sourceTree = "<group>"; };
+		D3541A4C1B787003003F4D15 /* CustomCellBackgroundView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomCellBackgroundView.m; sourceTree = "<group>"; };
 		D38B8D381B71B84200124706 /* EditProfileTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditProfileTableViewController.h; sourceTree = "<group>"; };
 		D38B8D391B71B84200124706 /* EditProfileTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditProfileTableViewController.m; sourceTree = "<group>"; };
 		D3AD4CA51B64DB9200FC7F8E /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
@@ -321,6 +330,12 @@
 				D38B8D391B71B84200124706 /* EditProfileTableViewController.m */,
 				D3E4B01E1B72F7160082DE6B /* FavoriteSportViewController.h */,
 				D3E4B01F1B72F7160082DE6B /* FavoriteSportViewController.m */,
+				D3541A451B786FA3003F4D15 /* DetailImageViewController.h */,
+				D3541A461B786FA3003F4D15 /* DetailImageViewController.m */,
+				D3541A481B786FD3003F4D15 /* ImageCollectionViewCell.h */,
+				D3541A491B786FD3003F4D15 /* ImageCollectionViewCell.m */,
+				D3541A4B1B787003003F4D15 /* CustomCellBackgroundView.h */,
+				D3541A4C1B787003003F4D15 /* CustomCellBackgroundView.m */,
 				764C47B91B735EDE00AC09E8 /* PersonalPageViewController.h */,
 				764C47BA1B735EDE00AC09E8 /* PersonalPageViewController.m */,
 				764C47BC1B735FB700AC09E8 /* PersonalPageTableViewCell.h */,
@@ -515,14 +530,17 @@
 				70E3C0C71B6B9A6C00A5C14E /* PopView.m in Sources */,
 				70E3C0C91B6B9A6C00A5C14E /* PopView3.m in Sources */,
 				D3AD4CC61B64DD4B00FC7F8E /* LoginViewController.m in Sources */,
+				D3541A4D1B787003003F4D15 /* CustomCellBackgroundView.m in Sources */,
 				70E3C0CA1B6B9A6C00A5C14E /* PopView4.m in Sources */,
 				D34A63481B4CED0700710B1F /* AppDelegate.m in Sources */,
 				768A20261B6EFD3F005A7E66 /* RecordingViewController.m in Sources */,
 				764C47BB1B735EDE00AC09E8 /* PersonalPageViewController.m in Sources */,
+				D3541A471B786FA3003F4D15 /* DetailImageViewController.m in Sources */,
 				D30CA2171B74AA2100CE61AD /* AKPickerView.m in Sources */,
 				7076B5DD1B70D496004E81EF /* SearchViewController.m in Sources */,
 				7076B5DA1B6FA972004E81EF /* scheduleEditViewController.m in Sources */,
 				702BBACA1B5547FE00C09B9B /* SignUpViewController.m in Sources */,
+				D3541A4A1B786FD3003F4D15 /* ImageCollectionViewCell.m in Sources */,
 				D38B8D3A1B71B84200124706 /* EditProfileTableViewController.m in Sources */,
 				764C47BE1B735FB700AC09E8 /* PersonalPageTableViewCell.m in Sources */,
 				701F1D8D1B71BA9C00BD2673 /* searchDetailViewController.m in Sources */,

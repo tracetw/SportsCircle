@@ -11,13 +11,16 @@
 #import <FBSDKLoginKit/FBSDKLoginKit.h>
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
 #import "FavoriteSportViewController.h"
+#import "DetailImageViewController.h"
+#import "ImageCollectionViewCell.h"
 
-@interface EditProfileTableViewController ()<UITableViewDelegate,UITableViewDataSource>{
+@interface EditProfileTableViewController ()<UITableViewDelegate,UITableViewDataSource,UICollectionViewDataSource, UICollectionViewDelegate>{
     NSMutableDictionary *profileDictionary; /**< 存個人資料包在Array裡面 */
     NSMutableArray *profileAndPictureArray; /**< 存個人資料及照片 */
     NSMutableDictionary *tempDictionary;    /**< 暫存的Dictionary */
     NSArray *sportsItemArray;   /**< 運動項目Array */
-    BOOL tempDidUpdateSportItem;
+    BOOL tempDidUpdateSportItem;    /**< 儲存是否有更新喜愛運動項目 */
+    NSInteger totalPictureNumber; /**< 運動照片數量 */
 }
 @property (weak, nonatomic) IBOutlet UIImageView *userImageView;
 @property (weak, nonatomic) IBOutlet UITableViewCell *nameCell;
@@ -26,6 +29,7 @@
 @property (weak, nonatomic) IBOutlet UITableViewCell *heightCell;
 @property (weak, nonatomic) IBOutlet UITableViewCell *weightCell;
 @property (weak, nonatomic) IBOutlet UITableViewCell *habitCell;
+@property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 
 @end
 
@@ -35,7 +39,13 @@
     [super viewDidLoad];
     // Uncomment the following line to preserve selection between presentations.
 
+    PFQuery *query = [PFQuery queryWithClassName:@"WallPost"];
+    PFUser *currentUser = [PFUser currentUser];
+    [query whereKey:@"user" equalTo:currentUser];
+    NSArray *usersPostsArray = [query findObjects];
+    totalPictureNumber = usersPostsArray.count;
     
+    //self.collectionView.dataSource = self;
     [self queryDatabase];
 }
 
@@ -396,5 +406,63 @@
     // Pass the selected object to the new view controller.
 }
 */
+//----------------------------------CollectionView-------------------------------------------
+- (NSInteger)collectionView:(UICollectionView *)view numberOfItemsInSection:(NSInteger)section{
+    return totalPictureNumber;
+}
+
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
+    //create出CollectionViewCell實體
+    ImageCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"sportsCollectionIdentifiers" forIndexPath:indexPath];
+    
+    //cell.label.text = [NSString stringWithFormat:@"{%ld,%ld}", (long)indexPath.row, (long)indexPath.section];
+    
+    //載入小圖片
+    PFQuery *query = [PFQuery queryWithClassName:@"WallPost"];
+    PFUser *currentUser = [PFUser currentUser];
+    [query whereKey:@"user" equalTo:currentUser];
+    NSArray *usersPostsArray = [query findObjects];
+    //totalPictureNumber = usersPostsArray.count;
+
+    PFFile *userImageFile = usersPostsArray[indexPath.row][@"image1"];
+    [userImageFile getDataInBackgroundWithBlock:^(NSData *imageData, NSError *error) {
+        if (!error) {
+            UIImage *image = [UIImage imageWithData:imageData];
+            cell.image.image = image;
+        }else{
+            NSLog(@"GG%@",error);
+        }
+    }];
+
+     
+
+//    NSString *imageToLoad = [NSString stringWithFormat:@"%ld", (long)indexPath.row];
+//    cell.image.image = [UIImage imageNamed:imageToLoad];
+    
+    //設cell的背景色為gray
+    [cell setBackgroundColor:[UIColor grayColor]];
+    
+    return cell;
+}
+//準備離開這個view時執行
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
+    if ([segue.identifier isEqualToString:@"showDetail"]){
+        NSIndexPath *selectedIndexPath = [self.collectionView indexPathsForSelectedItems][0];
+        /*
+        NSLog(@"Source controller = %@",[segue sourceViewController]);
+        NSLog(@"Destination controller = %@",[segue destinationViewController]);
+        NSLog(@"Segue Identifier = %@",[segue identifier]);
+        
+        //載入完整大圖
+        NSString *imageNameToLoad = [NSString stringWithFormat:@"%ld_full", (long)selectedIndexPath.row];
+        UIImage *image = [UIImage imageNamed:imageNameToLoad];
+        DetailImageViewController *detailViewController = segue.destinationViewController;
+        detailViewController.image = image;
+         */
+        NSString *roleNumber = [NSString stringWithFormat:@"%ld",(long)selectedIndexPath.row];
+        //使用segue將物件傳給Detail View Controller class
+        [segue.destinationViewController setValue:roleNumber forKey:@"param"];
+    }
+}
 
 @end

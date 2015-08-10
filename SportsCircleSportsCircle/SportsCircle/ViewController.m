@@ -8,7 +8,9 @@
 
 #import "ViewController.h"
 #import "SignUpViewController.h"
+#import <Parse/Parse.h>
 @interface ViewController ()
+@property (weak, nonatomic) IBOutlet UIImageView *ImageView;
 
 @end
 
@@ -17,6 +19,17 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
+    PFQuery *query = [PFQuery queryWithClassName:@"WallPost"];
+    
+    NSArray *usersPostsArray = [query findObjects];
+    
+    PFFile *userImageFile = usersPostsArray[1][@"image5"];
+    [userImageFile getDataInBackgroundWithBlock:^(NSData *imageData, NSError *error) {
+        if (!error) {
+            UIImage *image = [UIImage imageWithData:imageData];
+            _ImageView.image = image;
+        }
+    }];
     
 }
 //asdasdfs
