@@ -261,12 +261,12 @@
 		70E3C0D21B6BB15500A5C14E /* schedule */ = {
 			isa = PBXGroup;
 			children = (
+				D30CA2061B74A9AD00CE61AD /* scheduleTableViewController.h */,
+				D30CA2071B74A9AD00CE61AD /* scheduleTableViewController.m */,
 				D30CA2021B74A9AD00CE61AD /* scheduleDetailViewController.h */,
 				D30CA2031B74A9AD00CE61AD /* scheduleDetailViewController.m */,
 				D30CA2041B74A9AD00CE61AD /* scheduleTableViewCell.h */,
 				D30CA2051B74A9AD00CE61AD /* scheduleTableViewCell.m */,
-				D30CA2061B74A9AD00CE61AD /* scheduleTableViewController.h */,
-				D30CA2071B74A9AD00CE61AD /* scheduleTableViewController.m */,
 				7076B5D81B6FA972004E81EF /* scheduleEditViewController.h */,
 				7076B5D91B6FA972004E81EF /* scheduleEditViewController.m */,
 			);

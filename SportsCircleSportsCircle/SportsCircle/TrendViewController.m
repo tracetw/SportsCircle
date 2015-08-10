@@ -15,6 +15,7 @@
     NSDictionary *postWallDictionary;
     NSArray *postWallArray;
     //NSMutableArray *datas;
+    UIRefreshControl *refreshControl;
 }
 @property (weak, nonatomic) IBOutlet UIView *theListView;
 @property (strong, nonatomic) IBOutlet UIView *theTrendView;
@@ -63,6 +64,29 @@
 
     //[self fetchDataFromParse];
    // [[PFUser currentUser] refreshInBackgroundWithBlock:nil];
+    
+    UIView *refreshView = [[UIView alloc] initWithFrame:CGRectMake(0, -50, 0, 0)];
+    [self.tableView insertSubview:refreshView atIndex:0]; //the tableView is a IBOutlet
+    
+    refreshControl = [[UIRefreshControl alloc] init];
+    refreshControl.tintColor = [UIColor redColor];
+    [refreshControl addTarget:self action:@selector(reloadDatas) forControlEvents:UIControlEventValueChanged];
+    NSMutableAttributedString *refreshString = [[NSMutableAttributedString alloc] initWithString:@"Pull To Refresh"];
+    [refreshString addAttributes:@{NSForegroundColorAttributeName : [UIColor grayColor]} range:NSMakeRange(0, refreshString.length)];
+    refreshControl.attributedTitle = refreshString;
+    [refreshView addSubview:refreshControl];
+    
+}
+-(void)reloadDatas
+{
+    //update here...
+    NSLog(@"update");
+    PFQuery *query = [PFQuery queryWithClassName:@"WallPost"];
+    postWallArray = [NSArray new];
+    postWallArray = [query findObjects];
+    postWallDictionary = [NSDictionary new];
+    [self.tableView reloadData];
+    [refreshControl endRefreshing];
 }
 
 -(void)viewDidAppear:(BOOL)animated

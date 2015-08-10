@@ -9,5 +9,9 @@
 #import <UIKit/UIKit.h>
 
 @interface scheduleEditViewController : UIViewController
+{
+    NSString *idStr;
+}
+-(void)passData:(NSString*)argu;
 
 @end

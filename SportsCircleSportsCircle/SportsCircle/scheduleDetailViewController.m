@@ -16,6 +16,7 @@
 }
 @property (weak, nonatomic) IBOutlet UITextField *scheduleName;
 @property (weak, nonatomic) IBOutlet UITextView *scheduleDetail;
+@property (weak, nonatomic) IBOutlet UIDatePicker *datePicker;
 
 
 @end
@@ -32,7 +33,7 @@
     
     scTime = [format stringFromDate:[NSDate date]];
     // Convert date to string
-    
+    [_datePicker setDate:[NSDate date]];
     
 }
 -(void)viewDidAppear:(BOOL)animated
@@ -47,13 +48,13 @@
 - (IBAction)timeValueChanged:(UIDatePicker *)sender {
     
     NSDateFormatter *format=[[NSDateFormatter alloc]init];
+    
     [format setDateFormat:@"M/d HH:mm"];
     //NSLog(@"設定時間為: %@",[format stringFromDate:sender.date]);
-
+    
     scTime = [format stringFromDate:[NSDate date]];
+    
     // Convert date to string
-    
-    
     //scTime=[format stringFromDate:sender.date];
     
 }
@@ -67,15 +68,15 @@
         userName[@"scheduleLocation"]=@"";
         userName[@"scheduleDetail"]=_scheduleDetail.text;
         userName[@"cheatMode"] = @NO;
-//        PFRelation * relation = [[PFRelation alloc] init];
-//        [relation addObject:[PFUser currentUser]];
+        //        PFRelation * relation = [[PFRelation alloc] init];
+        //        [relation addObject:[PFUser currentUser]];
         userName[@"user"] = [PFUser currentUser];//連結現在登入的使用者id
         [userName saveInBackground];
         NSLog(@"WTF dealloc.");
     }
     
     //[scheduleTableViewController viewDidLoad];
-
+    
 }
 
 -(void) dealloc{
@@ -92,5 +93,4 @@
  // Pass the selected object to the new view controller.
  }
  */
-
 @end

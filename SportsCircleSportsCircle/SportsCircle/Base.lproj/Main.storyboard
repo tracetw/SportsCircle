@@ -1289,7 +1289,7 @@
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
                             <connections>
-                                <segue destination="IqB-v7-qew" kind="show" id="iXK-C5-XOb"/>
+                                <segue destination="FNG-pP-wf7" kind="show" identifier="goDetail" id="v4L-Bh-0ff"/>
                             </connections>
                         </button>
                         <prototypes>
@@ -1331,7 +1331,7 @@
                                 <connections>
                                     <outlet property="scheduleName" destination="Yth-VR-Na7" id="IKm-U3-FSt"/>
                                     <outlet property="scheduleTime" destination="ETh-Dq-UBK" id="u1K-kf-3hi"/>
-                                    <segue destination="FNG-pP-wf7" kind="show" identifier="goDetail" id="gYz-w0-Sb6"/>
+                                    <segue destination="IqB-v7-qew" kind="show" identifier="goEdit" id="NNQ-TB-zfj"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -1452,16 +1452,6 @@
                                     <segue destination="XGX-px-7Qf" kind="show" id="l7Y-55-x0W"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="備註文字..." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AJB-xm-H0h">
-                                <rect key="frame" x="16" y="424" width="568" height="40"/>
-                                <color key="backgroundColor" red="0.76558554292929293" green="0.76558554292929293" blue="0.76558554292929293" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="S3J-2e-n5M"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="顯示時間" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iFQ-bJ-ahl">
                                 <rect key="frame" x="266" y="357" width="68" height="21"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -1528,22 +1518,30 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="備註文字..." minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ymZ-0g-0uK">
+                                <rect key="frame" x="16" y="429" width="568" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="IWr-0N-UXS"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="bTD-6b-PHG" firstAttribute="top" secondItem="AJB-xm-H0h" secondAttribute="bottom" constant="8" id="2oP-Wi-Oxd"/>
                             <constraint firstItem="d2Z-pS-u1f" firstAttribute="top" secondItem="iFQ-bJ-ahl" secondAttribute="bottom" constant="8.5" id="70O-SD-CLy"/>
                             <constraint firstItem="d2Z-pS-u1f" firstAttribute="leading" secondItem="KWF-Za-2Br" secondAttribute="leadingMargin" id="7iS-xo-3sf"/>
                             <constraint firstItem="d2Z-pS-u1f" firstAttribute="trailing" secondItem="KWF-Za-2Br" secondAttribute="trailingMargin" id="9sp-8g-gUi"/>
-                            <constraint firstItem="AJB-xm-H0h" firstAttribute="top" secondItem="d2Z-pS-u1f" secondAttribute="bottom" constant="8" id="BJO-nw-wC3"/>
                             <constraint firstAttribute="centerX" secondItem="iFQ-bJ-ahl" secondAttribute="centerX" id="Elm-5g-qp7"/>
+                            <constraint firstItem="ymZ-0g-0uK" firstAttribute="leading" secondItem="KWF-Za-2Br" secondAttribute="leadingMargin" id="EyN-42-2Og"/>
                             <constraint firstItem="bTD-6b-PHG" firstAttribute="trailing" secondItem="KWF-Za-2Br" secondAttribute="trailingMargin" id="HBk-8g-FXE"/>
-                            <constraint firstItem="AJB-xm-H0h" firstAttribute="trailing" secondItem="KWF-Za-2Br" secondAttribute="trailingMargin" id="LNx-TG-r4x"/>
                             <constraint firstItem="bTD-6b-PHG" firstAttribute="leading" secondItem="KWF-Za-2Br" secondAttribute="leadingMargin" id="N63-Mk-OXs"/>
+                            <constraint firstItem="ymZ-0g-0uK" firstAttribute="top" secondItem="d2Z-pS-u1f" secondAttribute="bottom" constant="13" id="T2L-tA-5Ht"/>
+                            <constraint firstItem="bTD-6b-PHG" firstAttribute="top" secondItem="ymZ-0g-0uK" secondAttribute="bottom" constant="13" id="TJA-OM-gr5"/>
                             <constraint firstItem="M4Q-fI-oe0" firstAttribute="top" secondItem="wVN-1N-NAX" secondAttribute="bottom" constant="155" id="Z6w-TI-Kcj"/>
+                            <constraint firstItem="ymZ-0g-0uK" firstAttribute="trailing" secondItem="KWF-Za-2Br" secondAttribute="trailingMargin" id="jyQ-Fi-D2Q"/>
                             <constraint firstItem="sPX-zp-YC2" firstAttribute="top" secondItem="bTD-6b-PHG" secondAttribute="bottom" constant="20" id="tsk-fa-eOh"/>
                             <constraint firstAttribute="centerX" secondItem="M4Q-fI-oe0" secondAttribute="centerX" id="uEw-aP-f5c"/>
-                            <constraint firstItem="AJB-xm-H0h" firstAttribute="leading" secondItem="KWF-Za-2Br" secondAttribute="leadingMargin" id="vCW-tO-STf"/>
                         </constraints>
                     </view>
                     <connections>
