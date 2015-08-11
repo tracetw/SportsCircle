@@ -448,17 +448,17 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
     if ([segue.identifier isEqualToString:@"showDetail"]){
         NSIndexPath *selectedIndexPath = [self.collectionView indexPathsForSelectedItems][0];
-        /*
-        NSLog(@"Source controller = %@",[segue sourceViewController]);
-        NSLog(@"Destination controller = %@",[segue destinationViewController]);
-        NSLog(@"Segue Identifier = %@",[segue identifier]);
+//        
+//        NSLog(@"Source controller = %@",[segue sourceViewController]);
+//        NSLog(@"Destination controller = %@",[segue destinationViewController]);
+//        NSLog(@"Segue Identifier = %@",[segue identifier]);
+//        
+//        //載入完整大圖
+//        NSString *imageNameToLoad = [NSString stringWithFormat:@"%ld_full", (long)selectedIndexPath.row];
+//        UIImage *image = [UIImage imageNamed:imageNameToLoad];
+//        DetailImageViewController *detailViewController = segue.destinationViewController;
+//        detailViewController.image = image;
         
-        //載入完整大圖
-        NSString *imageNameToLoad = [NSString stringWithFormat:@"%ld_full", (long)selectedIndexPath.row];
-        UIImage *image = [UIImage imageNamed:imageNameToLoad];
-        DetailImageViewController *detailViewController = segue.destinationViewController;
-        detailViewController.image = image;
-         */
         NSString *roleNumber = [NSString stringWithFormat:@"%ld",(long)selectedIndexPath.row];
         //使用segue將物件傳給Detail View Controller class
         [segue.destinationViewController setValue:roleNumber forKey:@"param"];
