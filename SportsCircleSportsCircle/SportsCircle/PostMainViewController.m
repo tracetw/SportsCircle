@@ -232,6 +232,30 @@
     //按鈕的背景換成剛拍下來的照片
     [_cameraBtn setBackgroundImage:image forState:UIControlStateNormal];
     
+    NSData *imageData = UIImagePNGRepresentation(_cameraBtn.imageView.image);
+    //PFFile *imageFile=[PFFile fileWithName:@"image" data:imageData];
+    
+    if ([PFUser currentUser]) {
+        PFObject *userName = [PFObject objectWithClassName:@"WallPost"];
+        userName[@"image1"] =imageData;
+        //userName[@"image2"] =@"";
+        //userName[@"image3"]=@"";
+        //userName[@"image4"]=@"";
+        //userName[@"image5"] =@"";
+        //        PFRelation * relation = [[PFRelation alloc] init];
+        //        [relation addObject:[PFUser currentUser]];
+        userName[@"user"] = [PFUser currentUser];//連結現在登入的使用者id
+        [userName saveInBackground];
+        
+    }
+    
+    // Upload image
+    NSData *imageData1 = UIImagePNGRepresentation(_cameraBtn.imageView.image);
+    PFFile *pic = [PFFile fileWithName:@"image1.png" data:imageData1];
+    PFQuery *query = [PFQuery queryWithClassName:@"WallPost"];
+    [query whereKey:@"username" equalTo:[[PFUser currentUser] valueForKey:@"username"]];
+    PFObject *object =  [[NSArray arrayWithArray:[query findObjects]]lastObject];
+    [object setValue:pic forKey:@"image1"];
 }
 
 -(void)imagePickerControllerDidCancel:(UIImagePickerController *)picker
@@ -298,7 +322,6 @@
     [popView3 removeFromSuperview];
 }
 
-
 - (IBAction)goBtnPressed:(id)sender {
     //當按下按鈕～將資料上傳到wallpost
     /*
@@ -322,7 +345,6 @@
     }
     *///等連結街設定完再開啟
 }
-
 
 /*
 #pragma mark - Navigation

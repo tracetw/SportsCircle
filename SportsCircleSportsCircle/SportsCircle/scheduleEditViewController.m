@@ -7,6 +7,7 @@
 //
 
 #import "scheduleEditViewController.h"
+#import "scheduleTableViewController.h"
 #import <Parse/Parse.h>
 
 @interface scheduleEditViewController ()
@@ -19,6 +20,11 @@
 }
 @property (weak, nonatomic) IBOutlet UITextField *scheduleName;
 @property (weak, nonatomic) IBOutlet UITextView *scheduleDetail;
+@property (weak, nonatomic) IBOutlet UILabel *locationLabel;
+@property (weak, nonatomic) IBOutlet UIButton *confirmBtn;
+@property (weak, nonatomic) IBOutlet UIButton *locationBtn;
+@property (weak, nonatomic) IBOutlet UILabel *timeLabel;
+
 
 @end
 
@@ -27,98 +33,64 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    _confirmBtn.hidden=YES;
     
-    if (!datas) {
-        datas = [[NSMutableArray alloc] init];
-    }
     
-    //PFUser *currentUser=[PFUser currentUser];//抓到目前user的objId
-    //PFQuery *query = [PFQuery queryWithClassName:@"schedule"];
-    //query為指向sc類別
-    //[query whereKey:@"user" equalTo:currentUser];
-    //類別為sc且key為user時value為currentUser
-    //userSchedules = [query findObjects];//抓出資料有兩筆
-    //NSDictionary *userSchedulesA=userSchedules[0];//cheatMode
-    //NSDictionary *userSchedulesB=userSchedules[1];
-    //每一筆為NSDictionary
-    //id: sA0fZxmosj
+    NSLog(@"edit id= %@",idStr);
+    
     PFQuery *query = [PFQuery queryWithClassName:@"schedule"];
+    //[query getObjectWithId:idStr];
+    PFObject *object=[query getObjectWithId:idStr];
+    _scheduleName.text =object[@"scheduleName"];
+    //NSLog(@"%@",postWallDictionary);
     
-    postWallArray = [NSArray new];
-    postWallArray = [query findObjects];
+    _scheduleDetail.text=object[@"scheduleDetail"];
     
-    postWallDictionary = [NSDictionary new];
+    _locationLabel.text =object[@"scheduleLocation"];
+    
+    _timeLabel.text=object[@"scheduleTime"];
+    
+    /*
+     [query getObjectInBackgroundWithId:idStr block:^(PFObject *object, NSError *error) {
+     // Do something with the returned PFObject in the gameScore variable.
+     // NSLog(@"%@", object);
+     _scheduleName.text =object[@"scheduleName"];
+     //NSLog(@"%@",postWallDictionary);
+     
+     _scheduleDetail.text=object[@"scheduleDetail"];
+     
+     _locationLabel.text =object[@"scheduleLocation"];
+     
+     _timeLabel.text=object[@"scheduleTime"];
+     // NSLog(@"%@",object[@"scheduleTime"]);
+     
+     }];
+     */
+    _scheduleName.userInteractionEnabled = NO;
+    _scheduleDetail.userInteractionEnabled = NO;
+    _locationBtn.userInteractionEnabled=NO;
+    _locationLabel.userInteractionEnabled = NO;
+    _timeLabel.userInteractionEnabled = NO;
+    
+    
+}
+//-(IBAction)buttonPressed:(id)sender
+//{
+//  self.label.text=idStr;
+//}
 
-    
-    
-
-    
-    NSDateFormatter *format=[[NSDateFormatter alloc]init];
-    [format setDateFormat:@"yyyy/M/d HH:mm:ss"];
-    //NSLog(@"設定時間為: %@",[format stringFromDate:sender.date]);
-    
-    scTime = [format stringFromDate:[NSDate date]];
-    // Convert date to string
-    
-    
-    //scTime=[format stringFromDate:sender.date];
-    //[self.tableView reloadData];
+-(void)passData:(NSString*)argu;
+{
+    idStr=argu;
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-/*
-- (IBAction)timeValueChanged:(UIDatePicker *)sender {
-    
-    NSDateFormatter *format=[[NSDateFormatter alloc]init];
-    [format setDateFormat:@"yyyy/M/d HH:mm:ss"];
-    //NSLog(@"設定時間為: %@",[format stringFromDate:sender.date]);
-    
-    scTime = [format stringFromDate:[NSDate date]];
-    // Convert date to string
-    
-    
-    //scTime=[format stringFromDate:sender.date];
-    
-}
-*/
-/*
-- (IBAction)comfirmBtnPreesed:(id)sender {
-    
-    //此為新增上去
-    if ([PFUser currentUser]) {
-        PFObject *userName = [PFObject objectWithClassName:@"schedule"];
-        userName[@"scheduleTime"] =scTime;
-        userName[@"scheduleName"] =_scheduleName.text;
-        userName[@"scheduleLocation"]=@"";
-        userName[@"scheduleDetail"]=_scheduleDetail.text;
-        userName[@"cheatMode"] = @NO;
-        //        PFRelation * relation = [[PFRelation alloc] init];
-        //        [relation addObject:[PFUser currentUser]];
-        userName[@"user"] = [PFUser currentUser];//連結現在登入的使用者id
-        [userName saveInBackground];
-        NSLog(@"WTF dealloc.");
-    }
-    
-    
-    
-}
-*/
+
 -(void) dealloc{
     //解構式～確認回上一頁.原本的黃色那頁已被消滅(線不能直接拉回去.因為RAM會一直疊加上去)
     NSLog(@"scheduleDetailViewController dealloc.");
 }
-
-/*
- #pragma mark - Navigation
- 
- // In a storyboard-based application, you will often want to do a little preparation before navigation
- - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
- // Get the new view controller using [segue destinationViewController].
- // Pass the selected object to the new view controller.
- }
- */
-
 @end
