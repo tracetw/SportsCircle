@@ -10,13 +10,20 @@
 #import "PersonalPageTableViewCell.h"
 #import <Parse/Parse.h>
 #import "EditProfileTableViewController.h"
+#import <ParseUI/ParseUI.h>
 
 
 @interface PersonalPageViewController ()
 {
-    NSDictionary *postWallDictionary;
     NSArray *postWallArray;
+    PFImageView *userImage;
+    PFImageView *imageView;
+    PFObject *postWallObject;
+    UIRefreshControl *refreshControl;
+    PFUser *currentUser;
+    PFQuery *query;
 }
+@property (strong, nonatomic) IBOutlet UITableView *personalPageTableView;
 @end
 
 @implementation PersonalPageViewController
@@ -24,14 +31,32 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    PFUser *currentUser = [PFUser currentUser];
-    PFQuery *query = [PFQuery queryWithClassName:@"WallPost"];
+    currentUser = [PFUser currentUser];
+    query = [PFQuery queryWithClassName:@"WallPost"];
     [query whereKey:@"user" equalTo:currentUser];
     
     postWallArray = [NSArray new];
-    postWallArray = [query findObjects];
-    postWallDictionary = [NSDictionary new];
+
+    [query findObjectsInBackgroundWithBlock:^(NSArray *postWall, NSError *error){
+        postWallArray = postWall;
+        [_personalPageTableView reloadData];
+    }];
     
+    userImage =[PFImageView new];
+    imageView = [PFImageView new];
+    
+    
+    UIView *refreshView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 0, 0)];
+    [_personalPageTableView insertSubview:refreshView atIndex:0]; //the tableView is a IBOutlet
+    
+    refreshControl = [[UIRefreshControl alloc] init];
+    refreshControl.tintColor = [UIColor redColor];
+    [refreshControl addTarget:self action:@selector(reloadDatas) forControlEvents:UIControlEventValueChanged];
+    NSMutableAttributedString *refreshString = [[NSMutableAttributedString alloc] initWithString:@"Pull To Refresh"];
+    [refreshString addAttributes:@{NSForegroundColorAttributeName : [UIColor grayColor]} range:NSMakeRange(0, refreshString.length)];
+    refreshControl.attributedTitle = refreshString;
+    [refreshView addSubview:refreshControl];
+
 }
 
 
@@ -44,43 +69,62 @@
     PersonalPageTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"personalCell" forIndexPath:indexPath];
     
     
-    postWallDictionary = postWallArray[indexPath.row];
-    //NSLog(@"%@",[postWallDictionary objectForKey:@"content"]);
-    cell.contentLabel.text = [postWallDictionary objectForKey:@"content"];
-    NSLog(@"%@",postWallDictionary);
-    NSString *sportType = [postWallDictionary objectForKey:@"sportsType"];
+    postWallObject = postWallArray[indexPath.row];
+    // placeholder image
+    
+    
+    imageView.image = [UIImage imageNamed:@"camera"];
+    
+    imageView.file = (PFFile *)postWallObject[@"image1"]; // remote image
+    
+    [imageView loadInBackground];
+    
+    //NSData *imageData = [imageView.file getData];
+    cell.postImage.image = imageView.image;//[UIImage imageWithData:imageData];
+    
+    cell.contentLabel.text = postWallObject[@"content"];
+    NSString *sportType = postWallObject[@"sportsType"];
     cell.sportTypeImage.image = [UIImage imageNamed:sportType];
     
-    PFFile *image = [postWallDictionary objectForKey:@"image1"];
-    NSData *imageData = [image getData];
-    cell.postImage.image = [UIImage imageWithData:imageData];
     
     //PFFile *userImage= [postWall objectForKey:@"image"];
     //cell.profileImage.image = [UIImage imageWithData:[profifeImg getData]];
     
     
-    PFObject *user = [postWallDictionary objectForKey:@"user"];
     
-    [user fetch];
+    
+    //    PFFile *userImageData = user[@"userImage"];
+    //    NSData *userImage = [userImageData getData];
+    //    cell.userImage.image = [UIImage imageWithData:userImage];
+    
+    //=--------------------
+    PFObject *user = postWallObject[@"user"];
+    
+    [user fetchInBackground];
     
     NSString *username = user[@"username"];
     
     [cell.userNameBtn setTitle:username forState:UIControlStateNormal];
     
-    PFFile *userImageData = user[@"userImage"];
-    NSData *userImage = [userImageData getData];
-    cell.userImage.image = [UIImage imageWithData:userImage];
+    
+    
+    userImage.image = [UIImage imageNamed:@"camera"];
+    //NSLog(@"user111 %@",user);
+    userImage.file = (PFFile *)user[@"userImage"];
+    
+    [userImage loadInBackground];
+    
+    cell.userImage.image = userImage.image;
     
     
     
-    PFObject *postWallObject = postWallArray[indexPath.row];
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
     NSDate *postTime = postWallObject.createdAt;
     NSString *strDate = [dateFormatter stringFromDate:postTime];
     cell.timeLabel.text = strDate;
     
-    
+    //=-----------------------
     
     
     return cell;
@@ -93,7 +137,17 @@
     
 }
 
+-(void) reloadDatas{
+    
+    [query findObjectsInBackgroundWithBlock:^(NSArray *postWall, NSError *error){
+        postWallArray = postWall;
+        [_personalPageTableView reloadData];
+        [refreshControl endRefreshing];
 
+    }];
+    
+   
+}
 
 
 - (void)didReceiveMemoryWarning {

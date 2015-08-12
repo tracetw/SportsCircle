@@ -79,6 +79,7 @@
         [counter invalidate];
         EndRecordingViewController *endRecordingView = [self.storyboard instantiateViewControllerWithIdentifier:@"endRecordingView"];
         [self.navigationController pushViewController:endRecordingView animated:YES];
+        [mapRecordingView snapShotRoute];
     }
 }
 

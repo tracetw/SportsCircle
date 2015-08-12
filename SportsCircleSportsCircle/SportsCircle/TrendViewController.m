@@ -10,12 +10,16 @@
 #import <QuartzCore/QuartzCore.h>
 #import <Parse/Parse.h>
 #import "TrendTableViewCell.h"
+#import <ParseUI/ParseUI.h>
+
 @interface TrendViewController ()<UITableViewDelegate,UITableViewDataSource>
 {
     NSDictionary *postWallDictionary;
     NSArray *postWallArray;
     //NSMutableArray *datas;
     UIRefreshControl *refreshControl;
+    PFImageView *userImage;
+
 }
 @property (weak, nonatomic) IBOutlet UIView *theListView;
 @property (strong, nonatomic) IBOutlet UIView *theTrendView;
@@ -65,7 +69,7 @@
     //[self fetchDataFromParse];
    // [[PFUser currentUser] refreshInBackgroundWithBlock:nil];
     
-    UIView *refreshView = [[UIView alloc] initWithFrame:CGRectMake(0, -50, 0, 0)];
+    UIView *refreshView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 0, 0)];
     [self.tableView insertSubview:refreshView atIndex:0]; //the tableView is a IBOutlet
     
     refreshControl = [[UIRefreshControl alloc] init];
@@ -216,35 +220,54 @@
     cell.sportImg=userSchedulesA[@"image4"];
     */
     
-    postWallDictionary = postWallArray[indexPath.row];
-    //NSLog(@"%@",[postWallDictionary objectForKey:@"content"]);
-    cell.contentLabel.text = [postWallDictionary objectForKey:@"content"];
-    NSLog(@"%@",postWallDictionary);
-    NSString *sportType = [postWallDictionary objectForKey:@"sportsType"];
+    PFObject *postWallObject = postWallArray[indexPath.row];
+    PFImageView *imageView = [PFImageView new];
+    imageView.image = [UIImage imageNamed:@"camera"]; // placeholder image
+    imageView.file = (PFFile *)postWallObject[@"image1"]; // remote image
+    
+    [imageView loadInBackground];
+    
+    //NSData *imageData = [imageView.file getData];
+    cell.postImage.image = imageView.image;//[UIImage imageWithData:imageData];
+    
+    cell.contentLabel.text = postWallObject[@"content"];
+    NSString *sportType = postWallObject[@"sportsType"];
     cell.sportTypeImage.image = [UIImage imageNamed:sportType];
     
-    PFFile *image = [postWallDictionary objectForKey:@"image1"];
-    NSData *imageData = [image getData];
-    cell.postImage.image = [UIImage imageWithData:imageData];
-    
-    //PFFile *userImage= [postWall objectForKey:@"image"];
-    //cell.profileImage.image = [UIImage imageWithData:[profifeImg getData]];
     
     
-    PFObject *user = [postWallDictionary objectForKey:@"user"];
+    //PFObject *user = [postWallDictionary objectForKey:@"user"];
     
-    [user fetch];
+    PFObject *user = postWallObject[@"user"];
     
-    NSString *username = user[@"username"];
-    cell.userName.text = username;
+    cell.userName.text = @"Name";
     
-    PFFile *userImageData = user[@"userImage"];
-    NSData *userImage = [userImageData getData];
-    cell.userImage.image = [UIImage imageWithData:userImage];
+    [user fetchInBackgroundWithBlock:^(PFObject *user,NSError *error){
+        
+        NSString *username = user[@"username"];
+        cell.userName.text = username;
+        
+        userImage.file = (PFFile *)user[@"userImage"];
+        
+        [userImage loadInBackground];
+        
+        cell.userImage.image = userImage.image;
+        
+        
+    }];
+    
+    userImage.image = [UIImage imageNamed:@"camera"];
+    
+    cell.userImage.image = userImage.image;
+    
+    
+    //    PFFile *userImageData = user[@"userImage"];
+    //    NSData *userImage = [userImageData getData];
+    //    cell.userImage.image = [UIImage imageWithData:userImage];
     
     
     
-    PFObject *postWallObject = postWallArray[indexPath.row];
+    //PFObject *postWallObject = postWallArray[indexPath.row];
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
     NSDate *postTime = postWallObject.createdAt;

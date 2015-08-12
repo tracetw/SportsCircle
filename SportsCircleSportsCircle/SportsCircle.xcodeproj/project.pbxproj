@@ -35,6 +35,8 @@
 		768A20261B6EFD3F005A7E66 /* RecordingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 768A20251B6EFD3F005A7E66 /* RecordingViewController.m */; };
 		768A20291B6F0505005A7E66 /* MapRecordingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 768A20281B6F0505005A7E66 /* MapRecordingViewController.m */; };
 		768A202C1B6F090E005A7E66 /* EndRecordingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 768A202B1B6F090E005A7E66 /* EndRecordingViewController.m */; };
+		76F2DDD31B7A3AFC00B50AAB /* FriendTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 76F2DDD21B7A3AFC00B50AAB /* FriendTableViewController.m */; };
+		76F2DDD61B7A3B2700B50AAB /* FriendsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 76F2DDD51B7A3B2700B50AAB /* FriendsTableViewCell.m */; };
 		D30CA2081B74A9AD00CE61AD /* scheduleDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D30CA2031B74A9AD00CE61AD /* scheduleDetailViewController.m */; };
 		D30CA2091B74A9AD00CE61AD /* scheduleTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D30CA2051B74A9AD00CE61AD /* scheduleTableViewCell.m */; };
 		D30CA20A1B74A9AD00CE61AD /* scheduleTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D30CA2071B74A9AD00CE61AD /* scheduleTableViewController.m */; };
@@ -127,6 +129,10 @@
 		768A20281B6F0505005A7E66 /* MapRecordingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapRecordingViewController.m; sourceTree = "<group>"; };
 		768A202A1B6F090E005A7E66 /* EndRecordingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EndRecordingViewController.h; sourceTree = "<group>"; };
 		768A202B1B6F090E005A7E66 /* EndRecordingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EndRecordingViewController.m; sourceTree = "<group>"; };
+		76F2DDD11B7A3AFC00B50AAB /* FriendTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FriendTableViewController.h; sourceTree = "<group>"; };
+		76F2DDD21B7A3AFC00B50AAB /* FriendTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FriendTableViewController.m; sourceTree = "<group>"; };
+		76F2DDD41B7A3B2700B50AAB /* FriendsTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FriendsTableViewCell.h; sourceTree = "<group>"; };
+		76F2DDD51B7A3B2700B50AAB /* FriendsTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FriendsTableViewCell.m; sourceTree = "<group>"; };
 		D30CA2021B74A9AD00CE61AD /* scheduleDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = scheduleDetailViewController.h; sourceTree = "<group>"; };
 		D30CA2031B74A9AD00CE61AD /* scheduleDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = scheduleDetailViewController.m; sourceTree = "<group>"; };
 		D30CA2041B74A9AD00CE61AD /* scheduleTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = scheduleTableViewCell.h; sourceTree = "<group>"; };
@@ -340,6 +346,10 @@
 				764C47BA1B735EDE00AC09E8 /* PersonalPageViewController.m */,
 				764C47BC1B735FB700AC09E8 /* PersonalPageTableViewCell.h */,
 				764C47BD1B735FB700AC09E8 /* PersonalPageTableViewCell.m */,
+				76F2DDD11B7A3AFC00B50AAB /* FriendTableViewController.h */,
+				76F2DDD21B7A3AFC00B50AAB /* FriendTableViewController.m */,
+				76F2DDD41B7A3B2700B50AAB /* FriendsTableViewCell.h */,
+				76F2DDD51B7A3B2700B50AAB /* FriendsTableViewCell.m */,
 				701F1D871B71BA0D00BD2673 /* Search */,
 				70E3C0CB1B6B9A7300A5C14E /* PopView */,
 				70E3C0D21B6BB15500A5C14E /* schedule */,
@@ -520,6 +530,7 @@
 				D30CA2091B74A9AD00CE61AD /* scheduleTableViewCell.m in Sources */,
 				768A20291B6F0505005A7E66 /* MapRecordingViewController.m in Sources */,
 				D30CA2081B74A9AD00CE61AD /* scheduleDetailViewController.m in Sources */,
+				76F2DDD61B7A3B2700B50AAB /* FriendsTableViewCell.m in Sources */,
 				768A202C1B6F090E005A7E66 /* EndRecordingViewController.m in Sources */,
 				70D60FC21B5569BA001BB4C9 /* TrendViewController.m in Sources */,
 				70E3C0A51B6B94E500A5C14E /* mapViewController.m in Sources */,
@@ -538,6 +549,7 @@
 				D3541A471B786FA3003F4D15 /* DetailImageViewController.m in Sources */,
 				D30CA2171B74AA2100CE61AD /* AKPickerView.m in Sources */,
 				7076B5DD1B70D496004E81EF /* SearchViewController.m in Sources */,
+				76F2DDD31B7A3AFC00B50AAB /* FriendTableViewController.m in Sources */,
 				7076B5DA1B6FA972004E81EF /* scheduleEditViewController.m in Sources */,
 				702BBACA1B5547FE00C09B9B /* SignUpViewController.m in Sources */,
 				D3541A4A1B786FD3003F4D15 /* ImageCollectionViewCell.m in Sources */,
