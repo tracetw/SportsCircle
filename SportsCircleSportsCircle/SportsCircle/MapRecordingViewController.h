@@ -12,5 +12,6 @@
 
 @interface MapRecordingViewController : UIViewController
 - (void)viewDidLoad;
+-(void)snapShotRoute;
 
 @end
