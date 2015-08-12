@@ -9,7 +9,10 @@
 #import "SearchViewController.h"
 #import <Parse/Parse.h>
 @interface SearchViewController ()
-
+{
+    PFQuery *query;
+    NSString *searchText2;
+}
 
 @end
 
@@ -17,34 +20,36 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-      /* PFQuery *query = [PFQuery queryWithClassName:@"User"];
-    [query whereKey:@"username" equalTo:@"vito"];
-    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-        if (!error) {
-            // The find succeeded.
-            NSLog(@"Successfully retrieved %d scores.", objects.count);
-            // Do something with the found objects
-            for (PFObject *object in objects) {
-                NSLog(@"%@", object.objectId);
-            }
-        } else {
-            // Log details of the failure
-            NSLog(@"Error: %@ %@", error, [error userInfo]);
-        }
-    }];
- */
-    PFQuery *query = [PFQuery queryWithClassName:@"schedule"];
-    [query whereKey:@"scheduleDetail" hasPrefix:@"行程內容run"];
-    NSArray* scoreArray = [query findObjects];
-    
-    NSLog(@"===: %@ ",scoreArray);
-    
+  
     _tableView.delegate=self;
     _tableView.dataSource=self;
     _searchBar.delegate=self;
     
-    totalString=[[NSMutableArray alloc]initWithObjects:@"One",@"Two",@"Three",@"Four",@"Five",@"Six",@"Seven", nil];
-    //目前是放這個七個object,之後再換成資料庫～不過還要解決search沒輸入時應該下面列表為空
+    //PFUser *currentUser=[PFUser currentUser];//抓到目前user的objId
+    query = [PFQuery queryWithClassName:@"_User"];
+    //query為指向sc類別
+    //[query whereKey:@"user" equalTo:currentUser];
+    //類別為sc且key為user時value為currentUser
+  
+    NSArray *userData = [query findObjects];//抓出資料有五筆
+    
+    
+    totalString=[[NSMutableArray alloc]initWithObjects:nil];
+    for (PFObject *object in userData) {
+        NSString *Uname = [object objectForKey:@"username"];
+        [totalString addObject:Uname];
+    }
+    
+   // for (NSInteger i=0; i<=userData.count; i++)
+   // {
+        //NSDictionary *UserNameDictionary=userData[i];
+   //     NSString *Uname = [userData[i] objectForKey:@"usernameX"];
+   //     [totalString addObject:Uname];
+   //因為Uname不能自動為Uname1~5 }
+   
+    
+    //還要解決search沒輸入時應該下面列表為空
+    
     
 }
 
@@ -55,8 +60,10 @@
 
 -(void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText
 {
+    searchText2 = searchText;
     if (searchText.length==0) {
         isFiltered=NO;
+        //這裏根本沒跑進來啊？
     }else{
         isFiltered=YES;
         filteredStr=[[NSMutableArray alloc]init];
@@ -95,6 +102,13 @@
     }else{
         cell.textLabel.text=[filteredStr objectAtIndex:indexPath.row];
     }
+    if (searchText2.length==0) {
+        [cell setHidden:YES];
+    }else{
+        [cell setHidden:NO];
+    }
+    
+    
     return cell;
 }
 
