@@ -1349,6 +1349,9 @@
                             <outlet property="delegate" destination="prw-gF-kVA" id="sN6-Ry-8x6"/>
                         </connections>
                     </tableView>
+                    <connections>
+                        <outlet property="goDetailBtn" destination="g7P-E7-P8n" id="5PR-72-RqP"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8AW-QW-6Sb" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="pN3-9V-zex" userLabel="Exit" sceneMemberID="exit"/>
