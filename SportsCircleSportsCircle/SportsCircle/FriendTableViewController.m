@@ -194,7 +194,7 @@
 -(void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
     
     NSIndexPath *indexPath = [_friendsView indexPathForSelectedRow];
-    FriendsTableViewCell *cell = [_friendsView cellForRowAtIndexPath:indexPath];
+    FriendsTableViewCell *cell = (FriendsTableViewCell *)[_friendsView cellForRowAtIndexPath:indexPath];
     //FriendsTableViewCell *cell = [_friendsView dequeueReusableCellWithIdentifier:@"friendCell" forIndexPath:indexPath];
     PersonalPageViewController *view = [segue destinationViewController];
     [view passData:cell.userName.text];

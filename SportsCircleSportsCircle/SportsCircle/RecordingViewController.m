@@ -38,7 +38,6 @@
     
     [_cameraButton setBackgroundImage:[UIImage imageNamed:@"camera.png"] forState:UIControlStateNormal];
     mapRecordingView = [self.storyboard instantiateViewControllerWithIdentifier:@"MapRecordingView"];
-    [mapRecordingView viewDidLoad];
     
     UIBarButtonItem *mapButton = [[UIBarButtonItem alloc]initWithTitle:@"Map" style:UIBarButtonItemStylePlain target:self action:@selector(mapBtnPressed:)];
     

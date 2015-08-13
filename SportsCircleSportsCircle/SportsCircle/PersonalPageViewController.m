@@ -34,7 +34,7 @@
     // Do any additional setup after loading the view.
     
     currentUser = [PFUser currentUser];
-    if ([usernameStr isEqualToString: currentUser.username]) {
+    if ([usernameStr isEqualToString: currentUser.username] || usernameStr == nil) {
         
         query = [PFQuery queryWithClassName:@"WallPost"];
         [query whereKey:@"user" equalTo:currentUser];
