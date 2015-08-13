@@ -9,5 +9,9 @@
 #import <UIKit/UIKit.h>
 
 @interface PersonalPageViewController : UIViewController
+{
+    NSString *usernameStr;
+}
+-(void)passData:(NSString*)argu;
 
 @end

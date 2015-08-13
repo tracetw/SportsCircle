@@ -11,7 +11,7 @@
 #import <Parse/Parse.h>
 #import "EditProfileTableViewController.h"
 #import <ParseUI/ParseUI.h>
-
+#import "SearchViewController.h"
 
 @interface PersonalPageViewController ()
 {
@@ -57,6 +57,8 @@
     refreshControl.attributedTitle = refreshString;
     [refreshView addSubview:refreshControl];
 
+     NSLog(@"edit id= %@",usernameStr);
+    
 }
 
 
@@ -154,7 +156,10 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
+-(void)passData:(NSString*)argu;
+{
+    usernameStr=argu;
+}
 /*
 #pragma mark - Navigation
 

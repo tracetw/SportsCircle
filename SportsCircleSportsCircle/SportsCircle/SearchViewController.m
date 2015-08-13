@@ -7,9 +7,12 @@
 //
 
 #import "SearchViewController.h"
+#import "SearchTableViewCell.h"
 #import <Parse/Parse.h>
-@interface SearchViewController ()
+#import "PersonalPageViewController.h"
+@interface SearchViewController ()<UITableViewDelegate,UITableViewDataSource,UISearchBarDelegate>
 {
+    NSMutableArray *datas;
     PFQuery *query;
     NSString *searchText2;
 }
@@ -33,7 +36,6 @@
   
     NSArray *userData = [query findObjects];//抓出資料有五筆
     
-    
     totalString=[[NSMutableArray alloc]initWithObjects:nil];
     for (PFObject *object in userData) {
         NSString *Uname = [object objectForKey:@"username"];
@@ -47,10 +49,10 @@
    //     [totalString addObject:Uname];
    //因為Uname不能自動為Uname1~5 }
    
-    
-    //還要解決search沒輸入時應該下面列表為空
-    
-    
+    datas=[[NSMutableArray alloc]init];
+    for (PFObject *object in userData) {
+        [datas addObject:object];
+    }
 }
 
 -(void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
@@ -116,22 +118,32 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
+/*
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     //以下可以辨識點擊哪一行
-    UITableViewCell * cell = [_tableView cellForRowAtIndexPath:indexPath];
-    NSLog(@"cell title:%@ and row:%li",cell.textLabel.text,indexPath.row);
-}
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    //UITableViewCell * cell = [_tableView cellForRowAtIndexPath:indexPath];
+    //NSLog(@"cell title:%@ and row:%li",cell.textLabel.text,indexPath.row);
 }
 */
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+if ([[segue identifier] isEqualToString:@"goPersonalPage"])
+{
+
+        NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
+        //NSArray *object=[totalString objectAtIndex:indexPath.row];
+        PFObject * object = [datas objectAtIndex:indexPath.row];
+        //NSLog(@"object:%@",object);
+        NSString *objectCellId =object[@"username"];
+        //NSString *id1=[NSString stringWithFormat:@"%@",objectCellId];
+        UITableViewCell * cell = [self.tableView cellForRowAtIndexPath:indexPath];
+        NSLog(@"cell title:%@ , row:%li and objectId:%@",cell.textLabel.text,indexPath.row,objectCellId);
+        
+        //NSDate *object = datas[indexPath.row];
+        PersonalPageViewController *controller = (PersonalPageViewController *)[segue destinationViewController];
+        [controller passData:cell.textLabel.text];
+    }
+}
+
 
 @end
