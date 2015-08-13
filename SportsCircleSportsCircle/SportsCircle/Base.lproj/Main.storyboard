@@ -602,7 +602,7 @@
                                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                             </state>
                                             <connections>
-                                                <segue destination="Hy8-P5-U1z" kind="show" id="DbG-qm-mvc"/>
+                                                <segue destination="Hy8-P5-U1z" kind="show" identifier="goEditProfileTableViewController" id="DbG-qm-mvc"/>
                                             </connections>
                                         </button>
                                     </subviews>
@@ -652,7 +652,7 @@
                     </connections>
                 </searchDisplayController>
             </objects>
-            <point key="canvasLocation" x="-1095" y="2732"/>
+            <point key="canvasLocation" x="-847" y="2644"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="1Td-WE-mAg">
@@ -1962,7 +1962,7 @@
                                     <constraint firstAttribute="width" constant="568" id="QJg-by-Plh"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>

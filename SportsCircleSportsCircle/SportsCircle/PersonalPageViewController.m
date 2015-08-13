@@ -12,6 +12,7 @@
 #import "EditProfileTableViewController.h"
 #import <ParseUI/ParseUI.h>
 #import "SearchViewController.h"
+#import "EditProfileTableViewController.h"
 
 @interface PersonalPageViewController ()
 {
@@ -152,6 +153,17 @@
 }
 
 
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([[segue identifier] isEqualToString:@"goEditProfileTableViewController"])
+    {
+
+        EditProfileTableViewController *controller = (EditProfileTableViewController *)[segue destinationViewController];
+        [controller passValue:usernameStr];
+    }
+}
+
+
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -159,6 +171,7 @@
 -(void)passData:(NSString*)argu;
 {
     usernameStr=argu;
+
 }
 /*
 #pragma mark - Navigation

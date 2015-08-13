@@ -59,6 +59,10 @@
     
     [self queryDatabase];
 }
+
+- (void)passValue:(NSString *)userNameTextField {
+    NSLog(@"aaaaaaaa%@",userNameTextField);
+}
 -(void)settingStyle{
     self.beFriendButton.buttonColor = [UIColor turquoiseColor];
     self.beFriendButton.shadowColor = [UIColor greenSeaColor];

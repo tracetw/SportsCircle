@@ -640,13 +640,10 @@
 			files = (
 				768A20291B6F0505005A7E66 /* MapRecordingViewController.m in Sources */,
 				D30CA2081B74A9AD00CE61AD /* scheduleDetailViewController.m in Sources */,
-<<<<<<< HEAD
 				D34FCE311B7B86870002DE1A /* UIToolbar+FlatUI.m in Sources */,
 				D34FCE281B7B86870002DE1A /* UIFont+FlatUI.m in Sources */,
 				D34FCE301B7B86870002DE1A /* UITableViewCell+FlatUI.m in Sources */,
-=======
 				705B4DD51B7B84680019FC7D /* SearchTableViewCell.m in Sources */,
->>>>>>> f7ade6db7bffdfe34c0587a687681c502b611837
 				76F2DDD61B7A3B2700B50AAB /* FriendsTableViewCell.m in Sources */,
 				D34FCE2B1B7B86870002DE1A /* UIPopoverController+FlatUI.m in Sources */,
 				768A202C1B6F090E005A7E66 /* EndRecordingViewController.m in Sources */,
@@ -682,21 +679,15 @@
 				76F2DDD31B7A3AFC00B50AAB /* FriendTableViewController.m in Sources */,
 				D34FCE251B7B86870002DE1A /* NSString+Icons.m in Sources */,
 				7076B5DA1B6FA972004E81EF /* scheduleEditViewController.m in Sources */,
-<<<<<<< HEAD
 				D34FCE231B7B86870002DE1A /* FUISwitch.m in Sources */,
 				D34FCE2D1B7B86870002DE1A /* UISlider+FlatUI.m in Sources */,
-=======
 				7072471C1B7C28AC00034F62 /* scheduleTableViewCell.m in Sources */,
->>>>>>> f7ade6db7bffdfe34c0587a687681c502b611837
 				702BBACA1B5547FE00C09B9B /* SignUpViewController.m in Sources */,
 				D3541A4A1B786FD3003F4D15 /* ImageCollectionViewCell.m in Sources */,
 				D38B8D3A1B71B84200124706 /* EditProfileTableViewController.m in Sources */,
 				764C47BE1B735FB700AC09E8 /* PersonalPageTableViewCell.m in Sources */,
-<<<<<<< HEAD
 				D34FCE2A1B7B86870002DE1A /* UINavigationBar+FlatUI.m in Sources */,
 				701F1D8D1B71BA9C00BD2673 /* searchDetailViewController.m in Sources */,
-=======
->>>>>>> f7ade6db7bffdfe34c0587a687681c502b611837
 				D30CA20A1B74A9AD00CE61AD /* scheduleTableViewController.m in Sources */,
 				D34A63451B4CED0700710B1F /* main.m in Sources */,
 				D3E4B0201B72F7160082DE6B /* FavoriteSportViewController.m in Sources */,
