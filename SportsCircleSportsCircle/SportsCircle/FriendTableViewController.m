@@ -10,17 +10,21 @@
 #import "FriendsTableViewCell.h"
 #import <Parse/Parse.h>
 #import <ParseUI/ParseUI.h>
+#import "PersonalPageViewController.h"
+
 
 @interface FriendTableViewController ()
 {
     NSArray *qfriends;
     NSArray *friends;
     NSArray *unfriends;
-    PFImageView *userImage;
+    PFImageView *usersImage;
     PFObject *fObject;
     UIRefreshControl *refreshControl;
     PFUser *currentUser;
     PFQuery *query;
+    NSString *username;
+    
 }
 @property (strong, nonatomic) IBOutlet UITableView *friendsView;
 
@@ -63,6 +67,7 @@
     [refreshString addAttributes:@{NSForegroundColorAttributeName : [UIColor grayColor]} range:NSMakeRange(0, refreshString.length)];
     refreshControl.attributedTitle = refreshString;
     [refreshView addSubview:refreshControl];
+    //usersImage = [PFImageView new];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -104,20 +109,22 @@
         
         cell.friendObjectId = user.objectId;
         
-        NSString *username = user[@"username"];
+        username = user[@"username"];
         NSLog(@"name %@",username);
         cell.userName.text = username;
         
         PFFile *userImageData = user[@"userImage"];
         NSData *userImage = [userImageData getData];
         cell.userImage.image = [UIImage imageWithData:userImage];
-        //userImage.image = [UIImage imageNamed:@"camera"];
         
-        //userImage.file = (PFFile *)user[@"userImage"];
         
-        //[userImage loadInBackground];
-        
-        // cell.userImage.image = userImage.image;
+//        userImage.image = [UIImage imageNamed:@"camera"];
+//        
+//        userImage.file = (PFFile *)user[@"userImage"];
+//        
+//        [userImage loadInBackground];
+//        
+//        cell.userImage.image = userImage.image;
         
         
         [cell.addDelFriends setTitle:@"Add" forState:UIControlStateNormal];
@@ -127,15 +134,16 @@
     else if (indexPath.section == 1){
         NSString *friendObject = friends[indexPath.row];
         PFUser *user = [PFQuery getUserObjectWithId:friendObject];
-        NSString *username = user[@"username"];
+        username = user[@"username"];
         cell.friendObjectId = user.objectId;
         cell.userName.text = username;
         
-        //            userImage.file = (PFFile *)user[@"userImage"];
-        //
-        //            [userImage loadInBackground];
-        //
-        //            cell.userImage.image = userImage.image;
+//        userImage.image = [UIImage imageNamed:@"camera"];
+//        userImage.file = (PFFile *)user[@"userImage"];
+//        
+//        [userImage loadInBackground];
+//        
+//        cell.userImage.image = userImage.image;
         PFFile *userImageData = user[@"userImage"];
         NSData *userImage = [userImageData getData];
         cell.userImage.image = [UIImage imageWithData:userImage];
@@ -181,6 +189,15 @@
         [refreshControl endRefreshing];
     }];
     
+}
+
+-(void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
+    
+    NSIndexPath *indexPath = [_friendsView indexPathForSelectedRow];
+    FriendsTableViewCell *cell = [_friendsView cellForRowAtIndexPath:indexPath];
+    //FriendsTableViewCell *cell = [_friendsView dequeueReusableCellWithIdentifier:@"friendCell" forIndexPath:indexPath];
+    PersonalPageViewController *view = [segue destinationViewController];
+    [view passData:cell.userName.text];
 }
 /*
 // Override to support conditional editing of the table view.

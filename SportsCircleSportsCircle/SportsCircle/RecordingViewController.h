@@ -12,4 +12,5 @@
 {
     NSTimer *counter;
 }
+-(void) getSportType:(NSString *)sportType;
 @end
