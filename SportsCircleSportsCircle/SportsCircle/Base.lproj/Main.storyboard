@@ -146,8 +146,11 @@
                                                         <constraint firstAttribute="width" constant="100" id="D4u-Ow-ElU"/>
                                                     </constraints>
                                                 </imageView>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9kO-iU-Uwo">
-                                                    <rect key="frame" x="546" y="8" width="40" height="30"/>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9kO-iU-Uwo" customClass="FUIButton">
+                                                    <rect key="frame" x="545" y="8" width="47" height="38"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="47" id="PTd-0U-cHw"/>
+                                                    </constraints>
                                                     <state key="normal" title="+好友">
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
@@ -155,10 +158,11 @@
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="Vpr-S9-vYc" firstAttribute="leading" secondItem="tVd-Dc-MeB" secondAttribute="leadingMargin" id="5xC-9k-Irf"/>
-                                                <constraint firstItem="9kO-iU-Uwo" firstAttribute="top" secondItem="tVd-Dc-MeB" secondAttribute="topMargin" id="CBi-sK-Ftj"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="9kO-iU-Uwo" secondAttribute="trailing" id="B8I-mH-cMd"/>
                                                 <constraint firstItem="Vpr-S9-vYc" firstAttribute="top" secondItem="tVd-Dc-MeB" secondAttribute="topMargin" constant="-9" id="KFm-Qq-yIW"/>
+                                                <constraint firstItem="9kO-iU-Uwo" firstAttribute="top" secondItem="tVd-Dc-MeB" secondAttribute="topMargin" id="W0c-ut-8fY"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="9kO-iU-Uwo" secondAttribute="bottom" constant="45.5" id="YyZ-N3-wEl"/>
                                                 <constraint firstItem="Vpr-S9-vYc" firstAttribute="centerY" secondItem="tVd-Dc-MeB" secondAttribute="centerY" id="lYB-P9-28k"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="9kO-iU-Uwo" secondAttribute="trailing" constant="6" id="s84-k3-iGg"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -311,8 +315,8 @@
                                                         </collectionViewCell>
                                                     </cells>
                                                     <connections>
-                                                        <outlet property="dataSource" destination="Hy8-P5-U1z" id="xrL-do-yWZ"/>
-                                                        <outlet property="delegate" destination="Hy8-P5-U1z" id="vcS-XU-Kn9"/>
+                                                        <outlet property="dataSource" destination="Hy8-P5-U1z" id="4HX-2n-ciQ"/>
+                                                        <outlet property="delegate" destination="Hy8-P5-U1z" id="1J8-Ar-SjM"/>
                                                     </connections>
                                                 </collectionView>
                                             </subviews>
@@ -328,7 +332,7 @@
                             </tableViewSection>
                             <tableViewSection headerTitle="裝備相片" id="swR-G7-E8S">
                                 <cells>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cellIdentifier" rowHeight="100" id="UBs-Vv-Jnx">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cellIdentifier" rowHeight="150" id="UBs-Vv-Jnx">
                                         <rect key="frame" x="0.0" y="644" width="600" height="100"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="UBs-Vv-Jnx" id="M9h-1q-ue6">
@@ -360,12 +364,16 @@
                                                             </view>
                                                         </collectionViewCell>
                                                     </cells>
+                                                    <connections>
+                                                        <outlet property="dataSource" destination="Hy8-P5-U1z" id="Xwe-K6-KxP"/>
+                                                        <outlet property="delegate" destination="Hy8-P5-U1z" id="1Qj-vk-Y6I"/>
+                                                    </connections>
                                                 </collectionView>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="ZQX-dF-hea" firstAttribute="leading" secondItem="M9h-1q-ue6" secondAttribute="leading" id="DPk-aq-9PD"/>
                                                 <constraint firstAttribute="trailing" secondItem="ZQX-dF-hea" secondAttribute="trailing" id="PjQ-ky-BCn"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="ZQX-dF-hea" secondAttribute="bottom" constant="-51" id="dBy-pj-G8r"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="ZQX-dF-hea" secondAttribute="bottom" constant="-1.5" id="dBy-pj-G8r"/>
                                                 <constraint firstItem="ZQX-dF-hea" firstAttribute="top" secondItem="M9h-1q-ue6" secondAttribute="top" id="ts1-RC-QNg"/>
                                             </constraints>
                                         </tableViewCellContentView>
@@ -380,7 +388,9 @@
                     </tableView>
                     <connections>
                         <outlet property="ageCell" destination="jzd-Tm-DwD" id="uxR-aE-WKq"/>
+                        <outlet property="beFriendButton" destination="9kO-iU-Uwo" id="4l8-Ul-Mkc"/>
                         <outlet property="collectionView" destination="yam-6P-Ki8" id="qdN-31-cPt"/>
+                        <outlet property="collectionView2" destination="ZQX-dF-hea" id="qaC-al-eTg"/>
                         <outlet property="genderCell" destination="g1o-7s-BbY" id="zWv-He-7U4"/>
                         <outlet property="habitCell" destination="TCn-VY-Yh0" id="yiA-co-WBC"/>
                         <outlet property="heightCell" destination="gVb-IK-0hx" id="teB-av-x4Y"/>

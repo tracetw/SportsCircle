@@ -13,6 +13,9 @@
 #import "FavoriteSportViewController.h"
 #import "DetailImageViewController.h"
 #import "ImageCollectionViewCell.h"
+#import "FUIButton.h"
+#import "UIColor+FlatUI.h"
+#import "UIFont+FlatUI.h"
 
 @interface EditProfileTableViewController ()<UITableViewDelegate,UITableViewDataSource,UICollectionViewDataSource, UICollectionViewDelegate>{
     NSMutableDictionary *profileDictionary; /**< 存個人資料包在Array裡面 */
@@ -29,7 +32,9 @@
 @property (weak, nonatomic) IBOutlet UITableViewCell *heightCell;
 @property (weak, nonatomic) IBOutlet UITableViewCell *weightCell;
 @property (weak, nonatomic) IBOutlet UITableViewCell *habitCell;
-@property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
+@property (weak, nonatomic) IBOutlet UICollectionView *collectionView;  /**< 運動相片 */
+@property (weak, nonatomic) IBOutlet UICollectionView *collectionView2; /**< 裝備相片 */
+@property (weak, nonatomic) IBOutlet FUIButton *beFriendButton;
 
 @end
 
@@ -38,6 +43,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Uncomment the following line to preserve selection between presentations.
+    
+    [self settingStyle];
 
     PFQuery *query = [PFQuery queryWithClassName:@"WallPost"];
     PFUser *currentUser = [PFUser currentUser];
@@ -45,10 +52,22 @@
     NSArray *usersPostsArray = [query findObjects];
     totalPictureNumber = usersPostsArray.count;
     
-    //self.collectionView.dataSource = self;
+//    self.collectionView.delegate = self;
+//    self.collectionView2.delegate = self;
+//    self.collectionView.dataSource = self;
+//    self.collectionView2.dataSource = self;
+    
     [self queryDatabase];
 }
-
+-(void)settingStyle{
+    self.beFriendButton.buttonColor = [UIColor turquoiseColor];
+    self.beFriendButton.shadowColor = [UIColor greenSeaColor];
+    self.beFriendButton.shadowHeight = 1.0f;
+    self.beFriendButton.cornerRadius = 3.0f;
+    self.beFriendButton.titleLabel.font = [UIFont boldFlatFontOfSize:16];
+    [self.beFriendButton setTitleColor:[UIColor cloudsColor] forState:UIControlStateNormal];
+    [self.beFriendButton setTitleColor:[UIColor cloudsColor] forState:UIControlStateHighlighted];
+}
 //如果資料有變動更新
 -(void)viewDidAppear:(BOOL)animated{
     if (tempDidUpdateSportItem) {
@@ -408,41 +427,55 @@
 */
 //----------------------------------CollectionView-------------------------------------------
 - (NSInteger)collectionView:(UICollectionView *)view numberOfItemsInSection:(NSInteger)section{
-    return totalPictureNumber;
+    if(view == _collectionView){
+        return totalPictureNumber;
+    }   //_collectionView2
+        return 30;
+
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
-    //create出CollectionViewCell實體
-    ImageCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"sportsCollectionIdentifiers" forIndexPath:indexPath];
+    if(collectionView == _collectionView){
+        
+        //create出CollectionViewCell實體
+        ImageCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"sportsCollectionIdentifiers" forIndexPath:indexPath];
+        
+        //cell.label.text = [NSString stringWithFormat:@"{%ld,%ld}", (long)indexPath.row, (long)indexPath.section];
+        
+        //載入小圖片
+        PFQuery *query = [PFQuery queryWithClassName:@"WallPost"];
+        PFUser *currentUser = [PFUser currentUser];
+        [query whereKey:@"user" equalTo:currentUser];
+        NSArray *usersPostsArray = [query findObjects];
+        //totalPictureNumber = usersPostsArray.count;
+        
+        PFFile *userImageFile = usersPostsArray[indexPath.row][@"image1"];
+        [userImageFile getDataInBackgroundWithBlock:^(NSData *imageData, NSError *error) {
+            if (!error) {
+                UIImage *image = [UIImage imageWithData:imageData];
+                cell.image.image = image;
+            }else{
+                NSLog(@"GG%@",error);
+            }
+        }];
+
+        //    NSString *imageToLoad = [NSString stringWithFormat:@"%ld", (long)indexPath.row];
+        //    cell.image.image = [UIImage imageNamed:imageToLoad];
+        
+        //設cell的背景色為gray
+        //[cell setBackgroundColor:[UIColor grayColor]];
+        
+        return cell;
+        
+    }   //_collectionView2
     
-    //cell.label.text = [NSString stringWithFormat:@"{%ld,%ld}", (long)indexPath.row, (long)indexPath.section];
-    
-    //載入小圖片
-    PFQuery *query = [PFQuery queryWithClassName:@"WallPost"];
-    PFUser *currentUser = [PFUser currentUser];
-    [query whereKey:@"user" equalTo:currentUser];
-    NSArray *usersPostsArray = [query findObjects];
-    //totalPictureNumber = usersPostsArray.count;
-
-    PFFile *userImageFile = usersPostsArray[indexPath.row][@"image1"];
-    [userImageFile getDataInBackgroundWithBlock:^(NSData *imageData, NSError *error) {
-        if (!error) {
-            UIImage *image = [UIImage imageWithData:imageData];
-            cell.image.image = image;
-        }else{
-            NSLog(@"GG%@",error);
-        }
-    }];
-
-     
-
-//    NSString *imageToLoad = [NSString stringWithFormat:@"%ld", (long)indexPath.row];
-//    cell.image.image = [UIImage imageNamed:imageToLoad];
+    ImageCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"equipCollectionIdentifiers" forIndexPath:indexPath];
     
     //設cell的背景色為gray
     [cell setBackgroundColor:[UIColor grayColor]];
     
     return cell;
+
 }
 //準備離開這個view時執行
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{

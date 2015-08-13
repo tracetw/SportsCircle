@@ -8,6 +8,7 @@
 
 #import "DetailImageViewController.h"
 #import <Parse/Parse.h>
+
 @interface DetailImageViewController ()<UIScrollViewDelegate>{
     int targetIndex;
     NSArray *usersPostsArray;
@@ -37,6 +38,7 @@
     [_imageView addGestureRecognizer:toRight];
     //允許ImageView接受使用者互動
     _imageView.userInteractionEnabled = YES;
+    
     
     
 
@@ -86,6 +88,7 @@
 -(UIView *) viewForZoomingInScrollView:(UIScrollView *)scrollView{
     return _imageView;
 }
+
 - (void)configureView {
     
     _imageView.contentMode = UIViewContentModeScaleAspectFit;
@@ -110,12 +113,17 @@
         if (!error) {
             UIImage *image = [UIImage imageWithData:imageData];
             self.imageView.image = image;
+            
         }else{
             NSLog(@"GG%@",error);
         }
     }];
     
     //self.imageView.image = self.image;
+    
+    
+    
+
 }
 
 - (void)viewWillAppear:(BOOL)animated
