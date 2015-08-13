@@ -7,11 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		701F1D8D1B71BA9C00BD2673 /* searchDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 701F1D8C1B71BA9C00BD2673 /* searchDetailViewController.m */; };
 		702032251B7351790059F06C /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 702032241B7351790059F06C /* libz.dylib */; };
 		702032271B7351820059F06C /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 702032261B7351820059F06C /* libsqlite3.dylib */; };
 		702BBACA1B5547FE00C09B9B /* SignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 702BBAC91B5547FE00C09B9B /* SignUpViewController.m */; };
 		703E3E8C1B722B7300768912 /* TrendTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 703E3E8B1B722B7300768912 /* TrendTableViewCell.m */; };
+		705B4DD51B7B84680019FC7D /* SearchTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 705B4DD41B7B84680019FC7D /* SearchTableViewCell.m */; };
+		7072471C1B7C28AC00034F62 /* scheduleTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7072471B1B7C28AC00034F62 /* scheduleTableViewCell.m */; };
 		7076B5DA1B6FA972004E81EF /* scheduleEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7076B5D91B6FA972004E81EF /* scheduleEditViewController.m */; };
 		7076B5DD1B70D496004E81EF /* SearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7076B5DC1B70D496004E81EF /* SearchViewController.m */; };
 		70D60FC21B5569BA001BB4C9 /* TrendViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70D60FC11B5569BA001BB4C9 /* TrendViewController.m */; };
@@ -38,7 +39,6 @@
 		76F2DDD31B7A3AFC00B50AAB /* FriendTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 76F2DDD21B7A3AFC00B50AAB /* FriendTableViewController.m */; };
 		76F2DDD61B7A3B2700B50AAB /* FriendsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 76F2DDD51B7A3B2700B50AAB /* FriendsTableViewCell.m */; };
 		D30CA2081B74A9AD00CE61AD /* scheduleDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D30CA2031B74A9AD00CE61AD /* scheduleDetailViewController.m */; };
-		D30CA2091B74A9AD00CE61AD /* scheduleTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D30CA2051B74A9AD00CE61AD /* scheduleTableViewCell.m */; };
 		D30CA20A1B74A9AD00CE61AD /* scheduleTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D30CA2071B74A9AD00CE61AD /* scheduleTableViewController.m */; };
 		D30CA2171B74AA2100CE61AD /* AKPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = D30CA20D1B74AA2100CE61AD /* AKPickerView.m */; };
 		D30CA2181B74AA2100CE61AD /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D30CA20E1B74AA2100CE61AD /* Bolts.framework */; };
@@ -84,14 +84,16 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		701F1D8B1B71BA9C00BD2673 /* searchDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = searchDetailViewController.h; sourceTree = "<group>"; };
-		701F1D8C1B71BA9C00BD2673 /* searchDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = searchDetailViewController.m; sourceTree = "<group>"; };
 		702032241B7351790059F06C /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		702032261B7351820059F06C /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		702BBAC81B5547FE00C09B9B /* SignUpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignUpViewController.h; sourceTree = "<group>"; };
 		702BBAC91B5547FE00C09B9B /* SignUpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignUpViewController.m; sourceTree = "<group>"; };
 		703E3E8A1B722B7300768912 /* TrendTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TrendTableViewCell.h; sourceTree = "<group>"; };
 		703E3E8B1B722B7300768912 /* TrendTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TrendTableViewCell.m; sourceTree = "<group>"; };
+		705B4DD31B7B84680019FC7D /* SearchTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchTableViewCell.h; sourceTree = "<group>"; };
+		705B4DD41B7B84680019FC7D /* SearchTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchTableViewCell.m; sourceTree = "<group>"; };
+		7072471A1B7C28AC00034F62 /* scheduleTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = scheduleTableViewCell.h; sourceTree = "<group>"; };
+		7072471B1B7C28AC00034F62 /* scheduleTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = scheduleTableViewCell.m; sourceTree = "<group>"; };
 		7076B5D81B6FA972004E81EF /* scheduleEditViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = scheduleEditViewController.h; sourceTree = "<group>"; };
 		7076B5D91B6FA972004E81EF /* scheduleEditViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = scheduleEditViewController.m; sourceTree = "<group>"; };
 		7076B5DB1B70D496004E81EF /* SearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchViewController.h; sourceTree = "<group>"; };
@@ -135,8 +137,6 @@
 		76F2DDD51B7A3B2700B50AAB /* FriendsTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FriendsTableViewCell.m; sourceTree = "<group>"; };
 		D30CA2021B74A9AD00CE61AD /* scheduleDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = scheduleDetailViewController.h; sourceTree = "<group>"; };
 		D30CA2031B74A9AD00CE61AD /* scheduleDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = scheduleDetailViewController.m; sourceTree = "<group>"; };
-		D30CA2041B74A9AD00CE61AD /* scheduleTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = scheduleTableViewCell.h; sourceTree = "<group>"; };
-		D30CA2051B74A9AD00CE61AD /* scheduleTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = scheduleTableViewCell.m; sourceTree = "<group>"; };
 		D30CA2061B74A9AD00CE61AD /* scheduleTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = scheduleTableViewController.h; sourceTree = "<group>"; };
 		D30CA2071B74A9AD00CE61AD /* scheduleTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = scheduleTableViewController.m; sourceTree = "<group>"; };
 		D30CA20C1B74AA2100CE61AD /* AKPickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AKPickerView.h; sourceTree = "<group>"; };
@@ -232,8 +232,8 @@
 			children = (
 				7076B5DB1B70D496004E81EF /* SearchViewController.h */,
 				7076B5DC1B70D496004E81EF /* SearchViewController.m */,
-				701F1D8B1B71BA9C00BD2673 /* searchDetailViewController.h */,
-				701F1D8C1B71BA9C00BD2673 /* searchDetailViewController.m */,
+				705B4DD31B7B84680019FC7D /* SearchTableViewCell.h */,
+				705B4DD41B7B84680019FC7D /* SearchTableViewCell.m */,
 			);
 			name = Search;
 			sourceTree = "<group>";
@@ -269,10 +269,10 @@
 			children = (
 				D30CA2061B74A9AD00CE61AD /* scheduleTableViewController.h */,
 				D30CA2071B74A9AD00CE61AD /* scheduleTableViewController.m */,
+				7072471A1B7C28AC00034F62 /* scheduleTableViewCell.h */,
+				7072471B1B7C28AC00034F62 /* scheduleTableViewCell.m */,
 				D30CA2021B74A9AD00CE61AD /* scheduleDetailViewController.h */,
 				D30CA2031B74A9AD00CE61AD /* scheduleDetailViewController.m */,
-				D30CA2041B74A9AD00CE61AD /* scheduleTableViewCell.h */,
-				D30CA2051B74A9AD00CE61AD /* scheduleTableViewCell.m */,
 				7076B5D81B6FA972004E81EF /* scheduleEditViewController.h */,
 				7076B5D91B6FA972004E81EF /* scheduleEditViewController.m */,
 			);
@@ -527,9 +527,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D30CA2091B74A9AD00CE61AD /* scheduleTableViewCell.m in Sources */,
 				768A20291B6F0505005A7E66 /* MapRecordingViewController.m in Sources */,
 				D30CA2081B74A9AD00CE61AD /* scheduleDetailViewController.m in Sources */,
+				705B4DD51B7B84680019FC7D /* SearchTableViewCell.m in Sources */,
 				76F2DDD61B7A3B2700B50AAB /* FriendsTableViewCell.m in Sources */,
 				768A202C1B6F090E005A7E66 /* EndRecordingViewController.m in Sources */,
 				70D60FC21B5569BA001BB4C9 /* TrendViewController.m in Sources */,
@@ -551,11 +551,11 @@
 				7076B5DD1B70D496004E81EF /* SearchViewController.m in Sources */,
 				76F2DDD31B7A3AFC00B50AAB /* FriendTableViewController.m in Sources */,
 				7076B5DA1B6FA972004E81EF /* scheduleEditViewController.m in Sources */,
+				7072471C1B7C28AC00034F62 /* scheduleTableViewCell.m in Sources */,
 				702BBACA1B5547FE00C09B9B /* SignUpViewController.m in Sources */,
 				D3541A4A1B786FD3003F4D15 /* ImageCollectionViewCell.m in Sources */,
 				D38B8D3A1B71B84200124706 /* EditProfileTableViewController.m in Sources */,
 				764C47BE1B735FB700AC09E8 /* PersonalPageTableViewCell.m in Sources */,
-				701F1D8D1B71BA9C00BD2673 /* searchDetailViewController.m in Sources */,
 				D30CA20A1B74A9AD00CE61AD /* scheduleTableViewController.m in Sources */,
 				D34A63451B4CED0700710B1F /* main.m in Sources */,
 				D3E4B0201B72F7160082DE6B /* FavoriteSportViewController.m in Sources */,
