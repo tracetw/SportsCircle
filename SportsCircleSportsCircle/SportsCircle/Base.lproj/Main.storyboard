@@ -1336,7 +1336,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="FB帳號" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tzE-E1-5eq">
-                                <rect key="frame" x="16" y="72" width="56" height="21"/>
+                                <rect key="frame" x="16" y="72" width="56" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -1374,8 +1374,8 @@
                                     <constraint firstAttribute="width" constant="80" id="oTd-iz-bWV"/>
                                 </constraints>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DZG-Hl-t0L">
-                                <rect key="frame" x="104" y="131" width="42" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DZG-Hl-t0L">
+                                <rect key="frame" x="104" y="132" width="42" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -1390,7 +1390,7 @@
                             <constraint firstItem="tzE-E1-5eq" firstAttribute="top" secondItem="trR-Pj-ucT" secondAttribute="bottom" constant="8" id="ZYd-2W-DQO"/>
                             <constraint firstItem="tzE-E1-5eq" firstAttribute="leading" secondItem="tjB-Na-d9G" secondAttribute="leadingMargin" id="cwS-xl-nWx"/>
                             <constraint firstItem="DZG-Hl-t0L" firstAttribute="leading" secondItem="Tms-9z-S4Y" secondAttribute="trailing" constant="8" id="eJn-v1-899"/>
-                            <constraint firstItem="DZG-Hl-t0L" firstAttribute="centerY" secondItem="Tms-9z-S4Y" secondAttribute="centerY" constant="1.25" id="rWM-qU-USe"/>
+                            <constraint firstItem="DZG-Hl-t0L" firstAttribute="centerY" secondItem="Tms-9z-S4Y" secondAttribute="centerY" constant="2.25" id="rWM-qU-USe"/>
                         </constraints>
                     </view>
                     <connections>
