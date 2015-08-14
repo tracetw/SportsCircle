@@ -35,7 +35,7 @@
 		7666690A1B674D3900280B20 /* PostMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 766669091B674D3900280B20 /* PostMainViewController.m */; };
 		768A20261B6EFD3F005A7E66 /* RecordingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 768A20251B6EFD3F005A7E66 /* RecordingViewController.m */; };
 		768A20291B6F0505005A7E66 /* MapRecordingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 768A20281B6F0505005A7E66 /* MapRecordingViewController.m */; };
-		768A202C1B6F090E005A7E66 /* EndRecordingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 768A202B1B6F090E005A7E66 /* EndRecordingViewController.m */; };
+		76A406CD1B7CDFFD00034BF6 /* endRecordingTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 76A406CC1B7CDFFD00034BF6 /* endRecordingTableViewController.m */; };
 		76F2DDD31B7A3AFC00B50AAB /* FriendTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 76F2DDD21B7A3AFC00B50AAB /* FriendTableViewController.m */; };
 		76F2DDD61B7A3B2700B50AAB /* FriendsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 76F2DDD51B7A3B2700B50AAB /* FriendsTableViewCell.m */; };
 		D30CA2081B74A9AD00CE61AD /* scheduleDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D30CA2031B74A9AD00CE61AD /* scheduleDetailViewController.m */; };
@@ -149,8 +149,8 @@
 		768A20251B6EFD3F005A7E66 /* RecordingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecordingViewController.m; sourceTree = "<group>"; };
 		768A20271B6F0505005A7E66 /* MapRecordingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapRecordingViewController.h; sourceTree = "<group>"; };
 		768A20281B6F0505005A7E66 /* MapRecordingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapRecordingViewController.m; sourceTree = "<group>"; };
-		768A202A1B6F090E005A7E66 /* EndRecordingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EndRecordingViewController.h; sourceTree = "<group>"; };
-		768A202B1B6F090E005A7E66 /* EndRecordingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EndRecordingViewController.m; sourceTree = "<group>"; };
+		76A406CB1B7CDFFD00034BF6 /* endRecordingTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = endRecordingTableViewController.h; sourceTree = "<group>"; };
+		76A406CC1B7CDFFD00034BF6 /* endRecordingTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = endRecordingTableViewController.m; sourceTree = "<group>"; };
 		76F2DDD11B7A3AFC00B50AAB /* FriendTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FriendTableViewController.h; sourceTree = "<group>"; };
 		76F2DDD21B7A3AFC00B50AAB /* FriendTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FriendTableViewController.m; sourceTree = "<group>"; };
 		76F2DDD41B7A3B2700B50AAB /* FriendsTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FriendsTableViewCell.h; sourceTree = "<group>"; };
@@ -389,8 +389,8 @@
 				768A20251B6EFD3F005A7E66 /* RecordingViewController.m */,
 				768A20271B6F0505005A7E66 /* MapRecordingViewController.h */,
 				768A20281B6F0505005A7E66 /* MapRecordingViewController.m */,
-				768A202A1B6F090E005A7E66 /* EndRecordingViewController.h */,
-				768A202B1B6F090E005A7E66 /* EndRecordingViewController.m */,
+				76A406CB1B7CDFFD00034BF6 /* endRecordingTableViewController.h */,
+				76A406CC1B7CDFFD00034BF6 /* endRecordingTableViewController.m */,
 				D3CFCC831B6F952D000B98FC /* SettingsViewController.h */,
 				D3CFCC841B6F952D000B98FC /* SettingsViewController.m */,
 				D38B8D381B71B84200124706 /* EditProfileTableViewController.h */,
@@ -638,6 +638,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				76A406CD1B7CDFFD00034BF6 /* endRecordingTableViewController.m in Sources */,
 				768A20291B6F0505005A7E66 /* MapRecordingViewController.m in Sources */,
 				D30CA2081B74A9AD00CE61AD /* scheduleDetailViewController.m in Sources */,
 				D34FCE311B7B86870002DE1A /* UIToolbar+FlatUI.m in Sources */,
@@ -646,7 +647,6 @@
 				705B4DD51B7B84680019FC7D /* SearchTableViewCell.m in Sources */,
 				76F2DDD61B7A3B2700B50AAB /* FriendsTableViewCell.m in Sources */,
 				D34FCE2B1B7B86870002DE1A /* UIPopoverController+FlatUI.m in Sources */,
-				768A202C1B6F090E005A7E66 /* EndRecordingViewController.m in Sources */,
 				70D60FC21B5569BA001BB4C9 /* TrendViewController.m in Sources */,
 				70E3C0A51B6B94E500A5C14E /* mapViewController.m in Sources */,
 				7666690A1B674D3900280B20 /* PostMainViewController.m in Sources */,
@@ -687,7 +687,6 @@
 				D38B8D3A1B71B84200124706 /* EditProfileTableViewController.m in Sources */,
 				764C47BE1B735FB700AC09E8 /* PersonalPageTableViewCell.m in Sources */,
 				D34FCE2A1B7B86870002DE1A /* UINavigationBar+FlatUI.m in Sources */,
-				701F1D8D1B71BA9C00BD2673 /* searchDetailViewController.m in Sources */,
 				D30CA20A1B74A9AD00CE61AD /* scheduleTableViewController.m in Sources */,
 				D34A63451B4CED0700710B1F /* main.m in Sources */,
 				D3E4B0201B72F7160082DE6B /* FavoriteSportViewController.m in Sources */,

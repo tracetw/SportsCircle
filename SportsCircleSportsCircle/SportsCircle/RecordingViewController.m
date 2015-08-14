@@ -7,15 +7,17 @@
 //
 
 #import "RecordingViewController.h"
-#import "EndRecordingViewController.h"
+#import "endRecordingTableViewController.h"
 #import "MapRecordingViewController.h"
 
 @interface RecordingViewController ()<UINavigationBarDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate>
 {
     int count;
     MapRecordingViewController *mapRecordingView;
+    NSString *sportName;
     UISwitch *switchview;
     CATransition *transition;
+    NSTimer *refleshDistance;
 
 }
 @property (weak, nonatomic) IBOutlet UILabel *miniSecond;
@@ -24,6 +26,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *hour;
 @property (weak, nonatomic) IBOutlet UIButton *cameraButton;
 @property (weak, nonatomic) IBOutlet UIView *lockScreenView;
+@property (weak, nonatomic) IBOutlet UIImageView *sportTypeImage;
 
 @end
 
@@ -35,7 +38,6 @@
     
     [_cameraButton setBackgroundImage:[UIImage imageNamed:@"camera.png"] forState:UIControlStateNormal];
     mapRecordingView = [self.storyboard instantiateViewControllerWithIdentifier:@"MapRecordingView"];
-    [mapRecordingView viewDidLoad];
     
     UIBarButtonItem *mapButton = [[UIBarButtonItem alloc]initWithTitle:@"Map" style:UIBarButtonItemStylePlain target:self action:@selector(mapBtnPressed:)];
     
@@ -47,7 +49,18 @@
     
     UIBarButtonItem *lockSwith = [[UIBarButtonItem alloc]initWithCustomView:switchview];
     
-    self.navigationItem.rightBarButtonItems = @[mapButton,lockSwith];
+    if ([sportName isEqualToString:@"Athletics"]) {
+        
+        mapRecordingView = [self.storyboard instantiateViewControllerWithIdentifier:@"MapRecordingView"];
+        [mapRecordingView viewDidLoad];
+        
+        refleshDistance = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(countDistance:) userInfo:NULL repeats:YES];
+        
+        self.navigationItem.rightBarButtonItems = @[mapButton,lockSwith];
+    }else
+    {
+        self.navigationItem.rightBarButtonItems = @[lockSwith];
+    }
     
     transition=[CATransition animation];
     transition.duration=0.6;
@@ -57,6 +70,8 @@
     transition.type=kCATransitionPush;
     
     _lockScreenView.hidden=YES;
+    
+    _sportTypeImage.image = [UIImage imageNamed:sportName];
 
 }
 
@@ -65,19 +80,19 @@
     if ([counter isValid]) {
         [counter invalidate];
     }else{
-        counter = [NSTimer scheduledTimerWithTimeInterval:0.01 target:self selector:@selector(addNumber:) userInfo:NULL repeats:YES];
+        counter = [NSTimer scheduledTimerWithTimeInterval:0.01 target:self selector:@selector(addNumber:) userInfo:NULL repeats:YES];//每0.01秒更新一次
     }
 }
 
 -(void)viewDidAppear:(BOOL)animated{
-    counter = [NSTimer scheduledTimerWithTimeInterval:0.01 target:self selector:@selector(addNumber:) userInfo:NULL repeats:YES];//每0.01秒更新一次
+    
 }
 
 - (IBAction)stopButtonLongPressed:(UILongPressGestureRecognizer*)recognizer {
     
     if (recognizer.state == UIGestureRecognizerStateBegan) {
         [counter invalidate];
-        EndRecordingViewController *endRecordingView = [self.storyboard instantiateViewControllerWithIdentifier:@"endRecordingView"];
+        endRecordingTableViewController *endRecordingView = [self.storyboard instantiateViewControllerWithIdentifier:@"endRecordingView"];
         [self.navigationController pushViewController:endRecordingView animated:YES];
         [mapRecordingView snapShotRoute];
     }
@@ -92,6 +107,17 @@
     }
 
 }
+
+-(void) imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info{
+    
+    UIImage *image = [info valueForKey:UIImagePickerControllerOriginalImage];
+    
+    UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil);
+    
+    [self dismissViewControllerAnimated:YES completion:nil];
+    
+}
+
 - (IBAction)mapBtnPressed:(id)sender {
     [self.navigationController showViewController: mapRecordingView sender:nil];
 }
@@ -111,6 +137,11 @@
     
 }
 
+-(void)countDistance:(NSTimer *)sender
+{
+    
+}
+
 -(void) lockSwitched:(id)sender{
     if ([switchview isOn])  {
         
@@ -124,8 +155,15 @@
     }
 }
 
-
-
+-(void) getSportType:(NSString *)sportType{
+        sportName = sportType;
+        
+        if ([counter isValid]) {
+            [counter invalidate];
+        }else{
+            counter = [NSTimer scheduledTimerWithTimeInterval:0.01 target:self selector:@selector(addNumber:) userInfo:NULL repeats:YES];
+        }
+    }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

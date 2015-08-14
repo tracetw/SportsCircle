@@ -32,16 +32,37 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    currentUser = [PFUser currentUser];
-    query = [PFQuery queryWithClassName:@"WallPost"];
-    [query whereKey:@"user" equalTo:currentUser];
     
-    postWallArray = [NSArray new];
-
-    [query findObjectsInBackgroundWithBlock:^(NSArray *postWall, NSError *error){
-        postWallArray = postWall;
-        [_personalPageTableView reloadData];
-    }];
+    currentUser = [PFUser currentUser];
+    if ([usernameStr isEqualToString: currentUser.username] || usernameStr == nil) {
+        
+        query = [PFQuery queryWithClassName:@"WallPost"];
+        [query whereKey:@"user" equalTo:currentUser];
+        
+        postWallArray = [NSArray new];
+        
+        [query findObjectsInBackgroundWithBlock:^(NSArray *postWall, NSError *error){
+            postWallArray = postWall;
+            [_personalPageTableView reloadData];
+        }];
+    }else {
+        
+        PFQuery *userQuery = [PFUser query];
+        [userQuery whereKey:@"username" equalTo:usernameStr];
+        NSArray *userNameEqlUsernameStr = [userQuery findObjects];
+        PFObject *usernameStrObject = userNameEqlUsernameStr[0];
+        query = [PFQuery queryWithClassName:@"WallPost"];
+        [query whereKey:@"user" equalTo:usernameStrObject];
+        
+        postWallArray = [NSArray new];
+        
+        [query findObjectsInBackgroundWithBlock:^(NSArray *postWall, NSError *error){
+            postWallArray = postWall;
+            [_personalPageTableView reloadData];
+        }];
+        
+        
+    }
     
     userImage =[PFImageView new];
     imageView = [PFImageView new];

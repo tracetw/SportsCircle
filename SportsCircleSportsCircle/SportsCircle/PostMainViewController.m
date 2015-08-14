@@ -9,6 +9,8 @@
 #import "PostMainViewController.h"
 #import "AKPickerView.h"
 #import <Parse/Parse.h>
+#import "RecordingViewController.h"
+
 
 @interface PostMainViewController ()<AKPickerViewDataSource, AKPickerViewDelegate,UIPopoverControllerDelegate,UINavigationControllerDelegate,UIImagePickerControllerDelegate>
 
@@ -345,7 +347,10 @@
     }
     *///等連結街設定完再開啟
 }
-
+-(void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
+    RecordingViewController *view = [segue destinationViewController];
+    [view getSportType:_sportsNameLabel.text];
+}
 /*
 #pragma mark - Navigation
 
