@@ -22,9 +22,12 @@
     NSMutableArray *profileAndPictureArray; /**< 存個人資料及照片 */
     NSMutableDictionary *tempDictionary;    /**< 暫存的Dictionary */
     NSArray *sportsItemArray;   /**< 運動項目Array */
+    NSArray *selectUserSportsItemArray;  /**< 點擊進來的使用者運動項目Array */
     BOOL tempDidUpdateSportItem;    /**< 儲存是否有更新喜愛運動項目 */
     NSInteger totalPictureNumber; /**< 運動照片數量 */
     NSString *selectUserName;   /**< 點擊進來的使用者名稱 */
+    NSString *selectUserObjectId;    /**< 點擊進來的使用者ObjectId */
+    BOOL didCurrentUser; /**< 是否為當前用戶 */
 }
 @property (weak, nonatomic) IBOutlet UIImageView *userImageView;
 @property (weak, nonatomic) IBOutlet UITableViewCell *nameCell;
@@ -46,35 +49,69 @@
     // Uncomment the following line to preserve selection between presentations.
     
     [self settingStyle];
-
-    PFQuery *query = [PFQuery queryWithClassName:@"WallPost"];
-    PFUser *currentUser = [PFUser currentUser];
-    [query whereKey:@"user" equalTo:currentUser];
-    NSArray *usersPostsArray = [query findObjects];
-    totalPictureNumber = usersPostsArray.count;
     
-    //抓到所有的裝備照片物件
-    NSMutableArray *tempImageArray = [NSMutableArray new];
-    for (int j = 0; j < totalPictureNumber; j++) {
-        for (int i = 2; i < 5; i++) {
-            NSString *tempString = [NSString stringWithFormat:@"image%d",i];
-            NSObject *tempObject = usersPostsArray[j][tempString];
-            if (tempObject == nil) {
-                continue;
-            }
-            [tempImageArray addObject: tempObject];
-        }
+    
+    PFQuery *query = [PFQuery queryWithClassName:@"_User"];
+    PFUser *currentUser = [PFUser currentUser];
+    if (!selectUserName) {    //如果選擇的名字是空的
+        selectUserName = currentUser[@"username"];  //當前用戶名字作為選擇的名字
     }
-    NSLog(@"%@",tempImageArray);
+    [query whereKey:@"username" equalTo:selectUserName];
+    [query findObjectsInBackgroundWithBlock:^(NSArray *comments, NSError *error) {
+        // comments now contains the comments for myPost
+        PFObject *selectUser = comments[0];
+        selectUserObjectId = selectUser.objectId;
+        NSLog(@"%@oooooooooo%@",selectUser.objectId,currentUser.objectId);
+        
+        if (selectUser.objectId == currentUser.objectId) {  //如果選擇的名字是當前用戶
+            didCurrentUser = true;
+            PFQuery *query = [PFQuery queryWithClassName:@"WallPost"];
+            PFUser *currentUser = [PFUser currentUser];
+            //NSLog(@"qqqqqqq%@",currentUser.objectId);
+            [query whereKey:@"user" equalTo:currentUser];
+            NSArray *usersPostsArray = [query findObjects];
+            totalPictureNumber = usersPostsArray.count;
+            
+            [self queryDatabase];
+            
+        }else{  //如果選擇的名字不是當前用戶
+            didCurrentUser = false;
+            PFQuery *query = [PFQuery queryWithClassName:@"WallPost"];
+            PFUser *currentUser = [PFUser currentUser];
+            //NSLog(@"qqqqqqq%@",currentUser.objectId);
+            [query whereKey:@"user" equalTo:currentUser];
+            NSArray *usersPostsArray = [query findObjects];
+            totalPictureNumber = usersPostsArray.count;
+            
+            //抓到所有的裝備照片物件
+            NSMutableArray *tempImageArray = [NSMutableArray new];
+            for (int j = 0; j < totalPictureNumber; j++) {
+                for (int i = 2; i < 5; i++) {
+                    NSString *tempString = [NSString stringWithFormat:@"image%d",i];
+                    NSObject *tempObject = usersPostsArray[j][tempString];
+                    if (tempObject == nil) {
+                        continue;
+                    }
+                    [tempImageArray addObject: tempObject];
+                }
+            }
+            NSLog(@"%@",tempImageArray);
+            
+            [self queryselectUserDatabase];
+        }
+        
+    }];
+    
+    
+    
+
     
     
 //    self.collectionView.delegate = self;
 //    self.collectionView2.delegate = self;
 //    self.collectionView.dataSource = self;
 //    self.collectionView2.dataSource = self;
-    
-    [self queryDatabase];
-    [self queryselectUserDatabase];
+
 }
 
 - (void)passValue:(NSString *)userNameTextField {
@@ -98,27 +135,93 @@
     }
 }
 
--(void)queryselectUserDatabase{
-//    PFUser *currentUser = [PFUser currentUser];
-//    if (currentUser) {
-//        // do stuff with the user
-//    } else {
-//        // show the signup or login screen
-//    }
+-(void)queryselectUserDatabase{ //非當前用戶資料
+
+    NSLog(@"//------------------------------------------------------------------------------------------");
+
+    //查詢資料庫
+    PFQuery *query = [PFQuery queryWithClassName:@"PersionalInfo"];
+    PFObject *pfObject = [PFObject objectWithoutDataWithClassName:@"_User" objectId:selectUserObjectId];
     
-    PFQuery *query = [PFQuery queryWithClassName:@"User"];
-    [query whereKey:@"username" equalTo:selectUserName];
-    [query findObjectsInBackgroundWithBlock:^(NSArray *comments, NSError *error) {
-        // comments now contains the comments for myPost
-        for (PFObject *object in comments) {
-            NSLog(@"oooooooooo%@,,,%@",object,error);
+    PFFile *userImageData = pfObject[@"userImage"];
+    NSData *userImage = [userImageData getData];
+    _userImageView.image = [UIImage imageWithData:userImage];
+    
+    [query whereKey:@"user" equalTo:pfObject];
+    
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if (!error) {
+
+            NSDictionary *myDictionary = objects[0];
+            [myDictionary objectForKey:@"gender"];
+            [myDictionary objectForKey:@"age"];
+            [myDictionary objectForKey:@"height"];
+            [myDictionary objectForKey:@"weight"];
+            selectUserSportsItemArray = [myDictionary objectForKey:@"habit"];
+            //NSLog(@"%@",[myDictionary objectForKey:@"age"]);
+            
+            
+            //顯示資料至cell.textlabel
+            _nameCell.textLabel.text = [NSString stringWithFormat:@"姓名：%@",selectUserName];
+            
+            if ([[NSString stringWithFormat:@"%@",[myDictionary objectForKey:@"gender"]] isEqualToString:@"1"]) {
+                _genderCell.textLabel.text = @"性別：男性";
+            }else if([[NSString stringWithFormat:@"%@",[myDictionary objectForKey:@"gender"]] isEqualToString:@"2"]){
+                _genderCell.textLabel.text = @"性別：女性";
+            }else{
+                //....
+            }
+            
+            if ([myDictionary objectForKey:@"age"] == nil){
+                _ageCell.textLabel.text = [NSString stringWithFormat:@"年齡："];
+            }else{
+                _ageCell.textLabel.text = [NSString stringWithFormat:@"年齡：%@",[myDictionary objectForKey:@"age"]];
+            }
+            
+            if ([myDictionary objectForKey:@"age"] == nil){
+                _heightCell.textLabel.text = [NSString stringWithFormat:@"身高："];
+            }else{
+                _heightCell.textLabel.text = [NSString stringWithFormat:@"身高：%@",[myDictionary objectForKey:@"height"]];
+            }
+            
+            if ([myDictionary objectForKey:@"age"] == nil){
+                _weightCell.textLabel.text = [NSString stringWithFormat:@"體重："];
+            }else{
+                _weightCell.textLabel.text = [NSString stringWithFormat:@"體重：%@",[myDictionary objectForKey:@"weight"]];
+            }
+    
+            NSString *sportsItemString;
+            for (NSString *object in selectUserSportsItemArray) {
+                //NSLog(@"%@\n",object);
+                if (sportsItemString == nil) {
+                    sportsItemString = [NSString stringWithFormat:@"%@",object];
+                    continue;
+                }
+                sportsItemString = [NSString stringWithFormat:@"%@, %@",sportsItemString, object];
+            }
+            //NSLog(@"%@\n",sportsItemString);
+            if (sportsItemString == nil) {
+                _habitCell.textLabel.text = [NSString stringWithFormat:@"喜好運動："];
+            }else{
+                _habitCell.textLabel.text = [NSString stringWithFormat:@"喜好運動：%@",sportsItemString];
+            }
+            //Label自動換行
+            _habitCell.textLabel.lineBreakMode = NSLineBreakByWordWrapping;
+            _habitCell.textLabel.numberOfLines = 0;
+            
+            
+            
+            
+        } else {
+            // Log details of the failure
+            NSLog(@"Error: %@ %@", error, [error userInfo]);
         }
-        
-        
     }];
+
+    
 }
 
--(void)queryDatabase{
+-(void)queryDatabase{   //當前用戶資料
     //查詢資料庫
     PFUser *user = [PFUser currentUser];
     //NSLog(@"%@",user.objectId);
@@ -268,6 +371,8 @@
     
     UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
     
+    if (didCurrentUser) {   //如果是當前用戶才允許編輯
+
     switch (indexPath.row) {
         case 0:{
             
@@ -365,6 +470,7 @@
             break;
         default:
             break;
+    }
     }
 }
 
@@ -472,6 +578,7 @@
 //----------------------------------CollectionView-------------------------------------------
 - (NSInteger)collectionView:(UICollectionView *)view numberOfItemsInSection:(NSInteger)section{
     if(view == _collectionView){
+        //return 5;
         return totalPictureNumber;
     }   //_collectionView2
         return 30;
