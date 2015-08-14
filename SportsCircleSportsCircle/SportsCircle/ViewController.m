@@ -9,7 +9,11 @@
 #import "ViewController.h"
 #import "SignUpViewController.h"
 #import <Parse/Parse.h>
-@interface ViewController ()
+@interface ViewController (){
+    	NSThread *backgroundThread;
+    UIImage *image;
+    NSArray *usersPostsArray;
+}
 @property (weak, nonatomic) IBOutlet UIImageView *ImageView;
 
 @end
@@ -19,19 +23,54 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
+    backgroundThread=[[NSThread alloc] initWithTarget:self selector:@selector(doThreadJob)
+                                               object:nil];
+    
+    [backgroundThread start];
+}
+
+- (void) doThreadJob {
+    //NSAutoreleasePool *pool=[[NSAutoreleasePool alloc]init];
+    usersPostsArray = [NSArray new];
+    PFUser *currentUser = [PFUser currentUser];
     PFQuery *query = [PFQuery queryWithClassName:@"WallPost"];
+    [query whereKey:@"user" equalTo:currentUser];
+    usersPostsArray = [query findObjects];
     
-    NSArray *usersPostsArray = [query findObjects];
+    PFFile *userImageFile = usersPostsArray[0][@"image1"];
     
-    PFFile *userImageFile = usersPostsArray[1][@"image5"];
+    
     [userImageFile getDataInBackgroundWithBlock:^(NSData *imageData, NSError *error) {
         if (!error) {
-            UIImage *image = [UIImage imageWithData:imageData];
-            _ImageView.image = image;
+            image = [UIImage imageWithData:imageData];
+            
+
+    
+    
+    //多執行緒
+    @autoreleasepool {
+        
+        while(YES)
+        {
+            [self performSelectorOnMainThread:@selector(changeLabelColor) withObject:nil waitUntilDone:NO];//是否等待主執行緒完成再執行背景執行緒
+            //睡0.1秒
+            //[NSThread sleepForTimeInterval:0.1];
+        }
+    }
+    
+        }else{
+            NSLog(@"ggggggg%@",error);
         }
     }];
-    
 }
+
+- (void) changeLabelColor {
+    
+_ImageView.image = image;
+    NSLog(@"HIHIHI");
+
+}
+
 //asdasdfs
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

@@ -24,6 +24,7 @@
     NSArray *sportsItemArray;   /**< 運動項目Array */
     BOOL tempDidUpdateSportItem;    /**< 儲存是否有更新喜愛運動項目 */
     NSInteger totalPictureNumber; /**< 運動照片數量 */
+    NSString *selectUserName;   /**< 點擊進來的使用者名稱 */
 }
 @property (weak, nonatomic) IBOutlet UIImageView *userImageView;
 @property (weak, nonatomic) IBOutlet UITableViewCell *nameCell;
@@ -52,16 +53,34 @@
     NSArray *usersPostsArray = [query findObjects];
     totalPictureNumber = usersPostsArray.count;
     
+    //抓到所有的裝備照片物件
+    NSMutableArray *tempImageArray = [NSMutableArray new];
+    for (int j = 0; j < totalPictureNumber; j++) {
+        for (int i = 2; i < 5; i++) {
+            NSString *tempString = [NSString stringWithFormat:@"image%d",i];
+            NSObject *tempObject = usersPostsArray[j][tempString];
+            if (tempObject == nil) {
+                continue;
+            }
+            [tempImageArray addObject: tempObject];
+        }
+    }
+    NSLog(@"%@",tempImageArray);
+    
+    
 //    self.collectionView.delegate = self;
 //    self.collectionView2.delegate = self;
 //    self.collectionView.dataSource = self;
 //    self.collectionView2.dataSource = self;
     
     [self queryDatabase];
+    [self queryselectUserDatabase];
 }
 
 - (void)passValue:(NSString *)userNameTextField {
     NSLog(@"aaaaaaaa%@",userNameTextField);
+    selectUserName = userNameTextField;
+    
 }
 -(void)settingStyle{
     self.beFriendButton.buttonColor = [UIColor turquoiseColor];
@@ -78,6 +97,27 @@
         [self queryDatabase];
     }
 }
+
+-(void)queryselectUserDatabase{
+//    PFUser *currentUser = [PFUser currentUser];
+//    if (currentUser) {
+//        // do stuff with the user
+//    } else {
+//        // show the signup or login screen
+//    }
+    
+    PFQuery *query = [PFQuery queryWithClassName:@"User"];
+    [query whereKey:@"username" equalTo:selectUserName];
+    [query findObjectsInBackgroundWithBlock:^(NSArray *comments, NSError *error) {
+        // comments now contains the comments for myPost
+        for (PFObject *object in comments) {
+            NSLog(@"oooooooooo%@,,,%@",object,error);
+        }
+        
+        
+    }];
+}
+
 -(void)queryDatabase{
     //查詢資料庫
     PFUser *user = [PFUser currentUser];
