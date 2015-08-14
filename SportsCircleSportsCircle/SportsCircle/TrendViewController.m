@@ -11,15 +11,15 @@
 #import <Parse/Parse.h>
 #import "TrendTableViewCell.h"
 #import <ParseUI/ParseUI.h>
+#import "PersonalPageViewController.h"
 
 @interface TrendViewController ()<UITableViewDelegate,UITableViewDataSource>
 {
     NSDictionary *postWallDictionary;
     NSArray *postWallArray;
-    //NSMutableArray *datas;
+    NSMutableArray *datas;
     UIRefreshControl *refreshControl;
     PFImageView *userImage;
-
 }
 @property (weak, nonatomic) IBOutlet UIView *theListView;
 @property (strong, nonatomic) IBOutlet UIView *theTrendView;
@@ -55,9 +55,10 @@
     //允許ImageView接受使用者互動
     _theTrendView.userInteractionEnabled = YES;
     
-    self.navigationItem.backBarButtonItem=[[UIBarButtonItem alloc]initWithTitle:@"返回" style:UIBarButtonItemStylePlain target:nil action:nil];
+    self.navigationItem.backBarButtonItem=[[UIBarButtonItem alloc]initWithTitle:@"動態首頁" style:UIBarButtonItemStylePlain target:nil action:nil];
+    [self.navigationController.navigationBar setTintColor:[UIColor whiteColor]];
     //返回到grayViewControllor的按鈕名稱改為中文～返回～
-
+    
     _theListView.hidden=YES;
     _tableView.delegate=self;
     _tableView.dataSource=self;
@@ -80,6 +81,16 @@
     refreshControl.attributedTitle = refreshString;
     [refreshView addSubview:refreshControl];
     
+    
+    [self.navigationController.navigationBar setBarTintColor:[UIColor colorWithRed:57.0f/255.0f green:88.0f/255.0f blue:100.0f/255.0f alpha:1]];
+ 
+    userImage = [PFImageView new];
+    
+    [list setTintColor:[UIColor whiteColor]];
+    //[cell.contentView.layer setBorderColor:[UIColor redColor].CGColor];
+    //[cell.contentView.layer setBorderWidth:10.0];
+    
+
 }
 -(void)reloadDatas
 {
@@ -274,6 +285,16 @@
     NSString *strDate = [dateFormatter stringFromDate:postTime];
     cell.timeLabel.text = strDate;
 
+    //以下為usernameLabel新增連結
+    UITapGestureRecognizer *singleTap1 =
+    [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(userNameLabelPressed:)];
+    //UITapGestureRecognizer *singleTap2 =
+    //[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(userNameLabelPressed)];
+    [cell.userName setUserInteractionEnabled:TRUE];
+    //[cell.userImage setUserInteractionEnabled:TRUE];
+    [cell.userName addGestureRecognizer:singleTap1];
+    //[cell.userImage addGestureRecognizer:singleTap2];
+    cell.userName.tag = indexPath.row;
     
     return cell;
 }
@@ -288,31 +309,42 @@
     }
 }
 */
+/*
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     //以下可以辨識點擊哪一行
     UITableViewCell * cell = [_tableView cellForRowAtIndexPath:indexPath];
     NSLog(@"cell title:%@ and row:%li",cell.textLabel.text,indexPath.row);
 }
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
-    //如果滑出畫面的row也會更新.要調整不會更新
-    //id tmpItem=datas[fromIndexPath.row];
-    id tmpItem=[datas objectAtIndex:fromIndexPath.row];
-    [datas removeObjectAtIndex:fromIndexPath.row];//虛擬的資料庫刪除
-    [datas insertObject:tmpItem atIndex:toIndexPath.row];
-    //然後再將原資料插入
-}
 */
-/*
-#pragma mark - Navigation
+-(void)userNameLabelPressed:(id)sender
+{
+    [self performSegueWithIdentifier: @"goPersonalPageFromTrend" sender:[sender view]];
+}
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
+    if ([[segue identifier] isEqualToString:@"goPersonalPageFromTrend"])
+    {
+        //以下是按cell的使用者名字傳輸的資料
+        PersonalPageViewController *controller = (PersonalPageViewController *)[segue destinationViewController];
+        
+        //NSLog(@"cell.userName.text:%@",[sender text]);
+        [controller passData:[sender text]];
 
+        
+    }
+    //以下是按個人動態按鈕傳輸的資料
+    if ([[segue identifier] isEqualToString:@"goPersonalPageFromTrend2"])
+    {
+        PFUser *currentUser=[PFUser currentUser];//抓到目前user的objId
+        NSString *Uname = [currentUser objectForKey:@"username"];
+        NSLog(@"user: %@",Uname);
+
+        PersonalPageViewController *controller = (PersonalPageViewController *)[segue destinationViewController];
+        //NSLog(@"cell.userName.text:%@",[sender text]);
+        
+        [controller passData:Uname];
+    }
+
+}
 @end
