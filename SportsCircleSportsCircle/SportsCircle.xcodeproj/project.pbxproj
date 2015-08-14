@@ -7,8 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		702032251B7351790059F06C /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 702032241B7351790059F06C /* libz.dylib */; };
-		702032271B7351820059F06C /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 702032261B7351820059F06C /* libsqlite3.dylib */; };
 		702BBACA1B5547FE00C09B9B /* SignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 702BBAC91B5547FE00C09B9B /* SignUpViewController.m */; };
 		703E3E8C1B722B7300768912 /* TrendTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 703E3E8B1B722B7300768912 /* TrendTableViewCell.m */; };
 		705B4DD51B7B84680019FC7D /* SearchTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 705B4DD41B7B84680019FC7D /* SearchTableViewCell.m */; };
@@ -197,8 +195,6 @@
 				764C47B81B735CD100AC09E8 /* libz.dylib in Frameworks */,
 				764C47B61B735CBD00AC09E8 /* libsqlite3.dylib in Frameworks */,
 				D30CA21D1B74AA2100CE61AD /* ParseCrashReporting.framework in Frameworks */,
-				702032271B7351820059F06C /* libsqlite3.dylib in Frameworks */,
-				702032251B7351790059F06C /* libz.dylib in Frameworks */,
 				70E3C0B61B6B969000A5C14E /* AssetsLibrary.framework in Frameworks */,
 				D30CA2201B74AA2100CE61AD /* ParseUI.framework in Frameworks */,
 				D30CA21B1B74AA2100CE61AD /* FBSDKShareKit.framework in Frameworks */,
