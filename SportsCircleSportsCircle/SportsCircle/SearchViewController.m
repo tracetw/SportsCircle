@@ -142,7 +142,7 @@ if ([[segue identifier] isEqualToString:@"goPersonalPage"])
         NSString *objectCellId =object[@"username"];
         //NSString *id1=[NSString stringWithFormat:@"%@",objectCellId];
         UITableViewCell * cell = [self.tableView cellForRowAtIndexPath:indexPath];
-        NSLog(@"cell title:%@ , row:%li and objectId:%@",cell.textLabel.text,indexPath.row,objectCellId);
+        NSLog(@"cell title:%ld , row:%li and objectId:%@",(long)cell.textLabel.text,indexPath.row,objectCellId);
         
         //NSDate *object = datas[indexPath.row];
         PersonalPageViewController *controller = (PersonalPageViewController *)[segue destinationViewController];
