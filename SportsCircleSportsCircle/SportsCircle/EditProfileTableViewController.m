@@ -24,7 +24,8 @@
     NSArray *sportsItemArray;   /**< 運動項目Array */
     NSArray *selectUserSportsItemArray;  /**< 點擊進來的使用者運動項目Array */
     BOOL tempDidUpdateSportItem;    /**< 儲存是否有更新喜愛運動項目 */
-    NSInteger totalPictureNumber; /**< 運動照片數量 */
+    NSInteger totalSportPictureNumber; /**< 運動照片數量 */
+    NSInteger totalClothingPictureNumber;   /**< 裝備照片數量 */
     NSString *selectUserName;   /**< 點擊進來的使用者名稱 */
     NSString *selectUserObjectId;    /**< 點擊進來的使用者ObjectId */
     BOOL didCurrentUser; /**< 是否為當前用戶 */
@@ -44,12 +45,14 @@
 
 @implementation EditProfileTableViewController
 
+
+
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Uncomment the following line to preserve selection between presentations.
-    
+    // Uncomment the following line to preserve selection between presentations
+
     [self settingStyle];
-    
+    [self countPictureNumber];
     
     PFQuery *query = [PFQuery queryWithClassName:@"_User"];
     PFUser *currentUser = [PFUser currentUser];
@@ -65,37 +68,11 @@
         
         if (selectUser.objectId == currentUser.objectId) {  //如果選擇的名字是當前用戶
             didCurrentUser = true;
-            PFQuery *query = [PFQuery queryWithClassName:@"WallPost"];
-            PFUser *currentUser = [PFUser currentUser];
-            //NSLog(@"qqqqqqq%@",currentUser.objectId);
-            [query whereKey:@"user" equalTo:currentUser];
-            NSArray *usersPostsArray = [query findObjects];
-            totalPictureNumber = usersPostsArray.count;
             
             [self queryDatabase];
             
         }else{  //如果選擇的名字不是當前用戶
             didCurrentUser = false;
-            PFQuery *query = [PFQuery queryWithClassName:@"WallPost"];
-            PFUser *currentUser = [PFUser currentUser];
-            //NSLog(@"qqqqqqq%@",currentUser.objectId);
-            [query whereKey:@"user" equalTo:currentUser];
-            NSArray *usersPostsArray = [query findObjects];
-            totalPictureNumber = usersPostsArray.count;
-            
-            //抓到所有的裝備照片物件
-            NSMutableArray *tempImageArray = [NSMutableArray new];
-            for (int j = 0; j < totalPictureNumber; j++) {
-                for (int i = 2; i < 5; i++) {
-                    NSString *tempString = [NSString stringWithFormat:@"image%d",i];
-                    NSObject *tempObject = usersPostsArray[j][tempString];
-                    if (tempObject == nil) {
-                        continue;
-                    }
-                    [tempImageArray addObject: tempObject];
-                }
-            }
-            NSLog(@"%@",tempImageArray);
             
             [self queryselectUserDatabase];
         }
@@ -114,9 +91,10 @@
 
 }
 
-- (void)passValue:(NSString *)userNameTextField {
-    NSLog(@"aaaaaaaa%@",userNameTextField);
+- (void)passValue:(NSString *)userNameTextField passSelectUserObjectId:(NSString *)userObjectId{
+    NSLog(@"%@aaaaaaaa%@",userNameTextField,userObjectId);
     selectUserName = userNameTextField;
+    selectUserObjectId = userObjectId;
     
 }
 -(void)settingStyle{
@@ -128,11 +106,38 @@
     [self.beFriendButton setTitleColor:[UIColor cloudsColor] forState:UIControlStateNormal];
     [self.beFriendButton setTitleColor:[UIColor cloudsColor] forState:UIControlStateHighlighted];
 }
+
 //如果資料有變動更新
 -(void)viewDidAppear:(BOOL)animated{
     if (tempDidUpdateSportItem) {
         [self queryDatabase];
     }
+}
+
+- (void)countPictureNumber{
+    //抓到所有的運動照片物件
+    PFQuery *query = [PFQuery queryWithClassName:@"WallPost"];
+    //PFUser *currentUser = [PFUser currentUser];
+    PFObject *pfObject = [PFObject objectWithoutDataWithClassName:@"_User" objectId:selectUserObjectId];
+    //NSLog(@"qqqqqqq%@",currentUser.objectId);
+    [query whereKey:@"user" equalTo:pfObject];
+    NSArray *usersPostsArray = [query findObjects];
+    totalSportPictureNumber = usersPostsArray.count;
+    
+    //抓到所有的裝備照片物件
+    NSMutableArray *tempImageArray = [NSMutableArray new];
+    for (int j = 0; j < totalSportPictureNumber; j++) {
+        for (int i = 2; i < 6; i++) {
+            NSString *tempString = [NSString stringWithFormat:@"image%d",i];
+            PFObject *tempObject = usersPostsArray[j][tempString];
+            if (tempObject == nil) {
+                continue;
+            }
+            [tempImageArray addObject: tempObject];
+        }
+    }
+    NSLog(@"%@",tempImageArray);
+    totalClothingPictureNumber = tempImageArray.count;
 }
 
 -(void)queryselectUserDatabase{ //非當前用戶資料
@@ -579,12 +584,12 @@
 - (NSInteger)collectionView:(UICollectionView *)view numberOfItemsInSection:(NSInteger)section{
     if(view == _collectionView){
         //return 5;
-        return totalPictureNumber;
+        return totalSportPictureNumber;
     }   //_collectionView2
-        return 30;
+    return totalClothingPictureNumber;
 
 }
-
+     
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
     if(collectionView == _collectionView){
         
@@ -593,18 +598,20 @@
         
         //cell.label.text = [NSString stringWithFormat:@"{%ld,%ld}", (long)indexPath.row, (long)indexPath.section];
         
+        
+        
         //載入小圖片
         PFQuery *query = [PFQuery queryWithClassName:@"WallPost"];
-        PFUser *currentUser = [PFUser currentUser];
-        [query whereKey:@"user" equalTo:currentUser];
+        //PFUser *currentUser = [PFUser currentUser];
+        PFObject *pfObject = [PFObject objectWithoutDataWithClassName:@"_User" objectId:selectUserObjectId];
+        [query whereKey:@"user" equalTo:pfObject];
         NSArray *usersPostsArray = [query findObjects];
-        //totalPictureNumber = usersPostsArray.count;
-        
         PFFile *userImageFile = usersPostsArray[indexPath.row][@"image1"];
         [userImageFile getDataInBackgroundWithBlock:^(NSData *imageData, NSError *error) {
             if (!error) {
                 UIImage *image = [UIImage imageWithData:imageData];
                 cell.image.image = image;
+
             }else{
                 NSLog(@"GG%@",error);
             }
@@ -622,8 +629,41 @@
     
     ImageCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"equipCollectionIdentifiers" forIndexPath:indexPath];
     
+    
+    //載入小圖片
+    PFQuery *query = [PFQuery queryWithClassName:@"WallPost"];
+    //PFUser *currentUser = [PFUser currentUser];
+    PFObject *pfObject = [PFObject objectWithoutDataWithClassName:@"_User" objectId:selectUserObjectId];
+    [query whereKey:@"user" equalTo:pfObject];
+    NSArray *usersPostsArray = [query findObjects];
+    //totalPictureNumber = usersPostsArray.count;
+
+    //抓到所有的裝備照片物件
+    NSMutableArray *tempImageArray = [NSMutableArray new];
+    for (int j = 0; j < totalSportPictureNumber; j++) {
+        for (int i = 2; i < 6; i++) {
+            NSString *tempString = [NSString stringWithFormat:@"image%d",i];
+            PFObject *tempObject = usersPostsArray[j][tempString];
+            if (tempObject == nil) {
+                continue;
+            }
+            [tempImageArray addObject: tempObject];
+        }
+    }
+    
+    PFFile *userImageFile = tempImageArray[indexPath.row];
+    [userImageFile getDataInBackgroundWithBlock:^(NSData *imageData, NSError *error) {
+        if (!error) {
+            UIImage *image = [UIImage imageWithData:imageData];
+            cell.clothingImage.image = image;
+        }else{
+            NSLog(@"GG%@",error);
+        }
+    }];
+    
+    
     //設cell的背景色為gray
-    [cell setBackgroundColor:[UIColor grayColor]];
+    //[cell setBackgroundColor:[UIColor grayColor]];
     
     return cell;
 
@@ -632,7 +672,8 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
     if ([segue.identifier isEqualToString:@"showDetail"]){
         NSIndexPath *selectedIndexPath = [self.collectionView indexPathsForSelectedItems][0];
-//        
+
+//
 //        NSLog(@"Source controller = %@",[segue sourceViewController]);
 //        NSLog(@"Destination controller = %@",[segue destinationViewController]);
 //        NSLog(@"Segue Identifier = %@",[segue identifier]);
@@ -644,8 +685,16 @@
 //        detailViewController.image = image;
         
         NSString *roleNumber = [NSString stringWithFormat:@"%ld",(long)selectedIndexPath.row];
+
         //使用segue將物件傳給Detail View Controller class
         [segue.destinationViewController setValue:roleNumber forKey:@"param"];
+        [segue.destinationViewController setValue:selectUserObjectId forKey:@"selectUserObjectId"];
+
+    }else if([segue.identifier isEqualToString:@"showDetail2"]){
+        NSIndexPath *selectedIndexPath2 = [self.collectionView2 indexPathsForSelectedItems][0];
+        NSString *roleNumber2 = [NSString stringWithFormat:@"%ld",(long)selectedIndexPath2.row];
+        [segue.destinationViewController setValue:roleNumber2 forKey:@"param2"];
+        [segue.destinationViewController setValue:selectUserObjectId forKey:@"selectUserObjectId"];
     }
 }
 

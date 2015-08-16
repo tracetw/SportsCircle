@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface EditProfileTableViewController : UITableViewController
-- (void)passValue:(NSString *)userNameTextField;
+- (void)passValue:(NSString *)userNameTextField passSelectUserObjectId:(NSString *)userObjectId;
 @end
