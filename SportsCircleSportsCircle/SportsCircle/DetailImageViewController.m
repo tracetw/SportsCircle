@@ -28,7 +28,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-
+    
     //關閉ScrollView自動調整，讓照片不要放太下面
     self.automaticallyAdjustsScrollViewInsets = NO;
     

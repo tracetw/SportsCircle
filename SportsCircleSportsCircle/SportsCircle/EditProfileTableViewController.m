@@ -4,7 +4,7 @@
 //
 //  Created by  tracetw on 2015/8/5.
 //  Copyright (c) 2015年 SportsCircle. All rights reserved.
-//
+//  http://flatuicolors.com/
 
 #import "EditProfileTableViewController.h"
 #import <Parse/Parse.h>
@@ -17,7 +17,7 @@
 #import "UIColor+FlatUI.h"
 #import "UIFont+FlatUI.h"
 
-@interface EditProfileTableViewController ()<UITableViewDelegate,UITableViewDataSource,UICollectionViewDataSource, UICollectionViewDelegate>{
+@interface EditProfileTableViewController ()<UITableViewDelegate,UITableViewDataSource,UICollectionViewDataSource, UICollectionViewDelegate,UINavigationControllerDelegate, UIImagePickerControllerDelegate>{
     NSMutableDictionary *profileDictionary; /**< 存個人資料包在Array裡面 */
     NSMutableArray *profileAndPictureArray; /**< 存個人資料及照片 */
     NSMutableDictionary *tempDictionary;    /**< 暫存的Dictionary */
@@ -29,6 +29,7 @@
     NSString *selectUserName;   /**< 點擊進來的使用者名稱 */
     NSString *selectUserObjectId;    /**< 點擊進來的使用者ObjectId */
     BOOL didCurrentUser; /**< 是否為當前用戶 */
+    UIImagePickerController *imagePicker;   /**< 選擇上傳照片 */
 }
 @property (weak, nonatomic) IBOutlet UIImageView *userImageView;
 @property (weak, nonatomic) IBOutlet UITableViewCell *nameCell;
@@ -39,7 +40,8 @@
 @property (weak, nonatomic) IBOutlet UITableViewCell *habitCell;
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;  /**< 運動相片 */
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView2; /**< 裝備相片 */
-@property (weak, nonatomic) IBOutlet FUIButton *beFriendButton;
+@property (weak, nonatomic) IBOutlet FUIButton *beFriendButton; /**< 好友按鈕 */
+@property (weak, nonatomic) IBOutlet UIButton *updataImageBtnPressed;   /**< 更新照片按鈕 */
 
 @end
 
@@ -50,7 +52,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Uncomment the following line to preserve selection between presentations
-
+    _beFriendButton.hidden = YES;
+    
     [self settingStyle];
     [self countPictureNumber];
     
@@ -73,15 +76,12 @@
             
         }else{  //如果選擇的名字不是當前用戶
             didCurrentUser = false;
-            
+            _updataImageBtnPressed.hidden = YES;
+            _beFriendButton.hidden = NO;
             [self queryselectUserDatabase];
         }
         
     }];
-    
-    
-    
-
     
     
 //    self.collectionView.delegate = self;
@@ -89,7 +89,9 @@
 //    self.collectionView.dataSource = self;
 //    self.collectionView2.dataSource = self;
 
+
 }
+
 
 - (void)passValue:(NSString *)userNameTextField passSelectUserObjectId:(NSString *)userObjectId{
     NSLog(@"%@aaaaaaaa%@",userNameTextField,userObjectId);
@@ -97,14 +99,17 @@
     selectUserObjectId = userObjectId;
     
 }
+
+//設定樣式
 -(void)settingStyle{
-    self.beFriendButton.buttonColor = [UIColor turquoiseColor];
-    self.beFriendButton.shadowColor = [UIColor greenSeaColor];
-    self.beFriendButton.shadowHeight = 1.0f;
+    //UIColor *hex22C3AA = [UIColor colorWithRed:34.0/255.0 green:195.0/255.0 blue:170.0/255.0 alpha:1];
+    self.beFriendButton.buttonColor = [UIColor peterRiverColor];    //主體
+    self.beFriendButton.shadowColor = [UIColor belizeHoleColor];  //陰影
+    self.beFriendButton.shadowHeight = 2.0f;
     self.beFriendButton.cornerRadius = 3.0f;
     self.beFriendButton.titleLabel.font = [UIFont boldFlatFontOfSize:16];
-    [self.beFriendButton setTitleColor:[UIColor cloudsColor] forState:UIControlStateNormal];
-    [self.beFriendButton setTitleColor:[UIColor cloudsColor] forState:UIControlStateHighlighted];
+    [self.beFriendButton setTitleColor:[UIColor cloudsColor] forState:UIControlStateNormal];  //文字
+    [self.beFriendButton setTitleColor:[UIColor midnightBlueColor] forState:UIControlStateHighlighted]; //點選後文字
 }
 
 //如果資料有變動更新
@@ -114,6 +119,80 @@
     }
 }
 
+
+#pragma mark 上傳頭像
+//上傳頭像
+- (IBAction)takePhotoBtnPressed:(id)sender {
+    UIImagePickerControllerSourceType sourceType; //= UIImagePickerControllerSourceTypePhotoLibrary;
+    sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+    
+    imagePicker = [UIImagePickerController new];
+    imagePicker.sourceType = sourceType;
+    
+    imagePicker.mediaTypes = @[@"public.image"];
+    //imagePicker.allowsEditing = true;
+    imagePicker.delegate = self;
+    [self presentViewController:imagePicker animated:true completion:nil];
+}
+
+//選擇照片
+-(void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary*)info{
+    UIImage *originalImage = info[UIImagePickerControllerOriginalImage];    //選擇後的圖片
+    _userImageView.image = originalImage;
+    [self takePhoto];
+    //Save modifiedImage    //存3張圖片，原始，裁切，加框圖
+    //toBeSavedImages = [NSMutableArray arrayWithObjects:originalImage,editedImage,modifiedImage, nil];
+    //[self processSaveImage];
+    
+    [picker dismissViewControllerAnimated:true completion:nil]; //把 Image picker 收起來
+}
+
+//壓縮照片
+- (UIImage *)scaleToSize:(UIImage *)img size:(CGSize)size{
+    // 創建一個bitmap的context
+    // 並把它設置成為當前正在使用的context
+    UIGraphicsBeginImageContext(size);
+    // 繪製改變大小的圖片
+    [img drawInRect:CGRectMake(0, 0, size.width, size.height)];
+    // 從當前context中創建一個改變大小後的圖片
+    UIImage* scaledImage = UIGraphicsGetImageFromCurrentImageContext();
+    // 使當前的context出堆棧
+    UIGraphicsEndImageContext();
+    // 返回新的改變大小後的圖片
+    return scaledImage;
+}
+
+//上傳頭像至Parse
+- (void) takePhoto{
+    //壓縮照片
+    _userImageView.image = [self scaleToSize:_userImageView.image size:CGSizeMake(200, 200)];
+    
+    NSData *imageData = UIImagePNGRepresentation(_userImageView.image);
+    PFFile *imageFile = [PFFile fileWithName:@"Profile.png" data:imageData];
+    
+    PFQuery *query = [PFQuery queryWithClassName:@"_User"];
+    [query getObjectInBackgroundWithId:selectUserObjectId block:^(PFObject *object, NSError *error) {
+        if (!error) {
+            object[@"userImage"] = imageFile;
+            [object saveInBackground];
+            //[self.navigationController popViewControllerAnimated:YES]; //返回到前面一層viewController
+        }else{  //上傳失敗
+            NSString *errorString = [error userInfo][@"error"];
+            
+            if ([errorString isEqualToString:@"The Internet connection appears to be offline."]) {
+                errorString = @"網路連線已斷線";
+            }
+            
+            UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"上傳失敗" message:errorString preferredStyle:UIAlertControllerStyleAlert];
+            UIAlertAction *ok = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
+            [alert addAction:ok];
+            [self presentViewController:alert animated:true completion:nil];
+        }
+    }];
+    
+}
+
+#pragma mark 載入資料
 - (void)countPictureNumber{
     //抓到所有的運動照片物件
     PFQuery *query = [PFQuery queryWithClassName:@"WallPost"];
@@ -142,8 +221,13 @@
 
 -(void)queryselectUserDatabase{ //非當前用戶資料
 
-    NSLog(@"//------------------------------------------------------------------------------------------");
-
+    //無法被選擇
+    _genderCell.selectionStyle = UITableViewCellSelectionStyleNone;
+    _ageCell.selectionStyle = UITableViewCellSelectionStyleNone;
+    _heightCell.selectionStyle = UITableViewCellSelectionStyleNone;
+    _weightCell.selectionStyle = UITableViewCellSelectionStyleNone;
+    _habitCell.selectionStyle = UITableViewCellSelectionStyleNone;
+    
     //查詢資料庫
     PFQuery *query = [PFQuery queryWithClassName:@"PersionalInfo"];
     PFObject *pfObject = [PFObject objectWithoutDataWithClassName:@"_User" objectId:selectUserObjectId];
@@ -227,6 +311,14 @@
 }
 
 -(void)queryDatabase{   //當前用戶資料
+    
+    //顯示下一頁標籤
+    _genderCell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+    _ageCell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+    _heightCell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+    _weightCell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+    _habitCell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+    
     //查詢資料庫
     PFUser *user = [PFUser currentUser];
     //NSLog(@"%@",user.objectId);
@@ -364,12 +456,14 @@
 
 
 //- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-//    //UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
-//    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cellIdentifier2"];
+//    UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+//    //UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cellIdentifier2"];
 //
+//    //cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
 //    
 //    return cell;
 //}
+
 
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -580,6 +674,8 @@
     // Pass the selected object to the new view controller.
 }
 */
+
+#pragma mark CollectionView
 //----------------------------------CollectionView-------------------------------------------
 - (NSInteger)collectionView:(UICollectionView *)view numberOfItemsInSection:(NSInteger)section{
     if(view == _collectionView){

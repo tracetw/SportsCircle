@@ -140,41 +140,60 @@
                         <sections>
                             <tableViewSection headerTitle="個人資料" id="W5b-jC-PMY">
                                 <cells>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cellIdentifier0" rowHeight="100" id="LYN-Bt-5fm">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="cellIdentifier0" rowHeight="100" id="LYN-Bt-5fm">
                                         <rect key="frame" x="0.0" y="86" width="600" height="100"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="LYN-Bt-5fm" id="tVd-Dc-MeB">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="99"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i2H-tU-dnI">
+                                                    <rect key="frame" x="8" y="0.0" width="100" height="100"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="100" id="F00-ey-XOy"/>
+                                                        <constraint firstAttribute="width" constant="100" id="yQQ-fG-3rH"/>
+                                                    </constraints>
+                                                    <state key="normal" title="上傳頭像">
+                                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </state>
+                                                    <connections>
+                                                        <action selector="takePhotoBtnPressed:" destination="Hy8-P5-U1z" eventType="touchUpInside" id="J2b-iP-LFJ"/>
+                                                    </connections>
+                                                </button>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Vpr-S9-vYc">
-                                                    <rect key="frame" x="8" y="-1" width="100" height="100"/>
-                                                    <color key="backgroundColor" red="0.88695860745614019" green="0.92206345942982437" blue="0.66666666666666663" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <rect key="frame" x="8" y="0.0" width="100" height="100"/>
+                                                    <color key="backgroundColor" red="0.64705882349999999" green="0.64705882349999999" blue="0.63921568630000003" alpha="0.23000000000000001" colorSpace="calibratedRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="100" id="D4u-Ow-ElU"/>
                                                     </constraints>
                                                 </imageView>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9kO-iU-Uwo" customClass="FUIButton">
-                                                    <rect key="frame" x="545" y="8" width="47" height="38"/>
+                                                    <rect key="frame" x="512" y="8" width="80" height="38"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="47" id="PTd-0U-cHw"/>
+                                                        <constraint firstAttribute="width" constant="80" id="PTd-0U-cHw"/>
                                                     </constraints>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                                     <state key="normal" title="+好友">
+                                                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
                                                 </button>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstItem="i2H-tU-dnI" firstAttribute="top" secondItem="tVd-Dc-MeB" secondAttribute="topMargin" constant="-8" id="0QK-eu-R8p"/>
                                                 <constraint firstItem="Vpr-S9-vYc" firstAttribute="leading" secondItem="tVd-Dc-MeB" secondAttribute="leadingMargin" id="5xC-9k-Irf"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="9kO-iU-Uwo" secondAttribute="trailing" id="B8I-mH-cMd"/>
-                                                <constraint firstItem="Vpr-S9-vYc" firstAttribute="top" secondItem="tVd-Dc-MeB" secondAttribute="topMargin" constant="-9" id="KFm-Qq-yIW"/>
+                                                <constraint firstItem="Vpr-S9-vYc" firstAttribute="top" secondItem="tVd-Dc-MeB" secondAttribute="topMargin" constant="-8" id="KFm-Qq-yIW"/>
+                                                <constraint firstItem="i2H-tU-dnI" firstAttribute="leading" secondItem="tVd-Dc-MeB" secondAttribute="leadingMargin" id="UDl-oM-KJN"/>
                                                 <constraint firstItem="9kO-iU-Uwo" firstAttribute="top" secondItem="tVd-Dc-MeB" secondAttribute="topMargin" id="W0c-ut-8fY"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="9kO-iU-Uwo" secondAttribute="bottom" constant="45.5" id="YyZ-N3-wEl"/>
                                                 <constraint firstItem="Vpr-S9-vYc" firstAttribute="centerY" secondItem="tVd-Dc-MeB" secondAttribute="centerY" id="lYB-P9-28k"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cellIdentifier1" textLabel="cNY-b7-9FA" style="IBUITableViewCellStyleDefault" id="d9X-GE-kG3">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="cellIdentifier1" textLabel="cNY-b7-9FA" style="IBUITableViewCellStyleDefault" id="d9X-GE-kG3">
                                         <rect key="frame" x="0.0" y="186" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="d9X-GE-kG3" id="x8N-zb-Ydp">
@@ -280,7 +299,7 @@
                             </tableViewSection>
                             <tableViewSection headerTitle="運動相片" id="hq3-qB-G4X">
                                 <cells>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cellIdentifier" rowHeight="150" id="gjd-u2-arI">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="cellIdentifier" rowHeight="150" id="gjd-u2-arI">
                                         <rect key="frame" x="0.0" y="472" width="600" height="150"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="gjd-u2-arI" id="Kdl-zY-cln">
@@ -343,7 +362,7 @@
                             </tableViewSection>
                             <tableViewSection headerTitle="裝備相片" id="swR-G7-E8S">
                                 <cells>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cellIdentifier" rowHeight="150" id="UBs-Vv-Jnx">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="cellIdentifier" rowHeight="150" id="UBs-Vv-Jnx">
                                         <rect key="frame" x="0.0" y="644" width="600" height="100"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="UBs-Vv-Jnx" id="M9h-1q-ue6">
@@ -413,6 +432,7 @@
                         <outlet property="habitCell" destination="TCn-VY-Yh0" id="yiA-co-WBC"/>
                         <outlet property="heightCell" destination="gVb-IK-0hx" id="teB-av-x4Y"/>
                         <outlet property="nameCell" destination="d9X-GE-kG3" id="xtY-Un-lm9"/>
+                        <outlet property="updataImageBtnPressed" destination="i2H-tU-dnI" id="N2l-8n-0dz"/>
                         <outlet property="userImageView" destination="Vpr-S9-vYc" id="BbW-sh-yIX"/>
                         <outlet property="weightCell" destination="LJa-V1-GYw" id="AS7-gZ-EVl"/>
                     </connections>
