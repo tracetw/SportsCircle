@@ -103,6 +103,7 @@
             NSLog(@"Current Location: %.6f,%.6f",currentLocation.coordinate.latitude,currentLocation.coordinate.longitude);//.08不到8位補0
             NSLog(@"i = %d",i);
             [self drawRoute:currentLocation to:newCurrentLocation];
+            [self coutDistance:currentLocation to:newCurrentLocation];
         }
     }
 }
@@ -132,6 +133,10 @@
     NSLog(@"%f",totalDistance);
 }
 
+-(float)getDistance
+{
+    return totalDistance;
+}
 
 - (MKOverlayView *)mapView:(MKMapView *)mapView viewForOverlay:(id <MKOverlay>)overlay {
     MKPolylineView *polylineView = [[MKPolylineView alloc] initWithPolyline:overlay];
@@ -142,7 +147,7 @@
     return polylineView;
 }
 
--(void)snapShotRoute{
+-(UIImage*)snapShotRoute{
     
     MKMapSnapshotOptions *options = [[MKMapSnapshotOptions alloc] init];
     
@@ -180,10 +185,17 @@
     
     options.scale = [UIScreen mainScreen].scale;
     
+    
+    
+    
     MKMapSnapshotter *snapshotter = [[MKMapSnapshotter alloc] initWithOptions:options];
-    [snapshotter startWithCompletionHandler:^(MKMapSnapshot *snapshot, NSError *error) {
+    __block UIImage *finalSnapShotterImage = nil;
+    //dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+   // dispatch_sync(queue,completionHandler);
+    //dispatch_semaphore_t sem = dispatch_semaphore_create(0);
+    [snapshotter startWithCompletionHandler: ^(MKMapSnapshot *snapshot, NSError *error) {
         
-        UIImage *res = nil;
+        UIImage *resImage = nil;
         
         UIImage*image = snapshot.image;
         
@@ -221,12 +233,19 @@
         
         CGContextStrokePath(context);
         
-        res = UIGraphicsGetImageFromCurrentImageContext();
-        UIImageWriteToSavedPhotosAlbum(res, nil, nil, nil);
+        resImage = UIGraphicsGetImageFromCurrentImageContext();
+        finalSnapShotterImage = resImage;
+        UIImageWriteToSavedPhotosAlbum(resImage, nil, nil, nil);
         UIGraphicsEndImageContext();
+        
+        //dispatch_semaphore_signal(sem);
+        
     }];
-    
-    
+    //dispatch_semaphore_wait(sem, DISPATCH_TIME_FOREVER);
+    while(!finalSnapShotterImage) {
+        [[NSRunLoop currentRunLoop] runUntilDate:[NSDate dateWithTimeIntervalSinceNow:0.1]];
+    }
+    return finalSnapShotterImage;
 }
 
 

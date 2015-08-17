@@ -9,6 +9,7 @@
 #import "RecordingViewController.h"
 #import "endRecordingTableViewController.h"
 #import "MapRecordingViewController.h"
+#import <Parse/Parse.h>
 
 @interface RecordingViewController ()<UINavigationBarDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate>
 {
@@ -17,8 +18,13 @@
     NSString *sportName;
     UISwitch *switchview;
     CATransition *transition;
-    NSTimer *refleshDistance;
-
+    //NSTimer *refleshDistance;
+    PFQuery *query;
+    PFObject *lastPostObject;
+    NSNumber *distance;
+    NSNumber *speedNo;
+    NSString *recordingTime;
+    NSString *objectID;
 }
 @property (weak, nonatomic) IBOutlet UILabel *miniSecond;
 @property (weak, nonatomic) IBOutlet UILabel *second;
@@ -27,6 +33,9 @@
 @property (weak, nonatomic) IBOutlet UIButton *cameraButton;
 @property (weak, nonatomic) IBOutlet UIView *lockScreenView;
 @property (weak, nonatomic) IBOutlet UIImageView *sportTypeImage;
+@property (weak, nonatomic) IBOutlet UILabel *caloryTextLabel;
+@property (weak, nonatomic) IBOutlet UILabel *distanceTextLabel;
+@property (weak, nonatomic) IBOutlet UIImageView *distanceImage;
 
 @end
 
@@ -49,12 +58,18 @@
     
     UIBarButtonItem *lockSwith = [[UIBarButtonItem alloc]initWithCustomView:switchview];
     
+    [_distanceTextLabel setHidden:true];
+    [_distanceImage setHidden:true];
+    
     if ([sportName isEqualToString:@"Athletics"]) {
         
         mapRecordingView = [self.storyboard instantiateViewControllerWithIdentifier:@"MapRecordingView"];
         [mapRecordingView viewDidLoad];
         
-        refleshDistance = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(countDistance:) userInfo:NULL repeats:YES];
+        [_distanceTextLabel setHidden:false];
+        [_distanceImage setHidden:false];
+        
+//        refleshDistance = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(countDistance:) userInfo:NULL repeats:YES];
         
         self.navigationItem.rightBarButtonItems = @[mapButton,lockSwith];
     }else
@@ -72,7 +87,17 @@
     _lockScreenView.hidden=YES;
     
     _sportTypeImage.image = [UIImage imageNamed:sportName];
-
+    
+    PFUser *currentUser = [PFUser currentUser];
+   // NSLog(@"%@",currentUser);
+    query = [PFQuery queryWithClassName:@"WallPost"];
+    [query whereKey:@"user" equalTo:currentUser];
+    [query addAscendingOrder:@"createdAt"];
+    
+//    NSLog(@"array %@",[query findObjects]);
+    lastPostObject = [[query findObjects] lastObject];
+    objectID = lastPostObject.objectId;
+    NSLog(@"%@",lastPostObject);
 }
 
 
@@ -92,9 +117,23 @@
     
     if (recognizer.state == UIGestureRecognizerStateBegan) {
         [counter invalidate];
-        endRecordingTableViewController *endRecordingView = [self.storyboard instantiateViewControllerWithIdentifier:@"endRecordingView"];
-        [self.navigationController pushViewController:endRecordingView animated:YES];
-        [mapRecordingView snapShotRoute];
+//        endRecordingTableViewController *endRecordingView = [self.storyboard instantiateViewControllerWithIdentifier:@"endRecordingView"];
+//        [self.navigationController pushViewController:endRecordingView animated:YES];
+        if ([sportName isEqualToString:@"Athletics"]) {
+            UIImage *mapRecordingImage = [mapRecordingView snapShotRoute];
+            NSData *imageData = UIImagePNGRepresentation(mapRecordingImage);
+            PFFile *mapImageFile = [PFFile fileWithName:@"mapSnapshot.png" data:imageData];
+            lastPostObject[@"mapSnapshot"] = mapImageFile;
+            [lastPostObject saveInBackground];
+            lastPostObject[@"distance"] = distance;
+            [lastPostObject saveInBackground];
+            lastPostObject[@"speed"] = speedNo;
+            [lastPostObject saveInBackground];
+        }
+        
+        [self performSegueWithIdentifier:@"goEndRecording" sender:nil];
+        lastPostObject[@"recordingTime"] = recordingTime;
+        [lastPostObject saveInBackground];
     }
 }
 
@@ -134,13 +173,21 @@
     _minutes.text = [NSString stringWithFormat:@"%02d",minites];
     _hour.text = [NSString stringWithFormat:@"%02d",hour];
     _miniSecond.text = [NSString stringWithFormat:@"%02d",ms];
+    recordingTime = [NSString stringWithFormat:@"%02d:%02d:%02d",hour,minites,second];
+    if ([sportName isEqualToString:@"Athletics"]) {
+        float distanceFloat = [mapRecordingView getDistance];
+        distance = @(distanceFloat);
+        _distanceTextLabel.text = [NSString stringWithFormat:@"Distance: %.2f km",distanceFloat];
+        float speed = distanceFloat/(hour+(minites/60)+(second/3600));
+        speedNo = @(speed);
+    }
     
 }
 
--(void)countDistance:(NSTimer *)sender
-{
-    
-}
+//-(void)countDistance:(NSTimer *)sender
+//{
+//    
+//}
 
 -(void) lockSwitched:(id)sender{
     if ([switchview isOn])  {
@@ -163,7 +210,14 @@
         }else{
             counter = [NSTimer scheduledTimerWithTimeInterval:0.01 target:self selector:@selector(addNumber:) userInfo:NULL repeats:YES];
         }
-    }
+}
+
+-(void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
+    endRecordingTableViewController *view = [segue destinationViewController];
+    [view getObjectID:objectID];
+}
+
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
