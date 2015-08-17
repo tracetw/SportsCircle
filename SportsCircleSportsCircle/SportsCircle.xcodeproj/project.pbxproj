@@ -9,10 +9,16 @@
 /* Begin PBXBuildFile section */
 		702BBACA1B5547FE00C09B9B /* SignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 702BBAC91B5547FE00C09B9B /* SignUpViewController.m */; };
 		703E3E8C1B722B7300768912 /* TrendTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 703E3E8B1B722B7300768912 /* TrendTableViewCell.m */; };
+		705A3D011B817F2F0019F7A8 /* MyImageAnnotationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 705A3D001B817F2F0019F7A8 /* MyImageAnnotationView.m */; };
+		705A3D111B81B7540019F7A8 /* xib@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 705A3D0E1B81B7540019F7A8 /* xib@3x.png */; };
+		705A3D121B81B7540019F7A8 /* xib@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 705A3D0F1B81B7540019F7A8 /* xib@2x.png */; };
+		705A3D131B81B7540019F7A8 /* xib.png in Resources */ = {isa = PBXBuildFile; fileRef = 705A3D101B81B7540019F7A8 /* xib.png */; };
+		705A3D171B820C270019F7A8 /* searchLocationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 705A3D161B820C270019F7A8 /* searchLocationViewController.m */; };
 		705B4DD51B7B84680019FC7D /* SearchTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 705B4DD41B7B84680019FC7D /* SearchTableViewCell.m */; };
 		7072471C1B7C28AC00034F62 /* scheduleTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7072471B1B7C28AC00034F62 /* scheduleTableViewCell.m */; };
 		7076B5DA1B6FA972004E81EF /* scheduleEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7076B5D91B6FA972004E81EF /* scheduleEditViewController.m */; };
 		7076B5DD1B70D496004E81EF /* SearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7076B5DC1B70D496004E81EF /* SearchViewController.m */; };
+		70D4B7E01B7E2432000C66C7 /* readPostViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70D4B7DF1B7E2432000C66C7 /* readPostViewController.m */; };
 		70D60FC21B5569BA001BB4C9 /* TrendViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70D60FC11B5569BA001BB4C9 /* TrendViewController.m */; };
 		70D60FC41B55739C001BB4C9 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 70D60FC31B55739C001BB4C9 /* QuartzCore.framework */; };
 		70E3C0A51B6B94E500A5C14E /* mapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70E3C0A41B6B94E500A5C14E /* mapViewController.m */; };
@@ -108,6 +114,13 @@
 		702BBAC91B5547FE00C09B9B /* SignUpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignUpViewController.m; sourceTree = "<group>"; };
 		703E3E8A1B722B7300768912 /* TrendTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TrendTableViewCell.h; sourceTree = "<group>"; };
 		703E3E8B1B722B7300768912 /* TrendTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TrendTableViewCell.m; sourceTree = "<group>"; };
+		705A3CFF1B817F2F0019F7A8 /* MyImageAnnotationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyImageAnnotationView.h; sourceTree = "<group>"; };
+		705A3D001B817F2F0019F7A8 /* MyImageAnnotationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyImageAnnotationView.m; sourceTree = "<group>"; };
+		705A3D0E1B81B7540019F7A8 /* xib@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "xib@3x.png"; sourceTree = "<group>"; };
+		705A3D0F1B81B7540019F7A8 /* xib@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "xib@2x.png"; sourceTree = "<group>"; };
+		705A3D101B81B7540019F7A8 /* xib.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = xib.png; sourceTree = "<group>"; };
+		705A3D151B820C270019F7A8 /* searchLocationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = searchLocationViewController.h; sourceTree = "<group>"; };
+		705A3D161B820C270019F7A8 /* searchLocationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = searchLocationViewController.m; sourceTree = "<group>"; };
 		705B4DD31B7B84680019FC7D /* SearchTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchTableViewCell.h; sourceTree = "<group>"; };
 		705B4DD41B7B84680019FC7D /* SearchTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchTableViewCell.m; sourceTree = "<group>"; };
 		7072471A1B7C28AC00034F62 /* scheduleTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = scheduleTableViewCell.h; sourceTree = "<group>"; };
@@ -116,6 +129,8 @@
 		7076B5D91B6FA972004E81EF /* scheduleEditViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = scheduleEditViewController.m; sourceTree = "<group>"; };
 		7076B5DB1B70D496004E81EF /* SearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchViewController.h; sourceTree = "<group>"; };
 		7076B5DC1B70D496004E81EF /* SearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchViewController.m; sourceTree = "<group>"; };
+		70D4B7DE1B7E2432000C66C7 /* readPostViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = readPostViewController.h; sourceTree = "<group>"; };
+		70D4B7DF1B7E2432000C66C7 /* readPostViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = readPostViewController.m; sourceTree = "<group>"; };
 		70D60FC01B5569BA001BB4C9 /* TrendViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TrendViewController.h; sourceTree = "<group>"; };
 		70D60FC11B5569BA001BB4C9 /* TrendViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TrendViewController.m; sourceTree = "<group>"; };
 		70D60FC31B55739C001BB4C9 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
@@ -302,8 +317,21 @@
 				70D60FC11B5569BA001BB4C9 /* TrendViewController.m */,
 				703E3E8A1B722B7300768912 /* TrendTableViewCell.h */,
 				703E3E8B1B722B7300768912 /* TrendTableViewCell.m */,
+				70D4B7DE1B7E2432000C66C7 /* readPostViewController.h */,
+				70D4B7DF1B7E2432000C66C7 /* readPostViewController.m */,
 			);
 			name = Trend;
+			sourceTree = "<group>";
+		};
+		705A3D141B820BE60019F7A8 /* mapAnnotation */ = {
+			isa = PBXGroup;
+			children = (
+				70E3C0A31B6B94E500A5C14E /* mapViewController.h */,
+				70E3C0A41B6B94E500A5C14E /* mapViewController.m */,
+				705A3CFF1B817F2F0019F7A8 /* MyImageAnnotationView.h */,
+				705A3D001B817F2F0019F7A8 /* MyImageAnnotationView.m */,
+			);
+			name = mapAnnotation;
 			sourceTree = "<group>";
 		};
 		70E3C0CB1B6B9A7300A5C14E /* PopView */ = {
@@ -377,10 +405,11 @@
 				702BBAC81B5547FE00C09B9B /* SignUpViewController.h */,
 				702BBAC91B5547FE00C09B9B /* SignUpViewController.m */,
 				703E3E8D1B722B7800768912 /* Trend */,
-				70E3C0A31B6B94E500A5C14E /* mapViewController.h */,
-				70E3C0A41B6B94E500A5C14E /* mapViewController.m */,
+				705A3D141B820BE60019F7A8 /* mapAnnotation */,
 				766669081B674D3900280B20 /* PostMainViewController.h */,
 				766669091B674D3900280B20 /* PostMainViewController.m */,
+				705A3D151B820C270019F7A8 /* searchLocationViewController.h */,
+				705A3D161B820C270019F7A8 /* searchLocationViewController.m */,
 				768A20241B6EFD3F005A7E66 /* RecordingViewController.h */,
 				768A20251B6EFD3F005A7E66 /* RecordingViewController.m */,
 				768A20271B6F0505005A7E66 /* MapRecordingViewController.h */,
@@ -407,6 +436,9 @@
 				76F2DDD21B7A3AFC00B50AAB /* FriendTableViewController.m */,
 				76F2DDD41B7A3B2700B50AAB /* FriendsTableViewCell.h */,
 				76F2DDD51B7A3B2700B50AAB /* FriendsTableViewCell.m */,
+				705A3D0E1B81B7540019F7A8 /* xib@3x.png */,
+				705A3D0F1B81B7540019F7A8 /* xib@2x.png */,
+				705A3D101B81B7540019F7A8 /* xib.png */,
 				701F1D871B71BA0D00BD2673 /* Search */,
 				70E3C0CB1B6B9A7300A5C14E /* PopView */,
 				70E3C0D21B6BB15500A5C14E /* schedule */,
@@ -610,9 +642,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				705A3D121B81B7540019F7A8 /* xib@2x.png in Resources */,
 				D34A634E1B4CED0700710B1F /* Main.storyboard in Resources */,
 				70E3C0BB1B6B9A3300A5C14E /* PopView.xib in Resources */,
+				705A3D131B81B7540019F7A8 /* xib.png in Resources */,
 				70E3C0BC1B6B9A3300A5C14E /* PopView2.xib in Resources */,
+				705A3D111B81B7540019F7A8 /* xib@3x.png in Resources */,
 				D34A63531B4CED0700710B1F /* LaunchScreen.xib in Resources */,
 				70E3C0BD1B6B9A3300A5C14E /* PopView3.xib in Resources */,
 				D34A63501B4CED0700710B1F /* Images.xcassets in Resources */,
@@ -657,6 +692,7 @@
 				D34FCE1F1B7B86870002DE1A /* FUIButton.m in Sources */,
 				D34FCE271B7B86870002DE1A /* UIColor+FlatUI.m in Sources */,
 				D34FCE211B7B86870002DE1A /* FUIPopoverBackgroundView.m in Sources */,
+				705A3D011B817F2F0019F7A8 /* MyImageAnnotationView.m in Sources */,
 				D34FCE261B7B86870002DE1A /* UIBarButtonItem+FlatUI.m in Sources */,
 				D3541A4D1B787003003F4D15 /* CustomCellBackgroundView.m in Sources */,
 				70E3C0CA1B6B9A6C00A5C14E /* PopView4.m in Sources */,
@@ -674,11 +710,13 @@
 				7076B5DD1B70D496004E81EF /* SearchViewController.m in Sources */,
 				76F2DDD31B7A3AFC00B50AAB /* FriendTableViewController.m in Sources */,
 				D34FCE251B7B86870002DE1A /* NSString+Icons.m in Sources */,
+				70D4B7E01B7E2432000C66C7 /* readPostViewController.m in Sources */,
 				7076B5DA1B6FA972004E81EF /* scheduleEditViewController.m in Sources */,
 				D34FCE231B7B86870002DE1A /* FUISwitch.m in Sources */,
 				D34FCE2D1B7B86870002DE1A /* UISlider+FlatUI.m in Sources */,
 				7072471C1B7C28AC00034F62 /* scheduleTableViewCell.m in Sources */,
 				702BBACA1B5547FE00C09B9B /* SignUpViewController.m in Sources */,
+				705A3D171B820C270019F7A8 /* searchLocationViewController.m in Sources */,
 				D3541A4A1B786FD3003F4D15 /* ImageCollectionViewCell.m in Sources */,
 				D38B8D3A1B71B84200124706 /* EditProfileTableViewController.m in Sources */,
 				764C47BE1B735FB700AC09E8 /* PersonalPageTableViewCell.m in Sources */,

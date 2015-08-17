@@ -58,6 +58,7 @@
     self.tableView.backgroundView = [[UIView alloc]initWithFrame:self.tableView.bounds];
     self.tableView.backgroundView.backgroundColor = backgroundColor;
     
+    self.tableView.separatorColor=[UIColor clearColor];
 }
 
 -(void)searchBarSearchButtonClicked:(UISearchBar *)searchBar

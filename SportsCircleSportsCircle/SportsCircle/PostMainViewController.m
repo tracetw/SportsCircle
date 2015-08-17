@@ -21,6 +21,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *infoLabel;
 @property (weak, nonatomic) IBOutlet UIButton *cameraBtn;
 @property (strong, nonatomic) IBOutlet UIView *postMainView;
+@property (weak, nonatomic) IBOutlet UITextField *contentTextField;
 
 @end
 
@@ -94,10 +95,11 @@
     
     //相機
     [_cameraBtn setBackgroundImage:[UIImage imageNamed:@"camera.png"] forState: UIControlStateNormal];//用圖片在按鈕上
+
     
     //手勢操作
-    UITapGestureRecognizer *toTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(toTap)];
-    [_postMainView addGestureRecognizer:toTap];
+    //UITapGestureRecognizer *toTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(toTap)];
+    //[_postMainView addGestureRecognizer:toTap];
     
     //允許ImageView接受使用者互動
     _postMainView.userInteractionEnabled = YES;
@@ -112,17 +114,40 @@
     popView4 = [[[NSBundle mainBundle] loadNibNamed:@"PopView4" owner:nil options:nil] lastObject];
     [popView4.popPicBtn4 setBackgroundImage:[UIImage imageNamed:@"camera"] forState: UIControlStateNormal];
     
+    //以下為popPicBtn新增連結
+    UITapGestureRecognizer *singleTap1 =
+    [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(popPicBtnPressed:)];
+    
+    [popView.popPicBtn setUserInteractionEnabled:TRUE];
+    //[cell.userImage setUserInteractionEnabled:TRUE];
+    [popView.popPicBtn addGestureRecognizer:singleTap1];
+    //[cell.userImage addGestureRecognizer:singleTap2];
+    //popView.popPicBtn.tag = 1;
 }
 
 -(void)toTap {
-    if (!popView.isHidden) {
-        [popView removeFromSuperview];
-        [popView2 removeFromSuperview];
-        [popView3 removeFromSuperview];
-        [popView4 removeFromSuperview];
-    }
+//    if (!popView.isHidden) {
+//        [popView removeFromSuperview];
+//        [popView2 removeFromSuperview];
+//        [popView3 removeFromSuperview];
+//        [popView4 removeFromSuperview];
+//    }
 }
+-(void)popPicBtnPressed:(id)sender
+{
+    if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera])
+    {
+        UIImagePickerController *imagePicker=[[UIImagePickerController alloc]init];
+        
+        //設定相片來源為裝置上的相機
+        imagePicker.sourceType=UIImagePickerControllerSourceTypeCamera;
+        //設定imagePicker的delegate為viewcontroller
+        imagePicker.delegate=self;
+        //開啟相機拍照介面
+        [self presentViewController:imagePicker animated:YES completion:nil];
+    }
 
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -154,7 +179,6 @@
 {
     return [UIImage imageNamed:self.titles[item]];
 }
- 
 
 #pragma mark - AKPickerViewDelegate
 //選中的運動名稱
@@ -258,6 +282,16 @@
     [query whereKey:@"username" equalTo:[[PFUser currentUser] valueForKey:@"username"]];
     PFObject *object =  [[NSArray arrayWithArray:[query findObjects]]lastObject];
     [object setValue:pic forKey:@"image1"];
+    [object saveInBackground];
+    
+    /*
+    NSData *imageData = UIImagePNGRepresentation(image);
+    PFFile *imageFile = [PFFile fileWithName:@"image.png" data:imageData];
+    PFObject *userPhoto = [PFObject objectWithClassName:@"UserPhoto"];
+    userPhoto[@"imageName"] = @"My trip to Hawaii!";
+    userPhoto[@"imageFile"] = imageFile;
+    [userPhoto saveInBackground];
+    */
 }
 
 -(void)imagePickerControllerDidCancel:(UIImagePickerController *)picker
@@ -266,8 +300,6 @@
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
-
-
 - (IBAction)ballBtnPressed:(id)sender
 {
     //    UIPopoverController *pop=[[UIPopoverController alloc]initWithContentViewController:popView];
@@ -275,22 +307,39 @@
     //    [pop presentPopoverFromRect:popBtn.frame inView:self.view permittedArrowDirections:UIPopoverArrowDirectionUp animated:YES];
     //設定popover的位置跟
     
-    //UIButton * button = (UIButton*)sender;
-    //CGPoint btn_point = button.frame.origin;
-    //CGRect rect = CGRectZero;
-    //rect.origin = btn_point;
-    //rect.size = CGSizeMake(50, 50);
-    //上面是蛤蜊教的
     
-    CGRect rect=CGRectMake(100, 331, 50, 50);
-    [popView setFrame:rect];
+    CGRect rect1=CGRectMake(100, 331, 50, 50);
+    [popView setFrame:rect1];
     [self.view addSubview:popView];
     [self.view sendSubviewToBack:popView];
+
+//    UIButton * button = (UIButton*)sender;
+//    CGPoint btn_point = button.frame.origin;
+//    CGRect rect = CGRectZero;
+//    rect.origin = btn_point;
+//    rect.size = CGSizeMake(50, 50);
+    //上面是蛤蜊教的
     
-    [popView2 removeFromSuperview];
-    [popView3 removeFromSuperview];
-    [popView4 removeFromSuperview];
+    //[popView2 removeFromSuperview];
+    //[popView3 removeFromSuperview];
+    //[popView4 removeFromSuperview];
     
+}
+
+-(IBAction)popViewPicBtnPressed:(UIButton*)popViewBtn
+{
+    popView.popPicBtn=popViewBtn;
+    if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera])
+    {
+        UIImagePickerController *imagePicker=[[UIImagePickerController alloc]init];
+        
+        //設定相片來源為裝置上的相機
+        imagePicker.sourceType=UIImagePickerControllerSourceTypeCamera;
+        //設定imagePicker的delegate為viewcontroller
+        imagePicker.delegate=self;
+        //開啟相機拍照介面
+        [self presentViewController:imagePicker animated:YES completion:nil];
+    }
 }
 
 - (IBAction)TshirtBtnPressed:(id)sender {
@@ -326,26 +375,25 @@
 
 - (IBAction)goBtnPressed:(id)sender {
     //當按下按鈕～將資料上傳到wallpost
-    /*
+    
     if ([PFUser currentUser]) {
-        PFObject *userName = [PFObject objectWithClassName:@"WallPost"];
-        userName[@"image1"] =@"";
-        userName[@"image2"] =@"";
-        userName[@"image3"]=@"";
-        userName[@"image4"]=@"";
-        userName[@"image5"]=@"";
-        userName[@"like"]=@"";
-        userName[@"content"]=@"";
-        userName[@"latitude"]=@"";
-        userName[@"longitude"]=@"";
-        userName[@"sportsType"]=@"";
+        PFObject *wallpost = [PFObject objectWithClassName:@"WallPost"];
+        //wallpost[@"image1"] =@"";
+        //wallpost[@"image2"] =@"";
+        //wallpost[@"image3"]=@"";
+        //wallpost[@"image4"]=@"";
+        //wallpost[@"image5"]=@"";
+        wallpost[@"content"]=_contentTextField.text;
+        //wallpost[@"latitude"]=@"";
+        //wallpost[@"longitude"]=@"";
+        wallpost[@"sportsType"]=_sportsNameLabel.text;
         //userName[@"cheatMode"] = @NO;
         //        PFRelation * relation = [[PFRelation alloc] init];
         //        [relation addObject:[PFUser currentUser]];
-        userName[@"user"] = [PFUser currentUser];//連結現在登入的使用者id
-        [userName saveInBackground];
+        wallpost[@"user"] = [PFUser currentUser];//連結現在登入的使用者id
+        [wallpost saveInBackground];
     }
-    *///等連結街設定完再開啟
+    //等連結街設定完再開啟
 }
 -(void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
     RecordingViewController *view = [segue destinationViewController];

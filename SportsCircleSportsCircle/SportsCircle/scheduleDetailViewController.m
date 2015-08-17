@@ -17,6 +17,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *scheduleName;
 @property (weak, nonatomic) IBOutlet UITextView *scheduleDetail;
 @property (weak, nonatomic) IBOutlet UIDatePicker *datePicker;
+@property (weak, nonatomic) IBOutlet UILabel *locationLabel;
 
 
 @end
@@ -65,7 +66,7 @@
         PFObject *userName = [PFObject objectWithClassName:@"schedule"];
         userName[@"scheduleTime"] =scTime;
         userName[@"scheduleName"] =_scheduleName.text;
-        userName[@"scheduleLocation"]=@"";
+        userName[@"scheduleLocation"]=_locationLabel.text;
         userName[@"scheduleDetail"]=_scheduleDetail.text;
         userName[@"cheatMode"] = @NO;
         //        PFRelation * relation = [[PFRelation alloc] init];
@@ -82,6 +83,24 @@
 -(void) dealloc{
     //解構式～確認回上一頁.原本的黃色那頁已被消滅(線不能直接拉回去.因為RAM會一直疊加上去)
     NSLog(@"scheduleDetailViewController dealloc.");
+}
+- (IBAction)locationBtnPressed:(id)sender {
+    UIAlertController *alert=[UIAlertController alertControllerWithTitle:@"行程地點" message:@"請輸入地點" preferredStyle:UIAlertControllerStyleAlert];
+    
+    UIAlertAction *cancel=[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action){
+        //[self dismissViewControllerAnimated:YES completion:nil];
+    }];
+    
+    UIAlertAction *ok=[UIAlertAction actionWithTitle:@"確定" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action){
+        NSString *locationStr=((UITextField*)[alert.textFields objectAtIndex:0]).text;
+        _locationLabel.text=locationStr;
+    }];
+    [alert addTextFieldWithConfigurationHandler:^(UITextField *textField){
+       textField.placeholder=@"ex:大安森林公園";
+    }];
+    [alert addAction:cancel];
+    [alert addAction:ok];
+    [self presentViewController:alert animated:YES completion:nil];
 }
 
 /*

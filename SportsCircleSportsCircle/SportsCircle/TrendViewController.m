@@ -12,6 +12,7 @@
 #import "TrendTableViewCell.h"
 #import <ParseUI/ParseUI.h>
 #import "PersonalPageViewController.h"
+#import "readPostViewController.h"
 
 @interface TrendViewController ()<UITableViewDelegate,UITableViewDataSource>
 {
@@ -288,8 +289,7 @@
     //以下為usernameLabel新增連結
     UITapGestureRecognizer *singleTap1 =
     [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(userNameLabelPressed:)];
-    //UITapGestureRecognizer *singleTap2 =
-    //[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(userNameLabelPressed)];
+    
     [cell.userName setUserInteractionEnabled:TRUE];
     //[cell.userImage setUserInteractionEnabled:TRUE];
     [cell.userName addGestureRecognizer:singleTap1];
@@ -330,7 +330,6 @@
         
         //NSLog(@"cell.userName.text:%@",[sender text]);
         [controller passData:[sender text]];
-
         
     }
     //以下是按個人動態按鈕傳輸的資料
