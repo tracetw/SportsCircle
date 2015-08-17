@@ -32,7 +32,17 @@
     
     [self settingTextField];
     
+    //添加背景點擊事件
+    UITapGestureRecognizer *recognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(keyboardResign)];
+    recognizer.cancelsTouchesInView = NO;
+    [self.view addGestureRecognizer:recognizer];
 }
+
+//點擊空白處收起鍵盤
+- (void)keyboardResign {
+    [self.view endEditing:YES];
+}
+
 - (void)viewDidAppear:(BOOL)animated{
     
     //如果parse 是登入狀態

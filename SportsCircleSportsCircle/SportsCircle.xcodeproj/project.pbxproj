@@ -53,6 +53,7 @@
 		D30CA21E1B74AA2100CE61AD /* ParseFacebookUtils.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D30CA2141B74AA2100CE61AD /* ParseFacebookUtils.framework */; };
 		D30CA21F1B74AA2100CE61AD /* ParseFacebookUtilsV4.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D30CA2151B74AA2100CE61AD /* ParseFacebookUtilsV4.framework */; };
 		D30CA2201B74AA2100CE61AD /* ParseUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D30CA2161B74AA2100CE61AD /* ParseUI.framework */; };
+		D332FB1F1B81C70D0059CD0D /* NotificationTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D332FB1E1B81C70D0059CD0D /* NotificationTableViewController.m */; };
 		D34A63451B4CED0700710B1F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D34A63441B4CED0700710B1F /* main.m */; };
 		D34A63481B4CED0700710B1F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D34A63471B4CED0700710B1F /* AppDelegate.m */; };
 		D34A634B1B4CED0700710B1F /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D34A634A1B4CED0700710B1F /* ViewController.m */; };
@@ -182,6 +183,8 @@
 		D30CA2141B74AA2100CE61AD /* ParseFacebookUtils.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ParseFacebookUtils.framework; path = framework/ParseFacebookUtils.framework; sourceTree = "<group>"; };
 		D30CA2151B74AA2100CE61AD /* ParseFacebookUtilsV4.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ParseFacebookUtilsV4.framework; path = framework/ParseFacebookUtilsV4.framework; sourceTree = "<group>"; };
 		D30CA2161B74AA2100CE61AD /* ParseUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ParseUI.framework; path = framework/ParseUI.framework; sourceTree = "<group>"; };
+		D332FB1D1B81C70D0059CD0D /* NotificationTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotificationTableViewController.h; sourceTree = "<group>"; };
+		D332FB1E1B81C70D0059CD0D /* NotificationTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NotificationTableViewController.m; sourceTree = "<group>"; };
 		D34A633F1B4CED0700710B1F /* SportsCircle.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SportsCircle.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D34A63431B4CED0700710B1F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D34A63441B4CED0700710B1F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -436,9 +439,14 @@
 				76F2DDD21B7A3AFC00B50AAB /* FriendTableViewController.m */,
 				76F2DDD41B7A3B2700B50AAB /* FriendsTableViewCell.h */,
 				76F2DDD51B7A3B2700B50AAB /* FriendsTableViewCell.m */,
+<<<<<<< HEAD
 				705A3D0E1B81B7540019F7A8 /* xib@3x.png */,
 				705A3D0F1B81B7540019F7A8 /* xib@2x.png */,
 				705A3D101B81B7540019F7A8 /* xib.png */,
+=======
+				D332FB1D1B81C70D0059CD0D /* NotificationTableViewController.h */,
+				D332FB1E1B81C70D0059CD0D /* NotificationTableViewController.m */,
+>>>>>>> e574c97d86047c7dff8a013194ce111a25ef1745
 				701F1D871B71BA0D00BD2673 /* Search */,
 				70E3C0CB1B6B9A7300A5C14E /* PopView */,
 				70E3C0D21B6BB15500A5C14E /* schedule */,
@@ -669,6 +677,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D332FB1F1B81C70D0059CD0D /* NotificationTableViewController.m in Sources */,
 				76A406CD1B7CDFFD00034BF6 /* endRecordingTableViewController.m in Sources */,
 				768A20291B6F0505005A7E66 /* MapRecordingViewController.m in Sources */,
 				D30CA2081B74A9AD00CE61AD /* scheduleDetailViewController.m in Sources */,

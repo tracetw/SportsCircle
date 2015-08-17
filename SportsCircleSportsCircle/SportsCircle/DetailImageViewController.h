@@ -10,6 +10,8 @@
 
 @interface DetailImageViewController : UIViewController
 
-@property (nonatomic, strong) UIImage *image;
-@property (strong, nonatomic) NSString *param;  
+//@property (nonatomic, strong) UIImage *image;
+@property (strong, nonatomic) NSString *param;
+@property (strong, nonatomic) NSString *param2;
+@property (strong, nonatomic) NSString *selectUserObjectId;
 @end
