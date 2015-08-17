@@ -101,7 +101,6 @@
 }
 
 
-
 - (void)passValue:(NSString *)userNameTextField passSelectUserObjectId:(NSString *)userObjectId{
     NSLog(@"%@aaaaaaaa%@",userNameTextField,userObjectId);
     selectUserName = userNameTextField;
@@ -215,6 +214,12 @@
 }
 
 - (void) didConfirmBeFriend{   //確認是否有好友邀請名單
+    
+    //init
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];   /**< NSUserDefaults */
+    NSMutableDictionary *notidicationDictionary = [NSMutableDictionary new];    /**< 消息通知 */
+    NSMutableArray *addFriendArray = [NSMutableArray new];  /**< 所有的待確認好友objectId */
+    
     PFUser *currentUser = [PFUser currentUser];
     NSMutableArray *unConfirmfriendsArray = [NSMutableArray new];
     PFQuery *query = [PFQuery queryWithClassName:@"Friends"];
@@ -224,8 +229,13 @@
                 if ([[NSString stringWithFormat:@"%@",object] caseInsensitiveCompare:currentUser.objectId]==NSOrderedSame) {
                     NSLog(@"%@邀請您成為好友",pfobject[@"user"]); //發出通知
                     PFUser *otherPerson = pfobject[@"user"];
+                    NSString *tempNameString = otherPerson.username;
                     NSString *tempString = otherPerson.objectId;
+                    tempString = [NSString stringWithFormat:@"%@&%@",tempString,tempNameString];
                     NSLog(@"%@",tempString);
+                    
+                    [addFriendArray addObject:tempString];
+
                     if ([tempString caseInsensitiveCompare:selectUserObjectId]==NSOrderedSame){
                         otherPersonobjectId = tempString;
                         NSLog(@"當前頁面的user%@邀請您成為好友",tempString); //加好友
@@ -238,8 +248,13 @@
             }
         }
         
-        NSLog(@"%@",unConfirmfriendsArray);
+        //存檔
+        [notidicationDictionary setObject:addFriendArray forKey:@"addFriend"];
+        [userDefaults setObject:notidicationDictionary forKey:@"notidicationDictionary"];
+        //設定好後只是單純的cache住，要存進硬碟要用，才真正儲存
+        [userDefaults synchronize];
     }];
+    
 }
 
 - (void) processOtherPerson{   //處理對方好友列表查詢
