@@ -10,10 +10,15 @@
 #import "mapViewController.h"
 #import <MapKit/MapKit.h>
 #import <CoreLocation/CoreLocation.h>
+#import "MyImageAnnotationView.h"
+#import <Parse/Parse.h>
+
 @interface mapViewController ()<MKMapViewDelegate,CLLocationManagerDelegate>
 {
     CLLocationManager *locationManager;
     BOOL isFirstLocationReceived;
+    NSArray *datas;
+    NSArray *userSchedules;
 }
 @property (weak, nonatomic) IBOutlet UIButton *whereAmIBtn;
 @property (weak, nonatomic) IBOutlet MKMapView *theMapView;
@@ -41,14 +46,13 @@
     locationManager.delegate=self;
     //物件溝通
     [locationManager startUpdatingLocation];
-    //回報位置
+    //回報使用者位置
     
     _theMapView.mapType=MKMapTypeStandard;//一般地圖圖示
     _theMapView.userTrackingMode=MKUserTrackingModeNone;//尚無追蹤的模式
     
     [_whereAmIBtn setBackgroundImage:[UIImage imageNamed:@"map-pin-746123_640.png"] forState: UIControlStateNormal];
 }
-
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -62,10 +66,11 @@
 #pragma mark - CLLocationManager Delegate Methods
 
 -(void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations{
-    
+
     CLLocation *currentLocation = locations.lastObject;
+    //CLLocation *currentLocation2 = locations.lastObject;
     //最新的位子會放在array的最後一個,所以用lastObject
-    NSLog(@"Current Location: %.06f,%.06f",currentLocation.coordinate.latitude,currentLocation.coordinate.longitude);//(緯度,經度).06f表示一定取六位～沒有會補零
+    //NSLog(@"Current Location: %.06f,%.06f",currentLocation.coordinate.latitude,currentLocation.coordinate.longitude);//(緯度,經度).06f表示一定取六位～沒有會補零
     
     if (isFirstLocationReceived==false)
     {
@@ -82,19 +87,56 @@
         isFirstLocationReceived=true;
         
         
-        //add annotation
-        CLLocationCoordinate2D coordicate=currentLocation.coordinate;//MKCoordinateRegion含有CLLocationCoordinate2D(只取x,y)
-        coordicate.latitude+=0.0005;//設定頭針的緯度
-        coordicate.longitude+=0.0005;//設定頭針的經度
+//        //add annotation 目前顯示自己的位置加減0.0005
+//        CLLocationCoordinate2D coordicate=currentLocation.coordinate;
+//        //MKCoordinateRegion含有CLLocationCoordinate2D(只取x,y)
+//        coordicate.latitude+=0.0005;//設定頭針的緯度
+//        coordicate.longitude+=0.0005;//設定頭針的經度
+//        
+//        MKPointAnnotation *annotation=[MKPointAnnotation new];
+//        annotation.coordinate=coordicate;
+//        //coordinate座標
+//        annotation.title=@"肯德基";
+//        annotation.subtitle=@"真好吃!🍗";
+//        
+//        [_theMapView addAnnotation:annotation];
+        PFQuery *query = [PFQuery queryWithClassName:@"WallPost"];
+        datas = [query findObjects];//抓出資料有兩筆
+       // NSLog(@"this id is: %ld",datas.count);
+        //NSDictionary *userSchedulesA=datas[0];//cheatMode
+        //NSDictionary *userSchedulesB=datas[1];//cheatMode
+        // 每一筆為NSDictionary
+       // NSLog(@"this id is: %@",userSchedulesB[@"sportsType"]);
+       // NSLog(@"this id is: %@",userSchedulesB[@"content"]);
+       // NSLog(@"this id is: %@",userSchedulesA[@"sportsType"]);
+       // NSLog(@"this id is: %@",userSchedulesA[@"content"]);
+
+        CLLocationCoordinate2D coordicate=currentLocation.coordinate;//
+        NSData *imgData=[[NSData alloc]init];
+        for (int i = 1; i<datas.count; i++) {
+            NSDictionary *userSchedules=datas[i];
+            
+            NSString *stringValue = userSchedules[@"latitude"];
+            double lat= [stringValue doubleValue];
+            NSString *stringValue2 = userSchedules[@"longitude"];
+            double lon= [stringValue2 doubleValue];
+
+            coordicate.latitude=lat;//設定頭針的緯度
+            coordicate.longitude=lon;//設定頭針的經度
+            MKPointAnnotation *annotation=[MKPointAnnotation new];
+            annotation.coordinate=coordicate;
+            //coordinate座標
+            
+            annotation.title=userSchedules[@"sportsType"];
+            annotation.subtitle=userSchedules[@"content"];
+
+            
+            [_theMapView addAnnotation:annotation];
+        }
         
-        MKPointAnnotation *annotation=[MKPointAnnotation new];
-        annotation.coordinate=coordicate;
-        //coordinate座標
-        annotation.title=@"肯德基";
-        annotation.subtitle=@"真好吃!🍗";
         
-        [_theMapView addAnnotation:annotation];
     }
+    
 }
 
 -(MKAnnotationView*)mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation{
@@ -103,30 +145,51 @@
     if (annotation==mapView.userLocation){
         return nil;}
     
-    MKPinAnnotationView *resultView=(MKPinAnnotationView*)
+    //MKPinAnnotationView *resultView=(MKPinAnnotationView*)
     //MKPinAnnotationView是大頭針
-    [mapView dequeueReusableAnnotationViewWithIdentifier:@"Store"];
+    //[mapView dequeueReusableAnnotationViewWithIdentifier:@"Store"];
     //地圖有無要回收的大頭針,其名稱為Store
+    
+    MyImageAnnotationView *resultView = (MyImageAnnotationView*)[mapView dequeueReusableAnnotationViewWithIdentifier:@"Store"];
+    
     if (resultView==nil) {
-        resultView=[[MKPinAnnotationView alloc]initWithAnnotation:annotation reuseIdentifier:@"Store"];
+        //resultView=[[MKPinAnnotationView alloc]initWithAnnotation:annotation reuseIdentifier:@"Store"];
         //大頭針跑出螢幕後～放入回收
+         resultView = [[MyImageAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"Store"];
     }else{
         resultView.annotation=annotation;
     }
     
-    resultView.canShowCallout=true;
-    resultView.animatesDrop=true;
-    resultView.pinColor=MKPinAnnotationColorGreen;
+    
+    resultView.canShowCallout=YES;
+    //resultView.animatesDrop=true;
+    //resultView.pinColor=MKPinAnnotationColorGreen;
+    
+    UIButton *rightButton=[UIButton buttonWithType:UIButtonTypeDetailDisclosure];
+    
+    [rightButton addTarget:self action:@selector(buttonPrssed:) forControlEvents:UIControlEventTouchUpInside];
+    
+    resultView.rightCalloutAccessoryView=rightButton;
     
     
     //針對CallOut去做圖片放入.mapview&controllerview要記得用delegate
-    UIView *view = [[UIView alloc]initWithFrame:CGRectMake(0,0,100,180)];
+    UIView *view = [[UIView alloc]initWithFrame:CGRectMake(0,0,50,180)];
     view.backgroundColor = [UIColor clearColor];
-    UIImageView *imgView = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"border.png"]];
+    UIImageView *imgView = [[UIImageView alloc]initWithImage: [UIImage imageNamed: @"Athletics"]];//這裏看以後能不能換成運動類型圖
+    imgView.frame=CGRectMake(0, 0, 50, 50);
+    
     [view addSubview:imgView];
     resultView.leftCalloutAccessoryView = view;
     //圖有被切到之後再調整
     
     return resultView;
 }
+
+- (void) buttonPrssed:(id)sender {
+    
+    UIAlertView *alertView=[[UIAlertView alloc] initWithTitle:nil message:@"Button Pressed." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+    [alertView show];
+    
+}
+
 @end

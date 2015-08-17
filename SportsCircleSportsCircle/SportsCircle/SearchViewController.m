@@ -58,6 +58,9 @@
     self.tableView.backgroundView = [[UIView alloc]initWithFrame:self.tableView.bounds];
     self.tableView.backgroundView.backgroundColor = backgroundColor;
     
+
+    self.tableView.separatorColor=[UIColor clearColor];
+
     //添加背景點擊事件
     UITapGestureRecognizer *recognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(keyboardResign)];
     recognizer.cancelsTouchesInView = NO;
@@ -67,6 +70,7 @@
 //點擊空白處收起鍵盤
 - (void)keyboardResign {
     [self.view endEditing:YES];
+
 }
 
 -(void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
