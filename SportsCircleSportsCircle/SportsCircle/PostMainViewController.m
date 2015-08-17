@@ -47,41 +47,34 @@
     self.pickerView.maskDisabled = false;
     
     //運動項目名稱必須配合相同的圖片標題
-    self.titles = @[@"Archery",
+    self.titles = @[@"Other",
+                    @"Archery",
                     @"Athletics",
                     @"Badminton",
                     @"Basketball",
                     @"Beach Volleyball",
-                    @"Canoe Slalom",
-                    @"Canoe Sprint",
-                    @"Cycling BMX",
-                    @"Cycling Mountain Bike",
-                    @"Cycling Road",
-                    @"Cycling Track",
+                    @"Cycling",
                     @"Diving",
                     @"Equestrian",
                     @"Fencing",
                     @"Football",
-                    @"Gymnastics Artistic",
-                    @"Gymnastics Rhythmic",
+                    @"Gymnastics",
                     @"Handball",
                     @"Hockey",
                     @"Judo",
-                    @"Modern Pentathlon",
                     @"Rowing",
                     @"Sailing",
                     @"Shooting",
                     @"Swimming",
                     @"Synchronised Swimming",
-                    @"Table Tennisv",
+                    @"Table Tennis",
                     @"Taekwondo",
                     @"Tennis",
                     @"Trampoline",
-                    @"Triathlon",
-                    @"Voleyball",
-                    @"Waterpolp",
-                    @"Weightliftling",
-                    @"Wrestling"];
+                    @"Volleyball",
+                    @"Water Polo",
+                    @"Weightlifting",
+                    @"Wrestling",@""];
     
     [self.pickerView reloadData];
     [self.view sendSubviewToBack:_pickerView];
@@ -112,6 +105,15 @@
     popView4 = [[[NSBundle mainBundle] loadNibNamed:@"PopView4" owner:nil options:nil] lastObject];
     [popView4.popPicBtn4 setBackgroundImage:[UIImage imageNamed:@"camera"] forState: UIControlStateNormal];
     
+    //添加背景點擊事件
+    UITapGestureRecognizer *recognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(keyboardResign)];
+    recognizer.cancelsTouchesInView = NO;
+    [self.view addGestureRecognizer:recognizer];
+}
+
+//點擊空白處收起鍵盤
+- (void)keyboardResign {
+    [self.view endEditing:YES];
 }
 
 -(void)toTap {

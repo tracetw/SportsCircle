@@ -7,7 +7,7 @@
 //
 
 #import "TrendTableViewCell.h"
-
+#import "PersonalPageViewController.h"
 @implementation TrendTableViewCell
 
 - (void)awakeFromNib {
@@ -19,5 +19,17 @@
 
     // Configure the view for the selected state
 }
-
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([[segue identifier] isEqualToString:@"goPersonalPageFromTrend"])
+    {
+        //NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
+        
+       // TrendTableViewCell * cell =(TrendTableViewCell*)[_tableView cellForRowAtIndexPath:indexPath];
+        
+        PersonalPageViewController *controller = (PersonalPageViewController *)[segue destinationViewController];
+       // NSLog(@"cell.userName.text:%@",cell.userName.text);
+        [controller passData:self.userName.text];
+        
+    }
+}
 @end

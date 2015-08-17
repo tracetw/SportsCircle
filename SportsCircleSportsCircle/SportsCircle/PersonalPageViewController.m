@@ -23,6 +23,7 @@
     UIRefreshControl *refreshControl;
     PFUser *currentUser;
     PFQuery *query;
+    NSString *selectUserObjectId;
 }
 @property (strong, nonatomic) IBOutlet UITableView *personalPageTableView;
 @end
@@ -179,7 +180,7 @@
     {
 
         EditProfileTableViewController *controller = (EditProfileTableViewController *)[segue destinationViewController];
-        [controller passValue:usernameStr];
+        [controller passValue:usernameStr passSelectUserObjectId:selectUserObjectId];
     }
 }
 
@@ -189,11 +190,27 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
 -(void)passData:(NSString*)argu;
 {
     usernameStr=argu;
 
+    [self getSelectUserObjectId];
 }
+
+-(void)getSelectUserObjectId{
+    PFQuery *userQuery = [PFQuery queryWithClassName:@"_User"];
+    if (!usernameStr) {
+        usernameStr = currentUser[@"username"];
+    }
+    [userQuery whereKey:@"username" equalTo:usernameStr];
+    [userQuery findObjectsInBackgroundWithBlock:^(NSArray *comments, NSError *error) {
+        PFObject *selectUser = comments[0];
+        selectUserObjectId = selectUser.objectId;
+    }];
+
+}
+
 /*
 #pragma mark - Navigation
 

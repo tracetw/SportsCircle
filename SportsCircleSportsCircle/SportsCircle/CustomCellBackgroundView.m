@@ -15,11 +15,11 @@
     //邊緣圓角，藍色底圖
     CGContextRef aRef = UIGraphicsGetCurrentContext();
     CGContextSaveGState(aRef);
-    UIBezierPath *bezierPath = [UIBezierPath bezierPathWithRoundedRect:rect cornerRadius:5.0f];
-    bezierPath.lineWidth = 5.0f;
+    UIBezierPath *bezierPath = [UIBezierPath bezierPathWithRoundedRect:rect cornerRadius:0.0f];
+    //bezierPath.lineWidth = 5.0f;
     [[UIColor blackColor] setStroke];
     
-    UIColor *fillColor = [UIColor colorWithRed:0.529 green:0.808 blue:0.922 alpha:1]; // color equivalent is #87ceeb
+    UIColor *fillColor = [UIColor colorWithRed:243.0/255.0 green:90.0/255.0 blue:74.0/255.0 alpha:1]; // color equivalent is
     [fillColor setFill];
     
     [bezierPath stroke];

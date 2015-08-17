@@ -49,7 +49,9 @@
         datas=[[NSMutableArray alloc]init];
     }
     
-    
+    UIColor *backgroundColor = [UIColor colorWithRed:165/255.0 green:163/255.0 blue:165/255.0 alpha:0.23];
+    self.tableView.backgroundView = [[UIView alloc]initWithFrame:self.tableView.bounds];
+    self.tableView.backgroundView.backgroundColor = backgroundColor;
     
     
     //    [self fetchDataFromParse];

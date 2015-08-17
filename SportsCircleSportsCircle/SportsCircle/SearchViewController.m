@@ -23,7 +23,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-  
+
     _tableView.delegate=self;
     _tableView.dataSource=self;
     _searchBar.delegate=self;
@@ -53,6 +53,20 @@
     for (PFObject *object in userData) {
         [datas addObject:object];
     }
+    
+    UIColor *backgroundColor = [UIColor colorWithRed:165/255.0 green:163/255.0 blue:165/255.0 alpha:0.23];
+    self.tableView.backgroundView = [[UIView alloc]initWithFrame:self.tableView.bounds];
+    self.tableView.backgroundView.backgroundColor = backgroundColor;
+    
+    //添加背景點擊事件
+    UITapGestureRecognizer *recognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(keyboardResign)];
+    recognizer.cancelsTouchesInView = NO;
+    [self.view addGestureRecognizer:recognizer];
+}
+
+//點擊空白處收起鍵盤
+- (void)keyboardResign {
+    [self.view endEditing:YES];
 }
 
 -(void)searchBarSearchButtonClicked:(UISearchBar *)searchBar

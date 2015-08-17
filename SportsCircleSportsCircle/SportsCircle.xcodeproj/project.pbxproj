@@ -7,8 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		702032251B7351790059F06C /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 702032241B7351790059F06C /* libz.dylib */; };
-		702032271B7351820059F06C /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 702032261B7351820059F06C /* libsqlite3.dylib */; };
 		702BBACA1B5547FE00C09B9B /* SignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 702BBAC91B5547FE00C09B9B /* SignUpViewController.m */; };
 		703E3E8C1B722B7300768912 /* TrendTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 703E3E8B1B722B7300768912 /* TrendTableViewCell.m */; };
 		705B4DD51B7B84680019FC7D /* SearchTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 705B4DD41B7B84680019FC7D /* SearchTableViewCell.m */; };
@@ -49,6 +47,7 @@
 		D30CA21E1B74AA2100CE61AD /* ParseFacebookUtils.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D30CA2141B74AA2100CE61AD /* ParseFacebookUtils.framework */; };
 		D30CA21F1B74AA2100CE61AD /* ParseFacebookUtilsV4.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D30CA2151B74AA2100CE61AD /* ParseFacebookUtilsV4.framework */; };
 		D30CA2201B74AA2100CE61AD /* ParseUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D30CA2161B74AA2100CE61AD /* ParseUI.framework */; };
+		D332FB1F1B81C70D0059CD0D /* NotificationTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D332FB1E1B81C70D0059CD0D /* NotificationTableViewController.m */; };
 		D34A63451B4CED0700710B1F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D34A63441B4CED0700710B1F /* main.m */; };
 		D34A63481B4CED0700710B1F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D34A63471B4CED0700710B1F /* AppDelegate.m */; };
 		D34A634B1B4CED0700710B1F /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D34A634A1B4CED0700710B1F /* ViewController.m */; };
@@ -169,6 +168,8 @@
 		D30CA2141B74AA2100CE61AD /* ParseFacebookUtils.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ParseFacebookUtils.framework; path = framework/ParseFacebookUtils.framework; sourceTree = "<group>"; };
 		D30CA2151B74AA2100CE61AD /* ParseFacebookUtilsV4.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ParseFacebookUtilsV4.framework; path = framework/ParseFacebookUtilsV4.framework; sourceTree = "<group>"; };
 		D30CA2161B74AA2100CE61AD /* ParseUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ParseUI.framework; path = framework/ParseUI.framework; sourceTree = "<group>"; };
+		D332FB1D1B81C70D0059CD0D /* NotificationTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotificationTableViewController.h; sourceTree = "<group>"; };
+		D332FB1E1B81C70D0059CD0D /* NotificationTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NotificationTableViewController.m; sourceTree = "<group>"; };
 		D34A633F1B4CED0700710B1F /* SportsCircle.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SportsCircle.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D34A63431B4CED0700710B1F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D34A63441B4CED0700710B1F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -255,8 +256,6 @@
 				764C47B81B735CD100AC09E8 /* libz.dylib in Frameworks */,
 				764C47B61B735CBD00AC09E8 /* libsqlite3.dylib in Frameworks */,
 				D30CA21D1B74AA2100CE61AD /* ParseCrashReporting.framework in Frameworks */,
-				702032271B7351820059F06C /* libsqlite3.dylib in Frameworks */,
-				702032251B7351790059F06C /* libz.dylib in Frameworks */,
 				70E3C0B61B6B969000A5C14E /* AssetsLibrary.framework in Frameworks */,
 				D30CA2201B74AA2100CE61AD /* ParseUI.framework in Frameworks */,
 				D30CA21B1B74AA2100CE61AD /* FBSDKShareKit.framework in Frameworks */,
@@ -411,6 +410,8 @@
 				76F2DDD21B7A3AFC00B50AAB /* FriendTableViewController.m */,
 				76F2DDD41B7A3B2700B50AAB /* FriendsTableViewCell.h */,
 				76F2DDD51B7A3B2700B50AAB /* FriendsTableViewCell.m */,
+				D332FB1D1B81C70D0059CD0D /* NotificationTableViewController.h */,
+				D332FB1E1B81C70D0059CD0D /* NotificationTableViewController.m */,
 				701F1D871B71BA0D00BD2673 /* Search */,
 				70E3C0CB1B6B9A7300A5C14E /* PopView */,
 				70E3C0D21B6BB15500A5C14E /* schedule */,
@@ -638,6 +639,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D332FB1F1B81C70D0059CD0D /* NotificationTableViewController.m in Sources */,
 				76A406CD1B7CDFFD00034BF6 /* endRecordingTableViewController.m in Sources */,
 				768A20291B6F0505005A7E66 /* MapRecordingViewController.m in Sources */,
 				D30CA2081B74A9AD00CE61AD /* scheduleDetailViewController.m in Sources */,
