@@ -1254,11 +1254,10 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-<<<<<<< HEAD
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="點選上述地點按鈕 並輸入行程地點" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NKr-vW-85F">
-=======
+
+
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="點選上述地點按鈕 並於地圖中選擇" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NKr-vW-85F">
->>>>>>> e574c97d86047c7dff8a013194ce111a25ef1745
+
                                 <rect key="frame" x="16" y="359" width="568" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="568" id="Xnj-TE-q2l"/>
@@ -1960,7 +1959,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Psd-cG-wmv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-<<<<<<< HEAD
+
             <point key="canvasLocation" x="1467" y="4034"/>
         </scene>
         <!--Search Location View Controller-->
@@ -2091,9 +2090,9 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eMg-PS-cwG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2217" y="2329"/>
-=======
+
             <point key="canvasLocation" x="1489" y="3900"/>
->>>>>>> e574c97d86047c7dff8a013194ce111a25ef1745
+
         </scene>
         <!--Map Recording View Controller-->
         <scene sceneID="9Es-by-m3L">
@@ -2386,11 +2385,11 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="QL2-QP-Rlc"/>
-<<<<<<< HEAD
+
         <segue reference="gpY-tf-boD"/>
-=======
+
         <segue reference="dyZ-0D-Vqs"/>
         <segue reference="5DY-EW-tli"/>
->>>>>>> e574c97d86047c7dff8a013194ce111a25ef1745
+
     </inferredMetricsTieBreakers>
 </document>

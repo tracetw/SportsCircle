@@ -107,7 +107,7 @@
     popView4 = [[[NSBundle mainBundle] loadNibNamed:@"PopView4" owner:nil options:nil] lastObject];
     [popView4.popPicBtn4 setBackgroundImage:[UIImage imageNamed:@"camera"] forState: UIControlStateNormal];
     
-<<<<<<< HEAD
+
     //以下為popPicBtn新增連結
     UITapGestureRecognizer *singleTap1 =
     [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(popPicBtnPressed:)];
@@ -117,7 +117,7 @@
     [popView.popPicBtn addGestureRecognizer:singleTap1];
     //[cell.userImage addGestureRecognizer:singleTap2];
     //popView.popPicBtn.tag = 1;
-=======
+
     //添加背景點擊事件
     UITapGestureRecognizer *recognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(keyboardResign)];
     recognizer.cancelsTouchesInView = NO;
@@ -127,7 +127,7 @@
 //點擊空白處收起鍵盤
 - (void)keyboardResign {
     [self.view endEditing:YES];
->>>>>>> e574c97d86047c7dff8a013194ce111a25ef1745
+
 }
 
 -(void)toTap {

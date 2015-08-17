@@ -439,14 +439,14 @@
 				76F2DDD21B7A3AFC00B50AAB /* FriendTableViewController.m */,
 				76F2DDD41B7A3B2700B50AAB /* FriendsTableViewCell.h */,
 				76F2DDD51B7A3B2700B50AAB /* FriendsTableViewCell.m */,
-<<<<<<< HEAD
+
 				705A3D0E1B81B7540019F7A8 /* xib@3x.png */,
 				705A3D0F1B81B7540019F7A8 /* xib@2x.png */,
 				705A3D101B81B7540019F7A8 /* xib.png */,
-=======
+
 				D332FB1D1B81C70D0059CD0D /* NotificationTableViewController.h */,
 				D332FB1E1B81C70D0059CD0D /* NotificationTableViewController.m */,
->>>>>>> e574c97d86047c7dff8a013194ce111a25ef1745
+
 				701F1D871B71BA0D00BD2673 /* Search */,
 				70E3C0CB1B6B9A7300A5C14E /* PopView */,
 				70E3C0D21B6BB15500A5C14E /* schedule */,
