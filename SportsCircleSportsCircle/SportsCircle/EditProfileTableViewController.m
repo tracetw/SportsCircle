@@ -30,6 +30,14 @@
     NSString *selectUserObjectId;    /**< 點擊進來的使用者ObjectId */
     BOOL didCurrentUser; /**< 是否為當前用戶 */
     UIImagePickerController *imagePicker;   /**< 選擇上傳照片 */
+    NSMutableArray *friendsArray;  /**< 好友列表 */
+    NSMutableArray *unfriendsArray;    /**< 要求加好友列表 */
+    BOOL didBeFriend;   /**< 已經是好友 */
+    BOOL ConfirmBeFriend;   /**< 確認好友邀請 */
+    BOOL prepareForBeFriend; /**< 準備成為好友 */
+    NSString *otherPersonobjectId;  /**< 準備加入的好友 */
+    NSMutableArray *otherPersonfriendsArray;  /**< 對方好友列表 */
+    NSMutableArray *otherPersonunfriendsArray;    /**< 對方要求加好友列表 */
 }
 @property (weak, nonatomic) IBOutlet UIImageView *userImageView;
 @property (weak, nonatomic) IBOutlet UITableViewCell *nameCell;
@@ -54,7 +62,6 @@
     // Uncomment the following line to preserve selection between presentations
     _beFriendButton.hidden = YES;
     
-    [self settingStyle];
     [self countPictureNumber];
     
     PFQuery *query = [PFQuery queryWithClassName:@"_User"];
@@ -90,7 +97,9 @@
 //    self.collectionView2.dataSource = self;
 
 
+
 }
+
 
 
 - (void)passValue:(NSString *)userNameTextField passSelectUserObjectId:(NSString *)userObjectId{
@@ -100,16 +109,53 @@
     
 }
 
-//設定樣式
--(void)settingStyle{
+//設定好友Button樣式
+-(void)settingStyle:(int)value{
     //UIColor *hex22C3AA = [UIColor colorWithRed:34.0/255.0 green:195.0/255.0 blue:170.0/255.0 alpha:1];
-    self.beFriendButton.buttonColor = [UIColor peterRiverColor];    //主體
-    self.beFriendButton.shadowColor = [UIColor belizeHoleColor];  //陰影
-    self.beFriendButton.shadowHeight = 2.0f;
-    self.beFriendButton.cornerRadius = 3.0f;
-    self.beFriendButton.titleLabel.font = [UIFont boldFlatFontOfSize:16];
-    [self.beFriendButton setTitleColor:[UIColor cloudsColor] forState:UIControlStateNormal];  //文字
-    [self.beFriendButton setTitleColor:[UIColor midnightBlueColor] forState:UIControlStateHighlighted]; //點選後文字
+    
+    if (value == 1) {
+        [_beFriendButton setTitle:@"加好友" forState:UIControlStateNormal];
+        self.beFriendButton.buttonColor = [UIColor peterRiverColor];    //主體
+        self.beFriendButton.shadowColor = [UIColor belizeHoleColor];  //陰影
+        self.beFriendButton.shadowHeight = 2.0f;
+        self.beFriendButton.cornerRadius = 3.0f;
+        self.beFriendButton.titleLabel.font = [UIFont boldFlatFontOfSize:16];
+        [self.beFriendButton setTitleColor:[UIColor cloudsColor] forState:UIControlStateNormal];  //文字
+        [self.beFriendButton setTitleColor:[UIColor midnightBlueColor] forState:UIControlStateHighlighted]; //點選後文字
+    }
+    
+    if (value == 2) {
+        [_beFriendButton setTitle:@"取消好友" forState:UIControlStateNormal];
+        self.beFriendButton.buttonColor = [UIColor concreteColor];    //主體
+        self.beFriendButton.shadowColor = [UIColor asbestosColor];  //陰影
+        self.beFriendButton.shadowHeight = 2.0f;
+        self.beFriendButton.cornerRadius = 3.0f;
+        self.beFriendButton.titleLabel.font = [UIFont boldFlatFontOfSize:16];
+        [self.beFriendButton setTitleColor:[UIColor midnightBlueColor] forState:UIControlStateNormal];  //文字
+        [self.beFriendButton setTitleColor:[UIColor wetAsphaltColor] forState:UIControlStateHighlighted]; //點選後文字
+    }
+    
+    if(value == 3){
+        [_beFriendButton setTitle:@"取消邀請" forState:UIControlStateNormal];
+        self.beFriendButton.buttonColor = [UIColor emerlandColor];    //主體
+        self.beFriendButton.shadowColor = [UIColor nephritisColor];  //陰影
+        self.beFriendButton.shadowHeight = 2.0f;
+        self.beFriendButton.cornerRadius = 3.0f;
+        self.beFriendButton.titleLabel.font = [UIFont boldFlatFontOfSize:16];
+        [self.beFriendButton setTitleColor:[UIColor pomegranateColor] forState:UIControlStateNormal];  //文字
+        [self.beFriendButton setTitleColor:[UIColor alizarinColor] forState:UIControlStateHighlighted]; //點選後文字
+    }
+    
+    if (value == 4) {
+        [_beFriendButton setTitle:@"確認邀請" forState:UIControlStateNormal];
+        self.beFriendButton.buttonColor = [UIColor peterRiverColor];    //主體
+        self.beFriendButton.shadowColor = [UIColor belizeHoleColor];  //陰影
+        self.beFriendButton.shadowHeight = 2.0f;
+        self.beFriendButton.cornerRadius = 3.0f;
+        self.beFriendButton.titleLabel.font = [UIFont boldFlatFontOfSize:16];
+        [self.beFriendButton setTitleColor:[UIColor cloudsColor] forState:UIControlStateNormal];  //文字
+        [self.beFriendButton setTitleColor:[UIColor midnightBlueColor] forState:UIControlStateHighlighted]; //點選後文字
+    }
 }
 
 //如果資料有變動更新
@@ -117,7 +163,164 @@
     if (tempDidUpdateSportItem) {
         [self queryDatabase];
     }
+    
+    [self didBeFriend];
+    [self didConfirmBeFriend];
 }
+
+
+#pragma mark BeFriend
+- (void) initFriendsList:(PFObject *)User{   //初始化好友列表
+    PFObject *initFriends = [PFObject objectWithClassName:@"Friends"];
+    NSArray *tempArray = [NSArray new];
+    initFriends[@"Friends"] = tempArray;
+    initFriends[@"unFriends"] = tempArray;
+    initFriends[@"user"] = User;
+    [initFriends saveInBackground];
+}
+
+- (void) didBeFriend{   //確認是否為好友
+    PFUser *currentUser = [PFUser currentUser];
+    PFQuery *query = [PFQuery queryWithClassName:@"Friends"];
+    [query whereKey:@"user" equalTo:currentUser];
+    [query findObjectsInBackgroundWithBlock:^(NSArray *array, NSError *error){
+        if (array.count == 0) {
+            [self initFriendsList:currentUser];
+            [self settingStyle:1];
+            return;
+        }
+        
+        PFObject *fObject = array[0];
+        friendsArray = fObject[@"Friends"];
+        unfriendsArray = fObject[@"unFriends"];
+    
+        for (NSString *string in friendsArray) {
+            if ([string caseInsensitiveCompare:selectUserObjectId]==NSOrderedSame) {
+                NSLog(@"已經是好朋友了");
+                didBeFriend = true;
+                [self settingStyle:2];
+            }
+        }
+        for (NSString *string in unfriendsArray) {
+            if ([string caseInsensitiveCompare:selectUserObjectId]==NSOrderedSame) {
+                NSLog(@"取消加好友邀請");
+                ConfirmBeFriend = true;
+                [self settingStyle:3];
+            }
+        }
+    }];
+    
+    
+    [self settingStyle:1];
+}
+
+- (void) didConfirmBeFriend{   //確認是否有好友邀請名單
+    PFUser *currentUser = [PFUser currentUser];
+    NSMutableArray *unConfirmfriendsArray = [NSMutableArray new];
+    PFQuery *query = [PFQuery queryWithClassName:@"Friends"];
+    [query findObjectsInBackgroundWithBlock:^(NSArray *array, NSError *error){
+        for (PFObject *pfobject in array) {
+            for (NSObject *object in pfobject[@"unFriends"]) {
+                if ([[NSString stringWithFormat:@"%@",object] caseInsensitiveCompare:currentUser.objectId]==NSOrderedSame) {
+                    NSLog(@"%@邀請您成為好友",pfobject[@"user"]); //發出通知
+                    PFUser *otherPerson = pfobject[@"user"];
+                    NSString *tempString = otherPerson.objectId;
+                    NSLog(@"%@",tempString);
+                    if ([tempString caseInsensitiveCompare:selectUserObjectId]==NSOrderedSame){
+                        otherPersonobjectId = tempString;
+                        NSLog(@"當前頁面的user%@邀請您成為好友",tempString); //加好友
+                        prepareForBeFriend = YES;
+                            //雙方互加好友
+                        [self settingStyle:4];
+                    }
+                }
+                [unConfirmfriendsArray addObject:object];
+            }
+        }
+        
+        NSLog(@"%@",unConfirmfriendsArray);
+    }];
+}
+
+- (void) processOtherPerson{   //處理對方好友列表查詢
+    PFUser *currentUser = [PFUser currentUser];
+    PFQuery *query = [PFQuery queryWithClassName:@"Friends"];
+    PFObject *pfObject = [PFObject objectWithoutDataWithClassName:@"_User" objectId:otherPersonobjectId];
+    [query whereKey:@"user" equalTo:pfObject];
+    [query findObjectsInBackgroundWithBlock:^(NSArray *array, NSError *error){
+        if (array.count == 0) {
+            [self initFriendsList:pfObject];
+            [self processOtherPerson];
+        }
+        PFObject *fObject = array[0];
+        otherPersonfriendsArray = fObject[@"Friends"];
+        otherPersonunfriendsArray = fObject[@"unFriends"];
+        
+        [otherPersonfriendsArray addObject:currentUser.objectId];   //加入好友名單
+        [otherPersonunfriendsArray removeObject:currentUser.objectId];  //移除確認列表
+        
+        [self processOtherPersonToBefriend];
+        
+    }];
+
+
+}
+
+- (void) processOtherPersonToBefriend{ //處理對方好友列表加回去
+    PFQuery *query = [PFQuery queryWithClassName:@"Friends"];
+    PFObject *pfObject = [PFObject objectWithoutDataWithClassName:@"_User" objectId:otherPersonobjectId];
+    [query whereKey:@"user" equalTo:pfObject];
+    [query getFirstObjectInBackgroundWithBlock:^(PFObject *object, NSError *error){
+        NSLog(@"%@",object);
+        object[@"Friends"] = otherPersonfriendsArray;
+        object[@"unFriends"] = otherPersonunfriendsArray;
+        [object saveInBackground];
+    }];
+}
+//加好友
+- (IBAction)addFriendBtnPressed:(id)sender {
+    
+    if (didBeFriend && !ConfirmBeFriend  && !prepareForBeFriend) {
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:nil message:@"確定取消好友" preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction *ok = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+            [friendsArray removeObject:selectUserObjectId]; //如果已經是好友，移除好友
+            NSLog(@"移除好友");
+            [self settingStyle:1];
+            [alert dismissViewControllerAnimated:YES completion:nil];
+        }];
+        UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+            [alert dismissViewControllerAnimated:YES completion:nil];
+        }];
+        [alert addAction:ok];
+        [alert addAction:cancel];
+        [self presentViewController:alert animated:YES completion:nil];
+        
+    }else if(ConfirmBeFriend && !didBeFriend  && !prepareForBeFriend){
+        [unfriendsArray removeObject:selectUserObjectId];   //如果是確認好友狀態，取消加入好友邀請
+        [self settingStyle:1];
+    }else if(!ConfirmBeFriend && !didBeFriend && !prepareForBeFriend){
+        [unfriendsArray addObject:selectUserObjectId];  //按下去加入確認名單
+        [self settingStyle:3];
+            //發出通知
+    }else if(prepareForBeFriend && !ConfirmBeFriend && !didBeFriend ){   //準備成為好友
+        [unfriendsArray removeObject:otherPersonobjectId];   //移除確認列表
+        [friendsArray addObject:otherPersonobjectId];    //加入好友名單
+        [self settingStyle:2];
+        [self processOtherPerson];
+    }
+    
+    PFQuery *query = [PFQuery queryWithClassName:@"Friends"];
+    PFUser *currentUser = [PFUser currentUser];
+    [query whereKey:@"user" equalTo:currentUser];
+    [query getFirstObjectInBackgroundWithBlock:^(PFObject *object, NSError *error){
+        NSLog(@"%@",object);
+        object[@"Friends"] = friendsArray;
+        object[@"unFriends"] = unfriendsArray;
+        [object saveInBackground];
+    }];
+    [self didBeFriend];
+}
+
 
 
 #pragma mark 上傳頭像
