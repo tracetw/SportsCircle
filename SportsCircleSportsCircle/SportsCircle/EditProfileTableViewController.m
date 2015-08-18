@@ -38,6 +38,7 @@
     NSString *otherPersonobjectId;  /**< 準備加入的好友 */
     NSMutableArray *otherPersonfriendsArray;  /**< 對方好友列表 */
     NSMutableArray *otherPersonunfriendsArray;    /**< 對方要求加好友列表 */
+    PFUser *currentUser;    /**< 當前使用者 */
 }
 @property (weak, nonatomic) IBOutlet UIImageView *userImageView;
 @property (weak, nonatomic) IBOutlet UITableViewCell *nameCell;
@@ -65,7 +66,7 @@
     [self countPictureNumber];
     
     PFQuery *query = [PFQuery queryWithClassName:@"_User"];
-    PFUser *currentUser = [PFUser currentUser];
+    currentUser = [PFUser currentUser];
     if (!selectUserName) {    //如果選擇的名字是空的
         selectUserName = currentUser[@"username"];  //當前用戶名字作為選擇的名字
     }
@@ -167,7 +168,6 @@
     [self didConfirmBeFriend];
 }
 
-
 #pragma mark BeFriend
 - (void) initFriendsList:(PFObject *)User{   //初始化好友列表
     PFObject *initFriends = [PFObject objectWithClassName:@"Friends"];
@@ -179,7 +179,7 @@
 }
 
 - (void) didBeFriend{   //確認是否為好友
-    PFUser *currentUser = [PFUser currentUser];
+    currentUser = [PFUser currentUser];
     PFQuery *query = [PFQuery queryWithClassName:@"Friends"];
     [query whereKey:@"user" equalTo:currentUser];
     [query findObjectsInBackgroundWithBlock:^(NSArray *array, NSError *error){
@@ -220,24 +220,18 @@
     NSMutableDictionary *notidicationDictionary = [NSMutableDictionary new];    /**< 消息通知 */
     NSMutableArray *addFriendArray = [NSMutableArray new];  /**< 所有的待確認好友objectId */
     
-    PFUser *currentUser = [PFUser currentUser];
+    
     NSMutableArray *unConfirmfriendsArray = [NSMutableArray new];
     PFQuery *query = [PFQuery queryWithClassName:@"Friends"];
     [query findObjectsInBackgroundWithBlock:^(NSArray *array, NSError *error){
+        NSLog(@"%@",array[0]);
         for (PFObject *pfobject in array) {
             for (NSObject *object in pfobject[@"unFriends"]) {
                 if ([[NSString stringWithFormat:@"%@",object] caseInsensitiveCompare:currentUser.objectId]==NSOrderedSame) {
-                    NSLog(@"%@邀請您成為好友",pfobject[@"user"]); //發出通知
-                    NSLog(@"%@",pfobject.objectId);
                     PFUser *otherPerson = pfobject[@"user"];
-
+                    [otherPerson fetch];    //取值
                     NSString *tempNameString = otherPerson.username;
-                    NSLog(@"%@",tempNameString);
                     NSString *tempString = otherPerson.objectId;
-                    tempString = [NSString stringWithFormat:@"%@&%@",tempString,tempNameString];
-                    NSLog(@"%@",tempString);
-                    
-                    [addFriendArray addObject:tempString];
 
                     if ([tempString caseInsensitiveCompare:selectUserObjectId]==NSOrderedSame){
                         otherPersonobjectId = tempString;
@@ -246,6 +240,10 @@
                             //雙方互加好友
                         [self settingStyle:4];
                     }
+                    
+                    NSString *tempAddString = [NSString stringWithFormat:@"%@&%@",tempString,tempNameString];
+                    [addFriendArray addObject:tempAddString];
+                    
                 }
                 [unConfirmfriendsArray addObject:object];
             }
@@ -261,7 +259,7 @@
 }
 
 - (void) processOtherPerson{   //處理對方好友列表查詢
-    PFUser *currentUser = [PFUser currentUser];
+    currentUser = [PFUser currentUser];
     PFQuery *query = [PFQuery queryWithClassName:@"Friends"];
     PFObject *pfObject = [PFObject objectWithoutDataWithClassName:@"_User" objectId:otherPersonobjectId];
     [query whereKey:@"user" equalTo:pfObject];
@@ -328,7 +326,7 @@
     }
     
     PFQuery *query = [PFQuery queryWithClassName:@"Friends"];
-    PFUser *currentUser = [PFUser currentUser];
+    currentUser = [PFUser currentUser];
     [query whereKey:@"user" equalTo:currentUser];
     [query getFirstObjectInBackgroundWithBlock:^(PFObject *object, NSError *error){
         NSLog(@"%@",object);
@@ -417,7 +415,7 @@
 - (void)countPictureNumber{
     //抓到所有的運動照片物件
     PFQuery *query = [PFQuery queryWithClassName:@"WallPost"];
-    //PFUser *currentUser = [PFUser currentUser];
+    //currentUser = [PFUser currentUser];
     PFObject *pfObject = [PFObject objectWithoutDataWithClassName:@"_User" objectId:selectUserObjectId];
     //NSLog(@"qqqqqqq%@",currentUser.objectId);
     [query whereKey:@"user" equalTo:pfObject];
@@ -541,22 +539,22 @@
     _habitCell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     
     //查詢資料庫
-    PFUser *user = [PFUser currentUser];
+    currentUser = [PFUser currentUser];
     //NSLog(@"%@",user.objectId);
     PFQuery *query = [PFQuery queryWithClassName:@"PersionalInfo"];
-    [query whereKey:@"user" equalTo:user];
+    [query whereKey:@"user" equalTo:currentUser];
     NSArray* scoreArray = [query findObjects];
     //NSLog(@"scoreArray = %@",scoreArray);
     
     
-    PFFile *userImageData = user[@"userImage"];
+    PFFile *userImageData = currentUser[@"userImage"];
     NSData *userImage = [userImageData getData];
     _userImageView.image = [UIImage imageWithData:userImage];
     
     
     if (scoreArray.count == 0) {
         PFObject *gameScore = [PFObject objectWithClassName:@"PersionalInfo"];
-        gameScore[@"user"] = user;
+        gameScore[@"user"] = currentUser;
         [gameScore saveInBackground];
         
         return;
@@ -571,7 +569,7 @@
     
     
     //顯示資料至cell.textlabel
-    PFUser *currentUser = [PFUser currentUser];
+    currentUser = [PFUser currentUser];
     if (currentUser) {
         NSString *title = [NSString stringWithFormat:@" %@", currentUser.username];
         _nameCell.textLabel.text = [NSString stringWithFormat:@"姓名：%@",title];
@@ -798,9 +796,9 @@
 -(void)updateParseData:(NSString*)profileClass withValue:(int)value{
     //NSLog(@"%@     %d",profileClass,value);
     //查詢資料庫
-    PFUser *user = [PFUser currentUser];
+    currentUser = [PFUser currentUser];
     PFQuery *query = [PFQuery queryWithClassName:@"PersionalInfo"];
-    [query whereKey:@"user" equalTo:user];
+    [query whereKey:@"user" equalTo:currentUser];
     NSArray* scoreArray = [query findObjects];
     //NSDictionary *myDictionary = scoreArray[0];
     PFObject *persionalInfoObject = scoreArray[0];
@@ -919,7 +917,7 @@
         
         //載入小圖片
         PFQuery *query = [PFQuery queryWithClassName:@"WallPost"];
-        //PFUser *currentUser = [PFUser currentUser];
+        //currentUser = [PFUser currentUser];
         PFObject *pfObject = [PFObject objectWithoutDataWithClassName:@"_User" objectId:selectUserObjectId];
         [query whereKey:@"user" equalTo:pfObject];
         NSArray *usersPostsArray = [query findObjects];
@@ -949,7 +947,7 @@
     
     //載入小圖片
     PFQuery *query = [PFQuery queryWithClassName:@"WallPost"];
-    //PFUser *currentUser = [PFUser currentUser];
+    //currentUser = [PFUser currentUser];
     PFObject *pfObject = [PFObject objectWithoutDataWithClassName:@"_User" objectId:selectUserObjectId];
     [query whereKey:@"user" equalTo:pfObject];
     NSArray *usersPostsArray = [query findObjects];

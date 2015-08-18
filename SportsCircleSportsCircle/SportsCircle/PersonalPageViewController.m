@@ -33,8 +33,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    
     currentUser = [PFUser currentUser];
+    
     if ([usernameStr isEqualToString: currentUser.username] || usernameStr == nil) {
         
         query = [PFQuery queryWithClassName:@"WallPost"];
@@ -198,17 +198,61 @@
     [self getSelectUserObjectId];
 }
 
--(void)getSelectUserObjectId{
+//-(void)getSelectUserObjectId{
+//    PFQuery *userQuery = [PFQuery queryWithClassName:@"_User"];
+//    if (!usernameStr) {
+//        usernameStr = currentUser[@"username"];
+//    }
+//    [userQuery whereKey:@"username" equalTo:usernameStr];
+//    [userQuery findObjectsInBackgroundWithBlock:^(NSArray *comments, NSError *error) {
+//        PFObject *selectUser = comments[0];
+//        selectUserObjectId = selectUser.objectId;
+//    }];
+//
+//    [self initFriendsList];
+//}
+
+- (void)getSelectUserObjectId{
     PFQuery *userQuery = [PFQuery queryWithClassName:@"_User"];
     if (!usernameStr) {
         usernameStr = currentUser[@"username"];
     }
     [userQuery whereKey:@"username" equalTo:usernameStr];
-    [userQuery findObjectsInBackgroundWithBlock:^(NSArray *comments, NSError *error) {
-        PFObject *selectUser = comments[0];
-        selectUserObjectId = selectUser.objectId;
+    [userQuery getFirstObjectInBackgroundWithBlock:^(PFObject *object, NSError *error) {
+        if (!error) {
+            NSLog(@"The getFirstObject request failed.");
+            selectUserObjectId = object.objectId;
+            [self initFriendsList];
+        } else {
+            // The find succeeded.
+            NSLog(@"Successfully retrieved the object.");
+        }
     }];
+}
 
+//初始化好友列表
+- (void) initFriendsList{
+    PFQuery *newQuery = [PFQuery queryWithClassName:@"Friends"];
+    PFObject *pfObject = [PFObject objectWithoutDataWithClassName:@"_User" objectId:selectUserObjectId];
+    [newQuery whereKey:@"user" equalTo:pfObject];
+    [newQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if (!error) {
+            if (objects.count == 0) {
+                PFObject *initFriends = [PFObject objectWithClassName:@"Friends"];
+                
+                NSArray *tempArray = [NSArray new];
+                initFriends[@"Friends"] = tempArray;
+                initFriends[@"unFriends"] = tempArray;
+                initFriends[@"user"] = pfObject;
+                [initFriends saveInBackground];
+            }else{
+                return;
+            }
+            
+        } else {
+            return;
+        }
+    }];
 }
 
 /*
