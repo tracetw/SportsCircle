@@ -14,4 +14,5 @@
 @property (strong, nonatomic) NSString *param;
 @property (strong, nonatomic) NSString *param2;
 @property (strong, nonatomic) NSString *selectUserObjectId;
+@property (strong, nonatomic) NSString *totalpagesNumber;
 @end

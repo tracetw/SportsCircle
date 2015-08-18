@@ -228,8 +228,11 @@
             for (NSObject *object in pfobject[@"unFriends"]) {
                 if ([[NSString stringWithFormat:@"%@",object] caseInsensitiveCompare:currentUser.objectId]==NSOrderedSame) {
                     NSLog(@"%@邀請您成為好友",pfobject[@"user"]); //發出通知
+                    NSLog(@"%@",pfobject.objectId);
                     PFUser *otherPerson = pfobject[@"user"];
+
                     NSString *tempNameString = otherPerson.username;
+                    NSLog(@"%@",tempNameString);
                     NSString *tempString = otherPerson.objectId;
                     tempString = [NSString stringWithFormat:@"%@&%@",tempString,tempNameString];
                     NSLog(@"%@",tempString);
@@ -999,16 +1002,21 @@
 //        detailViewController.image = image;
         
         NSString *roleNumber = [NSString stringWithFormat:@"%ld",(long)selectedIndexPath.row];
-
+        NSString *totalpagesNumber = [NSString stringWithFormat:@"%ld",(long)totalSportPictureNumber];
+        
         //使用segue將物件傳給Detail View Controller class
         [segue.destinationViewController setValue:roleNumber forKey:@"param"];
         [segue.destinationViewController setValue:selectUserObjectId forKey:@"selectUserObjectId"];
-
+        [segue.destinationViewController setValue:totalpagesNumber forKey:@"totalpagesNumber"];
+        
     }else if([segue.identifier isEqualToString:@"showDetail2"]){
         NSIndexPath *selectedIndexPath2 = [self.collectionView2 indexPathsForSelectedItems][0];
         NSString *roleNumber2 = [NSString stringWithFormat:@"%ld",(long)selectedIndexPath2.row];
+        NSString *totalpagesNumber = [NSString stringWithFormat:@"%ld",(long)totalClothingPictureNumber];
+        
         [segue.destinationViewController setValue:roleNumber2 forKey:@"param2"];
         [segue.destinationViewController setValue:selectUserObjectId forKey:@"selectUserObjectId"];
+        [segue.destinationViewController setValue:totalpagesNumber forKey:@"totalpagesNumber"];
     }
 }
 
