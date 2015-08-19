@@ -123,12 +123,13 @@
             UIImage *mapRecordingImage = [mapRecordingView snapShotRoute];
             NSData *imageData = UIImagePNGRepresentation(mapRecordingImage);
             PFFile *mapImageFile = [PFFile fileWithName:@"mapSnapshot.png" data:imageData];
-            lastPostObject[@"mapSnapshot"] = mapImageFile;
-            [lastPostObject saveInBackground];
             lastPostObject[@"distance"] = distance;
             [lastPostObject saveInBackground];
-            lastPostObject[@"speed"] = speedNo;
+//            lastPostObject[@"speed"] = speedNo;
+//            [lastPostObject saveInBackground];
+            lastPostObject[@"mapSnapshot"] = mapImageFile;
             [lastPostObject saveInBackground];
+            
         }
         
         [self performSegueWithIdentifier:@"goEndRecording" sender:nil];
