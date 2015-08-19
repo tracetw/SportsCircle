@@ -70,20 +70,23 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
-    
-    //擷取前10位元
-    otherPersonObjectId = [NSString stringWithFormat:@"%@", [notidicationArray[indexPath.row] substringToIndex:10]];
-    
-    //擷取時略過前11位元
-    NSString *tempLogString = [NSString stringWithFormat:@"%@", [notidicationArray[indexPath.row] substringFromIndex:11]];
-    tempLogString = [NSString stringWithFormat:@"%@ 邀請與您成為好友",tempLogString];
-    NSLog(@"%@ 邀請與您成為好友",notidicationArray[indexPath.row]);
-    
+    NSString *tempLogString;
     if (notidicationArray.count == 0) {
         cell.textLabel.text = @"您沒有新的消息通知";
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        cell.accessoryType = UITableViewCellAccessoryNone;
+    }else{
+        //擷取前10位元
+        otherPersonObjectId = [NSString stringWithFormat:@"%@", [notidicationArray[indexPath.row] substringToIndex:10]];
+        
+        //擷取時略過前11位元
+        tempLogString = [NSString stringWithFormat:@"%@", [notidicationArray[indexPath.row] substringFromIndex:11]];
+        tempLogString = [NSString stringWithFormat:@"%@ 邀請與您成為好友",tempLogString];
+        NSLog(@"%@ 邀請與您成為好友",notidicationArray[indexPath.row]);
+        cell.textLabel.text = [NSString stringWithFormat:@"%@",tempLogString];
     }
-    cell.textLabel.text = [NSString stringWithFormat:@"%@",tempLogString];
+    
+    
     
     return cell;
 }
