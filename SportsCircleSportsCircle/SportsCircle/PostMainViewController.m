@@ -17,7 +17,7 @@
     NSString *latitudeStr;
     NSString *longitudeStr;
     NSString *locationStr;
-    UIImage *image1;
+    UIImage *image1,*imageX;
 }
 @property (nonatomic, strong) AKPickerView *pickerView;
 @property (nonatomic, strong) NSArray *titles;
@@ -410,9 +410,24 @@
     if ([PFUser currentUser]) {
         PFObject *wallpost = [PFObject objectWithClassName:@"WallPost"];
         
-        NSData *imageData = UIImagePNGRepresentation(image1);
-        PFFile *imageFile = [PFFile fileWithName:@"image.png" data:imageData];
-        wallpost[@"image1"] = imageFile;
+        NSData *imageData = UIImageJPEGRepresentation(image1,0.6);
+        PFFile *imageFile = [PFFile fileWithName:@"image.jpeg" data:imageData];
+        if (image1==nil) {
+            imageX= [UIImage imageNamed:@"xib.png"];
+            NSData *imageData2 = UIImageJPEGRepresentation(imageX,0.6);
+            PFFile *imageFile2 = [PFFile fileWithName:@"image.jpeg" data:imageData2];
+            wallpost[@"image1"] = imageFile2;
+        }else{
+            wallpost[@"image1"] = imageFile;
+        }
+//        NSData *imageData1 = UIImagePNGRepresentation(_cameraBtn.imageView.image);
+//        PFFile *pic = [PFFile fileWithName:@"image1.png" data:imageData1];
+//        PFQuery *query = [PFQuery queryWithClassName:@"WallPost"];
+//        [query whereKey:@"username" equalTo:[[PFUser currentUser] valueForKey:@"username"]];
+//        PFObject *object =  [[NSArray arrayWithArray:[query findObjects]]lastObject];
+//        [object setValue:pic forKey:@"image1"];
+//        [object saveInBackground];
+
         
         
         //wallpost[@"image2"] =@"";
@@ -424,14 +439,27 @@
         NSNumberFormatter *lat = [[NSNumberFormatter alloc] init];
         lat.numberStyle = NSNumberFormatterDecimalStyle;
         NSNumber *latNumber = [lat numberFromString:latitudeStr];
-        wallpost[@"latitude"]=latNumber;
+        if (latNumber==nil) {
+            wallpost[@"latitude"]=@"";
+        }else{
+            wallpost[@"latitude"]=latNumber;
+        }
         
         NSNumberFormatter *lon = [[NSNumberFormatter alloc] init];
         lon.numberStyle = NSNumberFormatterDecimalStyle;
         NSNumber *lonNumber = [lon numberFromString:longitudeStr];
-        wallpost[@"longitude"]=lonNumber;
+        if (lonNumber==nil) {
+            wallpost[@"longitude"]=@"";
+        }else{
+            wallpost[@"longitude"]=lonNumber;
+        }
         
-        wallpost[@"location"]=locationStr;
+        if (locationStr==nil) {
+            wallpost[@"location"]=@"";
+        }else{
+            wallpost[@"location"]=locationStr;
+        }
+        
         wallpost[@"sportsType"]=_sportsNameLabel.text;
         //userName[@"cheatMode"] = @NO;
         //        PFRelation * relation = [[PFRelation alloc] init];
