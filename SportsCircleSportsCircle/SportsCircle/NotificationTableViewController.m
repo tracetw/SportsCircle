@@ -10,7 +10,7 @@
 #import <Parse/Parse.h>
 
 @interface NotificationTableViewController (){
-    NSMutableArray *notidicationArray;
+    NSMutableArray *notidicationArray;  /**< 加好友通知 */
     NSString *otherPersonObjectId;
 }
 
@@ -23,56 +23,27 @@
     [self initNotidication];
 
     // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
+    // self.clearsSelectionOnViewWillAppear = NO;   //不會刷新這一行cell，就沒事兒了 ，默認YES返回會刷新這行
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     
-    
-    [self didConfirmBeFriend];
-    
+    //[self.tableView reloadData];
+
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    //取值
+    NSDictionary *notidicationDictionary = [userDefaults dictionaryForKey:@"notidicationDictionary"];
+    notidicationArray = [notidicationDictionary objectForKey:@"addFriend"];
+
     
 }
 
 - (void) initNotidication{
     notidicationArray = [NSMutableArray new];
+
+
 }
 
-- (void) didConfirmBeFriend{   //確認是否有好友邀請名單
-    PFUser *currentUser = [PFUser currentUser];
-    NSMutableArray *unConfirmfriendsArray = [NSMutableArray new];
-    PFQuery *query = [PFQuery queryWithClassName:@"Friends"];
-    [query findObjectsInBackgroundWithBlock:^(NSArray *array, NSError *error){
-        for (PFObject *pfobject in array) {
-            for (NSObject *object in pfobject[@"unFriends"]) {
-                if ([[NSString stringWithFormat:@"%@",object] caseInsensitiveCompare:currentUser.objectId]==NSOrderedSame) {
-                    NSLog(@"%@邀請您成為好友",pfobject[@"user"]); //發出通知
-                    PFUser *otherPerson = pfobject[@"user"];
-                    NSString *tempString = otherPerson.objectId;
-                    NSLog(@"%@",tempString);
-                    otherPersonObjectId = tempString;
-                    [self getOtherPerson];
-                }
-                [unConfirmfriendsArray addObject:object];
-            }
-        }
-        
-        NSLog(@"%@",unConfirmfriendsArray);
-    }];
-}
-
-- (void) getOtherPerson{
-    
-    
-    PFQuery *query = [PFQuery queryWithClassName:@"_User"];
-    [query getObjectInBackgroundWithId:otherPersonObjectId block:^(PFObject *PFObject, NSError *error) {
-        NSString *tempString = PFObject[@"username"];
-        NSLog(@"%@ 邀請與您成為好友", tempString);
-        NSString *notidicationString = [NSString stringWithFormat:@"%@ 邀請與您成為好友", tempString];
-        [notidicationArray addObject:notidicationString];
-    }];
-    
-}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -90,17 +61,29 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
 
     // Return the number of rows in the section.
-    return 1;
-    //return notidicationArray.count;
+    if (notidicationArray.count == 0) {
+        return 1;
+    }
+    return notidicationArray.count;
 }
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
     
-
-        cell.textLabel.text = [NSString stringWithFormat:@"%@",notidicationArray[0]];
-
+    //擷取前10位元
+    otherPersonObjectId = [NSString stringWithFormat:@"%@", [notidicationArray[indexPath.row] substringToIndex:10]];
+    
+    //擷取時略過前11位元
+    NSString *tempLogString = [NSString stringWithFormat:@"%@", [notidicationArray[indexPath.row] substringFromIndex:11]];
+    tempLogString = [NSString stringWithFormat:@"%@ 邀請與您成為好友",tempLogString];
+    NSLog(@"%@ 邀請與您成為好友",notidicationArray[indexPath.row]);
+    
+    if (notidicationArray.count == 0) {
+        cell.textLabel.text = @"您沒有新的消息通知";
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    }
+    cell.textLabel.text = [NSString stringWithFormat:@"%@",tempLogString];
     
     return cell;
 }

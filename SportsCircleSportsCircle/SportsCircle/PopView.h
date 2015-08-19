@@ -11,6 +11,7 @@
 @interface PopView : UIView
 @property (weak, nonatomic) IBOutlet UIImageView *bgOfPopView;
 @property (weak, nonatomic) IBOutlet UIButton *popPicBtn;
+//@property (weak, nonatomic) IBOutlet UIButton *button2;
 
 
 @end

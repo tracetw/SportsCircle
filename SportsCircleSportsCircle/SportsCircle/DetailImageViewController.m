@@ -24,6 +24,7 @@
 @synthesize param;
 @synthesize param2;
 @synthesize selectUserObjectId;
+@synthesize totalpagesNumber;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -60,21 +61,19 @@
     UIColor *hexe85d6b = [UIColor colorWithRed:232.0/255.0 green:93.0/255.0 blue:107.0/255.0 alpha:1];
     pageControl.pageIndicatorTintColor = hex5e6285;
     pageControl.currentPageIndicatorTintColor = hexe85d6b;
+    
+    NSLog(@"total page: %ld ,now Page: %d",(long)totalclothingNumber,targetIndex);
+    int totalpagesInt = [totalpagesNumber intValue];
     //設置頁面的數量
-    [pageControl setNumberOfPages:5];
+    [pageControl setNumberOfPages:totalpagesInt];
     //監聽頁面是否發生改變
     //[pageControl addTarget:self action:@selector(changePage:) forControlEvents:UIControlEventValueChanged];
     [self.view addSubview:pageControl];
-    [self.view addSubview:_theScrollView];
-    //pageControl.currentPage = 2;
+    pageControl.currentPage = targetIndex;
 }
 
-- (void)scrollViewDidScroll:(UIScrollView *)scrollView{
-    //[pageControl setCurrentPage:fabs(scrollView.contentOffset.x/self.view.frame.size.width)];
-    //pageControl.currentPage = 1; //pagecontroll響應值的變化
-    NSLog(@"x軸座標%f",scrollView.contentOffset.x);
-    NSLog(@"y軸座標%f",scrollView.contentOffset.y);
-    NSLog(@"顯示下一頁");
+- (void)pageControl{
+    pageControl.currentPage = targetIndex;
 }
 
 -(void) toLeft{
@@ -125,7 +124,7 @@
 
 
 - (void)configureView {
-    
+    [self pageControl];
     _imageView.contentMode = UIViewContentModeScaleAspectFit;
 
     _theScrollView.delegate = self;
@@ -134,6 +133,7 @@
     _theScrollView.minimumZoomScale = 1.0;
     _theScrollView.zoomScale = 1.0;
     
+    NSLog(@"scrollview:%@",self.theScrollView.delegate);
     
     if (param) {
 

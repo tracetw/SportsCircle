@@ -18,7 +18,7 @@
     CLLocationManager *locationManager;
     BOOL isFirstLocationReceived;
     NSArray *datas;
-    NSArray *userSchedules;
+    //NSArray *userSchedules;
 }
 @property (weak, nonatomic) IBOutlet UIButton *whereAmIBtn;
 @property (weak, nonatomic) IBOutlet MKMapView *theMapView;

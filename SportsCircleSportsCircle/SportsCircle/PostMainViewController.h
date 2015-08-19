@@ -14,10 +14,11 @@
 
 @interface PostMainViewController : UIViewController<UIPopoverControllerDelegate>
 {
-    IBOutlet PopView *popView;
+    PopView *popView;
     IBOutlet PopView2 *popView2;
     IBOutlet PopView3 *popView3;
     IBOutlet PopView4 *popView4;
 }
 @property (nonatomic,strong) NSString* infoString;
+@property (weak, nonatomic) IBOutlet UIButton *locationBtn;
 @end
