@@ -38,6 +38,7 @@
 		764C47BB1B735EDE00AC09E8 /* PersonalPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 764C47BA1B735EDE00AC09E8 /* PersonalPageViewController.m */; };
 		764C47BE1B735FB700AC09E8 /* PersonalPageTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 764C47BD1B735FB700AC09E8 /* PersonalPageTableViewCell.m */; };
 		7666690A1B674D3900280B20 /* PostMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 766669091B674D3900280B20 /* PostMainViewController.m */; };
+		766B4CC71B84E5BC00ECC920 /* DKCircleButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 766B4CC61B84E5BC00ECC920 /* DKCircleButton.m */; };
 		768A20261B6EFD3F005A7E66 /* RecordingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 768A20251B6EFD3F005A7E66 /* RecordingViewController.m */; };
 		768A20291B6F0505005A7E66 /* MapRecordingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 768A20281B6F0505005A7E66 /* MapRecordingViewController.m */; };
 		76A406CD1B7CDFFD00034BF6 /* endRecordingTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 76A406CC1B7CDFFD00034BF6 /* endRecordingTableViewController.m */; };
@@ -162,6 +163,8 @@
 		764C47BD1B735FB700AC09E8 /* PersonalPageTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersonalPageTableViewCell.m; sourceTree = "<group>"; };
 		766669081B674D3900280B20 /* PostMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PostMainViewController.h; sourceTree = "<group>"; };
 		766669091B674D3900280B20 /* PostMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PostMainViewController.m; sourceTree = "<group>"; };
+		766B4CC51B84E5BC00ECC920 /* DKCircleButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DKCircleButton.h; sourceTree = "<group>"; };
+		766B4CC61B84E5BC00ECC920 /* DKCircleButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DKCircleButton.m; sourceTree = "<group>"; };
 		768A20241B6EFD3F005A7E66 /* RecordingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecordingViewController.h; sourceTree = "<group>"; };
 		768A20251B6EFD3F005A7E66 /* RecordingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecordingViewController.m; sourceTree = "<group>"; };
 		768A20271B6F0505005A7E66 /* MapRecordingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapRecordingViewController.h; sourceTree = "<group>"; };
@@ -370,6 +373,17 @@
 			name = schedule;
 			sourceTree = "<group>";
 		};
+		766B4CC81B84E5DB00ECC920 /* recordingPage */ = {
+			isa = PBXGroup;
+			children = (
+				768A20241B6EFD3F005A7E66 /* RecordingViewController.h */,
+				768A20251B6EFD3F005A7E66 /* RecordingViewController.m */,
+				766B4CC51B84E5BC00ECC920 /* DKCircleButton.h */,
+				766B4CC61B84E5BC00ECC920 /* DKCircleButton.m */,
+			);
+			name = recordingPage;
+			sourceTree = "<group>";
+		};
 		D30CA20B1B74AA2100CE61AD /* AKPickerView */ = {
 			isa = PBXGroup;
 			children = (
@@ -418,8 +432,7 @@
 				705A3D161B820C270019F7A8 /* searchLocationViewController.m */,
 				705A3DD61B83336C0019F7A8 /* MBProgressHUD.h */,
 				705A3DD71B83336C0019F7A8 /* MBProgressHUD.m */,
-				768A20241B6EFD3F005A7E66 /* RecordingViewController.h */,
-				768A20251B6EFD3F005A7E66 /* RecordingViewController.m */,
+				766B4CC81B84E5DB00ECC920 /* recordingPage */,
 				768A20271B6F0505005A7E66 /* MapRecordingViewController.h */,
 				768A20281B6F0505005A7E66 /* MapRecordingViewController.m */,
 				76A406CB1B7CDFFD00034BF6 /* endRecordingTableViewController.h */,
@@ -733,6 +746,7 @@
 				D38B8D3A1B71B84200124706 /* EditProfileTableViewController.m in Sources */,
 				764C47BE1B735FB700AC09E8 /* PersonalPageTableViewCell.m in Sources */,
 				D34FCE2A1B7B86870002DE1A /* UINavigationBar+FlatUI.m in Sources */,
+				766B4CC71B84E5BC00ECC920 /* DKCircleButton.m in Sources */,
 				D30CA20A1B74A9AD00CE61AD /* scheduleTableViewController.m in Sources */,
 				D34A63451B4CED0700710B1F /* main.m in Sources */,
 				D3E4B0201B72F7160082DE6B /* FavoriteSportViewController.m in Sources */,
