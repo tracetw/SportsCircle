@@ -939,6 +939,21 @@
                                             <segue destination="Ybk-0s-F9a" kind="show" id="Lqq-CX-IJu"/>
                                         </connections>
                                     </button>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="earth" translatesAutoresizingMaskIntoConstraints="NO" id="kOQ-83-81F">
+                                        <rect key="frame" x="17" y="58" width="20" height="20"/>
+                                    </imageView>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="friends" translatesAutoresizingMaskIntoConstraints="NO" id="aFp-eV-Gog">
+                                        <rect key="frame" x="17" y="106" width="20" height="20"/>
+                                    </imageView>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="schedule" translatesAutoresizingMaskIntoConstraints="NO" id="WuM-BR-fW9">
+                                        <rect key="frame" x="17" y="154" width="20" height="20"/>
+                                    </imageView>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="search" translatesAutoresizingMaskIntoConstraints="NO" id="Odq-Iu-N77">
+                                        <rect key="frame" x="17" y="202" width="20" height="20"/>
+                                    </imageView>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="setting" translatesAutoresizingMaskIntoConstraints="NO" id="Kn7-3M-CGY">
+                                        <rect key="frame" x="17" y="250" width="20" height="20"/>
+                                    </imageView>
                                 </subviews>
                                 <color key="backgroundColor" red="0.30588235294117649" green="0.30588235294117649" blue="0.30588235294117649" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
@@ -2419,6 +2434,11 @@
     <resources>
         <image name="calory" width="64" height="101"/>
         <image name="distanceImage" width="102" height="101"/>
+        <image name="earth" width="102" height="101"/>
+        <image name="friends" width="89" height="70"/>
+        <image name="schedule" width="52" height="48"/>
+        <image name="search" width="63" height="79"/>
+        <image name="setting" width="64" height="61"/>
         <image name="timerImage" width="70" height="84"/>
     </resources>
     <inferredMetricsTieBreakers>

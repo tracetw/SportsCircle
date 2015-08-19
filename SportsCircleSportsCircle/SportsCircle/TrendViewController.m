@@ -14,6 +14,7 @@
 #import "PersonalPageViewController.h"
 #import "readPostViewController.h"
 #import "UIView+WZLBadge.h"
+#import "LBHamburgerButton.h"
 
 @interface TrendViewController ()<UITableViewDelegate,UITableViewDataSource>
 {
@@ -29,7 +30,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *goButton;
 @property (weak, nonatomic) IBOutlet UIButton *notidicationButton;  /**< 消息通知按鈕 */
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
-
+@property (strong, nonatomic) LBHamburgerButton* buttonHamburgerCloseSmall;
 @end
 
 @implementation TrendViewController
@@ -38,10 +39,13 @@
     [super viewDidLoad];
     [self didConfirmBeFriend];
     
-    UIBarButtonItem *list=[[UIBarButtonItem alloc]initWithTitle:@"List" style:UIBarButtonItemStylePlain target:self action:@selector (barListBtnPressed:)];
+//    UIBarButtonItem *list=[[UIBarButtonItem alloc]initWithTitle:@"List" style:UIBarButtonItemStylePlain target:self action:@selector (barListBtnPressed:)];
     //創造一個UIBBtn.選擇plain的style(另一個也長一樣).selector為把某個方法包裝成一個變數.:為名稱的一部分必加
+    [self initHamburgerButton];
     
-    self.navigationItem.leftBarButtonItem=list;
+    UIBarButtonItem *hamburgerButton = [[UIBarButtonItem alloc]initWithCustomView:_buttonHamburgerCloseSmall];
+    
+    self.navigationItem.leftBarButtonItem=hamburgerButton;
     
     //手勢操作
     UISwipeGestureRecognizer *toRight = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(toRight)];
@@ -90,7 +94,7 @@
  
     userImage = [PFImageView new];
     
-    [list setTintColor:[UIColor whiteColor]];
+    //[list setTintColor:[UIColor whiteColor]];
     //[cell.contentView.layer setBorderColor:[UIColor redColor].CGColor];
     //[cell.contentView.layer setBorderWidth:10.0];
     
@@ -112,6 +116,7 @@
 {
 
     PFQuery *query = [PFQuery queryWithClassName:@"WallPost"];
+    [query addDescendingOrder:@"createdAt"];
     postWallArray = [NSArray new];
     postWallArray = [query findObjects];
     postWallDictionary = [NSDictionary new];
@@ -142,6 +147,7 @@
 */
 -(IBAction) barListBtnPressed:(id)sender{
     //按下listBtn時
+    [_buttonHamburgerCloseSmall switchState];
     
     CATransition *transition=[CATransition animation];
     //catransition為Q的一個物件
@@ -404,5 +410,18 @@
         [controller passData:Uname];
     }
 
+}
+
+-(void)initHamburgerButton{
+    _buttonHamburgerCloseSmall = [[LBHamburgerButton alloc] initWithFrame:CGRectMake(0, 0, 50, 50)
+                                                        withHamburgerType:LBHamburgerButtonTypeCloseButton
+                                                                lineWidth:20
+                                                               lineHeight:20/6
+                                                              lineSpacing:2
+                                                               lineCenter:CGPointMake(25, 25)
+                                                                    color:[UIColor whiteColor]];
+    [_buttonHamburgerCloseSmall setCenter:CGPointMake(_buttonHamburgerCloseSmall.center.x + 100, 120)];
+    //[_buttonHamburgerCloseSmall setBackgroundColor:[UIColor blackColor]];
+    [_buttonHamburgerCloseSmall addTarget:self action:@selector(barListBtnPressed:) forControlEvents:UIControlEventTouchUpInside];
 }
 @end
