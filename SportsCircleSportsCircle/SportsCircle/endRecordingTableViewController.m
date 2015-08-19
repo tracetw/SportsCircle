@@ -34,7 +34,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+
     //PFUser *currentUser = [PFUser currentUser];
     PFQuery *query = [PFQuery queryWithClassName:@"WallPost"];
     PFObject *sendInObject = [query getObjectWithId:sendInObjectID];
