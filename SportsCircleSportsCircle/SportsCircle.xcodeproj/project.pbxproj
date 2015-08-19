@@ -14,6 +14,7 @@
 		705A3D121B81B7540019F7A8 /* xib@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 705A3D0F1B81B7540019F7A8 /* xib@2x.png */; };
 		705A3D131B81B7540019F7A8 /* xib.png in Resources */ = {isa = PBXBuildFile; fileRef = 705A3D101B81B7540019F7A8 /* xib.png */; };
 		705A3D171B820C270019F7A8 /* searchLocationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 705A3D161B820C270019F7A8 /* searchLocationViewController.m */; };
+		705A3DD81B83336C0019F7A8 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 705A3DD71B83336C0019F7A8 /* MBProgressHUD.m */; };
 		705B4DD51B7B84680019FC7D /* SearchTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 705B4DD41B7B84680019FC7D /* SearchTableViewCell.m */; };
 		7072471C1B7C28AC00034F62 /* scheduleTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7072471B1B7C28AC00034F62 /* scheduleTableViewCell.m */; };
 		7076B5DA1B6FA972004E81EF /* scheduleEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7076B5D91B6FA972004E81EF /* scheduleEditViewController.m */; };
@@ -122,6 +123,8 @@
 		705A3D101B81B7540019F7A8 /* xib.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = xib.png; sourceTree = "<group>"; };
 		705A3D151B820C270019F7A8 /* searchLocationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = searchLocationViewController.h; sourceTree = "<group>"; };
 		705A3D161B820C270019F7A8 /* searchLocationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = searchLocationViewController.m; sourceTree = "<group>"; };
+		705A3DD61B83336C0019F7A8 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
+		705A3DD71B83336C0019F7A8 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
 		705B4DD31B7B84680019FC7D /* SearchTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchTableViewCell.h; sourceTree = "<group>"; };
 		705B4DD41B7B84680019FC7D /* SearchTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchTableViewCell.m; sourceTree = "<group>"; };
 		7072471A1B7C28AC00034F62 /* scheduleTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = scheduleTableViewCell.h; sourceTree = "<group>"; };
@@ -413,6 +416,8 @@
 				766669091B674D3900280B20 /* PostMainViewController.m */,
 				705A3D151B820C270019F7A8 /* searchLocationViewController.h */,
 				705A3D161B820C270019F7A8 /* searchLocationViewController.m */,
+				705A3DD61B83336C0019F7A8 /* MBProgressHUD.h */,
+				705A3DD71B83336C0019F7A8 /* MBProgressHUD.m */,
 				768A20241B6EFD3F005A7E66 /* RecordingViewController.h */,
 				768A20251B6EFD3F005A7E66 /* RecordingViewController.m */,
 				768A20271B6F0505005A7E66 /* MapRecordingViewController.h */,
@@ -439,14 +444,11 @@
 				76F2DDD21B7A3AFC00B50AAB /* FriendTableViewController.m */,
 				76F2DDD41B7A3B2700B50AAB /* FriendsTableViewCell.h */,
 				76F2DDD51B7A3B2700B50AAB /* FriendsTableViewCell.m */,
-
 				705A3D0E1B81B7540019F7A8 /* xib@3x.png */,
 				705A3D0F1B81B7540019F7A8 /* xib@2x.png */,
 				705A3D101B81B7540019F7A8 /* xib.png */,
-
 				D332FB1D1B81C70D0059CD0D /* NotificationTableViewController.h */,
 				D332FB1E1B81C70D0059CD0D /* NotificationTableViewController.m */,
-
 				701F1D871B71BA0D00BD2673 /* Search */,
 				70E3C0CB1B6B9A7300A5C14E /* PopView */,
 				70E3C0D21B6BB15500A5C14E /* schedule */,
@@ -714,6 +716,7 @@
 				D3541A471B786FA3003F4D15 /* DetailImageViewController.m in Sources */,
 				D34FCE1E1B7B86870002DE1A /* FUIAlertView.m in Sources */,
 				D30CA2171B74AA2100CE61AD /* AKPickerView.m in Sources */,
+				705A3DD81B83336C0019F7A8 /* MBProgressHUD.m in Sources */,
 				D34FCE221B7B86870002DE1A /* FUISegmentedControl.m in Sources */,
 				D34FCE2C1B7B86870002DE1A /* UIProgressView+FlatUI.m in Sources */,
 				7076B5DD1B70D496004E81EF /* SearchViewController.m in Sources */,

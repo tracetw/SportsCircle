@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+typedef void(^SendStringBack)(NSString*string,NSString*string2,NSString*string3,NSString *userLat,NSString *userLon);
+@interface searchLocationViewController : UIViewController<UITextFieldDelegate>
 
-@interface searchLocationViewController : UIViewController
-
+@property (nonatomic,strong) SendStringBack block;
 @end
