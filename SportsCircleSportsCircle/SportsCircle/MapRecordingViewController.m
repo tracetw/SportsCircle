@@ -213,7 +213,7 @@
         CGContextBeginPath(context);
         
         
-        
+        //draw line in snapshot
         CLLocationCoordinate2D coordinates[[polyLine pointCount]];
         [polyLine getCoordinates:coordinates range:NSMakeRange(0, [polyLine pointCount])];
         
