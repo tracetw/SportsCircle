@@ -10,10 +10,15 @@
 #import "AKPickerView.h"
 #import <Parse/Parse.h>
 #import "RecordingViewController.h"
-
+#import "searchLocationViewController.h"
 
 @interface PostMainViewController ()<AKPickerViewDataSource, AKPickerViewDelegate,UIPopoverControllerDelegate,UINavigationControllerDelegate,UIImagePickerControllerDelegate>
-
+{
+    NSString *latitudeStr;
+    NSString *longitudeStr;
+    NSString *locationStr;
+    UIImage *image1;
+}
 @property (nonatomic, strong) AKPickerView *pickerView;
 @property (nonatomic, strong) NSArray *titles;
 @property (weak, nonatomic) IBOutlet UILabel *sportsNameLabel;
@@ -99,22 +104,23 @@
     
     // initialize popover view
     popView = [[[NSBundle mainBundle] loadNibNamed:@"PopView" owner:nil options:nil] lastObject];
-    [popView.popPicBtn setBackgroundImage:[UIImage imageNamed:@"camera"] forState: UIControlStateNormal];
-    popView2 = [[[NSBundle mainBundle] loadNibNamed:@"PopView2" owner:nil options:nil] lastObject];
-    [popView2.popPicBtn2 setBackgroundImage:[UIImage imageNamed:@"camera"] forState: UIControlStateNormal];
-    popView3 = [[[NSBundle mainBundle] loadNibNamed:@"PopView3" owner:nil options:nil] lastObject];
-    [popView3.popPicBtn3 setBackgroundImage:[UIImage imageNamed:@"camera"] forState: UIControlStateNormal];
-    popView4 = [[[NSBundle mainBundle] loadNibNamed:@"PopView4" owner:nil options:nil] lastObject];
-    [popView4.popPicBtn4 setBackgroundImage:[UIImage imageNamed:@"camera"] forState: UIControlStateNormal];
+    [popView.popPicBtn setImage:[UIImage imageNamed:@"camera"] forState:UIControlStateNormal];
+
+//    [popView.popPicBtn setBackgroundImage:[UIImage imageNamed:@"camera"] forState: UIControlStateNormal];
+//    popView2 = [[[NSBundle mainBundle] loadNibNamed:@"PopView2" owner:nil options:nil] lastObject];
+//    [popView2.popPicBtn2 setBackgroundImage:[UIImage imageNamed:@"camera"] forState: UIControlStateNormal];
+//    popView3 = [[[NSBundle mainBundle] loadNibNamed:@"PopView3" owner:nil options:nil] lastObject];
+//    [popView3.popPicBtn3 setBackgroundImage:[UIImage imageNamed:@"camera"] forState: UIControlStateNormal];
+//    popView4 = [[[NSBundle mainBundle] loadNibNamed:@"PopView4" owner:nil options:nil] lastObject];
+//    [popView4.popPicBtn4 setBackgroundImage:[UIImage imageNamed:@"camera"] forState: UIControlStateNormal];
     
 
     //以下為popPicBtn新增連結
-    UITapGestureRecognizer *singleTap1 =
-    [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(popPicBtnPressed:)];
+//    UITapGestureRecognizer *singleTap1 =
+//    [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(popPicBtnPressed:)];
     
-    [popView.popPicBtn setUserInteractionEnabled:TRUE];
-    //[cell.userImage setUserInteractionEnabled:TRUE];
-    [popView.popPicBtn addGestureRecognizer:singleTap1];
+
+//    [popView.popPicBtn addGestureRecognizer:singleTap1];
     //[cell.userImage addGestureRecognizer:singleTap2];
     //popView.popPicBtn.tag = 1;
 
@@ -122,6 +128,17 @@
     UITapGestureRecognizer *recognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(keyboardResign)];
     recognizer.cancelsTouchesInView = NO;
     [self.view addGestureRecognizer:recognizer];
+    
+//    [popView.popPicBtn addTarget:self action:@selector(logsomething) forControlEvents:UIControlEventTouchUpInside];
+//    [popView setUserInteractionEnabled:TRUE];
+//    [popView.popPicBtn setUserInteractionEnabled:YES];
+    //[cell.userImage setUserInteractionEnabled:TRUE];
+    
+}
+
+-(void)logsomething
+{
+    NSLog(@"11111");
 }
 
 //點擊空白處收起鍵盤
@@ -140,6 +157,7 @@
 }
 -(void)popPicBtnPressed:(id)sender
 {
+    NSLog(@"111");
     if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera])
     {
         UIImagePickerController *imagePicker=[[UIImagePickerController alloc]init];
@@ -254,40 +272,39 @@
 -(void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
 {
     //取得使用者的相片
-    UIImage *image=[info valueForKey:UIImagePickerControllerOriginalImage];
+    image1=[info valueForKey:UIImagePickerControllerOriginalImage];
     //存檔
-    UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil);
+    UIImageWriteToSavedPhotosAlbum(image1, nil, nil, nil);
     //關閉拍照
     [self dismissViewControllerAnimated:YES completion:nil];
     
-    //按鈕的背景換成剛拍下來的照片
-    [_cameraBtn setBackgroundImage:image forState:UIControlStateNormal];
+
     
-    NSData *imageData = UIImagePNGRepresentation(_cameraBtn.imageView.image);
+    //NSData *imageData = UIImagePNGRepresentation(_cameraBtn.imageView.image);
     //PFFile *imageFile=[PFFile fileWithName:@"image" data:imageData];
     
-    if ([PFUser currentUser]) {
-        PFObject *userName = [PFObject objectWithClassName:@"WallPost"];
-        userName[@"image1"] =imageData;
-        //userName[@"image2"] =@"";
-        //userName[@"image3"]=@"";
-        //userName[@"image4"]=@"";
-        //userName[@"image5"] =@"";
-        //        PFRelation * relation = [[PFRelation alloc] init];
-        //        [relation addObject:[PFUser currentUser]];
-        userName[@"user"] = [PFUser currentUser];//連結現在登入的使用者id
-        [userName saveInBackground];
-        
-    }
+//    if ([PFUser currentUser]) {
+//        PFObject *userName = [PFObject objectWithClassName:@"WallPost"];
+//        userName[@"image1"] =imageData;
+//        //userName[@"image2"] =@"";
+//        //userName[@"image3"]=@"";
+//        //userName[@"image4"]=@"";
+//        //userName[@"image5"] =@"";
+//        //        PFRelation * relation = [[PFRelation alloc] init];
+//        //        [relation addObject:[PFUser currentUser]];
+//        userName[@"user"] = [PFUser currentUser];//連結現在登入的使用者id
+//        [userName saveInBackground];
+//        
+//    }
     
     // Upload image
-    NSData *imageData1 = UIImagePNGRepresentation(_cameraBtn.imageView.image);
-    PFFile *pic = [PFFile fileWithName:@"image1.png" data:imageData1];
-    PFQuery *query = [PFQuery queryWithClassName:@"WallPost"];
-    [query whereKey:@"username" equalTo:[[PFUser currentUser] valueForKey:@"username"]];
-    PFObject *object =  [[NSArray arrayWithArray:[query findObjects]]lastObject];
-    [object setValue:pic forKey:@"image1"];
-    [object saveInBackground];
+//    NSData *imageData1 = UIImagePNGRepresentation(_cameraBtn.imageView.image);
+//    PFFile *pic = [PFFile fileWithName:@"image1.png" data:imageData1];
+//    PFQuery *query = [PFQuery queryWithClassName:@"WallPost"];
+//    [query whereKey:@"username" equalTo:[[PFUser currentUser] valueForKey:@"username"]];
+//    PFObject *object =  [[NSArray arrayWithArray:[query findObjects]]lastObject];
+//    [object setValue:pic forKey:@"image1"];
+//    [object saveInBackground];
     
     /*
     NSData *imageData = UIImagePNGRepresentation(image);
@@ -301,6 +318,8 @@
 
 -(void)imagePickerControllerDidCancel:(UIImagePickerController *)picker
 {
+    //按鈕的背景換成剛拍下來的照片
+    [_cameraBtn setBackgroundImage:image1 forState:UIControlStateNormal];
     //當使用者按下取消後關閉拍照
     [self dismissViewControllerAnimated:YES completion:nil];
 }
@@ -315,8 +334,15 @@
     
     CGRect rect1=CGRectMake(100, 331, 50, 50);
     [popView setFrame:rect1];
+    [popView setUserInteractionEnabled:YES];
+    [popView.popPicBtn setUserInteractionEnabled:YES];
+//    [popView.popPicBtn addTarget:self action:@selector(logsomething) forControlEvents:UIControlEventTouchUpInside];
+    [popView.popPicBtn addTarget:self action:@selector(popPicBtnPressed:) forControlEvents:UIControlEventTouchUpInside];
+    [popView.bgOfPopView setUserInteractionEnabled:YES];
+    [popView bringSubviewToFront:popView.popPicBtn];
     [self.view addSubview:popView];
-    [self.view sendSubviewToBack:popView];
+//    [self.view bringSubviewToFront:popView];
+//    [self.view bringSubviewToFront:popView];
 
 //    UIButton * button = (UIButton*)sender;
 //    CGPoint btn_point = button.frame.origin;
@@ -383,14 +409,29 @@
     
     if ([PFUser currentUser]) {
         PFObject *wallpost = [PFObject objectWithClassName:@"WallPost"];
-        //wallpost[@"image1"] =@"";
+        
+        NSData *imageData = UIImagePNGRepresentation(image1);
+        PFFile *imageFile = [PFFile fileWithName:@"image.png" data:imageData];
+        wallpost[@"image1"] = imageFile;
+        
+        
         //wallpost[@"image2"] =@"";
         //wallpost[@"image3"]=@"";
         //wallpost[@"image4"]=@"";
         //wallpost[@"image5"]=@"";
         wallpost[@"content"]=_contentTextField.text;
-        //wallpost[@"latitude"]=@"";
-        //wallpost[@"longitude"]=@"";
+
+        NSNumberFormatter *lat = [[NSNumberFormatter alloc] init];
+        lat.numberStyle = NSNumberFormatterDecimalStyle;
+        NSNumber *latNumber = [lat numberFromString:latitudeStr];
+        wallpost[@"latitude"]=latNumber;
+        
+        NSNumberFormatter *lon = [[NSNumberFormatter alloc] init];
+        lon.numberStyle = NSNumberFormatterDecimalStyle;
+        NSNumber *lonNumber = [lon numberFromString:longitudeStr];
+        wallpost[@"longitude"]=lonNumber;
+        
+        wallpost[@"location"]=locationStr;
         wallpost[@"sportsType"]=_sportsNameLabel.text;
         //userName[@"cheatMode"] = @NO;
         //        PFRelation * relation = [[PFRelation alloc] init];
@@ -404,6 +445,37 @@
     RecordingViewController *view = [segue destinationViewController];
     [view getSportType:_sportsNameLabel.text];
 }
+
+- (IBAction)locationBtnPressed:(id)sender
+{
+    searchLocationViewController * viewcontroller = [self.storyboard instantiateViewControllerWithIdentifier:@"searchLocationViewController"];
+    viewcontroller.block = ^void(NSString*response,NSString*string2,NSString*string3,NSString*userLat,NSString*userLon){
+        //設一個字串～把空白去掉
+        NSString *responseStr = [response stringByReplacingOccurrencesOfString:@" " withString:@""];
+        if (responseStr.length==0) {
+            locationStr=[NSString stringWithFormat:@"使用者當前位置"];
+        }else{
+            locationStr=response;
+        }
+        [_locationBtn setTitle:locationStr forState:UIControlStateNormal];
+        NSLog(@"%@~~~ %@ and %@ | %@ and %@ ",response,string2,string3,userLat,userLon);//latitude=str2 longitude=str3
+        
+        if (string2==nil) {
+            latitudeStr=userLat;
+        }else{
+            latitudeStr=string2;
+        }
+        if (string3==nil) {
+            longitudeStr=userLon;
+        }else{
+            longitudeStr=string3;
+        }
+
+    };
+    [self.navigationController pushViewController:viewcontroller animated:YES];
+
+}
+
 /*
 #pragma mark - Navigation
 

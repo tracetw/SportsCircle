@@ -18,8 +18,4 @@
 }
 */
 
-- (IBAction)pressButton:(id)sender {
-    NSLog(@"press");
-}
-
 @end
