@@ -13,7 +13,7 @@
 
 #define WS(weakSelf)  __weak __typeof(&*self)weakSelf = self
 
-//static NSTimeInterval const kTimeDelay = 2.5;
+static NSTimeInterval const kTimeDelay = 2.5;
 
 
 @interface searchLocationViewController ()<CLLocationManagerDelegate,MKMapViewDelegate,UITextFieldDelegate>
