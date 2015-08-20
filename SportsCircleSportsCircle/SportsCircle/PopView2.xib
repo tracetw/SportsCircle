@@ -10,33 +10,35 @@
             <rect key="frame" x="0.0" y="0.0" width="90" height="84"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="popFrame" translatesAutoresizingMaskIntoConstraints="NO" id="IH6-tU-0Da">
-                    <rect key="frame" x="0.0" y="0.0" width="90" height="90"/>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="popFrame" translatesAutoresizingMaskIntoConstraints="NO" id="qp2-CW-8tq">
+                    <rect key="frame" x="0.0" y="0.0" width="90" height="84"/>
                     <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                 </imageView>
-                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="記錄你的球衣..." minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="WPk-RQ-Mkj">
-                    <rect key="frame" x="12" y="23" width="66" height="30"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="6"/>
-                    <textInputTraits key="textInputTraits"/>
-                </textField>
-                <button opaque="NO" contentMode="scaleAspectFit" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ylL-e4-xjV">
-                    <rect key="frame" x="12" y="64" width="28" height="20"/>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CmV-19-JSD">
+                    <rect key="frame" x="0.0" y="20" width="90" height="64"/>
                     <state key="normal">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
-                    <connections>
-                        <action selector="pressButton:" destination="heH-St-xiF" eventType="touchUpInside" id="dZ8-FO-8bU"/>
-                    </connections>
                 </button>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+            <constraints>
+                <constraint firstItem="CmV-19-JSD" firstAttribute="top" secondItem="heH-St-xiF" secondAttribute="top" constant="20" id="2ZY-x0-jmK"/>
+                <constraint firstAttribute="trailing" secondItem="CmV-19-JSD" secondAttribute="trailing" id="7Qp-vI-13X"/>
+                <constraint firstAttribute="trailing" secondItem="qp2-CW-8tq" secondAttribute="trailing" id="BsU-85-46H"/>
+                <constraint firstItem="qp2-CW-8tq" firstAttribute="leading" secondItem="heH-St-xiF" secondAttribute="leading" id="IlL-cn-pBj"/>
+                <constraint firstAttribute="bottom" secondItem="CmV-19-JSD" secondAttribute="bottom" id="O6n-qs-LV4"/>
+                <constraint firstAttribute="bottom" secondItem="qp2-CW-8tq" secondAttribute="bottom" id="c0L-GP-X6f"/>
+                <constraint firstItem="CmV-19-JSD" firstAttribute="leading" secondItem="heH-St-xiF" secondAttribute="leading" id="lr0-iw-1TG"/>
+                <constraint firstItem="qp2-CW-8tq" firstAttribute="top" secondItem="heH-St-xiF" secondAttribute="top" id="uqA-4r-Z7r"/>
+            </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
-                <outlet property="bgOfPopView2" destination="IH6-tU-0Da" id="euR-oU-xed"/>
-                <outlet property="popPicBtn2" destination="ylL-e4-xjV" id="cWE-ON-NqJ"/>
+                <outlet property="bgOfPopView2" destination="qp2-CW-8tq" id="Z5w-1g-fQm"/>
+                <outlet property="popPicBtn2" destination="CmV-19-JSD" id="zXO-K3-baV"/>
             </connections>
-            <point key="canvasLocation" x="320" y="414"/>
+            <point key="canvasLocation" x="453" y="250"/>
         </view>
     </objects>
     <resources>
