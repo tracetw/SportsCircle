@@ -135,9 +135,9 @@ typedef enum {
 
     //添加背景點擊事件
     UITapGestureRecognizer *recognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(keyboardResign)];
-    recognizer.cancelsTouchesInView = NO;
+    //recognizer.cancelsTouchesInView = YES;
     [self.view addGestureRecognizer:recognizer];
-    
+    self.view.userInteractionEnabled = YES;
     
     
 //    [popView.popPicBtn addTarget:self action:@selector(logsomething) forControlEvents:UIControlEventTouchUpInside];
@@ -289,6 +289,7 @@ typedef enum {
         UIImageWriteToSavedPhotosAlbum(image2, nil, nil, nil);
         //按鈕的背景換成剛拍下來的照片
         [_ballBtn setBackgroundImage:image2 forState:UIControlStateNormal];
+        [_ballBtn setFrame:CGRectMake(0, 0, 60, 60)];
         //關閉拍照
         [self dismissViewControllerAnimated:YES completion:nil];
     }
@@ -300,6 +301,7 @@ typedef enum {
         UIImageWriteToSavedPhotosAlbum(image3, nil, nil, nil);
         //按鈕的背景換成剛拍下來的照片
         [_TshirtBtn setBackgroundImage:image3 forState:UIControlStateNormal];
+        [_TshirtBtn setFrame:CGRectMake(0, 0, 60, 60)];
         //關閉拍照
         [self dismissViewControllerAnimated:YES completion:nil];
     }
@@ -311,6 +313,7 @@ typedef enum {
         UIImageWriteToSavedPhotosAlbum(image4, nil, nil, nil);
         //按鈕的背景換成剛拍下來的照片
         [_PantsBtn setBackgroundImage:image4 forState:UIControlStateNormal];
+        [_PantsBtn setFrame:CGRectMake(0, 0, 60, 60)];
         //關閉拍照
         [self dismissViewControllerAnimated:YES completion:nil];
     }
@@ -322,6 +325,7 @@ typedef enum {
         UIImageWriteToSavedPhotosAlbum(image5, nil, nil, nil);
         //按鈕的背景換成剛拍下來的照片
         [_shoesBtn setBackgroundImage:image5 forState:UIControlStateNormal];
+        [_shoesBtn setFrame:CGRectMake(0, 0, 60, 60)];
         //關閉拍照
         [self dismissViewControllerAnimated:YES completion:nil];
     }
@@ -494,11 +498,11 @@ typedef enum {
     if ([PFUser currentUser]) {
         PFObject *wallpost = [PFObject objectWithClassName:@"WallPost"];
         
-        NSData *imageData = UIImageJPEGRepresentation(image1,0.6);
+        NSData *imageData = UIImageJPEGRepresentation(image1,0.1);
         PFFile *imageFile = [PFFile fileWithName:@"image.jpeg" data:imageData];
         if (image1==nil) {
             imageX= [UIImage imageNamed:@"xib.png"];
-            NSData *imageData2 = UIImageJPEGRepresentation(imageX,0.6);
+            NSData *imageData2 = UIImageJPEGRepresentation(imageX,0.1);
             PFFile *imageFile2 = [PFFile fileWithName:@"image.jpeg" data:imageData2];
             wallpost[@"image1"] = imageFile2;
         }else{
@@ -513,7 +517,7 @@ typedef enum {
 //        [object saveInBackground];
 
         
-        NSData *imageData2 = UIImageJPEGRepresentation(image2,0.6);
+        NSData *imageData2 = UIImageJPEGRepresentation(image2,0.1);
         PFFile *imageFile2 = [PFFile fileWithName:@"image.jpeg" data:imageData2];
         if (image2==nil) {
 
@@ -522,7 +526,7 @@ typedef enum {
         }
 
         
-        NSData *imageData3 = UIImageJPEGRepresentation(image3,0.6);
+        NSData *imageData3 = UIImageJPEGRepresentation(image3,0.1);
         PFFile *imageFile3 = [PFFile fileWithName:@"image.jpeg" data:imageData3];
         if (image3==nil) {
 
@@ -530,7 +534,7 @@ typedef enum {
             wallpost[@"image3"] = imageFile3;
         }
         
-        NSData *imageData4 = UIImageJPEGRepresentation(image4,0.6);
+        NSData *imageData4 = UIImageJPEGRepresentation(image4,0.1);
         PFFile *imageFile4 = [PFFile fileWithName:@"image.jpeg" data:imageData4];
         if (image4==nil) {
 
@@ -538,7 +542,7 @@ typedef enum {
             wallpost[@"image4"] = imageFile4;
         }
         
-        NSData *imageData5 = UIImageJPEGRepresentation(image5,0.6);
+        NSData *imageData5 = UIImageJPEGRepresentation(image5,0.1);
         PFFile *imageFile5 = [PFFile fileWithName:@"image.jpeg" data:imageData5];
         if (image5==nil) {
         
