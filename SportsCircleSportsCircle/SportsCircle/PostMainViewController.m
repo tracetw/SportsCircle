@@ -118,11 +118,11 @@ typedef enum {
     popView4 = [[[NSBundle mainBundle] loadNibNamed:@"PopView4" owner:nil options:nil] lastObject];
     [popView4.popPicBtn4 setImage:[UIImage imageNamed:@"camera"] forState: UIControlStateNormal];
     //手勢操作
-    UITapGestureRecognizer *toTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(toTap)];
-    [_ballBtn addGestureRecognizer:toTap];
+//    UITapGestureRecognizer *toTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(toTap)];
+//    [_ballBtn addGestureRecognizer:toTap];
     
     //允許ImageView接受使用者互動
-    _ballBtn.userInteractionEnabled = YES;
+//    _ballBtn.userInteractionEnabled = YES;
 
     //以下為popPicBtn新增連結
 //    UITapGestureRecognizer *singleTap1 =
@@ -150,16 +150,20 @@ typedef enum {
 //點擊空白處收起鍵盤
 - (void)keyboardResign {
     [self.view endEditing:YES];
-
-}
-
--(void)toTap {
     [popView removeFromSuperview];
     [popView2 removeFromSuperview];
     [popView3 removeFromSuperview];
     [popView4 removeFromSuperview];
-    
+
 }
+
+//-(void)toTap {
+//    [popView removeFromSuperview];
+//    [popView2 removeFromSuperview];
+//    [popView3 removeFromSuperview];
+//    [popView4 removeFromSuperview];
+//    
+//}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -272,6 +276,7 @@ typedef enum {
         UIImageWriteToSavedPhotosAlbum(image1, nil, nil, nil);
         //按鈕的背景換成剛拍下來的照片
         [_cameraBtn setBackgroundImage:image1 forState:UIControlStateNormal];
+        [_cameraBtn setFrame:CGRectMake(0, 0, 90, 90)];
         //關閉拍照
         [self dismissViewControllerAnimated:YES completion:nil];
 
@@ -448,7 +453,7 @@ typedef enum {
     }
 }
 - (IBAction)shoesBtnPressed:(id)sender {
-    CGRect rect=CGRectMake(339, 385, 50, 50);
+    CGRect rect=CGRectMake(311, 385, 50, 50);
     [popView4 setFrame:rect];
     [popView4 setUserInteractionEnabled:YES];
     [popView4.popPicBtn4 setUserInteractionEnabled:YES];
