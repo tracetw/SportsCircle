@@ -12,12 +12,20 @@
 #import "RecordingViewController.h"
 #import "searchLocationViewController.h"
 
+typedef enum {
+    cameraCategory1,
+    cameraCategory2,
+    cameraCategory3,
+    cameraCategory4,
+    cameraCategory5
+}cameraCategory;
+
 @interface PostMainViewController ()<AKPickerViewDataSource, AKPickerViewDelegate,UIPopoverControllerDelegate,UINavigationControllerDelegate,UIImagePickerControllerDelegate>
 {
     NSString *latitudeStr;
     NSString *longitudeStr;
     NSString *locationStr;
-    UIImage *image1,*imageX;
+    UIImage *image1,*image2,*image3,*image4,*image5,*imageX;
 }
 @property (nonatomic, strong) AKPickerView *pickerView;
 @property (nonatomic, strong) NSArray *titles;
@@ -25,6 +33,10 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *infoLabel;
 @property (weak, nonatomic) IBOutlet UIButton *cameraBtn;
+@property (weak, nonatomic) IBOutlet UIButton *ballBtn;
+@property (weak, nonatomic) IBOutlet UIButton *TshirtBtn;
+@property (weak, nonatomic) IBOutlet UIButton *PantsBtn;
+@property (weak, nonatomic) IBOutlet UIButton *shoesBtn;
 @property (strong, nonatomic) IBOutlet UIView *postMainView;
 @property (weak, nonatomic) IBOutlet UITextField *contentTextField;
 
@@ -94,51 +106,45 @@
     //相機
     [_cameraBtn setBackgroundImage:[UIImage imageNamed:@"camera.png"] forState: UIControlStateNormal];//用圖片在按鈕上
 
-    
-    //手勢操作
-    //UITapGestureRecognizer *toTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(toTap)];
-    //[_postMainView addGestureRecognizer:toTap];
-    
-    //允許ImageView接受使用者互動
-    _postMainView.userInteractionEnabled = YES;
-    
     // initialize popover view
     popView = [[[NSBundle mainBundle] loadNibNamed:@"PopView" owner:nil options:nil] lastObject];
     [popView.popPicBtn setImage:[UIImage imageNamed:@"camera"] forState:UIControlStateNormal];
 
 //    [popView.popPicBtn setBackgroundImage:[UIImage imageNamed:@"camera"] forState: UIControlStateNormal];
-//    popView2 = [[[NSBundle mainBundle] loadNibNamed:@"PopView2" owner:nil options:nil] lastObject];
-//    [popView2.popPicBtn2 setBackgroundImage:[UIImage imageNamed:@"camera"] forState: UIControlStateNormal];
-//    popView3 = [[[NSBundle mainBundle] loadNibNamed:@"PopView3" owner:nil options:nil] lastObject];
-//    [popView3.popPicBtn3 setBackgroundImage:[UIImage imageNamed:@"camera"] forState: UIControlStateNormal];
-//    popView4 = [[[NSBundle mainBundle] loadNibNamed:@"PopView4" owner:nil options:nil] lastObject];
-//    [popView4.popPicBtn4 setBackgroundImage:[UIImage imageNamed:@"camera"] forState: UIControlStateNormal];
+    popView2 = [[[NSBundle mainBundle] loadNibNamed:@"PopView2" owner:nil options:nil] lastObject];
+    [popView2.popPicBtn2 setImage:[UIImage imageNamed:@"camera"] forState: UIControlStateNormal];
+    popView3 = [[[NSBundle mainBundle] loadNibNamed:@"PopView3" owner:nil options:nil] lastObject];
+    [popView3.popPicBtn3 setImage:[UIImage imageNamed:@"camera"] forState: UIControlStateNormal];
+    popView4 = [[[NSBundle mainBundle] loadNibNamed:@"PopView4" owner:nil options:nil] lastObject];
+    [popView4.popPicBtn4 setImage:[UIImage imageNamed:@"camera"] forState: UIControlStateNormal];
+    //手勢操作
+    UITapGestureRecognizer *toTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(toTap)];
+    [_ballBtn addGestureRecognizer:toTap];
     
+    //允許ImageView接受使用者互動
+    _ballBtn.userInteractionEnabled = YES;
 
     //以下為popPicBtn新增連結
 //    UITapGestureRecognizer *singleTap1 =
 //    [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(popPicBtnPressed:)];
-    
-
+//    
+//
 //    [popView.popPicBtn addGestureRecognizer:singleTap1];
-    //[cell.userImage addGestureRecognizer:singleTap2];
-    //popView.popPicBtn.tag = 1;
+//    [cell.userImage addGestureRecognizer:singleTap2];
+//    popView.popPicBtn.tag = 1;
 
     //添加背景點擊事件
     UITapGestureRecognizer *recognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(keyboardResign)];
     recognizer.cancelsTouchesInView = NO;
     [self.view addGestureRecognizer:recognizer];
     
+    
+    
 //    [popView.popPicBtn addTarget:self action:@selector(logsomething) forControlEvents:UIControlEventTouchUpInside];
 //    [popView setUserInteractionEnabled:TRUE];
 //    [popView.popPicBtn setUserInteractionEnabled:YES];
     //[cell.userImage setUserInteractionEnabled:TRUE];
     
-}
-
--(void)logsomething
-{
-    NSLog(@"11111");
 }
 
 //點擊空白處收起鍵盤
@@ -148,29 +154,13 @@
 }
 
 -(void)toTap {
-//    if (!popView.isHidden) {
-//        [popView removeFromSuperview];
-//        [popView2 removeFromSuperview];
-//        [popView3 removeFromSuperview];
-//        [popView4 removeFromSuperview];
-//    }
+    [popView removeFromSuperview];
+    [popView2 removeFromSuperview];
+    [popView3 removeFromSuperview];
+    [popView4 removeFromSuperview];
+    
 }
--(void)popPicBtnPressed:(id)sender
-{
-    NSLog(@"111");
-    if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera])
-    {
-        UIImagePickerController *imagePicker=[[UIImagePickerController alloc]init];
-        
-        //設定相片來源為裝置上的相機
-        imagePicker.sourceType=UIImagePickerControllerSourceTypeCamera;
-        //設定imagePicker的delegate為viewcontroller
-        imagePicker.delegate=self;
-        //開啟相機拍照介面
-        [self presentViewController:imagePicker animated:YES completion:nil];
-    }
 
-}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -256,6 +246,9 @@
 }
 
 - (IBAction)theCameraBtnPressed:(id)sender {
+    [[NSUserDefaults standardUserDefaults] setInteger:cameraCategory1 forKey:@"cameraCategory"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    
     if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera])
     {
         UIImagePickerController *imagePicker=[[UIImagePickerController alloc]init];
@@ -271,55 +264,66 @@
 //相機開啟後～使用者可以選擇拍照或取消 選拍照時
 -(void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
 {
-    //取得使用者的相片
-    image1=[info valueForKey:UIImagePickerControllerOriginalImage];
-    //存檔
-    UIImageWriteToSavedPhotosAlbum(image1, nil, nil, nil);
-    //關閉拍照
-    [self dismissViewControllerAnimated:YES completion:nil];
-    
+    if([[NSUserDefaults standardUserDefaults] integerForKey:@"cameraCategory"] == cameraCategory1)
+    {
+        //取得使用者的相片
+        image1=[info valueForKey:UIImagePickerControllerOriginalImage];
+        //存檔
+        UIImageWriteToSavedPhotosAlbum(image1, nil, nil, nil);
+        //按鈕的背景換成剛拍下來的照片
+        [_cameraBtn setBackgroundImage:image1 forState:UIControlStateNormal];
+        //關閉拍照
+        [self dismissViewControllerAnimated:YES completion:nil];
 
-    
-    //NSData *imageData = UIImagePNGRepresentation(_cameraBtn.imageView.image);
-    //PFFile *imageFile=[PFFile fileWithName:@"image" data:imageData];
-    
-//    if ([PFUser currentUser]) {
-//        PFObject *userName = [PFObject objectWithClassName:@"WallPost"];
-//        userName[@"image1"] =imageData;
-//        //userName[@"image2"] =@"";
-//        //userName[@"image3"]=@"";
-//        //userName[@"image4"]=@"";
-//        //userName[@"image5"] =@"";
-//        //        PFRelation * relation = [[PFRelation alloc] init];
-//        //        [relation addObject:[PFUser currentUser]];
-//        userName[@"user"] = [PFUser currentUser];//連結現在登入的使用者id
-//        [userName saveInBackground];
-//        
-//    }
-    
-    // Upload image
-//    NSData *imageData1 = UIImagePNGRepresentation(_cameraBtn.imageView.image);
-//    PFFile *pic = [PFFile fileWithName:@"image1.png" data:imageData1];
-//    PFQuery *query = [PFQuery queryWithClassName:@"WallPost"];
-//    [query whereKey:@"username" equalTo:[[PFUser currentUser] valueForKey:@"username"]];
-//    PFObject *object =  [[NSArray arrayWithArray:[query findObjects]]lastObject];
-//    [object setValue:pic forKey:@"image1"];
-//    [object saveInBackground];
-    
-    /*
-    NSData *imageData = UIImagePNGRepresentation(image);
-    PFFile *imageFile = [PFFile fileWithName:@"image.png" data:imageData];
-    PFObject *userPhoto = [PFObject objectWithClassName:@"UserPhoto"];
-    userPhoto[@"imageName"] = @"My trip to Hawaii!";
-    userPhoto[@"imageFile"] = imageFile;
-    [userPhoto saveInBackground];
-    */
+    }
+    else if([[NSUserDefaults standardUserDefaults] integerForKey:@"cameraCategory"] == cameraCategory2)
+    {
+        //取得使用者的相片
+        image2=[info valueForKey:UIImagePickerControllerOriginalImage];
+        //存檔
+        UIImageWriteToSavedPhotosAlbum(image2, nil, nil, nil);
+        //按鈕的背景換成剛拍下來的照片
+        [_ballBtn setBackgroundImage:image2 forState:UIControlStateNormal];
+        //關閉拍照
+        [self dismissViewControllerAnimated:YES completion:nil];
+    }
+    else if([[NSUserDefaults standardUserDefaults] integerForKey:@"cameraCategory"] == cameraCategory3)
+    {
+        //取得使用者的相片
+        image3=[info valueForKey:UIImagePickerControllerOriginalImage];
+        //存檔
+        UIImageWriteToSavedPhotosAlbum(image3, nil, nil, nil);
+        //按鈕的背景換成剛拍下來的照片
+        [_TshirtBtn setBackgroundImage:image3 forState:UIControlStateNormal];
+        //關閉拍照
+        [self dismissViewControllerAnimated:YES completion:nil];
+    }
+    else if([[NSUserDefaults standardUserDefaults] integerForKey:@"cameraCategory"] == cameraCategory4)
+    {
+        //取得使用者的相片
+        image4=[info valueForKey:UIImagePickerControllerOriginalImage];
+        //存檔
+        UIImageWriteToSavedPhotosAlbum(image4, nil, nil, nil);
+        //按鈕的背景換成剛拍下來的照片
+        [_PantsBtn setBackgroundImage:image4 forState:UIControlStateNormal];
+        //關閉拍照
+        [self dismissViewControllerAnimated:YES completion:nil];
+    }
+    else if([[NSUserDefaults standardUserDefaults] integerForKey:@"cameraCategory"] == cameraCategory5)
+    {
+        //取得使用者的相片
+        image5=[info valueForKey:UIImagePickerControllerOriginalImage];
+        //存檔
+        UIImageWriteToSavedPhotosAlbum(image5, nil, nil, nil);
+        //按鈕的背景換成剛拍下來的照片
+        [_shoesBtn setBackgroundImage:image5 forState:UIControlStateNormal];
+        //關閉拍照
+        [self dismissViewControllerAnimated:YES completion:nil];
+    }
 }
 
 -(void)imagePickerControllerDidCancel:(UIImagePickerController *)picker
 {
-    //按鈕的背景換成剛拍下來的照片
-    [_cameraBtn setBackgroundImage:image1 forState:UIControlStateNormal];
     //當使用者按下取消後關閉拍照
     [self dismissViewControllerAnimated:YES completion:nil];
 }
@@ -331,13 +335,12 @@
     //    [pop presentPopoverFromRect:popBtn.frame inView:self.view permittedArrowDirections:UIPopoverArrowDirectionUp animated:YES];
     //設定popover的位置跟
     
-    
-    CGRect rect1=CGRectMake(100, 331, 50, 50);
-    [popView setFrame:rect1];
+    CGRect rect=CGRectMake(135, 385, 50, 50);
+    [popView setFrame:rect];
     [popView setUserInteractionEnabled:YES];
     [popView.popPicBtn setUserInteractionEnabled:YES];
 //    [popView.popPicBtn addTarget:self action:@selector(logsomething) forControlEvents:UIControlEventTouchUpInside];
-    [popView.popPicBtn addTarget:self action:@selector(popPicBtnPressed:) forControlEvents:UIControlEventTouchUpInside];
+    [popView.popPicBtn addTarget:self action:@selector(popPicBtn2Pressed:) forControlEvents:UIControlEventTouchUpInside];
     [popView.bgOfPopView setUserInteractionEnabled:YES];
     [popView bringSubviewToFront:popView.popPicBtn];
     [self.view addSubview:popView];
@@ -351,15 +354,16 @@
 //    rect.size = CGSizeMake(50, 50);
     //上面是蛤蜊教的
     
-    //[popView2 removeFromSuperview];
-    //[popView3 removeFromSuperview];
-    //[popView4 removeFromSuperview];
-    
-}
+    [popView2 removeFromSuperview];
+    [popView3 removeFromSuperview];
+    [popView4 removeFromSuperview];
 
--(IBAction)popViewPicBtnPressed:(UIButton*)popViewBtn
+}
+-(void)popPicBtn2Pressed:(id)sender
 {
-    popView.popPicBtn=popViewBtn;
+    [[NSUserDefaults standardUserDefaults] setInteger:cameraCategory2 forKey:@"cameraCategory"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    
     if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera])
     {
         UIImagePickerController *imagePicker=[[UIImagePickerController alloc]init];
@@ -374,34 +378,109 @@
 }
 
 - (IBAction)TshirtBtnPressed:(id)sender {
-    CGRect rect=CGRectMake(165, 331, 50, 50);
+    CGRect rect=CGRectMake(203, 385, 50, 50);
     [popView2 setFrame:rect];
+    [popView2 setUserInteractionEnabled:YES];
+    [popView2.popPicBtn2 setUserInteractionEnabled:YES];
+    //    [popView.popPicBtn addTarget:self action:@selector(logsomething) forControlEvents:UIControlEventTouchUpInside];
+    [popView2.popPicBtn2 addTarget:self action:@selector(popPicBtn3Pressed:) forControlEvents:UIControlEventTouchUpInside];
+    [popView2.bgOfPopView2 setUserInteractionEnabled:YES];
+    [popView2 bringSubviewToFront:popView2.popPicBtn2];
     [self.view addSubview:popView2];
-    [self.view sendSubviewToBack:popView2];
+    
     
     [popView removeFromSuperview];
     [popView3 removeFromSuperview];
     [popView4 removeFromSuperview];
+
 }
+
+-(void)popPicBtn3Pressed:(id)sender
+{
+    [[NSUserDefaults standardUserDefaults] setInteger:cameraCategory3 forKey:@"cameraCategory"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    
+    if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera])
+    {
+        UIImagePickerController *imagePicker=[[UIImagePickerController alloc]init];
+        
+        //設定相片來源為裝置上的相機
+        imagePicker.sourceType=UIImagePickerControllerSourceTypeCamera;
+        //設定imagePicker的delegate為viewcontroller
+        imagePicker.delegate=self;
+        //開啟相機拍照介面
+        [self presentViewController:imagePicker animated:YES completion:nil];
+    }
+}
+
 - (IBAction)PantsBtnPressed:(id)sender {
-    CGRect rect=CGRectMake(230, 331, 50, 50);
+    CGRect rect=CGRectMake(271, 385, 50, 50);
     [popView3 setFrame:rect];
+    [popView3 setUserInteractionEnabled:YES];
+    [popView3.popPicBtn3 setUserInteractionEnabled:YES];
+    //    [popView.popPicBtn addTarget:self action:@selector(logsomething) forControlEvents:UIControlEventTouchUpInside];
+    [popView3.popPicBtn3 addTarget:self action:@selector(popPicBtn4Pressed:) forControlEvents:UIControlEventTouchUpInside];
+    [popView3.bgOfPopView3 setUserInteractionEnabled:YES];
+    [popView3 bringSubviewToFront:popView3.popPicBtn3];
     [self.view addSubview:popView3];
-    [self.view sendSubviewToBack:popView3];
     
     [popView removeFromSuperview];
     [popView2 removeFromSuperview];
     [popView4 removeFromSuperview];
+
+}
+
+-(void)popPicBtn4Pressed:(id)sender
+{
+    [[NSUserDefaults standardUserDefaults] setInteger:cameraCategory4 forKey:@"cameraCategory"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    
+    if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera])
+    {
+        UIImagePickerController *imagePicker=[[UIImagePickerController alloc]init];
+        
+        //設定相片來源為裝置上的相機
+        imagePicker.sourceType=UIImagePickerControllerSourceTypeCamera;
+        //設定imagePicker的delegate為viewcontroller
+        imagePicker.delegate=self;
+        //開啟相機拍照介面
+        [self presentViewController:imagePicker animated:YES completion:nil];
+    }
 }
 - (IBAction)shoesBtnPressed:(id)sender {
-    CGRect rect=CGRectMake(295, 331, 50, 50);
+    CGRect rect=CGRectMake(339, 385, 50, 50);
     [popView4 setFrame:rect];
+    [popView4 setUserInteractionEnabled:YES];
+    [popView4.popPicBtn4 setUserInteractionEnabled:YES];
+    //    [popView.popPicBtn addTarget:self action:@selector(logsomething) forControlEvents:UIControlEventTouchUpInside];
+    [popView4.popPicBtn4 addTarget:self action:@selector(popPicBtn5Pressed:) forControlEvents:UIControlEventTouchUpInside];
+    [popView4.bgOfPopView4 setUserInteractionEnabled:YES];
+    [popView4 bringSubviewToFront:popView4.popPicBtn4];
     [self.view addSubview:popView4];
-    [self.view sendSubviewToBack:popView4];
+
     
     [popView removeFromSuperview];
     [popView2 removeFromSuperview];
     [popView3 removeFromSuperview];
+
+}
+
+-(void)popPicBtn5Pressed:(id)sender
+{
+    [[NSUserDefaults standardUserDefaults] setInteger:cameraCategory5 forKey:@"cameraCategory"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    
+    if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera])
+    {
+        UIImagePickerController *imagePicker=[[UIImagePickerController alloc]init];
+        
+        //設定相片來源為裝置上的相機
+        imagePicker.sourceType=UIImagePickerControllerSourceTypeCamera;
+        //設定imagePicker的delegate為viewcontroller
+        imagePicker.delegate=self;
+        //開啟相機拍照介面
+        [self presentViewController:imagePicker animated:YES completion:nil];
+    }
 }
 
 - (IBAction)goBtnPressed:(id)sender {
@@ -429,18 +508,53 @@
 //        [object saveInBackground];
 
         
+        NSData *imageData2 = UIImageJPEGRepresentation(image2,0.6);
+        PFFile *imageFile2 = [PFFile fileWithName:@"image.jpeg" data:imageData2];
+        if (image2==nil) {
+
+        }else{
+            wallpost[@"image2"] = imageFile2;
+        }
+
         
-        //wallpost[@"image2"] =@"";
-        //wallpost[@"image3"]=@"";
-        //wallpost[@"image4"]=@"";
-        //wallpost[@"image5"]=@"";
-        wallpost[@"content"]=_contentTextField.text;
+        NSData *imageData3 = UIImageJPEGRepresentation(image3,0.6);
+        PFFile *imageFile3 = [PFFile fileWithName:@"image.jpeg" data:imageData3];
+        if (image3==nil) {
+
+        }else{
+            wallpost[@"image3"] = imageFile3;
+        }
+        
+        NSData *imageData4 = UIImageJPEGRepresentation(image4,0.6);
+        PFFile *imageFile4 = [PFFile fileWithName:@"image.jpeg" data:imageData4];
+        if (image4==nil) {
+
+        }else{
+            wallpost[@"image4"] = imageFile4;
+        }
+        
+        NSData *imageData5 = UIImageJPEGRepresentation(image5,0.6);
+        PFFile *imageFile5 = [PFFile fileWithName:@"image.jpeg" data:imageData5];
+        if (image5==nil) {
+        
+        }else{
+            wallpost[@"image5"] = imageFile5;
+        }
+
+        
+        if (_contentTextField.text==nil) {
+            wallpost[@"content"] = @"";
+        }else{
+            wallpost[@"content"] = _contentTextField.text;
+        }
+        //wallpost[@"content"]=_contentTextField.text;
+
 
         NSNumberFormatter *lat = [[NSNumberFormatter alloc] init];
         lat.numberStyle = NSNumberFormatterDecimalStyle;
         NSNumber *latNumber = [lat numberFromString:latitudeStr];
         if (latNumber==nil) {
-            wallpost[@"latitude"]=@"";
+            //wallpost[@"latitude"]=@"";
         }else{
             wallpost[@"latitude"]=latNumber;
         }
@@ -449,7 +563,7 @@
         lon.numberStyle = NSNumberFormatterDecimalStyle;
         NSNumber *lonNumber = [lon numberFromString:longitudeStr];
         if (lonNumber==nil) {
-            wallpost[@"longitude"]=@"";
+            //wallpost[@"longitude"]=@"";
         }else{
             wallpost[@"longitude"]=lonNumber;
         }
@@ -513,5 +627,6 @@
     // Pass the selected object to the new view controller.
 }
 */
+
 
 @end
