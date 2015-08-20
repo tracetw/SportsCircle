@@ -39,6 +39,7 @@
         
         query = [PFQuery queryWithClassName:@"WallPost"];
         [query whereKey:@"user" equalTo:currentUser];
+        [query addDescendingOrder:@"createdAt"];
         
         postWallArray = [NSArray new];
         

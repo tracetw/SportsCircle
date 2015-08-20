@@ -10,6 +10,8 @@
 #import "endRecordingTableViewController.h"
 #import "MapRecordingViewController.h"
 #import <Parse/Parse.h>
+#import "DKCircleButton.h"
+
 
 @interface RecordingViewController ()<UINavigationBarDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate>
 {
@@ -25,17 +27,20 @@
     NSNumber *speedNo;
     NSString *recordingTime;
     NSString *objectID;
+    DKCircleButton *pauseBtn;
+    BOOL buttonState;
 }
 @property (weak, nonatomic) IBOutlet UILabel *miniSecond;
 @property (weak, nonatomic) IBOutlet UILabel *second;
 @property (weak, nonatomic) IBOutlet UILabel *minutes;
 @property (weak, nonatomic) IBOutlet UILabel *hour;
-@property (weak, nonatomic) IBOutlet UIButton *cameraButton;
+//@property (weak, nonatomic) IBOutlet UIButton *cameraButton;
 @property (weak, nonatomic) IBOutlet UIView *lockScreenView;
 @property (weak, nonatomic) IBOutlet UIImageView *sportTypeImage;
 @property (weak, nonatomic) IBOutlet UILabel *caloryTextLabel;
 @property (weak, nonatomic) IBOutlet UILabel *distanceTextLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *distanceImage;
+@property (strong, nonatomic) IBOutlet UIView *backgroundView;
 
 @end
 
@@ -45,10 +50,13 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    [_cameraButton setBackgroundImage:[UIImage imageNamed:@"camera.png"] forState:UIControlStateNormal];
+    self.navigationItem.hidesBackButton = YES;
+    
+   // [_cameraButton setBackgroundImage:[UIImage imageNamed:@"camera.png"] forState:UIControlStateNormal];
     mapRecordingView = [self.storyboard instantiateViewControllerWithIdentifier:@"MapRecordingView"];
     
-    UIBarButtonItem *mapButton = [[UIBarButtonItem alloc]initWithTitle:@"Map" style:UIBarButtonItemStylePlain target:self action:@selector(mapBtnPressed:)];
+//    UIBarButtonItem *mapButton = [[UIBarButtonItem alloc]initWithTitle:@"Map" style:UIBarButtonItemStylePlain target:self action:@selector(mapBtnPressed:)];
+    UIBarButtonItem *mapButton = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"locationIcon"]style:UIBarButtonItemStylePlain target:self action:@selector(mapBtnPressed:)];
     
     switchview = [[UISwitch alloc] initWithFrame:CGRectZero];
     switchview.on = NO;
@@ -71,10 +79,11 @@
         
 //        refleshDistance = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(countDistance:) userInfo:NULL repeats:YES];
         
-        self.navigationItem.rightBarButtonItems = @[mapButton,lockSwith];
+        self.navigationItem.rightBarButtonItem = mapButton;
+        self.navigationItem.leftBarButtonItem = lockSwith;
     }else
     {
-        self.navigationItem.rightBarButtonItems = @[lockSwith];
+        self.navigationItem.leftBarButtonItem = lockSwith;
     }
     
     transition=[CATransition animation];
@@ -98,16 +107,20 @@
     lastPostObject = [[query findObjects] lastObject];
     objectID = lastPostObject.objectId;
     NSLog(@"%@",lastPostObject);
+    
+    [self initPauseButton];
+    
+    
 }
 
 
-- (IBAction)pauseBtnPressed:(id)sender {
-    if ([counter isValid]) {
-        [counter invalidate];
-    }else{
-        counter = [NSTimer scheduledTimerWithTimeInterval:0.01 target:self selector:@selector(addNumber:) userInfo:NULL repeats:YES];//每0.01秒更新一次
-    }
-}
+//- (IBAction)pauseBtnPressed:(id)sender {
+//    if ([counter isValid]) {
+//        [counter invalidate];
+//    }else{
+//        counter = [NSTimer scheduledTimerWithTimeInterval:0.01 target:self selector:@selector(addNumber:) userInfo:NULL repeats:YES];//每0.01秒更新一次
+//    }
+//}
 
 -(void)viewDidAppear:(BOOL)animated{
     
@@ -138,15 +151,15 @@
     }
 }
 
-- (IBAction)cameraBtnPressed:(id)sender {
-    if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
-        UIImagePickerController *imagePicker = [UIImagePickerController new];
-        imagePicker.sourceType = UIImagePickerControllerSourceTypeCamera;
-        imagePicker.delegate = self;
-        [self presentViewController:imagePicker animated:YES completion:nil];
-    }
-
-}
+//- (IBAction)cameraBtnPressed:(id)sender {
+//    if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
+//        UIImagePickerController *imagePicker = [UIImagePickerController new];
+//        imagePicker.sourceType = UIImagePickerControllerSourceTypeCamera;
+//        imagePicker.delegate = self;
+//        [self presentViewController:imagePicker animated:YES completion:nil];
+//    }
+//
+//}
 
 -(void) imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info{
     
@@ -178,7 +191,7 @@
     if ([sportName isEqualToString:@"Athletics"]) {
         float distanceFloat = [mapRecordingView getDistance];
         distance = @(distanceFloat);
-        _distanceTextLabel.text = [NSString stringWithFormat:@"Distance: %.2f km",distanceFloat];
+        _distanceTextLabel.text = [NSString stringWithFormat:@" %.2f km",distanceFloat];
         float speed = distanceFloat/(hour+(minites/60)+(second/3600));
         speedNo = @(speed);
     }
@@ -218,7 +231,45 @@
     [view getObjectID:objectID];
 }
 
+-(void) initPauseButton{
+    pauseBtn = [[DKCircleButton alloc] initWithFrame:CGRectMake(0, 0, 90, 90)];
+    
+    pauseBtn.center = CGPointMake(120, 600);
+    pauseBtn.titleLabel.font = [UIFont systemFontOfSize:22];
+    
+    [pauseBtn setTitleColor:[UIColor colorWithWhite:1 alpha:1.0] forState:UIControlStateNormal];
+    [pauseBtn setTitleColor:[UIColor colorWithWhite:1 alpha:1.0] forState:UIControlStateSelected];
+    [pauseBtn setTitleColor:[UIColor colorWithWhite:1 alpha:1.0] forState:UIControlStateHighlighted];
+    
+    [pauseBtn setTitle:NSLocalizedString(@"Pause", nil) forState:UIControlStateNormal];
+    [pauseBtn setTitle:NSLocalizedString(@"Pause", nil) forState:UIControlStateSelected];
+    [pauseBtn setTitle:NSLocalizedString(@"Pause", nil) forState:UIControlStateHighlighted];
+    
+    [pauseBtn addTarget:self action:@selector(tapOnButton) forControlEvents:UIControlEventTouchUpInside];
+    pauseBtn.backgroundColor = [UIColor colorWithRed:57.0f/255.0f green:88.0f/255.0f blue:100.0f/255.0f alpha:1];
+//    [_backgroundView addSubview:pauseBtn];
+    [_backgroundView insertSubview:pauseBtn belowSubview:_lockScreenView];
+}
 
+- (void)tapOnButton {
+    if (buttonState) {
+        [pauseBtn setTitle:NSLocalizedString(@"Pause", nil) forState:UIControlStateNormal];
+        [pauseBtn setTitle:NSLocalizedString(@"Pause", nil) forState:UIControlStateSelected];
+        [pauseBtn setTitle:NSLocalizedString(@"Pause", nil) forState:UIControlStateHighlighted];
+        
+    } else {
+        [pauseBtn setTitle:NSLocalizedString(@"Start", nil) forState:UIControlStateNormal];
+        [pauseBtn setTitle:NSLocalizedString(@"Start", nil) forState:UIControlStateSelected];
+        [pauseBtn setTitle:NSLocalizedString(@"Start", nil) forState:UIControlStateHighlighted];
+        
+    }
+    if ([counter isValid]) {
+        [counter invalidate];
+    }else{
+        counter = [NSTimer scheduledTimerWithTimeInterval:0.01 target:self selector:@selector(addNumber:) userInfo:NULL repeats:YES];//每0.01秒更新一次
+    }
+    buttonState = !buttonState;
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

@@ -13,6 +13,8 @@
 #import <ParseUI/ParseUI.h>
 #import "PersonalPageViewController.h"
 #import "readPostViewController.h"
+#import "UIView+WZLBadge.h"
+#import "LBHamburgerButton.h"
 
 @interface TrendViewController ()<UITableViewDelegate,UITableViewDataSource>
 {
@@ -21,24 +23,29 @@
     NSMutableArray *datas;
     UIRefreshControl *refreshControl;
     PFImageView *userImage;
+    int notidicationNumber; /**< 消息通知數量 */
 }
 @property (weak, nonatomic) IBOutlet UIView *theListView;
 @property (strong, nonatomic) IBOutlet UIView *theTrendView;
 @property (weak, nonatomic) IBOutlet UIButton *goButton;
-
+@property (weak, nonatomic) IBOutlet UIButton *notidicationButton;  /**< 消息通知按鈕 */
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
-
+@property (strong, nonatomic) LBHamburgerButton* buttonHamburgerCloseSmall;
 @end
 
 @implementation TrendViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self didConfirmBeFriend];
     
-    UIBarButtonItem *list=[[UIBarButtonItem alloc]initWithTitle:@"List" style:UIBarButtonItemStylePlain target:self action:@selector (barListBtnPressed:)];
+//    UIBarButtonItem *list=[[UIBarButtonItem alloc]initWithTitle:@"List" style:UIBarButtonItemStylePlain target:self action:@selector (barListBtnPressed:)];
     //創造一個UIBBtn.選擇plain的style(另一個也長一樣).selector為把某個方法包裝成一個變數.:為名稱的一部分必加
+    [self initHamburgerButton];
     
-    self.navigationItem.leftBarButtonItem=list;
+    UIBarButtonItem *hamburgerButton = [[UIBarButtonItem alloc]initWithCustomView:_buttonHamburgerCloseSmall];
+    
+    self.navigationItem.leftBarButtonItem=hamburgerButton;
     
     //手勢操作
     UISwipeGestureRecognizer *toRight = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(toRight)];
@@ -87,7 +94,7 @@
  
     userImage = [PFImageView new];
     
-    [list setTintColor:[UIColor whiteColor]];
+    //[list setTintColor:[UIColor whiteColor]];
     //[cell.contentView.layer setBorderColor:[UIColor redColor].CGColor];
     //[cell.contentView.layer setBorderWidth:10.0];
     
@@ -109,6 +116,7 @@
 {
 
     PFQuery *query = [PFQuery queryWithClassName:@"WallPost"];
+    [query addDescendingOrder:@"createdAt"];
     postWallArray = [NSArray new];
     postWallArray = [query findObjects];
     postWallDictionary = [NSDictionary new];
@@ -139,10 +147,11 @@
 */
 -(IBAction) barListBtnPressed:(id)sender{
     //按下listBtn時
+    [_buttonHamburgerCloseSmall switchState];
     
     CATransition *transition=[CATransition animation];
     //catransition為Q的一個物件
-    transition.duration=0.7;
+    transition.duration=0.3;
     //動畫時間長度
     transition.timingFunction=[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
     //動畫效果為進出緩慢中間快速
@@ -317,6 +326,62 @@
     NSLog(@"cell title:%@ and row:%li",cell.textLabel.text,indexPath.row);
 }
 */
+
+- (void) didConfirmBeFriend{   //確認是否有好友邀請名單
+    
+    //init
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];   /**< NSUserDefaults */
+    NSMutableDictionary *notidicationDictionary = [NSMutableDictionary new];    /**< 消息通知 */
+    NSMutableArray *addFriendArray = [NSMutableArray new];  /**< 所有的待確認好友objectId */
+    
+    
+    NSMutableArray *unConfirmfriendsArray = [NSMutableArray new];
+    PFUser *currentUser=[PFUser currentUser];
+    PFQuery *query = [PFQuery queryWithClassName:@"Friends"];
+    [query findObjectsInBackgroundWithBlock:^(NSArray *array, NSError *error){
+        NSLog(@"%@",array[0]);
+        for (PFObject *pfobject in array) {
+            for (NSObject *object in pfobject[@"unFriends"]) {
+                if ([[NSString stringWithFormat:@"%@",object] caseInsensitiveCompare:currentUser.objectId]==NSOrderedSame) {
+                    PFUser *otherPerson = pfobject[@"user"];
+                    [otherPerson fetch];    //取值
+                    NSString *tempNameString = otherPerson.username;
+                    NSString *tempString = otherPerson.objectId;
+
+                    NSString *tempAddString = [NSString stringWithFormat:@"%@&%@",tempString,tempNameString];
+                    [addFriendArray addObject:tempAddString];
+                    
+                }
+                [unConfirmfriendsArray addObject:object];
+            }
+        }
+        
+        notidicationNumber = (int)addFriendArray.count;
+        //存檔
+        [notidicationDictionary setObject:addFriendArray forKey:@"addFriend"];
+        [userDefaults setObject:notidicationDictionary forKey:@"notidicationDictionary"];
+        //設定好後只是單純的cache住，要存進硬碟要用，才真正儲存
+        [userDefaults synchronize];
+        
+        [self showNotidicationBadge:notidicationNumber];
+    }];
+    
+    
+}
+
+- (void) showNotidicationBadge:(int)number{
+    if (number > 0) {
+        [_notidicationButton showBadgeWithStyle:WBadgeStyleRedDot value:number animationType:WBadgeAnimTypeScale];
+        [_notidicationButton showBadge];
+    }
+}
+
+- (IBAction)notidicationBtnPressed:(id)sender {
+    [_notidicationButton clearBadge];
+}
+
+
+
 -(void)userNameLabelPressed:(id)sender
 {
     [self performSegueWithIdentifier: @"goPersonalPageFromTrend" sender:[sender view]];
@@ -345,5 +410,18 @@
         [controller passData:Uname];
     }
 
+}
+
+-(void)initHamburgerButton{
+    _buttonHamburgerCloseSmall = [[LBHamburgerButton alloc] initWithFrame:CGRectMake(0, 0, 50, 50)
+                                                        withHamburgerType:LBHamburgerButtonTypeCloseButton
+                                                                lineWidth:20
+                                                               lineHeight:20/6
+                                                              lineSpacing:2
+                                                               lineCenter:CGPointMake(25, 25)
+                                                                    color:[UIColor whiteColor]];
+    [_buttonHamburgerCloseSmall setCenter:CGPointMake(_buttonHamburgerCloseSmall.center.x + 100, 120)];
+    //[_buttonHamburgerCloseSmall setBackgroundColor:[UIColor blackColor]];
+    [_buttonHamburgerCloseSmall addTarget:self action:@selector(barListBtnPressed:) forControlEvents:UIControlEventTouchUpInside];
 }
 @end

@@ -18,11 +18,13 @@
     CLLocation *currentLocation, *newCurrentLocation;
     NSArray *locationArray;
     NSMutableArray *locationMutableArray;
+    NSMutableArray *beginingPositionArray;
     //double oldLatitude,oldLongitude,newLatitude,newLongitude;
     float totalDistance;
     int i;
-    MKPolyline *polyLine;
+    
 }
+@property (weak, nonatomic) IBOutlet UIButton *traceLocationBtn;
 @property (weak, nonatomic) IBOutlet MKMapView *recordingMapView;
 @end
 
@@ -42,12 +44,15 @@
     
     if (locationMutableArray == nil) {
         locationMutableArray = [NSMutableArray new];
+        beginingPositionArray = [NSMutableArray new];
     }
     
     MKCoordinateRegion region = _recordingMapView.region;
     region.center = currentLocation.coordinate;
     region.span.latitudeDelta = 0.01;//螢幕上一個點緯度經度
     region.span.longitudeDelta = 0.01;
+    
+    [_traceLocationBtn setImage:[UIImage imageNamed:@"locationIcon"] forState:UIControlStateNormal];
     
     [_recordingMapView setRegion:region animated:true];
     _recordingMapView.userTrackingMode = MKUserTrackingModeFollowWithHeading;
@@ -59,8 +64,8 @@
     _recordingMapView.userTrackingMode = MKUserTrackingModeFollowWithHeading;
     MKCoordinateRegion region = _recordingMapView.region;
     region.center = currentLocation.coordinate;
-    region.span.latitudeDelta = 0.01;
-    region.span.longitudeDelta = 0.01;
+    region.span.latitudeDelta = 0.005;
+    region.span.longitudeDelta = 0.005;
     
     [_recordingMapView setRegion:region animated:true];
     
@@ -73,8 +78,8 @@
         
         coordinates[x]=CLLocationCoordinate2DMake(drawLocation.coordinate.latitude, drawLocation.coordinate.longitude);
     }
-    NSLog(@"asdfsf %d",i);
-    polyLine = [MKPolyline polylineWithCoordinates:coordinates count:i];
+   // NSLog(@"asdfsf %d",i);
+   MKPolyline *polyLine = [MKPolyline polylineWithCoordinates:coordinates count:i];
     [_recordingMapView addOverlay:polyLine];
 
 }
@@ -90,20 +95,28 @@
     
     CLLocation *location = locations.lastObject;
     
-    if (location.coordinate.longitude != 0  && location.coordinate.latitude != 0) {
-        
-        [locationMutableArray addObject:locations.lastObject];
-        
-        i = (int)locationMutableArray.count;
-        if (i>1)
-        {
-            currentLocation = locationMutableArray[i-1];
-            newCurrentLocation = locationMutableArray[i-2];
+    [beginingPositionArray addObject:locations.lastObject];
+    int j = (int)beginingPositionArray.count;
+    if (j>2)
+    {
+        CLLocationDistance distance = ([beginingPositionArray[j-1] distanceFromLocation:beginingPositionArray[j-2]]) * 0.000621371192;
+        //NSLog(@"%f",distance);
+        if (location.coordinate.longitude != 0  && location.coordinate.latitude != 0 && distance < 0.1) {
             
-            NSLog(@"Current Location: %.6f,%.6f",currentLocation.coordinate.latitude,currentLocation.coordinate.longitude);//.08不到8位補0
-            NSLog(@"i = %d",i);
-            [self drawRoute:currentLocation to:newCurrentLocation];
-            [self coutDistance:currentLocation to:newCurrentLocation];
+            [locationMutableArray addObject:beginingPositionArray[j-1]];
+            
+            i = (int)locationMutableArray.count;
+            if (i>1)
+            {
+                currentLocation = locationMutableArray[i-1];
+                newCurrentLocation = locationMutableArray[i-2];
+                
+               // NSLog(@"Current Location: %.6f,%.6f",currentLocation.coordinate.latitude,currentLocation.coordinate.longitude);//.08不到8位補0
+               // NSLog(@"i = %d",i);
+                
+                [self drawRoute:currentLocation to:newCurrentLocation];
+                [self coutDistance:currentLocation to:newCurrentLocation];
+            }
         }
     }
 }
@@ -130,7 +143,7 @@
     CLLocationDistance distance = ([new distanceFromLocation:old]) * 0.000621371192;
     
     totalDistance += distance;
-    NSLog(@"%f",totalDistance);
+    //NSLog(@"%f",totalDistance);
 }
 
 -(float)getDistance
@@ -214,6 +227,16 @@
         
         
         //draw line in snapshot
+        CLLocationCoordinate2D coor[i];
+        for (int x=0; x<i; x++) {
+            
+            CLLocation *drawLocation;
+            
+            drawLocation = locationMutableArray[x];
+            
+            coor[x]=CLLocationCoordinate2DMake(drawLocation.coordinate.latitude, drawLocation.coordinate.longitude);
+        }
+        MKPolyline *polyLine = [MKPolyline polylineWithCoordinates:coor count:i];
         CLLocationCoordinate2D coordinates[[polyLine pointCount]];
         [polyLine getCoordinates:coordinates range:NSMakeRange(0, [polyLine pointCount])];
         
