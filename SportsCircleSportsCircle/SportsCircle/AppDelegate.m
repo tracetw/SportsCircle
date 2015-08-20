@@ -10,7 +10,6 @@
 #import <Parse/Parse.h>
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
 #import <FBSDKLoginKit/FBSDKLoginKit.h>
-
 @interface AppDelegate ()
 
 @end
@@ -20,7 +19,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
-    
+
     [Parse enableLocalDatastore];
     [Parse setApplicationId:@"dw8uzmUe0cpMHBH7h8DxTIJOy9yGnKow3b8DqBZv"
                   clientKey:@"qeOsW5dQowxPquXdc21h6erNTLdtFwsvnpe1Fwq3"];
