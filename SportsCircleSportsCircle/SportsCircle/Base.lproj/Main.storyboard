@@ -1553,9 +1553,10 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j49-dr-30O">
-                                <rect key="frame" x="16" y="315" width="90" height="30"/>
+                                <rect key="frame" x="16" y="255" width="90" height="90"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
+                                    <constraint firstAttribute="height" constant="90" id="XME-Qr-geh"/>
                                     <constraint firstAttribute="width" constant="90" id="xRy-og-BR0"/>
                                 </constraints>
                                 <state key="normal">
