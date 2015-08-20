@@ -105,6 +105,7 @@
     //update here...
     NSLog(@"update");
     PFQuery *query = [PFQuery queryWithClassName:@"WallPost"];
+    [query addDescendingOrder:@"createdAt"];
     postWallArray = [NSArray new];
     postWallArray = [query findObjects];
     postWallDictionary = [NSDictionary new];
@@ -246,7 +247,12 @@
     imageView.image = [UIImage imageNamed:@"camera"]; // placeholder image
     imageView.file = (PFFile *)postWallObject[@"image1"]; // remote image
     
-    [imageView loadInBackground];
+    //[imageView loadInBackground];
+    cell.postImage.image = imageView.image;
+    [imageView loadInBackground:^(UIImage *image,  NSError * error){
+        cell.postImage.image = image;
+    }];
+    
     
     //NSData *imageData = [imageView.file getData];
     cell.postImage.image = imageView.image;//[UIImage imageWithData:imageData];
@@ -270,7 +276,9 @@
         
         userImage.file = (PFFile *)user[@"userImage"];
         
-        [userImage loadInBackground];
+        [userImage loadInBackground:^(UIImage *image,NSError *error){
+            cell.userImage.image = userImage.image;
+        }];
         
         cell.userImage.image = userImage.image;
         
@@ -279,10 +287,11 @@
     
     userImage.image = [UIImage imageNamed:@"camera"];
     
-    cell.userImage.image = userImage.image;
+    //cell.userImage.image = userImage.image;
     
     
     //    PFFile *userImageData = user[@"userImage"];
+    
     //    NSData *userImage = [userImageData getData];
     //    cell.userImage.image = [UIImage imageWithData:userImage];
     

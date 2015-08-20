@@ -64,8 +64,8 @@
     _recordingMapView.userTrackingMode = MKUserTrackingModeFollowWithHeading;
     MKCoordinateRegion region = _recordingMapView.region;
     region.center = currentLocation.coordinate;
-    region.span.latitudeDelta = 0.005;
-    region.span.longitudeDelta = 0.005;
+    region.span.latitudeDelta = 0.003;
+    region.span.longitudeDelta = 0.003;
     
     [_recordingMapView setRegion:region animated:true];
     
@@ -87,6 +87,12 @@
 
 - (IBAction)locatiionBtnPressed:(id)sender {
     _recordingMapView.userTrackingMode = MKUserTrackingModeFollowWithHeading;
+    MKCoordinateRegion region = _recordingMapView.region;
+    region.center = currentLocation.coordinate;
+    region.span.latitudeDelta = 0.003;
+    region.span.longitudeDelta = 0.003;
+    
+    [_recordingMapView setRegion:region animated:true];
 }
 
 
@@ -155,7 +161,7 @@
     MKPolylineView *polylineView = [[MKPolylineView alloc] initWithPolyline:overlay];
     
     polylineView.strokeColor = [UIColor redColor];
-    polylineView.lineWidth = 10.0;
+    polylineView.lineWidth = 15.0;
     
     return polylineView;
 }
@@ -222,7 +228,7 @@
         CGColorRef color = CGColorCreate(colorspace, components);
         
         CGContextSetStrokeColorWithColor(context, color);
-        CGContextSetLineWidth(context,2.0f);
+        CGContextSetLineWidth(context,3.0f);
         CGContextBeginPath(context);
         
         
