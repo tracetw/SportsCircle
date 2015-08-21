@@ -9,9 +9,6 @@
 /* Begin PBXBuildFile section */
 		702BBACA1B5547FE00C09B9B /* SignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 702BBAC91B5547FE00C09B9B /* SignUpViewController.m */; };
 		703E3E8C1B722B7300768912 /* TrendTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 703E3E8B1B722B7300768912 /* TrendTableViewCell.m */; };
-		704E02761B86BCB100D74E49 /* JPSThumbnailAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 704E02711B86BCB100D74E49 /* JPSThumbnailAnnotation.m */; };
-		704E02771B86BCB100D74E49 /* JPSThumbnailAnnotationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 704E02731B86BCB100D74E49 /* JPSThumbnailAnnotationView.m */; };
-		704E02781B86BCB100D74E49 /* JPSThumnail.m in Sources */ = {isa = PBXBuildFile; fileRef = 704E02751B86BCB100D74E49 /* JPSThumnail.m */; };
 		705A3D011B817F2F0019F7A8 /* MyImageAnnotationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 705A3D001B817F2F0019F7A8 /* MyImageAnnotationView.m */; };
 		705A3D111B81B7540019F7A8 /* xib@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 705A3D0E1B81B7540019F7A8 /* xib@3x.png */; };
 		705A3D121B81B7540019F7A8 /* xib@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 705A3D0F1B81B7540019F7A8 /* xib@2x.png */; };
@@ -22,6 +19,8 @@
 		7072471C1B7C28AC00034F62 /* scheduleTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7072471B1B7C28AC00034F62 /* scheduleTableViewCell.m */; };
 		7076B5DA1B6FA972004E81EF /* scheduleEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7076B5D91B6FA972004E81EF /* scheduleEditViewController.m */; };
 		7076B5DD1B70D496004E81EF /* SearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7076B5DC1B70D496004E81EF /* SearchViewController.m */; };
+		708574CB1B87397200700654 /* MyPointAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 708574C81B87397200700654 /* MyPointAnnotation.m */; };
+		708574CC1B87397200700654 /* MyButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 708574CA1B87397200700654 /* MyButton.m */; };
 		70D4B7E01B7E2432000C66C7 /* readPostViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70D4B7DF1B7E2432000C66C7 /* readPostViewController.m */; };
 		70D60FC21B5569BA001BB4C9 /* TrendViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70D60FC11B5569BA001BB4C9 /* TrendViewController.m */; };
 		70D60FC41B55739C001BB4C9 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 70D60FC31B55739C001BB4C9 /* QuartzCore.framework */; };
@@ -124,12 +123,6 @@
 		702BBAC91B5547FE00C09B9B /* SignUpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignUpViewController.m; sourceTree = "<group>"; };
 		703E3E8A1B722B7300768912 /* TrendTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TrendTableViewCell.h; sourceTree = "<group>"; };
 		703E3E8B1B722B7300768912 /* TrendTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TrendTableViewCell.m; sourceTree = "<group>"; };
-		704E02701B86BC9400D74E49 /* JPSThumbnailAnnotation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JPSThumbnailAnnotation.h; sourceTree = "<group>"; };
-		704E02711B86BCB100D74E49 /* JPSThumbnailAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JPSThumbnailAnnotation.m; sourceTree = "<group>"; };
-		704E02721B86BCB100D74E49 /* JPSThumbnailAnnotationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JPSThumbnailAnnotationView.h; sourceTree = "<group>"; };
-		704E02731B86BCB100D74E49 /* JPSThumbnailAnnotationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JPSThumbnailAnnotationView.m; sourceTree = "<group>"; };
-		704E02741B86BCB100D74E49 /* JPSThumbnail.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JPSThumbnail.h; sourceTree = "<group>"; };
-		704E02751B86BCB100D74E49 /* JPSThumnail.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JPSThumnail.m; sourceTree = "<group>"; };
 		705A3CFF1B817F2F0019F7A8 /* MyImageAnnotationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyImageAnnotationView.h; sourceTree = "<group>"; };
 		705A3D001B817F2F0019F7A8 /* MyImageAnnotationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyImageAnnotationView.m; sourceTree = "<group>"; };
 		705A3D0E1B81B7540019F7A8 /* xib@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "xib@3x.png"; sourceTree = "<group>"; };
@@ -147,6 +140,10 @@
 		7076B5D91B6FA972004E81EF /* scheduleEditViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = scheduleEditViewController.m; sourceTree = "<group>"; };
 		7076B5DB1B70D496004E81EF /* SearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchViewController.h; sourceTree = "<group>"; };
 		7076B5DC1B70D496004E81EF /* SearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchViewController.m; sourceTree = "<group>"; };
+		708574C71B87397200700654 /* MyPointAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyPointAnnotation.h; sourceTree = "<group>"; };
+		708574C81B87397200700654 /* MyPointAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyPointAnnotation.m; sourceTree = "<group>"; };
+		708574C91B87397200700654 /* MyButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyButton.h; sourceTree = "<group>"; };
+		708574CA1B87397200700654 /* MyButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyButton.m; sourceTree = "<group>"; };
 		70D4B7DE1B7E2432000C66C7 /* readPostViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = readPostViewController.h; sourceTree = "<group>"; };
 		70D4B7DF1B7E2432000C66C7 /* readPostViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = readPostViewController.m; sourceTree = "<group>"; };
 		70D60FC01B5569BA001BB4C9 /* TrendViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TrendViewController.h; sourceTree = "<group>"; };
@@ -356,27 +353,17 @@
 			name = Trend;
 			sourceTree = "<group>";
 		};
-		704E02791B86BCBA00D74E49 /* JPS */ = {
-			isa = PBXGroup;
-			children = (
-				704E02701B86BC9400D74E49 /* JPSThumbnailAnnotation.h */,
-				704E02711B86BCB100D74E49 /* JPSThumbnailAnnotation.m */,
-				704E02721B86BCB100D74E49 /* JPSThumbnailAnnotationView.h */,
-				704E02731B86BCB100D74E49 /* JPSThumbnailAnnotationView.m */,
-				704E02741B86BCB100D74E49 /* JPSThumbnail.h */,
-				704E02751B86BCB100D74E49 /* JPSThumnail.m */,
-			);
-			name = JPS;
-			sourceTree = "<group>";
-		};
 		705A3D141B820BE60019F7A8 /* mapAnnotation */ = {
 			isa = PBXGroup;
 			children = (
-				704E02791B86BCBA00D74E49 /* JPS */,
 				70E3C0A31B6B94E500A5C14E /* mapViewController.h */,
 				70E3C0A41B6B94E500A5C14E /* mapViewController.m */,
 				705A3CFF1B817F2F0019F7A8 /* MyImageAnnotationView.h */,
 				705A3D001B817F2F0019F7A8 /* MyImageAnnotationView.m */,
+				708574C71B87397200700654 /* MyPointAnnotation.h */,
+				708574C81B87397200700654 /* MyPointAnnotation.m */,
+				708574C91B87397200700654 /* MyButton.h */,
+				708574CA1B87397200700654 /* MyButton.m */,
 			);
 			name = mapAnnotation;
 			sourceTree = "<group>";
@@ -771,14 +758,14 @@
 				D34FCE271B7B86870002DE1A /* UIColor+FlatUI.m in Sources */,
 				D34FCE211B7B86870002DE1A /* FUIPopoverBackgroundView.m in Sources */,
 				705A3D011B817F2F0019F7A8 /* MyImageAnnotationView.m in Sources */,
+				708574CB1B87397200700654 /* MyPointAnnotation.m in Sources */,
 				D34FCE261B7B86870002DE1A /* UIBarButtonItem+FlatUI.m in Sources */,
-				704E02771B86BCB100D74E49 /* JPSThumbnailAnnotationView.m in Sources */,
 				D3541A4D1B787003003F4D15 /* CustomCellBackgroundView.m in Sources */,
 				70E3C0CA1B6B9A6C00A5C14E /* PopView4.m in Sources */,
+				708574CC1B87397200700654 /* MyButton.m in Sources */,
 				D34FCE2E1B7B86870002DE1A /* UIStepper+FlatUI.m in Sources */,
 				D34A63481B4CED0700710B1F /* AppDelegate.m in Sources */,
 				D34FCE2F1B7B86870002DE1A /* UITabBar+FlatUI.m in Sources */,
-				704E02761B86BCB100D74E49 /* JPSThumbnailAnnotation.m in Sources */,
 				768A20261B6EFD3F005A7E66 /* RecordingViewController.m in Sources */,
 				764C47BB1B735EDE00AC09E8 /* PersonalPageViewController.m in Sources */,
 				D341CB321B84C23C0038D477 /* CAAnimation+WAnimation.m in Sources */,
@@ -797,7 +784,6 @@
 				D341CB341B84C23C0038D477 /* UIView+WZLBadge.m in Sources */,
 				D34FCE231B7B86870002DE1A /* FUISwitch.m in Sources */,
 				D34FCE2D1B7B86870002DE1A /* UISlider+FlatUI.m in Sources */,
-				704E02781B86BCB100D74E49 /* JPSThumnail.m in Sources */,
 				D341CB331B84C23C0038D477 /* UIView+Frame.m in Sources */,
 				7072471C1B7C28AC00034F62 /* scheduleTableViewCell.m in Sources */,
 				702BBACA1B5547FE00C09B9B /* SignUpViewController.m in Sources */,
