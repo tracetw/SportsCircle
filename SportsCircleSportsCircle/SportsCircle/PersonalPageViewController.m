@@ -103,7 +103,9 @@
     
     imageView.file = (PFFile *)postWallObject[@"image1"]; // remote image
     
-    [imageView loadInBackground];
+    [imageView loadInBackground:^(UIImage *image,NSError *error){
+        cell.postImage.image = imageView.image;
+    }];
     
     //NSData *imageData = [imageView.file getData];
     cell.postImage.image = imageView.image;//[UIImage imageWithData:imageData];
@@ -137,10 +139,13 @@
     userImage.image = [UIImage imageNamed:@"camera"];
     //NSLog(@"user111 %@",user);
     userImage.file = (PFFile *)user[@"userImage"];
-    
-    [userImage loadInBackground];
-    
     cell.userImage.image = userImage.image;
+    [userImage loadInBackground:^(UIImage *image,  NSError * error){
+        cell.userImage.image = image;
+    }];
+
+    
+    
     
     
     

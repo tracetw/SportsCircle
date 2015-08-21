@@ -45,7 +45,11 @@
     PFImageView *mainImage = [PFImageView new];
     mainImage.image = [UIImage imageNamed:@"camera"];
     mainImage.file = (PFFile *)sendInObject[@"image1"];
-    [mainImage loadInBackground];
+    [mainImage loadInBackground:^(UIImage *image,NSError *error){
+        _mainImageView.image = mainImage.image;
+    }];
+    
+    
     _mainImageView.image = mainImage.image;
 
     
@@ -74,7 +78,7 @@
     [_distanceLabel setHidden:true];
     [_distanceImage setHidden:true];
     [_snapshotImage setHidden:true];
-    if ([sportType isEqualToString:@"Athletics"]) {
+    if ([sportType isEqualToString:@"Athletics"] || [sportType isEqualToString:@"Cycling"]) {
         [_distanceLabel setHidden:false];
         [_distanceImage setHidden:false];
         [_snapshotImage setHidden:false];

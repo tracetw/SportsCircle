@@ -29,6 +29,7 @@
     NSString *objectID;
     DKCircleButton *pauseBtn;
     BOOL buttonState;
+    UIImage *mainPostImage;
 }
 @property (weak, nonatomic) IBOutlet UILabel *miniSecond;
 @property (weak, nonatomic) IBOutlet UILabel *second;
@@ -49,6 +50,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    UIImage *mainPostImage = [UIImage new];
     
     self.navigationItem.hidesBackButton = YES;
     
@@ -69,7 +71,7 @@
     [_distanceTextLabel setHidden:true];
     [_distanceImage setHidden:true];
     
-    if ([sportName isEqualToString:@"Athletics"]) {
+    if ([sportName isEqualToString:@"Athletics"] || [sportName isEqualToString:@"Cycling"]) {
         
         mapRecordingView = [self.storyboard instantiateViewControllerWithIdentifier:@"MapRecordingView"];
         [mapRecordingView viewDidLoad];
@@ -97,16 +99,7 @@
     
     _sportTypeImage.image = [UIImage imageNamed:sportName];
     
-    PFUser *currentUser = [PFUser currentUser];
-   // NSLog(@"%@",currentUser);
-    query = [PFQuery queryWithClassName:@"WallPost"];
-    [query whereKey:@"user" equalTo:currentUser];
-    [query addAscendingOrder:@"createdAt"];
-    
-//    NSLog(@"array %@",[query findObjects]);
-    lastPostObject = [[query findObjects] lastObject];
-    objectID = lastPostObject.objectId;
-    NSLog(@"%@",lastPostObject);
+   
     
     [self initPauseButton];
     
@@ -132,7 +125,18 @@
         [counter invalidate];
 //        endRecordingTableViewController *endRecordingView = [self.storyboard instantiateViewControllerWithIdentifier:@"endRecordingView"];
 //        [self.navigationController pushViewController:endRecordingView animated:YES];
-        if ([sportName isEqualToString:@"Athletics"]) {
+        PFUser *currentUser = [PFUser currentUser];
+        // NSLog(@"%@",currentUser);
+        query = [PFQuery queryWithClassName:@"WallPost"];
+        [query whereKey:@"user" equalTo:currentUser];
+        [query addAscendingOrder:@"createdAt"];
+        
+        //    NSLog(@"array %@",[query findObjects]);
+        lastPostObject = [[query findObjects] lastObject];
+        objectID = lastPostObject.objectId;
+        NSLog(@"%@",lastPostObject);
+        
+        if ([sportName isEqualToString:@"Athletics"] || [sportName isEqualToString:@"Cycling"]) {
             UIImage *mapRecordingImage = [mapRecordingView snapShotRoute];
             NSData *imageData = UIImagePNGRepresentation(mapRecordingImage);
             PFFile *mapImageFile = [PFFile fileWithName:@"mapSnapshot.png" data:imageData];
@@ -145,9 +149,10 @@
             
         }
         
-        [self performSegueWithIdentifier:@"goEndRecording" sender:nil];
         lastPostObject[@"recordingTime"] = recordingTime;
         [lastPostObject saveInBackground];
+        [self performSegueWithIdentifier:@"goEndRecording" sender:nil];
+        
     }
 }
 
@@ -188,7 +193,7 @@
     _hour.text = [NSString stringWithFormat:@"%02d",hour];
     _miniSecond.text = [NSString stringWithFormat:@"%02d",ms];
     recordingTime = [NSString stringWithFormat:@"%02d:%02d:%02d",hour,minites,second];
-    if ([sportName isEqualToString:@"Athletics"]) {
+    if ([sportName isEqualToString:@"Athletics"] || [sportName isEqualToString:@"Cycling"]) {
         float distanceFloat = [mapRecordingView getDistance];
         distance = @(distanceFloat);
         _distanceTextLabel.text = [NSString stringWithFormat:@" %.2f km",distanceFloat];
@@ -226,9 +231,18 @@
         }
 }
 
+-(void) getMainImage:(UIImage*)mainImage{
+    mainPostImage = mainImage;
+}
+
+
 -(void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
     endRecordingTableViewController *view = [segue destinationViewController];
     [view getObjectID:objectID];
+//    recordingTime
+//    mainPostImage
+//    _distanceTextLabel.text
+//    snapShot
 }
 
 -(void) initPauseButton{
