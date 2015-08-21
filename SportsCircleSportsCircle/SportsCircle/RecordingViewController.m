@@ -35,14 +35,13 @@
 @property (weak, nonatomic) IBOutlet UILabel *second;
 @property (weak, nonatomic) IBOutlet UILabel *minutes;
 @property (weak, nonatomic) IBOutlet UILabel *hour;
-//@property (weak, nonatomic) IBOutlet UIButton *cameraButton;
 @property (weak, nonatomic) IBOutlet UIView *lockScreenView;
 @property (weak, nonatomic) IBOutlet UIImageView *sportTypeImage;
 @property (weak, nonatomic) IBOutlet UILabel *caloryTextLabel;
 @property (weak, nonatomic) IBOutlet UILabel *distanceTextLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *distanceImage;
 @property (strong, nonatomic) IBOutlet UIView *backgroundView;
-
+@property (weak, nonatomic) UIImage *mapRecordingImage;
 @end
 
 @implementation RecordingViewController
@@ -50,7 +49,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    UIImage *mainPostImage = [UIImage new];
+    //UIImage *mainPostImage = [UIImage new];
     
     self.navigationItem.hidesBackButton = YES;
     
@@ -72,7 +71,7 @@
     [_distanceImage setHidden:true];
     
     if ([sportName isEqualToString:@"Athletics"] || [sportName isEqualToString:@"Cycling"]) {
-        
+        speedNo = [NSNumber new];
         mapRecordingView = [self.storyboard instantiateViewControllerWithIdentifier:@"MapRecordingView"];
         [mapRecordingView viewDidLoad];
         
@@ -137,13 +136,13 @@
         NSLog(@"%@",lastPostObject);
         
         if ([sportName isEqualToString:@"Athletics"] || [sportName isEqualToString:@"Cycling"]) {
-            UIImage *mapRecordingImage = [mapRecordingView snapShotRoute];
-            NSData *imageData = UIImagePNGRepresentation(mapRecordingImage);
+            _mapRecordingImage = [mapRecordingView snapShotRoute];
+            NSData *imageData = UIImagePNGRepresentation(_mapRecordingImage);
             PFFile *mapImageFile = [PFFile fileWithName:@"mapSnapshot.png" data:imageData];
             lastPostObject[@"distance"] = distance;
             [lastPostObject saveInBackground];
-//            lastPostObject[@"speed"] = speedNo;
-//            [lastPostObject saveInBackground];
+            lastPostObject[@"speed"] = speedNo;
+            [lastPostObject saveInBackground];
             lastPostObject[@"mapSnapshot"] = mapImageFile;
             [lastPostObject saveInBackground];
             
@@ -197,7 +196,8 @@
         float distanceFloat = [mapRecordingView getDistance];
         distance = @(distanceFloat);
         _distanceTextLabel.text = [NSString stringWithFormat:@" %.2f km",distanceFloat];
-        float speed = distanceFloat/(hour+(minites/60)+(second/3600));
+        float speed = distanceFloat/(hour+(minites/60.0)+(second/3600.0));
+        NSLog(@"%f",speed);
         speedNo = @(speed);
     }
     
@@ -239,6 +239,11 @@
 -(void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
     endRecordingTableViewController *view = [segue destinationViewController];
     [view getObjectID:objectID];
+    view.snapshotImage = _mapRecordingImage;
+    view.countTime = recordingTime;
+    view.speed = speedNo;
+    view.distance = distance;
+    
 //    recordingTime
 //    mainPostImage
 //    _distanceTextLabel.text

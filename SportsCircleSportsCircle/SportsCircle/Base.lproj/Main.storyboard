@@ -1893,7 +1893,7 @@
             </objects>
             <point key="canvasLocation" x="1489" y="3205"/>
         </scene>
-        <!--End Recording Table View Controller-->
+        <!--Title-->
         <scene sceneID="aBf-4A-5bW">
             <objects>
                 <tableViewController storyboardIdentifier="endRecordingView" id="PEp-oB-2zb" customClass="endRecordingTableViewController" sceneMemberID="viewController">
@@ -1971,7 +1971,7 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="220" id="ruo-Cg-IhX">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="274" id="ruo-Cg-IhX" userLabel="second Table View Cell">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ruo-Cg-IhX" id="gah-W6-hJb">
                                             <autoresizingMask key="autoresizingMask"/>
@@ -2003,17 +2003,26 @@
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="calory" translatesAutoresizingMaskIntoConstraints="NO" id="Gpb-kV-OVE">
                                                     <rect key="frame" x="22" y="86" width="33" height="49"/>
                                                 </imageView>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="speed" translatesAutoresizingMaskIntoConstraints="NO" id="oih-eh-DTt">
+                                                    <rect key="frame" x="13" y="216" width="51" height="48"/>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="speed" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fxq-Pz-Bl7">
+                                                    <rect key="frame" x="85" y="205" width="305" height="60"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="50"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="238" id="u64-8B-knb">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="184" id="u64-8B-knb" userLabel="third table view cell">
                                         <rect key="frame" x="0.0" y="0.0" width="600" height="238"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="u64-8B-knb" id="ypo-bz-k5p">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="62Y-v9-L82">
-                                                    <rect key="frame" x="207" y="33" width="186" height="181"/>
+                                                    <rect key="frame" x="207" y="4" width="186" height="181"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="181" id="m1G-OO-uy7"/>
                                                         <constraint firstAttribute="width" constant="186" id="wjS-ya-Szx"/>
@@ -2033,13 +2042,18 @@
                             <outlet property="delegate" destination="PEp-oB-2zb" id="tzE-ee-3kB"/>
                         </connections>
                     </tableView>
+                    <navigationItem key="navigationItem" title="Title" id="iXE-7M-3eE">
+                        <barButtonItem key="leftBarButtonItem" title="Home" id="eaC-XV-wOv"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="calorieLabel" destination="TrI-Mm-KwE" id="iCQ-qr-7nD"/>
                         <outlet property="contentTextLabel" destination="uPU-aO-V5W" id="z7g-TD-d6T"/>
                         <outlet property="distanceImage" destination="bNm-Ye-k7X" id="FGo-b2-H2f"/>
                         <outlet property="distanceLabel" destination="wG7-bO-enq" id="5oe-jB-d7c"/>
                         <outlet property="mainImageView" destination="bqL-Av-nL0" id="7Ux-Nl-mYB"/>
-                        <outlet property="snapshotImage" destination="62Y-v9-L82" id="Yi5-mR-aqT"/>
+                        <outlet property="snapshotForImage" destination="62Y-v9-L82" id="Ggc-nV-l3v"/>
+                        <outlet property="speedImage" destination="oih-eh-DTt" id="gdx-U5-sIp"/>
+                        <outlet property="speedLabel" destination="Fxq-Pz-Bl7" id="NVu-3q-aaS"/>
                         <outlet property="sportTypeImage" destination="apD-CA-4Gq" id="McE-KX-svv"/>
                         <outlet property="timeTextLabel" destination="qkM-qT-FCe" id="HZo-WD-Wwi"/>
                         <outlet property="totalTimeLabel" destination="QQ5-1U-juw" id="n8Z-wU-t9D"/>
@@ -2490,6 +2504,7 @@
         <image name="schedule" width="52" height="48"/>
         <image name="search" width="63" height="79"/>
         <image name="setting" width="64" height="61"/>
+        <image name="speed" width="131" height="116"/>
         <image name="timerImage" width="70" height="84"/>
     </resources>
     <inferredMetricsTieBreakers>
