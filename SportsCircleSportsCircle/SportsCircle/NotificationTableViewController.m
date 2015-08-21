@@ -8,10 +8,12 @@
 
 #import "NotificationTableViewController.h"
 #import <Parse/Parse.h>
+#import "EditProfileTableViewController.h"
 
 @interface NotificationTableViewController (){
     NSMutableArray *notidicationArray;  /**< 加好友通知 */
-    NSString *otherPersonObjectId;
+    NSString *otherPersonObjectId;  /**< 對方objectId */
+    NSString *otherPersonName;  /**< 對方Name */
 }
 
 @end
@@ -21,7 +23,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self initNotidication];
-
+    [self.tableView setDelegate:self];
+    
+    [self.tableView setDataSource:self];
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;   //不會刷新這一行cell，就沒事兒了 ，默認YES返回會刷新這行
     
@@ -35,7 +39,6 @@
     NSDictionary *notidicationDictionary = [userDefaults dictionaryForKey:@"notidicationDictionary"];
     notidicationArray = [notidicationDictionary objectForKey:@"addFriend"];
 
-    
 }
 
 - (void) initNotidication{
@@ -81,6 +84,7 @@
         
         //擷取時略過前11位元
         tempLogString = [NSString stringWithFormat:@"%@", [notidicationArray[indexPath.row] substringFromIndex:11]];
+        otherPersonName = tempLogString;
         tempLogString = [NSString stringWithFormat:@"%@ 邀請與您成為好友",tempLogString];
         NSLog(@"%@ 邀請與您成為好友",notidicationArray[indexPath.row]);
         cell.textLabel.text = [NSString stringWithFormat:@"%@",tempLogString];
@@ -126,14 +130,23 @@
 }
 */
 
-/*
+
 #pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    if ([[segue identifier] isEqualToString:@"goEditProfile"]) {
+        NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
+        
+        //擷取前10位元
+        otherPersonObjectId = [NSString stringWithFormat:@"%@", [notidicationArray[indexPath.row] substringToIndex:10]];
+        
+        //擷取時略過前11位元
+        otherPersonName = [NSString stringWithFormat:@"%@", [notidicationArray[indexPath.row] substringFromIndex:11]];
+
+        EditProfileTableViewController *controller = (EditProfileTableViewController *)[segue destinationViewController];
+        [controller passValue:otherPersonName passSelectUserObjectId:otherPersonObjectId];
+    }
 }
-*/
+
 
 @end

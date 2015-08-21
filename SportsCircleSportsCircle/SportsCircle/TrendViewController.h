@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface TrendViewController : UIViewController
-
+- (NSInteger) plusWithNumber1:(NSInteger)numbe1 number2:(NSInteger)number2 ;
 @end

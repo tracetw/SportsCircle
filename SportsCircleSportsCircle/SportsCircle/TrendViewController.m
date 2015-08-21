@@ -35,6 +35,14 @@
 
 @implementation TrendViewController
 
+
+- (NSInteger) plusWithNumber1:(NSInteger)numbe1 number2:(NSInteger)number2 {
+    
+    return numbe1 + number2;
+    
+}
+
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self didConfirmBeFriend];
@@ -98,7 +106,7 @@
     //[cell.contentView.layer setBorderColor:[UIColor redColor].CGColor];
     //[cell.contentView.layer setBorderWidth:10.0];
     
-
+    self.tableView.separatorColor=[UIColor whiteColor];
 }
 -(void)reloadDatas
 {
@@ -282,6 +290,8 @@
         
         cell.userImage.image = userImage.image;
         
+        [cell.contentView.layer setBorderColor:[UIColor whiteColor].CGColor];
+        [cell.contentView.layer setBorderWidth:8.0f];
         
     }];
     
