@@ -160,6 +160,8 @@
 
 //如果資料有變動更新
 -(void)viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:YES];
+    
     if (tempDidUpdateSportItem) {
         [self queryDatabase];
     }
@@ -258,41 +260,6 @@
     
 }
 
-- (void) processOtherPerson{   //處理對方好友列表查詢
-    currentUser = [PFUser currentUser];
-    PFQuery *query = [PFQuery queryWithClassName:@"Friends"];
-    PFObject *pfObject = [PFObject objectWithoutDataWithClassName:@"_User" objectId:otherPersonobjectId];
-    [query whereKey:@"user" equalTo:pfObject];
-    [query findObjectsInBackgroundWithBlock:^(NSArray *array, NSError *error){
-        if (array.count == 0) {
-            [self initFriendsList:pfObject];
-            [self processOtherPerson];
-        }
-        PFObject *fObject = array[0];
-        otherPersonfriendsArray = fObject[@"Friends"];
-        otherPersonunfriendsArray = fObject[@"unFriends"];
-        
-        [otherPersonfriendsArray addObject:currentUser.objectId];   //加入好友名單
-        [otherPersonunfriendsArray removeObject:currentUser.objectId];  //移除確認列表
-        
-        [self processOtherPersonToBefriend];
-        
-    }];
-
-
-}
-
-- (void) processOtherPersonToBefriend{ //處理對方好友列表加回去
-    PFQuery *query = [PFQuery queryWithClassName:@"Friends"];
-    PFObject *pfObject = [PFObject objectWithoutDataWithClassName:@"_User" objectId:otherPersonobjectId];
-    [query whereKey:@"user" equalTo:pfObject];
-    [query getFirstObjectInBackgroundWithBlock:^(PFObject *object, NSError *error){
-        NSLog(@"%@",object);
-        object[@"Friends"] = otherPersonfriendsArray;
-        object[@"unFriends"] = otherPersonunfriendsArray;
-        [object saveInBackground];
-    }];
-}
 //加好友
 - (IBAction)addFriendBtnPressed:(id)sender {
     
@@ -318,7 +285,7 @@
         [unfriendsArray addObject:selectUserObjectId];  //按下去加入確認名單
         [self settingStyle:3];
             //發出通知
-    }else if(prepareForBeFriend && !ConfirmBeFriend && !didBeFriend ){   //準備成為好友
+    }else if(prepareForBeFriend && !didBeFriend ){   //準備成為好友
         [unfriendsArray removeObject:otherPersonobjectId];   //移除確認列表
         [friendsArray addObject:otherPersonobjectId];    //加入好友名單
         [self settingStyle:2];
@@ -337,7 +304,41 @@
     [self didBeFriend];
 }
 
+- (void) processOtherPerson{   //處理對方好友列表查詢
+    currentUser = [PFUser currentUser];
+    PFQuery *query = [PFQuery queryWithClassName:@"Friends"];
+    PFObject *pfObject = [PFObject objectWithoutDataWithClassName:@"_User" objectId:otherPersonobjectId];
+    [query whereKey:@"user" equalTo:pfObject];
+    [query findObjectsInBackgroundWithBlock:^(NSArray *array, NSError *error){
+        if (array.count == 0) {
+            [self initFriendsList:pfObject];
+            [self processOtherPerson];
+        }
+        PFObject *fObject = array[0];
+        otherPersonfriendsArray = fObject[@"Friends"];
+        otherPersonunfriendsArray = fObject[@"unFriends"];
+        
+        [otherPersonfriendsArray addObject:currentUser.objectId];   //加入好友名單
+        [otherPersonunfriendsArray removeObject:currentUser.objectId];  //移除確認列表
+        
+        [self processOtherPersonToBefriend];
+        
+    }];
+    
+    
+}
 
+- (void) processOtherPersonToBefriend{ //處理對方好友列表加回去
+    PFQuery *query = [PFQuery queryWithClassName:@"Friends"];
+    PFObject *pfObject = [PFObject objectWithoutDataWithClassName:@"_User" objectId:otherPersonobjectId];
+    [query whereKey:@"user" equalTo:pfObject];
+    [query getFirstObjectInBackgroundWithBlock:^(PFObject *object, NSError *error){
+        NSLog(@"%@",object);
+        object[@"Friends"] = otherPersonfriendsArray;
+        object[@"unFriends"] = otherPersonunfriendsArray;
+        [object saveInBackground];
+    }];
+}
 
 #pragma mark 上傳頭像
 //上傳頭像

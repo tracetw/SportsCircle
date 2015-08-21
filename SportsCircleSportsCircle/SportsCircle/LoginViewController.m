@@ -66,6 +66,7 @@
 }
 
 - (void)viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:YES];
     //如果FB是登入的狀態所要執行的方法
     if ([FBSDKAccessToken currentAccessToken] && [FBSDKProfile currentProfile].userID != nil) {
         //[self performSegueWithIdentifier:@"LoginSuccesful" sender:nil];

@@ -35,6 +35,14 @@
 
 @implementation TrendViewController
 
+
+- (NSInteger) plusWithNumber1:(NSInteger)numbe1 number2:(NSInteger)number2 {
+    
+    return numbe1 + number2;
+    
+}
+
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self didConfirmBeFriend];

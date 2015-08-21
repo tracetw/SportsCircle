@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
@@ -133,10 +133,10 @@
             </objects>
             <point key="canvasLocation" x="-755" y="756"/>
         </scene>
-        <!--Edit Profile Table View Controller-->
+        <!--個人簡介-->
         <scene sceneID="hsX-Sb-7BG">
             <objects>
-                <tableViewController storyboardIdentifier="EditProfile" id="Hy8-P5-U1z" customClass="EditProfileTableViewController" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="EditProfile" title="個人簡介" id="Hy8-P5-U1z" customClass="EditProfileTableViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" indicatorStyle="black" dataMode="static" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="6sL-c4-ZhS">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -455,7 +455,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="z6y-i4-SOl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1771" y="2803"/>
+            <point key="canvasLocation" x="-1792" y="2819"/>
         </scene>
         <!--Detail Image View Controller-->
         <scene sceneID="zEj-PE-u1r">
@@ -1148,6 +1148,9 @@
                                     </subviews>
                                 </tableViewCellContentView>
                                 <color key="backgroundColor" red="0.94117647059999998" green="0.94117647059999998" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
+                                <connections>
+                                    <segue destination="Hy8-P5-U1z" kind="show" identifier="goEditProfile" id="q7t-q5-4Lg"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <sections/>
@@ -2497,8 +2500,9 @@
         <image name="timerImage" width="70" height="84"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="RoM-6D-21i"/>
         <segue reference="gpY-tf-boD"/>
+        <segue reference="RoM-6D-21i"/>
+        <segue reference="DbG-qm-mvc"/>
         <segue reference="5DY-EW-tli"/>
     </inferredMetricsTieBreakers>
 </document>
