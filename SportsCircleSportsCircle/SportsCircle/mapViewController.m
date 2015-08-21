@@ -12,13 +12,22 @@
 #import <CoreLocation/CoreLocation.h>
 #import "MyImageAnnotationView.h"
 #import <Parse/Parse.h>
+#import "JPSThumbnailAnnotation.h"
 
+//typedef enum {
+//    data1,
+//    data2,
+//    data3,
+//    data4,
+//    data5
+//}datasForBtn;
 @interface mapViewController ()<MKMapViewDelegate,CLLocationManagerDelegate>
 {
     CLLocationManager *locationManager;
     BOOL isFirstLocationReceived;
     NSArray *datas;
     //NSArray *userSchedules;
+    NSString *name;
 }
 @property (weak, nonatomic) IBOutlet UIButton *whereAmIBtn;
 @property (weak, nonatomic) IBOutlet MKMapView *theMapView;
@@ -52,6 +61,10 @@
     _theMapView.userTrackingMode=MKUserTrackingModeNone;//尚無追蹤的模式
     
     [_whereAmIBtn setBackgroundImage:[UIImage imageNamed:@"map-pin-746123_640.png"] forState: UIControlStateNormal];
+    
+    
+    [_theMapView addAnnotations:[self generateAnnotations]];
+    
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -62,9 +75,62 @@
     //_theMapView.userTrackingMode=MKUserTrackingModeFollowWithHeading;//用這個才會滑回自己的位置
 }
 
+- (NSArray *)generateAnnotations
+{
+    NSMutableArray *annotations = [[NSMutableArray alloc] initWithCapacity:datas.count];
+    PFQuery *query = [PFQuery queryWithClassName:@"WallPost"];
+    datas = [query findObjects];
+    for (int i = 0; i<datas.count; i++)
+    {
+        NSDictionary *userSchedules=datas[i];
 
+        JPSThumbnail *annotation = [[JPSThumbnail alloc] init];
+        
+        
+        
+//        PFObject *user = userSchedules[@"user"];
+//        name=[NSString new];
+//        [user fetchInBackgroundWithBlock:^(PFObject *user,NSError *error){
+//            
+//            NSString *username = user[@"username"];
+//            name=username;
+//            annotation.title=[NSString stringWithFormat:@"%@",name];
+//            
+//        }];
+
+        
+        
+        PFObject *user = userSchedules[@"user"];
+        [user fetch];
+        NSString *username = user[@"username"];
+        annotation.title=[NSString stringWithFormat:@"%@",username];
+            
+        
+        
+        //while([name isEqualToString:@""]) {
+         //   [[NSRunLoop currentRunLoop] runUntilDate:[NSDate dateWithTimeIntervalSinceNow:0.0001]];}
+
+
+        annotation.image = [UIImage imageNamed:userSchedules[@"sportsType"]];
+        //annotation.title = @"Empire State Building";
+        annotation.subtitle = userSchedules[@"sportsType"];
+        
+        NSString *stringValue = userSchedules[@"latitude"];
+        double lat= [stringValue doubleValue];
+        NSString *stringValue2 = userSchedules[@"longitude"];
+        double lon= [stringValue2 doubleValue];
+        annotation.coordinate = CLLocationCoordinate2DMake(lat, lon);
+        
+        annotation.disclosureBlock = ^{ NSLog(@"selected! %d",i); };
+        
+        [annotations addObject:[[JPSThumbnailAnnotation alloc] initWithThumbnail:annotation]];
+    
+    }
+    
+    return annotations;
+}
 #pragma mark - CLLocationManager Delegate Methods
-
+/*
 -(void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations{
 
     CLLocation *currentLocation = locations.lastObject;
@@ -112,9 +178,15 @@
        // NSLog(@"this id is: %@",userSchedulesA[@"content"]);
 
         CLLocationCoordinate2D coordicate=currentLocation.coordinate;//
-        NSData *imgData=[[NSData alloc]init];
+        //NSData *imgData=[[NSData alloc]init];
         for (int i = 1; i<datas.count; i++) {
             NSDictionary *userSchedules=datas[i];
+            
+            
+//        [[NSUserDefaults standardUserDefaults] setInteger:data1 forKey:@"datasForBtn"];
+//            [[NSUserDefaults standardUserDefaults] synchronize];
+            
+            
             
             NSString *stringValue = userSchedules[@"latitude"];
             double lat= [stringValue doubleValue];
@@ -127,21 +199,60 @@
             annotation.coordinate=coordicate;
             //coordinate座標
             
-            annotation.title=userSchedules[@"sportsType"];
-            annotation.subtitle=userSchedules[@"content"];
+            
+            PFObject *user = userSchedules[@"user"];
+            name=[NSString new];
+            [user fetchInBackgroundWithBlock:^(PFObject *user,NSError *error){
+                
+                NSString *username = user[@"username"];
+                //cell.userName.text = username;
+                
+                //userImage.file = (PFFile *)user[@"userImage"];
+                
+                //[userImage loadInBackground];
+                
+                //cell.userImage.image = userImage.image;
+                //NSLog(@"%@",username);
+                name=username;
+                //NSString *nameStr=[NSString new];
+                annotation.title=[NSString stringWithFormat:@"%@",name];
+                
+            }];
+            
+            annotation.subtitle=userSchedules[@"sportsType"];
 
+            
             
             [_theMapView addAnnotation:annotation];
         }
         
         
     }
-    
+
 }
+*/
+
+- (void)mapView:(MKMapView *)mapView didSelectAnnotationView:(MKAnnotationView *)view {
+    if ([view conformsToProtocol:@protocol(JPSThumbnailAnnotationViewProtocol)]) {
+        [((NSObject<JPSThumbnailAnnotationViewProtocol> *)view) didSelectAnnotationViewInMap:mapView];
+    }
+}
+
+- (void)mapView:(MKMapView *)mapView didDeselectAnnotationView:(MKAnnotationView *)view {
+    if ([view conformsToProtocol:@protocol(JPSThumbnailAnnotationViewProtocol)]) {
+        [((NSObject<JPSThumbnailAnnotationViewProtocol> *)view) didDeselectAnnotationViewInMap:mapView];
+    }
+}
+
 
 -(MKAnnotationView*)mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation{
     //MKAnnotationView 顯示圖標的樣貌 每一個大頭針插上去都會跑這裡確認
     
+    if ([annotation conformsToProtocol:@protocol(JPSThumbnailAnnotationProtocol)]) {
+        return [((NSObject<JPSThumbnailAnnotationProtocol> *)annotation) annotationViewInMap:mapView];
+    }
+    return nil;
+    /*
     if (annotation==mapView.userLocation){
         return nil;}
     
@@ -175,7 +286,14 @@
     //針對CallOut去做圖片放入.mapview&controllerview要記得用delegate
     UIView *view = [[UIView alloc]initWithFrame:CGRectMake(0,0,50,180)];
     view.backgroundColor = [UIColor clearColor];
-    UIImageView *imgView = [[UIImageView alloc]initWithImage: [UIImage imageNamed: @"Athletics"]];//這裏看以後能不能換成運動類型圖
+    
+    NSString *annotationStr = [annotation subtitle];//每個大頭針的運動名稱會跑來這裡
+    UIImageView *imgView=[[UIImageView alloc]init];
+    //if([annotationStr isEqualToString:@"Archery"])
+    //{
+    imgView=[[UIImageView alloc]initWithImage:[UIImage imageNamed:annotationStr]];
+    //}
+    
     imgView.frame=CGRectMake(0, 0, 50, 50);
     
     [view addSubview:imgView];
@@ -183,10 +301,13 @@
     //圖有被切到之後再調整
     
     return resultView;
-}
+*/
+     }
 
 - (void) buttonPrssed:(id)sender {
-    
+//    if([[NSUserDefaults standardUserDefaults] integerForKey:@"datasForBtn"] == data1){//改成data~i
+//    }
+
     UIAlertView *alertView=[[UIAlertView alloc] initWithTitle:nil message:@"Button Pressed." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
     [alertView show];
     
