@@ -26,6 +26,7 @@ typedef enum {
     NSString *longitudeStr;
     NSString *locationStr;
     UIImage *image1,*image2,*image3,*image4,*image5,*imageX;
+    NSData *imageData;
 }
 @property (nonatomic, strong) AKPickerView *pickerView;
 @property (nonatomic, strong) NSArray *titles;
@@ -498,7 +499,7 @@ typedef enum {
     if ([PFUser currentUser]) {
         PFObject *wallpost = [PFObject objectWithClassName:@"WallPost"];
         
-        NSData *imageData = UIImageJPEGRepresentation(image1,0.1);
+        imageData = UIImageJPEGRepresentation(image1,0.1);
         PFFile *imageFile = [PFFile fileWithName:@"image.jpeg" data:imageData];
         if (image1==nil) {
             imageX= [UIImage imageNamed:@"xib.png"];
@@ -582,8 +583,11 @@ typedef enum {
         }else{
             wallpost[@"location"]=locationStr;
         }
-        
+        if ([_sportsNameLabel.text isEqualToString:@"請選擇用動項目"]) {
+            wallpost[@"sportsType"]=@"Other";
+        }else{
         wallpost[@"sportsType"]=_sportsNameLabel.text;
+        }
         //userName[@"cheatMode"] = @NO;
         //        PFRelation * relation = [[PFRelation alloc] init];
         //        [relation addObject:[PFUser currentUser]];
@@ -594,7 +598,20 @@ typedef enum {
 }
 -(void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
     RecordingViewController *view = [segue destinationViewController];
-    [view getSportType:_sportsNameLabel.text];
+    NSString *sportName = _sportsNameLabel.text;
+    if ([sportName isEqualToString:@"請選擇用動項目"]) {
+        sportName = @"Other";
+    }
+    
+    [view getSportType:sportName];
+    UIImage *mainImage = [UIImage new];
+    if (imageData == nil) {
+        mainImage = [UIImage imageNamed:@"xib.png"];
+    }else{
+        mainImage = [UIImage imageWithData:imageData];
+    }
+    
+    [view getMainImage:mainImage];
 }
 
 - (IBAction)locationBtnPressed:(id)sender

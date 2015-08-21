@@ -18,7 +18,7 @@
     NSArray *qfriends;
     NSArray *friends;
     NSArray *unfriends;
-    PFImageView *usersImage;
+    PFImageView *userImage;
     PFObject *fObject;
     UIRefreshControl *refreshControl;
     PFUser *currentUser;
@@ -67,7 +67,7 @@
     [refreshString addAttributes:@{NSForegroundColorAttributeName : [UIColor grayColor]} range:NSMakeRange(0, refreshString.length)];
     refreshControl.attributedTitle = refreshString;
     [refreshView addSubview:refreshControl];
-    //usersImage = [PFImageView new];
+    userImage = [PFImageView new];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -113,18 +113,20 @@
         NSLog(@"name %@",username);
         cell.userName.text = username;
         
-        PFFile *userImageData = user[@"userImage"];
-        NSData *userImage = [userImageData getData];
-        cell.userImage.image = [UIImage imageWithData:userImage];
+//        PFFile *userImageData = user[@"userImage"];
+//        NSData *userImage = [userImageData getData];
+//        cell.userImage.image = [UIImage imageWithData:userImage];
         
         
-//        userImage.image = [UIImage imageNamed:@"camera"];
-//        
-//        userImage.file = (PFFile *)user[@"userImage"];
-//        
-//        [userImage loadInBackground];
-//        
-//        cell.userImage.image = userImage.image;
+        userImage.image = [UIImage imageNamed:@"camera"];
+        
+        userImage.file = (PFFile *)user[@"userImage"];
+        
+        [userImage loadInBackground:^(UIImage *image,NSError *error){
+           cell.userImage.image = userImage.image; 
+        }];
+        
+        cell.userImage.image = userImage.image;
         
         
         [cell.addDelFriends setTitle:@"Add" forState:UIControlStateNormal];
@@ -138,15 +140,18 @@
         cell.friendObjectId = user.objectId;
         cell.userName.text = username;
         
-//        userImage.image = [UIImage imageNamed:@"camera"];
-//        userImage.file = (PFFile *)user[@"userImage"];
-//        
-//        [userImage loadInBackground];
-//        
-//        cell.userImage.image = userImage.image;
-        PFFile *userImageData = user[@"userImage"];
-        NSData *userImage = [userImageData getData];
-        cell.userImage.image = [UIImage imageWithData:userImage];
+        userImage = [PFImageView new];
+        userImage.image = [UIImage imageNamed:@"camera"];
+        userImage.file = (PFFile *)user[@"userImage"];
+        
+        [userImage loadInBackground:^(UIImage *image, NSError *error){
+            cell.userImage.image = userImage.image;
+        }];
+        
+        cell.userImage.image = userImage.image;
+//        PFFile *userImageData = user[@"userImage"];
+//        NSData *userImage = [userImageData getData];
+//        cell.userImage.image = [UIImage imageWithData:userImage];
         
         [cell.addDelFriends setTitle:@"Delete" forState:UIControlStateNormal];
         
@@ -165,10 +170,10 @@
     
     switch (section) {
         case 0:
-            header = @"Invitation";
+            header = @"好友邀請";
             break;
         case 1:
-            header = @"Friends";
+            header = @"好友";
             break;
     }
     return header;
