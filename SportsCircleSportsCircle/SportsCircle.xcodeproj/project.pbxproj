@@ -101,6 +101,7 @@
 		D3AD4CB01B64DBCB00FC7F8E /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3AD4CAF1B64DBCB00FC7F8E /* StoreKit.framework */; };
 		D3AD4CB21B64DBD500FC7F8E /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3AD4CB11B64DBD500FC7F8E /* SystemConfiguration.framework */; };
 		D3AD4CC61B64DD4B00FC7F8E /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D3AD4CC51B64DD4B00FC7F8E /* LoginViewController.m */; };
+		D3C927AB1B8755A600EBE9E5 /* PrivacyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D3C927AA1B8755A600EBE9E5 /* PrivacyViewController.m */; };
 		D3CFCC851B6F952D000B98FC /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D3CFCC841B6F952D000B98FC /* SettingsViewController.m */; };
 		D3E4B0201B72F7160082DE6B /* FavoriteSportViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D3E4B01F1B72F7160082DE6B /* FavoriteSportViewController.m */; };
 		D3F450421B74AB3B008A1486 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3F450411B74AB3B008A1486 /* Parse.framework */; };
@@ -281,6 +282,8 @@
 		D3AD4CB11B64DBD500FC7F8E /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		D3AD4CC41B64DD4B00FC7F8E /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		D3AD4CC51B64DD4B00FC7F8E /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
+		D3C927A91B8755A600EBE9E5 /* PrivacyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrivacyViewController.h; sourceTree = "<group>"; };
+		D3C927AA1B8755A600EBE9E5 /* PrivacyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PrivacyViewController.m; sourceTree = "<group>"; };
 		D3CFCC831B6F952D000B98FC /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
 		D3CFCC841B6F952D000B98FC /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
 		D3E4B01E1B72F7160082DE6B /* FavoriteSportViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FavoriteSportViewController.h; sourceTree = "<group>"; };
@@ -502,6 +505,8 @@
 				705A3D101B81B7540019F7A8 /* xib.png */,
 				D332FB1D1B81C70D0059CD0D /* NotificationTableViewController.h */,
 				D332FB1E1B81C70D0059CD0D /* NotificationTableViewController.m */,
+				D3C927A91B8755A600EBE9E5 /* PrivacyViewController.h */,
+				D3C927AA1B8755A600EBE9E5 /* PrivacyViewController.m */,
 				701F1D871B71BA0D00BD2673 /* Search */,
 				70E3C0CB1B6B9A7300A5C14E /* PopView */,
 				70E3C0D21B6BB15500A5C14E /* schedule */,
@@ -796,6 +801,7 @@
 				D30CA20A1B74A9AD00CE61AD /* scheduleTableViewController.m in Sources */,
 				D34A63451B4CED0700710B1F /* main.m in Sources */,
 				D3E4B0201B72F7160082DE6B /* FavoriteSportViewController.m in Sources */,
+				D3C927AB1B8755A600EBE9E5 /* PrivacyViewController.m in Sources */,
 				766B4CCB1B84EF2400ECC920 /* LBHamburgerButton.m in Sources */,
 				703E3E8C1B722B7300768912 /* TrendTableViewCell.m in Sources */,
 			);
