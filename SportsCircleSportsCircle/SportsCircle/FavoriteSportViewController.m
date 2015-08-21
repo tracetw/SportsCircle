@@ -92,6 +92,7 @@
 //返回的傳回值，如果有新增刪除過資料，返回YES
 -(void)viewWillDisappear:(BOOL)animated
 {
+    [super viewWillDisappear:YES];
     self.block(didUpdateItem);
 }
 
