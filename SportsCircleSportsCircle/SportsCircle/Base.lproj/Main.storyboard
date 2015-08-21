@@ -698,6 +698,7 @@
                     <connections>
                         <outlet property="personalPageTableView" destination="O30-Cc-x61" id="4La-3n-vEL"/>
                         <outlet property="searchDisplayController" destination="yNw-GS-8tq" id="cuz-3X-teb"/>
+                        <segue destination="PEp-oB-2zb" kind="show" identifier="goDetailView" id="hkv-68-KfZ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wSU-21-bAR" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -2049,9 +2050,7 @@
                             <outlet property="delegate" destination="PEp-oB-2zb" id="tzE-ee-3kB"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Title" id="iXE-7M-3eE">
-                        <barButtonItem key="leftBarButtonItem" title="Home" id="eaC-XV-wOv"/>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="Title" id="iXE-7M-3eE"/>
                     <connections>
                         <outlet property="calorieLabel" destination="TrI-Mm-KwE" id="iCQ-qr-7nD"/>
                         <outlet property="contentTextLabel" destination="uPU-aO-V5W" id="z7g-TD-d6T"/>
@@ -2515,9 +2514,10 @@
         <image name="timerImage" width="70" height="84"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="gpY-tf-boD"/>
         <segue reference="RoM-6D-21i"/>
+        <segue reference="gpY-tf-boD"/>
         <segue reference="DbG-qm-mvc"/>
+        <segue reference="hkv-68-KfZ"/>
         <segue reference="5DY-EW-tli"/>
     </inferredMetricsTieBreakers>
 </document>
