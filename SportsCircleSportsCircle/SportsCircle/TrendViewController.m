@@ -106,7 +106,7 @@
     //[cell.contentView.layer setBorderColor:[UIColor redColor].CGColor];
     //[cell.contentView.layer setBorderWidth:10.0];
     
-
+    self.tableView.separatorColor=[UIColor whiteColor];
 }
 -(void)reloadDatas
 {
@@ -290,6 +290,8 @@
         
         cell.userImage.image = userImage.image;
         
+        [cell.contentView.layer setBorderColor:[UIColor whiteColor].CGColor];
+        [cell.contentView.layer setBorderWidth:8.0f];
         
     }];
     

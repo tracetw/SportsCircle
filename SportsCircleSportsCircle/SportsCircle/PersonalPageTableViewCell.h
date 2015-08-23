@@ -16,4 +16,5 @@
 @property (weak, nonatomic) IBOutlet UILabel *timeLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *sportTypeImage;
 @property (weak, nonatomic) IBOutlet UIImageView *userImage;
+@property (weak, nonatomic) NSString *selectCellObjectId;
 @end

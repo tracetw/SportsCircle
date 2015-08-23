@@ -8,6 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
+
+
+
 @interface PersonalPageViewController : UIViewController
 {
     NSString *usernameStr;
