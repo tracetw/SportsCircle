@@ -13,7 +13,6 @@
 #import <ParseUI/ParseUI.h>
 #import "SearchViewController.h"
 #import "EditProfileTableViewController.h"
-#import "endRecordingTableViewController.h"
 
 @interface PersonalPageViewController ()
 {
@@ -25,8 +24,6 @@
     PFUser *currentUser;
     PFQuery *query;
     NSString *selectUserObjectId;
-    PersonalPageTableViewCell *cell;
-    NSString *selectObjectId;
 }
 @property (strong, nonatomic) IBOutlet UITableView *personalPageTableView;
 @end
@@ -54,7 +51,6 @@
         
         PFQuery *userQuery = [PFUser query];
         [userQuery whereKey:@"username" equalTo:usernameStr];
-        [query addDescendingOrder:@"createdAt"];
         NSArray *userNameEqlUsernameStr = [userQuery findObjects];
         PFObject *usernameStrObject = userNameEqlUsernameStr[0];
         query = [PFQuery queryWithClassName:@"WallPost"];
@@ -87,10 +83,6 @@
 
      NSLog(@"edit id= %@",usernameStr);
     
-//    UIImage *imageLogo = [UIImage imageNamed:@"logoImage"];
-//    UIImageView *logoImage = [[UIImageView alloc] initWithImage:imageLogo];
-//    [self.navigationController.navigationBar.topItem setTitleView:logoImage];
-    
 }
 
 
@@ -100,14 +92,13 @@
 
 -(UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    cell = [tableView dequeueReusableCellWithIdentifier:@"personalCell" forIndexPath:indexPath];
+    PersonalPageTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"personalCell" forIndexPath:indexPath];
     
     
     postWallObject = postWallArray[indexPath.row];
     // placeholder image
     
-    cell.selectCellObjectId = postWallObject.objectId;
-    //NSLog(@"cellId %@",cell.selectCellObjectId);
+    
     imageView.image = [UIImage imageNamed:@"camera"];
     
     imageView.file = (PFFile *)postWallObject[@"image1"]; // remote image
@@ -171,11 +162,9 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    postWallObject = postWallArray[indexPath.row];
-    selectObjectId = postWallObject.objectId;
-//    endRecordingTableViewController *detailPostView = [self.storyboard instantiateViewControllerWithIdentifier:@"endRecordingView"];
-//    [self.navigationController showViewController:detailPostView sender:nil];
-    [self performSegueWithIdentifier:@"goDetailView" sender:nil];
+    
+    UIViewController *detailPostView = [UIViewController new];
+    [self.navigationController showViewController:detailPostView sender:nil];
     
 }
 
@@ -195,11 +184,9 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([[segue identifier] isEqualToString:@"goEditProfileTableViewController"])
     {
+
         EditProfileTableViewController *controller = (EditProfileTableViewController *)[segue destinationViewController];
         [controller passValue:usernameStr passSelectUserObjectId:selectUserObjectId];
-    }else if ([[segue identifier] isEqualToString:@"goDetailView"]){
-        endRecordingTableViewController *detailView = (endRecordingTableViewController *)[segue destinationViewController];
-        [detailView getObjectID:selectObjectId];
     }
 }
 

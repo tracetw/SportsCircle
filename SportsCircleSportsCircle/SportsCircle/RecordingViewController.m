@@ -243,7 +243,7 @@
     view.countTime = recordingTime;
     view.speed = speedNo;
     view.distance = distance;
-    view.comingView = @"recondingView";
+    
 //    recordingTime
 //    mainPostImage
 //    _distanceTextLabel.text

@@ -1,24 +1,24 @@
 //
-//  PrivacyViewController.m
+//  PrivacyFromRegisterViewController.m
 //  SportsCircle
 //
-//  Created by  tracetw on 2015/8/21.
+//  Created by  tracetw on 2015/8/23.
 //  Copyright (c) 2015年 SportsCircle. All rights reserved.
 //
 
-#import "PrivacyViewController.h"
+#import "PrivacyFromRegisterViewController.h"
 
-@interface PrivacyViewController ()<UIWebViewDelegate>
+@interface PrivacyFromRegisterViewController ()<UIWebViewDelegate>
 @property (weak, nonatomic) IBOutlet UIWebView *privacyWebView;
 
 @end
 
-@implementation PrivacyViewController
+@implementation PrivacyFromRegisterViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    [_privacyWebView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"http://goo.gl/kAAjcN"]]];
+        [_privacyWebView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"http://goo.gl/kAAjcN"]]];
 }
 
 - (void)didReceiveMemoryWarning {

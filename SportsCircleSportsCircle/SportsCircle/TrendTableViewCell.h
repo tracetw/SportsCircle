@@ -9,7 +9,9 @@
 #import <UIKit/UIKit.h>
 
 @interface TrendTableViewCell : UITableViewCell
+//- (void) getCellObjectId:(NSString *)objectiveId;
 
+@property (strong, nonatomic) NSString *cellObjectId;
 @property (weak, nonatomic) IBOutlet UILabel *contentLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *postImage;
 @property (weak, nonatomic) IBOutlet UILabel *locationLabel;
@@ -17,4 +19,7 @@
 @property (weak, nonatomic) IBOutlet UIImageView *sportTypeImage;
 @property (weak, nonatomic) IBOutlet UILabel *userName;
 @property (weak, nonatomic) IBOutlet UIImageView *userImage;
+@property (weak, nonatomic) IBOutlet UIButton *likesButton;
+
+
 @end

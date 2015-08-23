@@ -23,6 +23,7 @@
     NSMutableArray *datas;
     UIRefreshControl *refreshControl;
     PFImageView *userImage;
+    PFUser *currentUser;
     int notidicationNumber; /**< 消息通知數量 */
 }
 @property (weak, nonatomic) IBOutlet UIView *theListView;
@@ -31,6 +32,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *notidicationButton;  /**< 消息通知按鈕 */
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) LBHamburgerButton* buttonHamburgerCloseSmall;
+
 @end
 
 @implementation TrendViewController
@@ -42,11 +44,11 @@
     
 }
 
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self didConfirmBeFriend];
     
+    self.tableView.delaysContentTouches = NO;   //取消tabeViewCell Button的延遲
 //    UIBarButtonItem *list=[[UIBarButtonItem alloc]initWithTitle:@"List" style:UIBarButtonItemStylePlain target:self action:@selector (barListBtnPressed:)];
     //創造一個UIBBtn.選擇plain的style(另一個也長一樣).selector為把某個方法包裝成一個變數.:為名稱的一部分必加
     [self initHamburgerButton];
@@ -239,6 +241,7 @@
 {
     static NSString* cellIdentifier=@"TrendCell";
     TrendTableViewCell *cell=[tableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
+    
     /*
     NSDictionary *userSchedulesA=postWallArray[indexPath.row];
     //每一筆為NSDictionary
@@ -296,6 +299,34 @@
     }];
     
     userImage.image = [UIImage imageNamed:@"camera"];
+    
+    
+    NSArray *tmpArray = postWallObject[@"like"];
+    int number = (int)tmpArray.count;
+    if (number == 0) {
+        NSString *likesString = [NSString stringWithFormat:@"%d👍🏿",number];
+        [cell.likesButton setTitle:likesString forState:UIControlStateNormal];
+    }else{
+        for (NSString *tmpString in tmpArray)
+        {
+            if ([tmpString isEqualToString:currentUser.objectId]) {
+                NSString *likesString = [NSString stringWithFormat:@"%d👍🏻",number];
+                [cell.likesButton setTitle:likesString forState:UIControlStateNormal];
+            }else{
+                NSString *likesString = [NSString stringWithFormat:@"%d👍🏿",number];
+                [cell.likesButton setTitle:likesString forState:UIControlStateNormal];
+            }
+        }
+    }
+    [cell setValue:postWallObject.objectId forKey:@"cellObjectId"];
+    
+    
+
+
+    
+    //TrendTableViewCell *myTrendTableViewCell = [TrendTableViewCell new];
+    //[myTrendTableViewCell getCellObjectId:postWallObject.objectId];
+    
     
     //cell.userImage.image = userImage.image;
     
@@ -355,7 +386,7 @@
     
     
     NSMutableArray *unConfirmfriendsArray = [NSMutableArray new];
-    PFUser *currentUser=[PFUser currentUser];
+    currentUser=[PFUser currentUser];
     PFQuery *query = [PFQuery queryWithClassName:@"Friends"];
     [query findObjectsInBackgroundWithBlock:^(NSArray *array, NSError *error){
         NSLog(@"%@",array[0]);
@@ -419,7 +450,7 @@
     //以下是按個人動態按鈕傳輸的資料
     if ([[segue identifier] isEqualToString:@"goPersonalPageFromTrend2"])
     {
-        PFUser *currentUser=[PFUser currentUser];//抓到目前user的objId
+        currentUser = [PFUser currentUser];//抓到目前user的objId
         NSString *Uname = [currentUser objectForKey:@"username"];
         NSLog(@"user: %@",Uname);
 
