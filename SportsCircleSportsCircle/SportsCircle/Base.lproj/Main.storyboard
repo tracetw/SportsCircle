@@ -455,7 +455,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="z6y-i4-SOl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1792" y="2819"/>
+            <point key="canvasLocation" x="-1780" y="2810"/>
         </scene>
         <!--Detail Image View Controller-->
         <scene sceneID="zEj-PE-u1r">
@@ -710,7 +710,7 @@
                     </connections>
                 </searchDisplayController>
             </objects>
-            <point key="canvasLocation" x="-1101" y="2810"/>
+            <point key="canvasLocation" x="-1002" y="2821"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="1Td-WE-mAg">
@@ -2642,10 +2642,10 @@
         <image name="timerImage" width="70" height="84"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="DbG-qm-mvc"/>
-        <segue reference="gpY-tf-boD"/>
         <segue reference="QL2-QP-Rlc"/>
         <segue reference="XQ8-gg-XLc"/>
+        <segue reference="gpY-tf-boD"/>
+        <segue reference="DbG-qm-mvc"/>
         <segue reference="5DY-EW-tli"/>
     </inferredMetricsTieBreakers>
 </document>

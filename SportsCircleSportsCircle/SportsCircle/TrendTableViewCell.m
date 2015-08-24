@@ -9,6 +9,7 @@
 #import "TrendTableViewCell.h"
 #import "PersonalPageViewController.h"
 #import <Parse/Parse.h>
+
 @implementation TrendTableViewCell
 @synthesize cellObjectId;
 

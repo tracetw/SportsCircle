@@ -7,9 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "PersonalPageViewController.h"
 @interface TrendTableViewCell : UITableViewCell
-//- (void) getCellObjectId:(NSString *)objectiveId;
 
 @property (strong, nonatomic) NSString *cellObjectId;
 @property (weak, nonatomic) IBOutlet UILabel *contentLabel;

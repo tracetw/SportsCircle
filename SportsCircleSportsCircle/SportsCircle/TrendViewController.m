@@ -237,6 +237,16 @@
     return postWallArray.count;
 }
 
+- (IBAction)addUserImageButtonPressed:(id)sender{
+    UIButton *btn = sender;
+    NSLog(@"%@",btn.titleLabel.text);
+    //PersonalPageViewController *myPersonalPageViewController = [PersonalPageViewController new];
+    //[myPersonalPageViewController passData:btn.titleLabel.text];
+    //[self presentViewController:myPersonalPageViewController animated:YES completion:nil];
+    //[self.navigationController pushViewController:myPersonalPageViewController animated:YES];
+    [self performSegueWithIdentifier:@"goPersonalPageFromTrend" sender:btn.titleLabel.text];
+}
+
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString* cellIdentifier=@"TrendCell";
@@ -278,7 +288,7 @@
     
     PFObject *user = postWallObject[@"user"];
     
-    cell.userName.text = @"Name";
+    cell.userName.text = @"";
     
     [user fetchInBackgroundWithBlock:^(PFObject *user,NSError *error){
         
@@ -295,6 +305,16 @@
         
         [cell.contentView.layer setBorderColor:[UIColor whiteColor].CGColor];
         [cell.contentView.layer setBorderWidth:8.0f];
+        
+        // add addUserImageButton button
+        UIButton *addUserImageButton = [UIButton new];
+        addUserImageButton.frame = cell.userImage.frame;
+        [addUserImageButton setTitle:username forState:UIControlStateNormal];
+        [addUserImageButton setTitleColor:[UIColor clearColor] forState:UIControlStateNormal];
+        [cell addSubview:addUserImageButton];
+        [addUserImageButton addTarget:self
+                               action:@selector(addUserImageButtonPressed:)
+                     forControlEvents:UIControlEventTouchUpInside];
         
     }];
     
@@ -443,8 +463,14 @@
         //以下是按cell的使用者名字傳輸的資料
         PersonalPageViewController *controller = (PersonalPageViewController *)[segue destinationViewController];
         
-        //NSLog(@"cell.userName.text:%@",[sender text]);
-        [controller passData:[sender text]];
+        //NSLog(@"cell.userName.text:%d",[sender isMemberOfClass:[UILabel class]]);
+
+        if ([sender isMemberOfClass:[UILabel class]]) {
+            [controller passData:[sender text]];
+        }else{
+            [controller passData:sender];
+        }
+        
         
     }
     //以下是按個人動態按鈕傳輸的資料
@@ -474,4 +500,5 @@
     //[_buttonHamburgerCloseSmall setBackgroundColor:[UIColor blackColor]];
     [_buttonHamburgerCloseSmall addTarget:self action:@selector(barListBtnPressed:) forControlEvents:UIControlEventTouchUpInside];
 }
+
 @end
