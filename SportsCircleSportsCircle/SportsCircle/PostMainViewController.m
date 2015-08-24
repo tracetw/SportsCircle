@@ -604,7 +604,7 @@ typedef enum {
     }
     
     [view getSportType:sportName];
-    UIImage *mainImage = [UIImage new];
+    UIImage *mainImage = nil;
     if (imageData == nil) {
         mainImage = [UIImage imageNamed:@"xib.png"];
     }else{

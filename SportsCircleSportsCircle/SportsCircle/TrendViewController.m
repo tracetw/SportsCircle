@@ -123,9 +123,8 @@
     [refreshControl endRefreshing];
 }
 
--(void)viewDidAppear:(BOOL)animated
-{
-
+-(void)viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:animated];
     PFQuery *query = [PFQuery queryWithClassName:@"WallPost"];
     [query addDescendingOrder:@"createdAt"];
     postWallArray = [NSArray new];

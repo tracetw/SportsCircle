@@ -46,10 +46,10 @@
     // This is an example of a performance test case.
     [self measureBlock:^{
         // Put the code you want to measure the time of here.
-        NSInteger *numbe1;
-        NSInteger *numbe2;
-        NSInteger *numbe3 = (long)numbe1 + numbe2;
-        NSLog(@"number:%ld",(long)numbe3);
+        int numbe1 = 0;
+        int numbe2 = 0;
+        int numbe3 = numbe1 + numbe2;
+        NSLog(@"number:%d",numbe3);
         for (int i = 0; i<100; i++) {
             NSLog(@"number:%ld",(long)numbe3);
         }
