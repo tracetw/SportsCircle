@@ -47,15 +47,15 @@
         beginingPositionArray = [NSMutableArray new];
     }
     
-    MKCoordinateRegion region = _recordingMapView.region;
-    region.center = currentLocation.coordinate;
-    region.span.latitudeDelta = 0.01;//螢幕上一個點緯度經度
-    region.span.longitudeDelta = 0.01;
+//    MKCoordinateRegion region = _recordingMapView.region;
+//    region.center = currentLocation.coordinate;
+//    region.span.latitudeDelta = 0.003;//螢幕上一個點緯度經度
+//    region.span.longitudeDelta = 0.003;
     
     [_traceLocationBtn setImage:[UIImage imageNamed:@"locationIcon"] forState:UIControlStateNormal];
     
-    [_recordingMapView setRegion:region animated:true];
-    _recordingMapView.userTrackingMode = MKUserTrackingModeFollowWithHeading;
+   // [_recordingMapView setRegion:region animated:true];
+    //_recordingMapView.userTrackingMode = MKUserTrackingModeFollowWithHeading;
 }
 
 
@@ -87,12 +87,13 @@
 
 - (IBAction)locatiionBtnPressed:(id)sender {
     _recordingMapView.userTrackingMode = MKUserTrackingModeFollowWithHeading;
-    MKCoordinateRegion region = _recordingMapView.region;
-    region.center = currentLocation.coordinate;
-    region.span.latitudeDelta = 0.003;
-    region.span.longitudeDelta = 0.003;
-    
-    [_recordingMapView setRegion:region animated:true];
+//    MKCoordinateRegion region = _recordingMapView.region;
+//    region.center = currentLocation.coordinate;
+//    region.span.latitudeDelta = 0.003;
+//    region.span.longitudeDelta = 0.003;
+//    
+//    [_recordingMapView setRegion:region animated:true];
+//    
 }
 
 
@@ -117,7 +118,7 @@
                 currentLocation = locationMutableArray[i-1];
                 newCurrentLocation = locationMutableArray[i-2];
                 
-               // NSLog(@"Current Location: %.6f,%.6f",currentLocation.coordinate.latitude,currentLocation.coordinate.longitude);//.08不到8位補0
+                //NSLog(@"Current Location: %.6f,%.6f",currentLocation.coordinate.latitude,currentLocation.coordinate.longitude);//.08不到8位補0
                // NSLog(@"i = %d",i);
                 
                 [self drawRoute:currentLocation to:newCurrentLocation];
@@ -283,19 +284,21 @@
     CLLocation *longDistanceLocationX;
     CLLocation *longDistanceLocationY;
     CLLocationCoordinate2D centerPoint;
-    
+    CLLocationDistance distance2 = 0.0;
     for (int x=0; x < locationMutableArray.count; x++) {
         for (int y =0; y < locationMutableArray.count; y++) {
-            CLLocationDistance distance2;
             CLLocationDistance distance = ([locationMutableArray[y] distanceFromLocation:locationMutableArray[x]]);
+            longDistanceLocationX = locationMutableArray[x];
+            longDistanceLocationY = locationMutableArray[y];
+            CLLocationCoordinate2D coordinate[2];
+            coordinate[0] = CLLocationCoordinate2DMake(longDistanceLocationX.coordinate.latitude, longDistanceLocationX.coordinate.longitude);
+            coordinate[1] = CLLocationCoordinate2DMake(longDistanceLocationY.coordinate.latitude,longDistanceLocationY.coordinate.longitude);
+            if (locationMutableArray.count<2) {
+                centerPoint = coordinate[0];
+            }
+            
             if (distance > distance2) {
                 distance2 = distance;
-                longDistanceLocationX = locationMutableArray[x];
-                longDistanceLocationY = locationMutableArray[y];
-                CLLocationCoordinate2D coordinate[2];
-                coordinate[0] = CLLocationCoordinate2DMake(longDistanceLocationX.coordinate.latitude, longDistanceLocationX.coordinate.longitude);
-                coordinate[1] = CLLocationCoordinate2DMake(longDistanceLocationY.coordinate.latitude,longDistanceLocationY.coordinate.longitude);
-                
                 centerPoint = [self midpointBetweenCoordinate:coordinate[0] andCoordinate:coordinate[1]];
             }
         }
@@ -306,7 +309,7 @@
 -(CLLocationDistance)findLongestDistance{
     
     CLLocationDistance distance;
-    CLLocationDistance distance2 = 0.0;
+    CLLocationDistance distance2 = 0.01;
     
     for (int x=0; x < locationMutableArray.count; x++) {
         for (int y =0; y < locationMutableArray.count; y++) {
@@ -321,17 +324,21 @@
 
 - (CLLocationCoordinate2D)midpointBetweenCoordinate:(CLLocationCoordinate2D)c1 andCoordinate:(CLLocationCoordinate2D)c2
 {
-    c1.latitude = ToRadian(c1.latitude);
-    c2.latitude = ToRadian(c2.latitude);
-    CLLocationDegrees dLon = ToRadian(c2.longitude - c1.longitude);
-    CLLocationDegrees bx = cos(c2.latitude) * cos(dLon);
-    CLLocationDegrees by = cos(c2.latitude) * sin(dLon);
-    CLLocationDegrees latitude = atan2(sin(c1.latitude) + sin(c2.latitude), sqrt((cos(c1.latitude) + bx) * (cos(c1.latitude) + bx) + by*by));
-    CLLocationDegrees longitude = ToRadian(c1.longitude) + atan2(by, cos(c1.latitude) + bx);
+//    c1.latitude = ToRadian(c1.latitude);
+//    c2.latitude = ToRadian(c2.latitude);
+//    CLLocationDegrees dLon = ToRadian(c2.longitude - c1.longitude);
+//    CLLocationDegrees bx = cos(c2.latitude) * cos(dLon);
+//    CLLocationDegrees by = cos(c2.latitude) * sin(dLon);
+//    CLLocationDegrees latitude = atan2(sin(c1.latitude) + sin(c2.latitude), sqrt((cos(c1.latitude) + bx) * (cos(c1.latitude) + bx) + by*by));
+//    CLLocationDegrees longitude = ToRadian(c1.longitude) + atan2(by, cos(c1.latitude) + bx);
+//    
+//    CLLocationCoordinate2D midpointCoordinate;
+//    midpointCoordinate.longitude = ToDegrees(longitude);
+//    midpointCoordinate.latitude = ToDegrees(latitude);
     
     CLLocationCoordinate2D midpointCoordinate;
-    midpointCoordinate.longitude = ToDegrees(longitude);
-    midpointCoordinate.latitude = ToDegrees(latitude);
+    midpointCoordinate.longitude = (c1.longitude + c2.longitude)/2;
+    midpointCoordinate.latitude = (c1.latitude + c2.latitude)/2;
     
     return midpointCoordinate;
 }

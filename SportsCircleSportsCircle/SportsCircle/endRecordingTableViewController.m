@@ -38,8 +38,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    
-    
     //PFUser *currentUser = [PFUser currentUser];
     PFQuery *query = [PFQuery queryWithClassName:@"WallPost"];
     PFObject *sendInObject = [query getObjectWithId:_sendInObjectID];
@@ -83,11 +81,12 @@
         userImage.image = image;
         _userImageView.image = userImage.image;
     }];
-    
-    
     _contentTextLabel.text = sendInObject[@"content"];
     
-    
+//    if ([_comingView isEqualToString:@"recordingView"]) {
+//        [self.navigationController setNavigationBarHidden:YES animated:YES];
+//    }
+
     if (![_comingView isEqualToString:@"recordingView"]) {
         _countTime = sendInObject[@"recordingTime"];
     }
@@ -136,6 +135,10 @@
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     self.tableView.separatorColor=[UIColor clearColor];
     
+}
+-(void)viewWillDisappear:(BOOL)animated{
+    [self.navigationController setNavigationBarHidden:NO animated:animated];
+    [super viewWillDisappear:animated];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
