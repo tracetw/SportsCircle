@@ -15,7 +15,7 @@
 #import "readPostViewController.h"
 #import "UIView+WZLBadge.h"
 #import "LBHamburgerButton.h"
-
+#import "DKCircleButton.h"
 
 @interface TrendViewController ()<UITableViewDelegate,UITableViewDataSource>
 {
@@ -29,7 +29,7 @@
 }
 @property (weak, nonatomic) IBOutlet UIView *theListView;
 @property (strong, nonatomic) IBOutlet UIView *theTrendView;
-@property (weak, nonatomic) IBOutlet UIButton *goButton;
+@property (weak, nonatomic) IBOutlet DKCircleButton *goButton;
 @property (weak, nonatomic) IBOutlet UIButton *notidicationButton;  /**< 消息通知按鈕 */
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) LBHamburgerButton* buttonHamburgerCloseSmall;
@@ -48,6 +48,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self didConfirmBeFriend];
+    [self initPauseButton];
     
     self.tableView.delaysContentTouches = NO;   //取消tabeViewCell Button的延遲
 //    UIBarButtonItem *list=[[UIBarButtonItem alloc]initWithTitle:@"List" style:UIBarButtonItemStylePlain target:self action:@selector (barListBtnPressed:)];
@@ -503,6 +504,15 @@
     [_buttonHamburgerCloseSmall setCenter:CGPointMake(_buttonHamburgerCloseSmall.center.x + 100, 120)];
     //[_buttonHamburgerCloseSmall setBackgroundColor:[UIColor blackColor]];
     [_buttonHamburgerCloseSmall addTarget:self action:@selector(barListBtnPressed:) forControlEvents:UIControlEventTouchUpInside];
+}
+
+-(void) initPauseButton{
+    _goButton.titleLabel.font = [UIFont systemFontOfSize:22];
+    _goButton.layer.cornerRadius = _goButton.bounds.size.width/2;
+    [_goButton setTitleColor:[UIColor colorWithWhite:1 alpha:1.0] forState:UIControlStateNormal];
+    [_goButton setTitleColor:[UIColor colorWithWhite:1 alpha:1.0] forState:UIControlStateSelected];
+    [_goButton setTitleColor:[UIColor colorWithWhite:1 alpha:1.0] forState:UIControlStateHighlighted];
+    _goButton.backgroundColor = [UIColor colorWithRed:57.0f/255.0f green:88.0f/255.0f blue:100.0f/255.0f alpha:1];
 }
 
 @end

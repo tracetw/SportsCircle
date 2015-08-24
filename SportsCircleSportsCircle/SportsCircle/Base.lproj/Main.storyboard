@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
@@ -1021,10 +1021,10 @@
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="upm-6v-n03">
-                                <rect key="frame" x="530" y="535" width="50" height="40"/>
+                                <rect key="frame" x="530" y="535" width="50" height="50"/>
                                 <color key="backgroundColor" red="0.0" green="1" blue="1" alpha="0.14000000000000001" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="IJI-zi-7Ch"/>
+                                    <constraint firstAttribute="height" constant="50" id="IJI-zi-7Ch"/>
                                     <constraint firstAttribute="width" constant="50" id="xST-n0-uLm"/>
                                 </constraints>
                                 <state key="normal" title="GO">
@@ -1038,7 +1038,7 @@
                         <color key="backgroundColor" red="0.94117647059999998" green="0.94117647059999998" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
                         <gestureRecognizers/>
                         <constraints>
-                            <constraint firstItem="9yI-n8-bBV" firstAttribute="top" secondItem="upm-6v-n03" secondAttribute="bottom" constant="25" id="2lZ-fv-bNB"/>
+                            <constraint firstItem="9yI-n8-bBV" firstAttribute="top" secondItem="upm-6v-n03" secondAttribute="bottom" constant="15" id="2lZ-fv-bNB"/>
                             <constraint firstAttribute="trailingMargin" secondItem="N7P-e6-yzp" secondAttribute="trailing" constant="-16" id="BjY-ps-pAa"/>
                             <constraint firstAttribute="trailingMargin" secondItem="upm-6v-n03" secondAttribute="trailing" constant="4" id="EFs-9j-u9f"/>
                             <constraint firstItem="9yI-n8-bBV" firstAttribute="top" secondItem="N7P-e6-yzp" secondAttribute="bottom" id="SUZ-q2-YOe"/>
@@ -1635,12 +1635,24 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hl5-qs-ASQ">
+                                <rect key="frame" x="275" y="501" width="50" height="50"/>
+                                <color key="backgroundColor" red="0.98039215690000003" green="0.40000000000000002" blue="0.50980392159999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="50" id="36C-nR-J3F"/>
+                                    <constraint firstAttribute="height" constant="50" id="8ga-OE-46E"/>
+                                </constraints>
+                                <state key="normal" title="GO">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bTD-6b-PHG">
                                 <rect key="frame" x="16" y="472" width="568" height="108"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="108" id="DfR-hw-jKK"/>
                                 </constraints>
-                                <state key="normal" title="GO">
+                                <state key="normal">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -1766,6 +1778,7 @@
                             <constraint firstItem="W5T-eW-unT" firstAttribute="leading" secondItem="YRo-GS-fIp" secondAttribute="trailing" constant="8" id="C0k-At-que"/>
                             <constraint firstItem="bDA-0h-ohv" firstAttribute="leading" secondItem="j49-dr-30O" secondAttribute="trailing" constant="8" id="Cw4-CP-FNF"/>
                             <constraint firstItem="j49-dr-30O" firstAttribute="top" secondItem="M4Q-fI-oe0" secondAttribute="bottom" constant="28" id="Dbd-3m-ew0"/>
+                            <constraint firstItem="hl5-qs-ASQ" firstAttribute="centerX" secondItem="bTD-6b-PHG" secondAttribute="centerX" id="G5Z-db-O3Z"/>
                             <constraint firstItem="M4Q-fI-oe0" firstAttribute="leading" secondItem="KWF-Za-2Br" secondAttribute="leadingMargin" id="G7l-Cr-0wT"/>
                             <constraint firstAttribute="width" secondItem="W5T-eW-unT" secondAttribute="height" multiplier="10:1" id="GF8-VC-52h"/>
                             <constraint firstItem="Gdn-5f-bGY" firstAttribute="width" secondItem="KWF-Za-2Br" secondAttribute="height" multiplier="1:10" id="MkX-fK-clS"/>
@@ -1778,6 +1791,7 @@
                             <constraint firstItem="ymZ-0g-0uK" firstAttribute="leading" secondItem="KWF-Za-2Br" secondAttribute="leadingMargin" id="dLe-wO-RrW"/>
                             <constraint firstItem="iFQ-bJ-ahl" firstAttribute="top" secondItem="j49-dr-30O" secondAttribute="bottom" constant="12" id="ell-wh-Vl6"/>
                             <constraint firstItem="Gdn-5f-bGY" firstAttribute="leading" secondItem="bDA-0h-ohv" secondAttribute="trailing" constant="8" id="geL-gb-GZw"/>
+                            <constraint firstItem="hl5-qs-ASQ" firstAttribute="centerY" secondItem="bTD-6b-PHG" secondAttribute="centerY" id="kxY-sq-yoO"/>
                             <constraint firstItem="ymZ-0g-0uK" firstAttribute="trailing" secondItem="KWF-Za-2Br" secondAttribute="trailingMargin" id="n0g-oA-pyI"/>
                             <constraint firstItem="YRo-GS-fIp" firstAttribute="width" secondItem="KWF-Za-2Br" secondAttribute="height" multiplier="1:10" id="sxW-Ix-zIx"/>
                             <constraint firstItem="d2Z-pS-u1f" firstAttribute="leading" secondItem="KWF-Za-2Br" secondAttribute="leadingMargin" id="xKh-2z-6XH"/>
@@ -1789,6 +1803,7 @@
                         <outlet property="ballBtn" destination="bDA-0h-ohv" id="U32-Ad-5OJ"/>
                         <outlet property="cameraBtn" destination="j49-dr-30O" id="KPU-wu-7xJ"/>
                         <outlet property="contentTextField" destination="ymZ-0g-0uK" id="L7j-0b-YST"/>
+                        <outlet property="goButton" destination="hl5-qs-ASQ" id="4Xl-EF-Xz1"/>
                         <outlet property="infoLabel" destination="iFQ-bJ-ahl" id="wWC-xu-FOJ"/>
                         <outlet property="locationBtn" destination="d2Z-pS-u1f" id="97U-M4-SL3"/>
                         <outlet property="postMainView" destination="KWF-Za-2Br" id="RgE-lu-y7a"/>
@@ -2600,8 +2615,8 @@
         <segue reference="gpY-tf-boD"/>
         <segue reference="RoM-6D-21i"/>
         <segue reference="XQ8-gg-XLc"/>
+        <segue reference="BAx-0o-OTm"/>
         <segue reference="DbG-qm-mvc"/>
-        <segue reference="kOt-wg-PZb"/>
         <segue reference="5DY-EW-tli"/>
     </inferredMetricsTieBreakers>
 </document>
