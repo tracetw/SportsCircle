@@ -349,7 +349,7 @@ typedef enum {
     //    [pop presentPopoverFromRect:popBtn.frame inView:self.view permittedArrowDirections:UIPopoverArrowDirectionUp animated:YES];
     //設定popover的位置跟
     
-    CGRect rect=CGRectMake(135, 385, 50, 50);
+    CGRect rect=CGRectMake(_ballBtn.frame.origin.x+(_ballBtn.frame.size.width/2.0f),_ballBtn.frame.origin.y+(_ballBtn.frame.size.height/1.5f), 50, 50);
     [popView setFrame:rect];
     [popView setUserInteractionEnabled:YES];
     [popView.popPicBtn setUserInteractionEnabled:YES];
@@ -392,7 +392,7 @@ typedef enum {
 }
 
 - (IBAction)TshirtBtnPressed:(id)sender {
-    CGRect rect=CGRectMake(203, 385, 50, 50);
+    CGRect rect=CGRectMake(_TshirtBtn.frame.origin.x+(_TshirtBtn.frame.size.width/2.0f),_TshirtBtn.frame.origin.y+(_TshirtBtn.frame.size.height/1.5f), 50, 50);
     [popView2 setFrame:rect];
     [popView2 setUserInteractionEnabled:YES];
     [popView2.popPicBtn2 setUserInteractionEnabled:YES];
@@ -428,7 +428,7 @@ typedef enum {
 }
 
 - (IBAction)PantsBtnPressed:(id)sender {
-    CGRect rect=CGRectMake(271, 385, 50, 50);
+    CGRect rect=CGRectMake(_PantsBtn.frame.origin.x+(_PantsBtn.frame.size.width/2.0f),_PantsBtn.frame.origin.y+(_PantsBtn.frame.size.height/1.5f), 50, 50);
     [popView3 setFrame:rect];
     [popView3 setUserInteractionEnabled:YES];
     [popView3.popPicBtn3 setUserInteractionEnabled:YES];
@@ -462,7 +462,7 @@ typedef enum {
     }
 }
 - (IBAction)shoesBtnPressed:(id)sender {
-    CGRect rect=CGRectMake(311, 385, 50, 50);
+    CGRect rect=CGRectMake(_shoesBtn.frame.origin.x+(_shoesBtn.frame.size.width/2.0f),_shoesBtn.frame.origin.y+(_shoesBtn.frame.size.height/1.5f), 50, 50);
     [popView4 setFrame:rect];
     [popView4 setUserInteractionEnabled:YES];
     [popView4.popPicBtn4 setUserInteractionEnabled:YES];
