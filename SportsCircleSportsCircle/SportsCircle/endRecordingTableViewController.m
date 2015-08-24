@@ -12,8 +12,7 @@
 
 @interface endRecordingTableViewController ()
 {
-    NSString *sendInObjectID;
-    
+    int customSecondTableCellHeight,customThirdTableCellHeight;
     
 }
 @property (weak, nonatomic) IBOutlet UIImageView *userImageView;
@@ -26,7 +25,10 @@
 @property (weak, nonatomic) IBOutlet UILabel *distanceLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *mainImageView;
 @property (weak, nonatomic) IBOutlet UIImageView *distanceImage;
-@property (weak, nonatomic) IBOutlet UIImageView *snapshotImage;
+@property (weak, nonatomic) IBOutlet UIImageView *snapshotForImage;
+@property (weak, nonatomic) IBOutlet UILabel *speedLabel;
+@property (weak, nonatomic) IBOutlet UIImageView *speedImage;
+
 
 @end
 
@@ -35,9 +37,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
+
     //PFUser *currentUser = [PFUser currentUser];
     PFQuery *query = [PFQuery queryWithClassName:@"WallPost"];
-    PFObject *sendInObject = [query getObjectWithId:sendInObjectID];
+    PFObject *sendInObject = [query getObjectWithId:_sendInObjectID];
     
 //    PFFile *mainImagePFFile = sendInObject[@"image1"];
 //    NSData *mainImageData = [mainImagePFFile getData];
@@ -67,38 +70,92 @@
     NSString *username = user[@"username"];
     _userName.text = username;
     
-    PFFile *userImagePFFIle = user[@"userImage"];
-    NSData *userImageData = [userImagePFFIle getData];
-    _userImageView.image = [UIImage imageWithData:userImageData];
-    
+//    PFFile *userImagePFFIle = user[@"userImage"];
+//    NSData *userImageData = [userImagePFFIle getData];
+//    _userImageView.image = [UIImage imageWithData:userImageData];
+    PFImageView *userImage = [PFImageView new];
+    _userImageView.image = [UIImage imageNamed:@"camera"];
+    userImage.file = user[@"userImage"];
+    [userImage loadInBackground:^(UIImage *image,NSError *error){
+        userImage.image = image;
+        _userImageView.image = userImage.image;
+    }];
     _contentTextLabel.text = sendInObject[@"content"];
     
-    _totalTimeLabel.text = sendInObject[@"recordingTime"];
-    
+
+//    if ([_comingView isEqualToString:@"recordingView"]) {
+//        [self.navigationController setNavigationBarHidden:YES animated:YES];
+//    }
+
+    if (![_comingView isEqualToString:@"recordingView"]) {
+        _countTime = sendInObject[@"recordingTime"];
+    }
+
+   // _totalTimeLabel.text = sendInObject[@"recordingTime"];
+
+    _totalTimeLabel.text = _countTime;
     [_distanceLabel setHidden:true];
     [_distanceImage setHidden:true];
-    [_snapshotImage setHidden:true];
+    [_snapshotForImage setHidden:true];
+    [_speedLabel setHidden:true];
+    [_speedImage setHidden:true];
+    customSecondTableCellHeight = 150;
+    customThirdTableCellHeight = 0;
+    
     if ([sportType isEqualToString:@"Athletics"] || [sportType isEqualToString:@"Cycling"]) {
+        customSecondTableCellHeight = 274;
+        customThirdTableCellHeight = 184;
         [_distanceLabel setHidden:false];
         [_distanceImage setHidden:false];
-        [_snapshotImage setHidden:false];
-       // NSNumber *distance = sendInObject[@"distance"];
-        NSNumber *distance = sendInObject[@"distance"];
-        _distanceLabel.text = [NSString stringWithFormat:@"%.2f km",[distance doubleValue]];
-        PFFile *snapshotFile = sendInObject[@"mapSnapshot"];
-        NSData *snapshotData = [snapshotFile getData];
-        _snapshotImage.image = [UIImage imageWithData:snapshotData];
+        [_snapshotForImage setHidden:false];
+        [_speedLabel setHidden:false];
+        [_speedImage setHidden:false];
+       
+        
+        if (![_comingView isEqualToString:@"recordingView"]) {
+            
+            _distance = sendInObject[@"distance"];
+            _speed = sendInObject[@"speed"];
+            
+            _snapshotForImage.image = [UIImage imageNamed:@"camera"];
+            PFImageView *snapshotImage = [PFImageView new];
+            snapshotImage.file = sendInObject[@"mapSnapshot"];
+            [snapshotImage loadInBackground:^(UIImage *image,NSError *error){
+                snapshotImage.image = image;
+                _snapshotForImage.image = snapshotImage.image;
+            }];
+        }
+        _distanceLabel.text = [NSString stringWithFormat:@"%.2f km",[_distance doubleValue]];
+        _speedLabel.text = [NSString stringWithFormat:@" %.1f km/hr",[_speed doubleValue]];
+        _snapshotForImage.image = _snapshotImage;
     }
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    self.tableView.separatorColor=[UIColor clearColor];
     
 }
+-(void)viewWillDisappear:(BOOL)animated{
+    [self.navigationController setNavigationBarHidden:NO animated:animated];
+    [super viewWillDisappear:animated];
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (indexPath.row == 0) {
+        return 466;
+    }else if (indexPath.row == 1)
+    {
+    return customSecondTableCellHeight;
+    }else
+        return customThirdTableCellHeight;
+}
+
 -(void)getObjectID:(NSString*)objectID{
     
-    sendInObjectID = objectID;
+    _sendInObjectID = objectID;
     
 }
 

@@ -13,6 +13,8 @@
 #import <ParseUI/ParseUI.h>
 #import "SearchViewController.h"
 #import "EditProfileTableViewController.h"
+#import "endRecordingTableViewController.h"
+
 
 @interface PersonalPageViewController ()
 {
@@ -24,11 +26,14 @@
     PFUser *currentUser;
     PFQuery *query;
     NSString *selectUserObjectId;
+    PersonalPageTableViewCell *cell;
+    NSString *selectObjectId;
 }
 @property (strong, nonatomic) IBOutlet UITableView *personalPageTableView;
 @end
 
 @implementation PersonalPageViewController
+@synthesize cellUserName;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -92,7 +97,7 @@
 
 -(UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    PersonalPageTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"personalCell" forIndexPath:indexPath];
+    cell = [tableView dequeueReusableCellWithIdentifier:@"personalCell" forIndexPath:indexPath];
     
     
     postWallObject = postWallArray[indexPath.row];
@@ -134,6 +139,15 @@
     
     [cell.userNameBtn setTitle:username forState:UIControlStateNormal];
     
+    // add addUserImageButton button
+    UIButton *addUserImageButton = [UIButton new];
+    addUserImageButton.frame = cell.userImage.frame;
+    [addUserImageButton setTitle:username forState:UIControlStateNormal];
+    [addUserImageButton setTitleColor:[UIColor clearColor] forState:UIControlStateNormal];
+    [cell addSubview:addUserImageButton];
+    [addUserImageButton addTarget:self
+                           action:@selector(addUserImageButtonPressed:)
+                 forControlEvents:UIControlEventTouchUpInside];
     
     
     userImage.image = [UIImage imageNamed:@"camera"];
@@ -163,8 +177,11 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    UIViewController *detailPostView = [UIViewController new];
-    [self.navigationController showViewController:detailPostView sender:nil];
+    postWallObject = postWallArray[indexPath.row];
+    selectObjectId = postWallObject.objectId;
+    //    endRecordingTableViewController *detailPostView = [self.storyboard instantiateViewControllerWithIdentifier:@"endRecordingView"];
+    //    [self.navigationController showViewController:detailPostView sender:nil];
+    [self performSegueWithIdentifier:@"goDetailView" sender:nil];
     
 }
 
@@ -184,9 +201,18 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([[segue identifier] isEqualToString:@"goEditProfileTableViewController"])
     {
-
         EditProfileTableViewController *controller = (EditProfileTableViewController *)[segue destinationViewController];
+
+        if ([sender isMemberOfClass:[UIButton class]]) {
+            [controller passValue:usernameStr passSelectUserObjectId:selectUserObjectId];
+        }else{
+            [controller passValue:usernameStr passSelectUserObjectId:sender];
+        }
+        
         [controller passValue:usernameStr passSelectUserObjectId:selectUserObjectId];
+    }else if ([[segue identifier] isEqualToString:@"goDetailView"]){
+        endRecordingTableViewController *detailView = (endRecordingTableViewController *)[segue destinationViewController];
+        [detailView getObjectID:selectObjectId];
     }
 }
 
@@ -260,6 +286,18 @@
         }
     }];
 }
+
+
+- (IBAction)addUserImageButtonPressed:(id)sender{
+    UIButton *btn = sender;
+    NSLog(@"%@",btn.titleLabel.text);
+    //PersonalPageViewController *myPersonalPageViewController = [PersonalPageViewController new];
+    //[myPersonalPageViewController passData:btn.titleLabel.text];
+    //[self presentViewController:myPersonalPageViewController animated:YES completion:nil];
+    //[self.navigationController pushViewController:myPersonalPageViewController animated:YES];
+    [self performSegueWithIdentifier:@"goEditProfileTableViewController" sender:btn.titleLabel.text];
+}
+
 
 /*
 #pragma mark - Navigation

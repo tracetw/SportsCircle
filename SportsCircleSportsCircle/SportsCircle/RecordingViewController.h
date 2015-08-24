@@ -12,6 +12,7 @@
 {
     NSTimer *counter;
 }
+
 -(void) getSportType:(NSString *)sportType;
 -(void) getMainImage:(UIImage*)mainImage;
 @end

@@ -24,6 +24,7 @@
     NSMutableArray *datas;
     UIRefreshControl *refreshControl;
     PFImageView *userImage;
+    PFUser *currentUser;
     int notidicationNumber; /**< 消息通知數量 */
 }
 @property (weak, nonatomic) IBOutlet UIView *theListView;
@@ -32,6 +33,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *notidicationButton;  /**< 消息通知按鈕 */
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) LBHamburgerButton* buttonHamburgerCloseSmall;
+
 @end
 
 @implementation TrendViewController
@@ -43,11 +45,11 @@
     
 }
 
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self didConfirmBeFriend];
     
+    self.tableView.delaysContentTouches = NO;   //取消tabeViewCell Button的延遲
 //    UIBarButtonItem *list=[[UIBarButtonItem alloc]initWithTitle:@"List" style:UIBarButtonItemStylePlain target:self action:@selector (barListBtnPressed:)];
     //創造一個UIBBtn.選擇plain的style(另一個也長一樣).selector為把某個方法包裝成一個變數.:為名稱的一部分必加
     [self initHamburgerButton];
@@ -236,10 +238,21 @@
     return postWallArray.count;
 }
 
+- (IBAction)addUserImageButtonPressed:(id)sender{
+    UIButton *btn = sender;
+    NSLog(@"%@",btn.titleLabel.text);
+    //PersonalPageViewController *myPersonalPageViewController = [PersonalPageViewController new];
+    //[myPersonalPageViewController passData:btn.titleLabel.text];
+    //[self presentViewController:myPersonalPageViewController animated:YES completion:nil];
+    //[self.navigationController pushViewController:myPersonalPageViewController animated:YES];
+    [self performSegueWithIdentifier:@"goPersonalPageFromTrend" sender:btn.titleLabel.text];
+}
+
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString* cellIdentifier=@"TrendCell";
     TrendTableViewCell *cell=[tableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
+    
     /*
     NSDictionary *userSchedulesA=postWallArray[indexPath.row];
     //每一筆為NSDictionary
@@ -280,7 +293,7 @@
     
     PFObject *user = postWallObject[@"user"];
     
-    cell.userName.text = @"Name";
+    cell.userName.text = @"";
     
     [user fetchInBackgroundWithBlock:^(PFObject *user,NSError *error){
         
@@ -298,9 +311,47 @@
         [cell.contentView.layer setBorderColor:[UIColor whiteColor].CGColor];
         [cell.contentView.layer setBorderWidth:8.0f];
         
+        // add addUserImageButton button
+        UIButton *addUserImageButton = [UIButton new];
+        addUserImageButton.frame = cell.userImage.frame;
+        [addUserImageButton setTitle:username forState:UIControlStateNormal];
+        [addUserImageButton setTitleColor:[UIColor clearColor] forState:UIControlStateNormal];
+        [cell addSubview:addUserImageButton];
+        [addUserImageButton addTarget:self
+                               action:@selector(addUserImageButtonPressed:)
+                     forControlEvents:UIControlEventTouchUpInside];
+        
     }];
     
     userImage.image = [UIImage imageNamed:@"camera"];
+    
+    
+    NSArray *tmpArray = postWallObject[@"like"];
+    int number = (int)tmpArray.count;
+    if (number == 0) {
+        NSString *likesString = [NSString stringWithFormat:@"%d👍🏿",number];
+        [cell.likesButton setTitle:likesString forState:UIControlStateNormal];
+    }else{
+        for (NSString *tmpString in tmpArray)
+        {
+            if ([tmpString isEqualToString:currentUser.objectId]) {
+                NSString *likesString = [NSString stringWithFormat:@"%d👍🏻",number];
+                [cell.likesButton setTitle:likesString forState:UIControlStateNormal];
+            }else{
+                NSString *likesString = [NSString stringWithFormat:@"%d👍🏿",number];
+                [cell.likesButton setTitle:likesString forState:UIControlStateNormal];
+            }
+        }
+    }
+    [cell setValue:postWallObject.objectId forKey:@"cellObjectId"];
+    
+    
+
+
+    
+    //TrendTableViewCell *myTrendTableViewCell = [TrendTableViewCell new];
+    //[myTrendTableViewCell getCellObjectId:postWallObject.objectId];
+    
     
     //cell.userImage.image = userImage.image;
     
@@ -360,7 +411,7 @@
     
     
     NSMutableArray *unConfirmfriendsArray = [NSMutableArray new];
-    PFUser *currentUser=[PFUser currentUser];
+    currentUser=[PFUser currentUser];
     PFQuery *query = [PFQuery queryWithClassName:@"Friends"];
     [query findObjectsInBackgroundWithBlock:^(NSArray *array, NSError *error){
         NSLog(@"%@",array[0]);
@@ -417,14 +468,20 @@
         //以下是按cell的使用者名字傳輸的資料
         PersonalPageViewController *controller = (PersonalPageViewController *)[segue destinationViewController];
         
-        //NSLog(@"cell.userName.text:%@",[sender text]);
-        [controller passData:[sender text]];
+        //NSLog(@"cell.userName.text:%d",[sender isMemberOfClass:[UILabel class]]);
+
+        if ([sender isMemberOfClass:[UILabel class]]) {
+            [controller passData:[sender text]];
+        }else{
+            [controller passData:sender];
+        }
+        
         
     }
     //以下是按個人動態按鈕傳輸的資料
     if ([[segue identifier] isEqualToString:@"goPersonalPageFromTrend2"])
     {
-        PFUser *currentUser=[PFUser currentUser];//抓到目前user的objId
+        currentUser = [PFUser currentUser];//抓到目前user的objId
         NSString *Uname = [currentUser objectForKey:@"username"];
         NSLog(@"user: %@",Uname);
 
@@ -448,4 +505,5 @@
     //[_buttonHamburgerCloseSmall setBackgroundColor:[UIColor blackColor]];
     [_buttonHamburgerCloseSmall addTarget:self action:@selector(barListBtnPressed:) forControlEvents:UIControlEventTouchUpInside];
 }
+
 @end

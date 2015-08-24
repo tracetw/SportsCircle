@@ -13,5 +13,5 @@
     NSString *usernameStr;
 }
 -(void)passData:(NSString*)argu;
-
+@property (strong, nonatomic) NSString *cellUserName;
 @end

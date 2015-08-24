@@ -8,7 +8,56 @@
 
 #import "TrendTableViewCell.h"
 #import "PersonalPageViewController.h"
+#import <Parse/Parse.h>
+
 @implementation TrendTableViewCell
+@synthesize cellObjectId;
+
+- (IBAction)GoodBtnPressed:(id)sender {
+    PFUser *currentUser=[PFUser currentUser];
+    NSString *currentUserObjectId = currentUser.objectId;
+    PFQuery *query = [PFQuery queryWithClassName:@"WallPost"];
+    [query getObjectInBackgroundWithId:cellObjectId block:^(PFObject *object, NSError *error) {
+        if (!error) {
+            NSMutableArray *tmpArray = [NSMutableArray new];
+            tmpArray = object[@"like"];
+            if (tmpArray.count == 0) {
+                [self setLikesButtonNumber:0 likesButton:sender];
+                NSMutableArray *tmpArray = [NSMutableArray new];
+                [tmpArray addObject:currentUserObjectId];
+                object[@"like"] = tmpArray;
+                [object saveInBackground];
+                
+            }else{
+                BOOL didRepeat = false;
+                for (NSString *tmpString in tmpArray)
+                {
+                    if ([tmpString isEqualToString:currentUser.objectId]) {
+                        didRepeat = true;
+                        break;
+                    }
+                }
+                if (!didRepeat) {
+                    int number = (int)tmpArray.count;
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        [self setLikesButtonNumber:number likesButton:sender];
+                    });
+                    [tmpArray addObject:currentUserObjectId];
+                    object[@"like"] = tmpArray;
+                    [object saveInBackground];
+                }
+            }
+        }else if (error){
+            NSLog(@"error: %@",error);
+        }
+    }];
+    NSLog(@"getCellObjectId: %@",cellObjectId);
+}
+
+- (void) setLikesButtonNumber:(int)number likesButton:(UIButton *)sender{
+    NSString *str = [NSString stringWithFormat:@"%d👍🏻",number +1];
+    [sender setTitle:str forState:UIControlStateNormal];
+}
 
 - (void)awakeFromNib {
     // Initialization code
