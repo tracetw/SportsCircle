@@ -9,10 +9,10 @@
 #import "endRecordingTableViewController.h"
 #import <Parse/Parse.h>
 #import <ParseUI/ParseUI.h>
-#import "PersonalPageViewController.h"
+
 @interface endRecordingTableViewController ()
 {
-   
+    NSString *sendInObjectID;
     int customSecondTableCellHeight,customThirdTableCellHeight;
     
 }
@@ -37,15 +37,18 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+<<<<<<< HEAD
     
+=======
+
+>>>>>>> fd1b76fd886ad966e9100a5a92eb05d86c363442
     //PFUser *currentUser = [PFUser currentUser];
     PFQuery *query = [PFQuery queryWithClassName:@"WallPost"];
-    PFObject *sendInObject = [query getObjectWithId:_sendInObjectID];
+    PFObject *sendInObject = [query getObjectWithId:sendInObjectID];
     
 //    PFFile *mainImagePFFile = sendInObject[@"image1"];
 //    NSData *mainImageData = [mainImagePFFile getData];
 //    UIImage *mainImage = [UIImage imageWithData:mainImageData];
-    
     PFImageView *mainImage = [PFImageView new];
     mainImage.image = [UIImage imageNamed:@"camera"];
     mainImage.file = (PFFile *)sendInObject[@"image1"];
@@ -83,6 +86,7 @@
     }];
     _contentTextLabel.text = sendInObject[@"content"];
     
+<<<<<<< HEAD
 //    if ([_comingView isEqualToString:@"recordingView"]) {
 //        [self.navigationController setNavigationBarHidden:YES animated:YES];
 //    }
@@ -90,9 +94,10 @@
     if (![_comingView isEqualToString:@"recordingView"]) {
         _countTime = sendInObject[@"recordingTime"];
     }
+=======
+   // _totalTimeLabel.text = sendInObject[@"recordingTime"];
+>>>>>>> fd1b76fd886ad966e9100a5a92eb05d86c363442
     _totalTimeLabel.text = _countTime;
-    
-    
     [_distanceLabel setHidden:true];
     [_distanceImage setHidden:true];
     [_snapshotForImage setHidden:true];
@@ -109,25 +114,21 @@
         [_snapshotForImage setHidden:false];
         [_speedLabel setHidden:false];
         [_speedImage setHidden:false];
-        
-
-        if (![_comingView isEqualToString:@"recordingView"]) {
-
-            _distance = sendInObject[@"distance"];
-            _speed = sendInObject[@"speed"];
-            
-            _snapshotForImage.image = [UIImage imageNamed:@"camera"];
-            PFImageView *snapshotImage = [PFImageView new];
-            snapshotImage.file = sendInObject[@"mapSnapshot"];
-            [snapshotImage loadInBackground:^(UIImage *image,NSError *error){
-                snapshotImage.image = image;
-                _snapshotForImage.image = snapshotImage.image;
-            }];
-        }
+       // NSNumber *distance = sendInObject[@"distance"];
+        //NSNumber *distance = sendInObject[@"distance"];
         _distanceLabel.text = [NSString stringWithFormat:@"%.2f km",[_distance doubleValue]];
+        //NSNumber *speed = sendInObject[@"speed"];
         _speedLabel.text = [NSString stringWithFormat:@" %.1f km/hr",[_speed doubleValue]];
         _snapshotForImage.image = _snapshotImage;
-    }
+//        _snapshotImage.image =
+        //PFImageView *snapshotImage = [PFImageView new];
+//        _snapshotImage.image = [UIImage imageNamed:@"camera"];
+//        snapshotImage.file = sendInObject[@"mapSnapshot"];
+//        [snapshotImage loadInBackground:^(UIImage *image,NSError *error){
+//            snapshotImage.image = image;
+//            _snapshotImage.image = snapshotImage.image;
+//        }];
+        }
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     
@@ -154,11 +155,8 @@
 
 -(void)getObjectID:(NSString*)objectID{
     
-    _sendInObjectID = objectID;
+    sendInObjectID = objectID;
     
-}
-- (IBAction)back2HomeBtnPressed:(id)sender {
-    [self dismissViewControllerAnimated:true completion:nil];
 }
 
 - (void)didReceiveMemoryWarning {

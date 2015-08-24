@@ -60,6 +60,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    self.tableView.delaysContentTouches = NO;   //取消tabeViewCell Button的延遲
     // Uncomment the following line to preserve selection between presentations
     _beFriendButton.hidden = YES;
     
