@@ -31,7 +31,7 @@ typedef enum {
 @property (nonatomic, strong) AKPickerView *pickerView;
 @property (nonatomic, strong) NSArray *titles;
 @property (weak, nonatomic) IBOutlet UILabel *sportsNameLabel;
-
+@property (weak, nonatomic) IBOutlet UIButton *goButton;
 @property (weak, nonatomic) IBOutlet UILabel *infoLabel;
 @property (weak, nonatomic) IBOutlet UIButton *cameraBtn;
 @property (weak, nonatomic) IBOutlet UIButton *ballBtn;
@@ -49,7 +49,7 @@ typedef enum {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    
+    [self initGoButton];
     
     //ImagePicker顯示位置在“AKPickerView.m”裡面修改
     self.pickerView = [[AKPickerView alloc] initWithFrame:self.view.bounds];
@@ -646,6 +646,15 @@ typedef enum {
     };
     [self.navigationController pushViewController:viewcontroller animated:YES];
 
+}
+
+-(void) initGoButton{
+    _goButton.titleLabel.font = [UIFont systemFontOfSize:22];
+    _goButton.layer.cornerRadius = _goButton.bounds.size.width/2;
+    [_goButton setTitleColor:[UIColor colorWithWhite:1 alpha:1.0] forState:UIControlStateNormal];
+    [_goButton setTitleColor:[UIColor colorWithWhite:1 alpha:1.0] forState:UIControlStateSelected];
+    [_goButton setTitleColor:[UIColor colorWithWhite:1 alpha:1.0] forState:UIControlStateHighlighted];
+    _goButton.backgroundColor = [UIColor colorWithRed:57.0f/255.0f green:88.0f/255.0f blue:100.0f/255.0f alpha:1];
 }
 
 /*
