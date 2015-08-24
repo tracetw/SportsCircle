@@ -35,11 +35,17 @@
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     
-    UIImage *image = [[UIImage imageNamed:@"edit.png"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+   // UIImage *image = [[UIImage imageNamed:@"edit.png"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
     
-    UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithImage:image style:UIBarButtonItemStylePlain target:self action:@selector(addBtnPressed)];
+    UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithTitle:@"✍" style:UIBarButtonItemStylePlain target:self action:@selector(addBtnPressed)];
     
     self.navigationItem.rightBarButtonItem=addButton;
+
+    NSDictionary* itemTextAttributes = @{NSFontAttributeName:[UIFont fontWithName:@"Georgia" size:32.0f], NSForegroundColorAttributeName:[UIColor whiteColor], NSBackgroundColorAttributeName:[UIColor lightGrayColor]};
+    
+    [addButton setTitleTextAttributes:itemTextAttributes forState:UIControlStateNormal];
+    
+    [self.navigationItem setRightBarButtonItem:addButton];
     
     
     // if (!userSchedules) {

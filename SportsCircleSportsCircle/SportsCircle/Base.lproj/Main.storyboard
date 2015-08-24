@@ -780,7 +780,7 @@
             </objects>
             <point key="canvasLocation" x="614" y="740"/>
         </scene>
-        <!--最新動態-->
+        <!--SportsCircle-->
         <scene sceneID="oBi-3L-ZYt">
             <objects>
                 <viewController id="tfe-cJ-TOU" customClass="TrendViewController" sceneMemberID="viewController">
@@ -1049,7 +1049,20 @@
                             <constraint firstItem="9Mt-Vc-98V" firstAttribute="leading" secondItem="TBO-iv-hb6" secondAttribute="leadingMargin" constant="-16" id="sV3-Zm-iOY"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="最新動態" id="roA-2H-O2k"/>
+                    <navigationItem key="navigationItem" title="SportsCircle" id="roA-2H-O2k">
+                        <barButtonItem key="rightBarButtonItem" style="plain" id="f9L-WJ-Ofw">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="yJC-81-f42">
+                                <rect key="frame" x="554" y="10" width="30" height="25"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="placeholder30.png">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="showMapBtnPressed:" destination="tfe-cJ-TOU" eventType="touchUpInside" id="45c-gJ-78v"/>
+                                </connections>
+                            </button>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="goButton" destination="upm-6v-n03" id="i6f-oe-1g7"/>
                         <outlet property="notidicationButton" destination="wbB-g2-19l" id="WlU-Fv-pMH"/>
@@ -2589,6 +2602,7 @@
         <image name="distanceImage" width="102" height="101"/>
         <image name="earth" width="102" height="101"/>
         <image name="friends" width="89" height="70"/>
+        <image name="placeholder30.png" width="256" height="256"/>
         <image name="schedule" width="52" height="48"/>
         <image name="search" width="63" height="79"/>
         <image name="setting" width="64" height="61"/>
