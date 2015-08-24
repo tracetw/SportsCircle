@@ -728,7 +728,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="arp-Aa-ji2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="83" y="1754"/>
+            <point key="canvasLocation" x="-55" y="1572"/>
         </scene>
         <!--Privacy From Register View Controller-->
         <scene sceneID="s8p-Mm-Ccm">
@@ -1749,7 +1749,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" red="0.94117647058823528" green="0.94117647058823528" blue="0.94117647058823528" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="bTD-6b-PHG" firstAttribute="trailing" secondItem="KWF-Za-2Br" secondAttribute="trailingMargin" id="19I-k5-XJi"/>
                             <constraint firstItem="bTD-6b-PHG" firstAttribute="leading" secondItem="KWF-Za-2Br" secondAttribute="leadingMargin" id="2Tw-Qi-MsQ"/>
@@ -2364,31 +2364,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="i3z-xP-EXD">
-                                <rect key="frame" x="0.0" y="17" width="600" height="600"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="foy-PM-7xk">
-                                        <rect key="frame" x="166" y="283" width="120" height="34"/>
-                                        <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="34" id="0su-Al-jiI"/>
-                                            <constraint firstAttribute="width" constant="120" id="Ukq-5D-Pil"/>
-                                        </constraints>
-                                        <state key="normal" title="隱私權聲明">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <connections>
-                                            <segue destination="imR-vG-rAN" kind="show" id="O3F-HA-Ply"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                                <color key="backgroundColor" red="0.94117647059999998" green="0.94117647059999998" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstItem="foy-PM-7xk" firstAttribute="leading" secondItem="i3z-xP-EXD" secondAttribute="leading" constant="166" id="B9K-Xc-nk9"/>
-                                    <constraint firstItem="foy-PM-7xk" firstAttribute="centerY" secondItem="i3z-xP-EXD" secondAttribute="centerY" id="G23-uh-r0Z"/>
-                                </constraints>
-                            </view>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xsU-8q-jNN">
                                 <rect key="frame" x="257" y="110" width="150" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -2451,6 +2426,21 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="foy-PM-7xk">
+                                <rect key="frame" x="155" y="300" width="94" height="34"/>
+                                <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="foy-PM-7xk" secondAttribute="height" multiplier="60:17" constant="-26" id="UbY-nN-GlD"/>
+                                    <constraint firstAttribute="width" constant="94" id="mlM-ha-jrN"/>
+                                </constraints>
+                                <state key="normal" title="隱私權聲明">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="imR-vG-rAN" kind="show" id="O3F-HA-Ply"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.94117647059999998" green="0.94117647059999998" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
@@ -2458,11 +2448,13 @@
                             <constraint firstItem="3BI-Yc-Xze" firstAttribute="top" secondItem="xsU-8q-jNN" secondAttribute="bottom" constant="38" id="406-ME-JBk"/>
                             <constraint firstAttribute="trailingMargin" secondItem="5fR-GY-I1B" secondAttribute="trailing" constant="-16" id="5ZC-PX-bbU"/>
                             <constraint firstItem="bYU-oP-itk" firstAttribute="top" secondItem="3BI-Yc-Xze" secondAttribute="bottom" constant="36" id="6vP-Dm-UZM"/>
+                            <constraint firstItem="K9P-1u-spw" firstAttribute="baseline" secondItem="foy-PM-7xk" secondAttribute="baseline" id="Cxu-Eh-9bL"/>
                             <constraint firstItem="NVA-83-3Uh" firstAttribute="trailing" secondItem="IH6-De-kfS" secondAttribute="trailing" id="DU4-Mp-nPQ"/>
                             <constraint firstItem="IH6-De-kfS" firstAttribute="trailing" secondItem="NVA-83-3Uh" secondAttribute="trailing" id="HKH-bg-0x0"/>
                             <constraint firstItem="3BI-Yc-Xze" firstAttribute="width" secondItem="bYU-oP-itk" secondAttribute="width" id="IcB-Be-WN8"/>
                             <constraint firstItem="3BI-Yc-Xze" firstAttribute="centerX" secondItem="bYU-oP-itk" secondAttribute="centerX" id="Ifw-Y9-x2J"/>
                             <constraint firstItem="3BI-Yc-Xze" firstAttribute="centerX" secondItem="xsU-8q-jNN" secondAttribute="centerX" id="JXg-Nh-61t"/>
+                            <constraint firstItem="NVA-83-3Uh" firstAttribute="trailing" secondItem="foy-PM-7xk" secondAttribute="trailing" id="JYK-mn-1FR"/>
                             <constraint firstItem="5fR-GY-I1B" firstAttribute="leading" secondItem="vM0-zu-FRc" secondAttribute="leadingMargin" constant="-16" id="K7i-1k-9xY"/>
                             <constraint firstItem="3BI-Yc-Xze" firstAttribute="centerX" secondItem="5fR-GY-I1B" secondAttribute="centerX" constant="32" id="QRb-CI-7wb"/>
                             <constraint firstItem="IH6-De-kfS" firstAttribute="trailing" secondItem="CMa-y2-CRg" secondAttribute="trailing" id="aDb-Ws-b3r"/>
@@ -2470,15 +2462,11 @@
                             <constraint firstItem="5fR-GY-I1B" firstAttribute="top" secondItem="kwk-Cx-aGv" secondAttribute="bottom" id="e0Y-JB-pvw"/>
                             <constraint firstItem="bYU-oP-itk" firstAttribute="leading" secondItem="NVA-83-3Uh" secondAttribute="trailing" constant="8" id="ejy-RW-ens"/>
                             <constraint firstItem="xsU-8q-jNN" firstAttribute="leading" secondItem="IH6-De-kfS" secondAttribute="trailing" constant="8" id="f1x-2U-cGQ"/>
-                            <constraint firstItem="i3z-xP-EXD" firstAttribute="top" secondItem="vM0-zu-FRc" secondAttribute="topMargin" constant="17" id="fJl-aN-BZE"/>
                             <constraint firstItem="3BW-Hw-yt1" firstAttribute="leading" secondItem="vM0-zu-FRc" secondAttribute="leadingMargin" id="fqW-Pu-K8F"/>
                             <constraint firstItem="xsU-8q-jNN" firstAttribute="top" secondItem="5fR-GY-I1B" secondAttribute="bottom" constant="60" id="gJs-s5-vIH"/>
-                            <constraint firstAttribute="bottomMargin" secondItem="i3z-xP-EXD" secondAttribute="bottom" constant="-17" id="gea-n9-Qgz"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="i3z-xP-EXD" secondAttribute="trailing" constant="-16" id="jPK-Bm-LgT"/>
                             <constraint firstItem="IH6-De-kfS" firstAttribute="centerY" secondItem="xsU-8q-jNN" secondAttribute="centerY" id="n5C-aX-kCR"/>
                             <constraint firstItem="NVA-83-3Uh" firstAttribute="trailing" secondItem="CMa-y2-CRg" secondAttribute="trailing" id="ooU-YS-eaS"/>
                             <constraint firstItem="NVA-83-3Uh" firstAttribute="centerY" secondItem="bYU-oP-itk" secondAttribute="centerY" id="osv-m0-dys"/>
-                            <constraint firstItem="i3z-xP-EXD" firstAttribute="leading" secondItem="vM0-zu-FRc" secondAttribute="leadingMargin" constant="-16" id="p8d-Cj-wbB"/>
                             <constraint firstItem="CMa-y2-CRg" firstAttribute="centerY" secondItem="3BI-Yc-Xze" secondAttribute="centerY" id="pk2-ln-oQX"/>
                             <constraint firstItem="3BI-Yc-Xze" firstAttribute="width" secondItem="bYU-oP-itk" secondAttribute="height" multiplier="5:1" id="qwH-3b-rAD"/>
                             <constraint firstItem="3BI-Yc-Xze" firstAttribute="width" secondItem="xsU-8q-jNN" secondAttribute="height" multiplier="5:1" id="tnH-1K-sXA"/>
@@ -2609,11 +2597,11 @@
         <image name="timerImage" width="70" height="84"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="QL2-QP-Rlc"/>
-        <segue reference="XQ8-gg-XLc"/>
         <segue reference="gpY-tf-boD"/>
-        <segue reference="kOt-wg-PZb"/>
+        <segue reference="RoM-6D-21i"/>
+        <segue reference="XQ8-gg-XLc"/>
         <segue reference="DbG-qm-mvc"/>
+        <segue reference="kOt-wg-PZb"/>
         <segue reference="5DY-EW-tli"/>
     </inferredMetricsTieBreakers>
 </document>
