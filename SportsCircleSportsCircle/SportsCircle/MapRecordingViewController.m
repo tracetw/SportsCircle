@@ -31,6 +31,7 @@
 @implementation MapRecordingViewController
 
 - (void)viewDidLoad {
+    [super viewDidLoad];
     locationManager = [CLLocationManager new];
     if ([locationManager respondsToSelector:@selector(requestAlwaysAuthorization)]) {
         [locationManager requestAlwaysAuthorization];//授權
@@ -59,8 +60,8 @@
 }
 
 
--(void)viewDidAppear:(BOOL)animated
-{
+-(void)viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:animated];
     _recordingMapView.userTrackingMode = MKUserTrackingModeFollowWithHeading;
     MKCoordinateRegion region = _recordingMapView.region;
     region.center = currentLocation.coordinate;
@@ -185,9 +186,9 @@
     CLLocationCoordinate2D centerPoint = [self findCenterCoordinate];
     
     CLLocationDistance distance = [self findLongestDistance];
-    
+
     MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance(centerPoint, 2*distance, 2*distance) ;
-    //    MKCoordinateRegion region;
+   //    MKCoordinateRegion region;
     //
     //
     options.region =  region;
@@ -231,7 +232,8 @@
         CGContextSetStrokeColorWithColor(context, color);
         CGContextSetLineWidth(context,3.0f);
         CGContextBeginPath(context);
-        
+        CGColorSpaceRelease(colorspace);
+        CGColorRelease(color);
         
         //draw line in snapshot
         CLLocationCoordinate2D coor[i];

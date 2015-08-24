@@ -70,8 +70,8 @@ static NSTimeInterval const kTimeDelay = 2.5;
 
 #pragma mark - Lifecycle
 
--(void)viewWillDisappear:(BOOL)animated
-{
+-(void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:animated];
     self.block(_addressField.text,str1,str2,userLat,userLon);
     //[self.view endEditing:YES];
 }
@@ -136,7 +136,8 @@ static NSTimeInterval const kTimeDelay = 2.5;
     }];
 
 }
-
+- (IBAction)reverseGeocode {
+}
 /**
  *  反地理编码
  */

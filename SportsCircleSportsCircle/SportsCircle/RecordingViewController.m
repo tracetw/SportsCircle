@@ -119,7 +119,7 @@
 //}
 
 -(void)viewDidAppear:(BOOL)animated{
-    
+    [super viewDidAppear:animated];
 }
 - (IBAction)stopButtonPressed:(id)sender {
     [_stopButton setFillPercent:1.0];

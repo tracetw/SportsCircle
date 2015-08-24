@@ -559,7 +559,6 @@
                             <constraint firstItem="irP-RV-hy1" firstAttribute="top" secondItem="mgT-km-eUR" secondAttribute="bottom" constant="22" id="T6q-fE-uf7"/>
                             <constraint firstItem="UiF-Hr-fXH" firstAttribute="top" secondItem="irP-RV-hy1" secondAttribute="bottom" id="Wsk-di-Fga"/>
                             <constraint firstItem="mgT-km-eUR" firstAttribute="top" secondItem="XAx-4u-f90" secondAttribute="bottom" constant="7.5" id="YnN-j7-Wrw"/>
-                            <constraint firstItem="XAx-4u-f90" firstAttribute="top" secondItem="Ukn-Yb-0aB" secondAttribute="bottom" constant="196" id="mXw-vf-Saj"/>
                             <constraint firstAttribute="centerX" secondItem="mgT-km-eUR" secondAttribute="centerX" id="tPz-h3-5bv"/>
                         </constraints>
                     </view>

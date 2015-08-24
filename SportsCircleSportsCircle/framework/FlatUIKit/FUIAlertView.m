@@ -226,8 +226,8 @@
 - (CGSize) calculateSize {
     CGFloat contentWidth = 250;
     
-    CGFloat titleHeight;
-    CGFloat messageHeight;
+    CGFloat titleHeight = 0;
+    CGFloat messageHeight = 0;
     CGFloat textFieldHeight = 0;
     
     if ([[[UIDevice currentDevice] systemVersion] compare:@"7.0" options:NSNumericSearch] != NSOrderedAscending) {

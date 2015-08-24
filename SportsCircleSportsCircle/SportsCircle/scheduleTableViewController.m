@@ -78,8 +78,8 @@
     
 }
 
--(void)viewDidAppear:(BOOL)animated
-{
+-(void)viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:animated];
     datas=[[NSMutableArray alloc]init];
     PFUser *currentUser=[PFUser currentUser];//抓到目前user的objId
     query = [PFQuery queryWithClassName:@"schedule"];

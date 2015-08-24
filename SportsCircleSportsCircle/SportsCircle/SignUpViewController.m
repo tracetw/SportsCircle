@@ -44,7 +44,7 @@
 }
 
 - (void)viewDidAppear:(BOOL)animated{
-    
+    [super viewDidAppear:animated];
     //如果parse 是登入狀態
     PFUser *currentUser = [PFUser currentUser];
     if (currentUser) {
