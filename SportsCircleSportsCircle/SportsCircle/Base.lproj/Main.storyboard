@@ -872,8 +872,8 @@
                                                         <constraint firstAttribute="height" constant="276" id="Th4-ds-Fnr"/>
                                                     </constraints>
                                                 </imageView>
-                                                <button opaque="NO" tag="100" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ieP-xD-1VU">
-                                                    <rect key="frame" x="223" y="440" width="30" height="30"/>
+                                                <button opaque="NO" tag="100" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ieP-xD-1VU">
+                                                    <rect key="frame" x="286" y="113" width="30" height="30"/>
                                                     <state key="normal" title="0👍🏿">
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
@@ -888,6 +888,7 @@
                                                 <constraint firstAttribute="centerX" secondItem="u5z-Bh-Omz" secondAttribute="centerX" id="44q-oc-Rqi"/>
                                                 <constraint firstItem="4eE-GU-w9F" firstAttribute="leading" secondItem="6fT-ub-g4K" secondAttribute="trailing" constant="33" id="4gV-VA-i2f"/>
                                                 <constraint firstItem="r0e-mQ-a8a" firstAttribute="leading" secondItem="ltJ-UY-LDA" secondAttribute="leading" id="7Ym-HR-CcW"/>
+                                                <constraint firstItem="bfy-Zh-m1A" firstAttribute="centerY" secondItem="ieP-xD-1VU" secondAttribute="centerY" id="7f8-8d-8Mv"/>
                                                 <constraint firstItem="7fz-UB-HZo" firstAttribute="top" secondItem="fSj-hr-gDs" secondAttribute="topMargin" constant="11" id="8ap-0W-7GY"/>
                                                 <constraint firstItem="ChS-w0-SUX" firstAttribute="trailing" secondItem="fSj-hr-gDs" secondAttribute="trailingMargin" id="9pH-mT-Kdo"/>
                                                 <constraint firstItem="6fT-ub-g4K" firstAttribute="leading" secondItem="fSj-hr-gDs" secondAttribute="leadingMargin" constant="13" id="Bah-f2-X2i"/>
@@ -904,6 +905,7 @@
                                                 <constraint firstItem="ChS-w0-SUX" firstAttribute="leading" secondItem="fSj-hr-gDs" secondAttribute="leadingMargin" id="lh6-ey-AKJ"/>
                                                 <constraint firstItem="ChS-w0-SUX" firstAttribute="leading" secondItem="fSj-hr-gDs" secondAttribute="leadingMargin" id="mfS-Cn-6Ae"/>
                                                 <constraint firstItem="Oy4-7S-wE0" firstAttribute="top" secondItem="fSj-hr-gDs" secondAttribute="topMargin" id="trX-rf-0AA"/>
+                                                <constraint firstItem="ieP-xD-1VU" firstAttribute="leading" secondItem="bfy-Zh-m1A" secondAttribute="trailing" constant="8" id="vfe-QM-nix"/>
                                                 <constraint firstItem="6fT-ub-g4K" firstAttribute="top" secondItem="Oy4-7S-wE0" secondAttribute="bottom" constant="4" id="xvF-Kv-0ky"/>
                                                 <constraint firstItem="9Af-fl-3a2" firstAttribute="top" secondItem="fSj-hr-gDs" secondAttribute="topMargin" constant="105" id="z2J-N9-UdF"/>
                                                 <constraint firstItem="bfy-Zh-m1A" firstAttribute="top" secondItem="fSj-hr-gDs" secondAttribute="topMargin" constant="105" id="zhR-X2-ACr"/>
