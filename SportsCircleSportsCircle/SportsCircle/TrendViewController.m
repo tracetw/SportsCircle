@@ -111,6 +111,7 @@
     //[cell.contentView.layer setBorderWidth:10.0];
     
     self.tableView.separatorColor=[UIColor whiteColor];
+    
 }
 -(void)reloadDatas
 {
