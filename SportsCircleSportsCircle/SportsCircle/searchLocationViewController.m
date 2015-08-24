@@ -32,7 +32,7 @@ static NSTimeInterval const kTimeDelay = 2.5;
 
 - (IBAction)startLocating;
 - (IBAction)geocode;
-- (IBAction)reverseGeocode;
+//- (IBAction)reverseGeocode;//這個是輸入座標轉地址～站不需要
 
 @end
 

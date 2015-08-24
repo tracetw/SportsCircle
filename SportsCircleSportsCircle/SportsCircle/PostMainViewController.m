@@ -140,7 +140,6 @@ typedef enum {
     [self.view addGestureRecognizer:recognizer];
     self.view.userInteractionEnabled = YES;
     
-    
 //    [popView.popPicBtn addTarget:self action:@selector(logsomething) forControlEvents:UIControlEventTouchUpInside];
 //    [popView setUserInteractionEnabled:TRUE];
 //    [popView.popPicBtn setUserInteractionEnabled:YES];
@@ -289,8 +288,10 @@ typedef enum {
         //存檔
         UIImageWriteToSavedPhotosAlbum(image2, nil, nil, nil);
         //按鈕的背景換成剛拍下來的照片
+        [_ballBtn setTitle:@"" forState:UIControlStateNormal];
         [_ballBtn setBackgroundImage:image2 forState:UIControlStateNormal];
         [_ballBtn setFrame:CGRectMake(0, 0, 60, 60)];
+
         //關閉拍照
         [self dismissViewControllerAnimated:YES completion:nil];
     }
@@ -301,6 +302,7 @@ typedef enum {
         //存檔
         UIImageWriteToSavedPhotosAlbum(image3, nil, nil, nil);
         //按鈕的背景換成剛拍下來的照片
+        [_TshirtBtn setTitle:@"" forState:UIControlStateNormal];
         [_TshirtBtn setBackgroundImage:image3 forState:UIControlStateNormal];
         [_TshirtBtn setFrame:CGRectMake(0, 0, 60, 60)];
         //關閉拍照
@@ -313,6 +315,7 @@ typedef enum {
         //存檔
         UIImageWriteToSavedPhotosAlbum(image4, nil, nil, nil);
         //按鈕的背景換成剛拍下來的照片
+        [_PantsBtn setTitle:@"" forState:UIControlStateNormal];
         [_PantsBtn setBackgroundImage:image4 forState:UIControlStateNormal];
         [_PantsBtn setFrame:CGRectMake(0, 0, 60, 60)];
         //關閉拍照
@@ -325,6 +328,7 @@ typedef enum {
         //存檔
         UIImageWriteToSavedPhotosAlbum(image5, nil, nil, nil);
         //按鈕的背景換成剛拍下來的照片
+        [_shoesBtn setTitle:@"" forState:UIControlStateNormal];
         [_shoesBtn setBackgroundImage:image5 forState:UIControlStateNormal];
         [_shoesBtn setFrame:CGRectMake(0, 0, 60, 60)];
         //關閉拍照
@@ -502,7 +506,7 @@ typedef enum {
         imageData = UIImageJPEGRepresentation(image1,0.1);
         PFFile *imageFile = [PFFile fileWithName:@"image.jpeg" data:imageData];
         if (image1==nil) {
-            imageX= [UIImage imageNamed:@"xib.png"];
+            imageX= [UIImage imageNamed:@"sport mix 5"];
             NSData *imageData2 = UIImageJPEGRepresentation(imageX,0.1);
             PFFile *imageFile2 = [PFFile fileWithName:@"image.jpeg" data:imageData2];
             wallpost[@"image1"] = imageFile2;

@@ -16,6 +16,7 @@
 #import "UIView+WZLBadge.h"
 #import "LBHamburgerButton.h"
 
+
 @interface TrendViewController ()<UITableViewDelegate,UITableViewDataSource>
 {
     NSDictionary *postWallDictionary;
@@ -252,7 +253,11 @@
     
     PFObject *postWallObject = postWallArray[indexPath.row];
     PFImageView *imageView = [PFImageView new];
-    imageView.image = [UIImage imageNamed:@"camera"]; // placeholder image
+
+//    NSURL *url = [[NSBundle mainBundle] URLForResource:@"InternetSlowdown_Day" withExtension:@"gif"];
+//    imageView.image = [UIImage animatedImageWithAnimatedGIFData:[NSData dataWithContentsOfURL:url]];
+    
+    imageView.image = [UIImage imageNamed:@"loading.jpg"]; // placeholder image
     imageView.file = (PFFile *)postWallObject[@"image1"]; // remote image
     
     //[imageView loadInBackground];
