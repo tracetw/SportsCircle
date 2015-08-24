@@ -11,9 +11,9 @@
 #import "MapRecordingViewController.h"
 #import <Parse/Parse.h>
 #import "DKCircleButton.h"
+#import "ABFillButton.h"
 
-
-@interface RecordingViewController ()<UINavigationBarDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate>
+@interface RecordingViewController ()<UINavigationBarDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate,ABFillButtonDelegate>
 {
     int count;
     MapRecordingViewController *mapRecordingView;
@@ -31,6 +31,7 @@
     BOOL buttonState;
     UIImage *mainPostImage;
 }
+@property (weak, nonatomic) IBOutlet ABFillButton *stopButton;
 @property (weak, nonatomic) IBOutlet UILabel *miniSecond;
 @property (weak, nonatomic) IBOutlet UILabel *second;
 @property (weak, nonatomic) IBOutlet UILabel *minutes;
@@ -49,7 +50,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    //UIImage *mainPostImage = [UIImage new];
+    //Setup stopBtn
+    [_stopButton configureButtonWithHightlightedShadowAndZoom:YES];
+    [_stopButton setEmptyButtonPressing:YES];
+    [_stopButton setFillPercent:1.0];
     
     self.navigationItem.hidesBackButton = YES;
     
@@ -117,43 +121,78 @@
 -(void)viewDidAppear:(BOOL)animated{
     
 }
-
-- (IBAction)stopButtonLongPressed:(UILongPressGestureRecognizer*)recognizer {
+- (IBAction)stopButtonPressed:(id)sender {
+    [_stopButton setFillPercent:1.0];
+}
+- (void)buttonIsEmpty:(ABFillButton *)button
+{
+    NSLog(@"buttonIsEmpty");
+    [counter invalidate];
+    PFUser *currentUser = [PFUser currentUser];
+    // NSLog(@"%@",currentUser);
+    query = [PFQuery queryWithClassName:@"WallPost"];
+    [query whereKey:@"user" equalTo:currentUser];
+    [query addAscendingOrder:@"createdAt"];
     
-    if (recognizer.state == UIGestureRecognizerStateBegan) {
-        [counter invalidate];
-//        endRecordingTableViewController *endRecordingView = [self.storyboard instantiateViewControllerWithIdentifier:@"endRecordingView"];
-//        [self.navigationController pushViewController:endRecordingView animated:YES];
-        PFUser *currentUser = [PFUser currentUser];
-        // NSLog(@"%@",currentUser);
-        query = [PFQuery queryWithClassName:@"WallPost"];
-        [query whereKey:@"user" equalTo:currentUser];
-        [query addAscendingOrder:@"createdAt"];
-        
-        //    NSLog(@"array %@",[query findObjects]);
-        lastPostObject = [[query findObjects] lastObject];
-        objectID = lastPostObject.objectId;
-        NSLog(@"%@",lastPostObject);
-        
-        if ([sportName isEqualToString:@"Athletics"] || [sportName isEqualToString:@"Cycling"]) {
-            _mapRecordingImage = [mapRecordingView snapShotRoute];
-            NSData *imageData = UIImagePNGRepresentation(_mapRecordingImage);
-            PFFile *mapImageFile = [PFFile fileWithName:@"mapSnapshot.png" data:imageData];
-            lastPostObject[@"distance"] = distance;
-            [lastPostObject saveInBackground];
-            lastPostObject[@"speed"] = speedNo;
-            [lastPostObject saveInBackground];
-            lastPostObject[@"mapSnapshot"] = mapImageFile;
-            [lastPostObject saveInBackground];
-            
-        }
-        
-        lastPostObject[@"recordingTime"] = recordingTime;
+    //    NSLog(@"array %@",[query findObjects]);
+    lastPostObject = [[query findObjects] lastObject];
+    objectID = lastPostObject.objectId;
+    NSLog(@"%@",lastPostObject);
+    
+    if ([sportName isEqualToString:@"Athletics"] || [sportName isEqualToString:@"Cycling"]) {
+        _mapRecordingImage = [mapRecordingView snapShotRoute];
+        NSData *imageData = UIImagePNGRepresentation(_mapRecordingImage);
+        PFFile *mapImageFile = [PFFile fileWithName:@"mapSnapshot.png" data:imageData];
+        lastPostObject[@"distance"] = distance;
         [lastPostObject saveInBackground];
-        [self performSegueWithIdentifier:@"goEndRecording" sender:nil];
+        lastPostObject[@"speed"] = speedNo;
+        [lastPostObject saveInBackground];
+        lastPostObject[@"mapSnapshot"] = mapImageFile;
+        [lastPostObject saveInBackground];
         
     }
+    
+    lastPostObject[@"recordingTime"] = recordingTime;
+    [lastPostObject saveInBackground];
+    [self performSegueWithIdentifier:@"goEndRecording" sender:nil];
+    [_stopButton setFillPercent:1.0];
 }
+//- (IBAction)stopButtonLongPressed:(UILongPressGestureRecognizer*)recognizer {
+//    
+//    if (recognizer.state == UIGestureRecognizerStateBegan) {
+//        [counter invalidate];
+//        PFUser *currentUser = [PFUser currentUser];
+//        // NSLog(@"%@",currentUser);
+//        query = [PFQuery queryWithClassName:@"WallPost"];
+//        [query whereKey:@"user" equalTo:currentUser];
+//        [query addAscendingOrder:@"createdAt"];
+//        
+//        //    NSLog(@"array %@",[query findObjects]);
+//        lastPostObject = [[query findObjects] lastObject];
+//        objectID = lastPostObject.objectId;
+//        NSLog(@"%@",lastPostObject);
+//        
+//        if ([sportName isEqualToString:@"Athletics"] || [sportName isEqualToString:@"Cycling"]) {
+//            _mapRecordingImage = [mapRecordingView snapShotRoute];
+//            NSData *imageData = UIImagePNGRepresentation(_mapRecordingImage);
+//            PFFile *mapImageFile = [PFFile fileWithName:@"mapSnapshot.png" data:imageData];
+//            lastPostObject[@"distance"] = distance;
+//            [lastPostObject saveInBackground];
+//            lastPostObject[@"speed"] = speedNo;
+//            [lastPostObject saveInBackground];
+//            lastPostObject[@"mapSnapshot"] = mapImageFile;
+//            [lastPostObject saveInBackground];
+//            
+//        }
+//        
+//        lastPostObject[@"recordingTime"] = recordingTime;
+//        [lastPostObject saveInBackground];
+//        [self performSegueWithIdentifier:@"goEndRecording" sender:nil];
+////        endRecordingTableViewController *endRecordingView = [self.storyboard instantiateViewControllerWithIdentifier:@"endRecordingView"];
+////        [self showDetailViewController:endRecordingView sender:self];
+//
+//    }
+//}
 
 //- (IBAction)cameraBtnPressed:(id)sender {
 //    if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
@@ -243,7 +282,11 @@
     view.countTime = recordingTime;
     view.speed = speedNo;
     view.distance = distance;
+
+    view.comingView = @"recordingView";
+
     
+
 //    recordingTime
 //    mainPostImage
 //    _distanceTextLabel.text
