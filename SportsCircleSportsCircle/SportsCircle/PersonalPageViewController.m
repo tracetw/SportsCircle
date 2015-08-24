@@ -13,6 +13,8 @@
 #import <ParseUI/ParseUI.h>
 #import "SearchViewController.h"
 #import "EditProfileTableViewController.h"
+#import "endRecordingTableViewController.h"
+
 
 @interface PersonalPageViewController ()
 {
@@ -24,6 +26,8 @@
     PFUser *currentUser;
     PFQuery *query;
     NSString *selectUserObjectId;
+    PersonalPageTableViewCell *cell;
+    NSString *selectObjectId;
 }
 @property (strong, nonatomic) IBOutlet UITableView *personalPageTableView;
 @end
@@ -92,7 +96,7 @@
 
 -(UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    PersonalPageTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"personalCell" forIndexPath:indexPath];
+    cell = [tableView dequeueReusableCellWithIdentifier:@"personalCell" forIndexPath:indexPath];
     
     
     postWallObject = postWallArray[indexPath.row];
@@ -163,8 +167,11 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    UIViewController *detailPostView = [UIViewController new];
-    [self.navigationController showViewController:detailPostView sender:nil];
+    postWallObject = postWallArray[indexPath.row];
+    selectObjectId = postWallObject.objectId;
+    //    endRecordingTableViewController *detailPostView = [self.storyboard instantiateViewControllerWithIdentifier:@"endRecordingView"];
+    //    [self.navigationController showViewController:detailPostView sender:nil];
+    [self performSegueWithIdentifier:@"goDetailView" sender:nil];
     
 }
 
@@ -184,9 +191,11 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([[segue identifier] isEqualToString:@"goEditProfileTableViewController"])
     {
-
         EditProfileTableViewController *controller = (EditProfileTableViewController *)[segue destinationViewController];
         [controller passValue:usernameStr passSelectUserObjectId:selectUserObjectId];
+    }else if ([[segue identifier] isEqualToString:@"goDetailView"]){
+        endRecordingTableViewController *detailView = (endRecordingTableViewController *)[segue destinationViewController];
+        [detailView getObjectID:selectObjectId];
     }
 }
 

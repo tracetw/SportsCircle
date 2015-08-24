@@ -16,7 +16,8 @@
 @property (weak, nonatomic) NSNumber *distance;
 @property (weak, nonatomic) NSString *countTime;
 
-
+@property (weak,nonatomic)  NSString *sendInObjectID;
+@property (weak,nonatomic)  NSString *comingView;
 
 -(void)getObjectID:(NSString*)objectID;
 
