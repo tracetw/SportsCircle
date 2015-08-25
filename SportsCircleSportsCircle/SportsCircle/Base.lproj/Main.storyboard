@@ -319,7 +319,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="149"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="yam-6P-Ki8">
+                                                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="yam-6P-Ki8">
                                                     <rect key="frame" x="0.0" y="0.0" width="600" height="143"/>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                     <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="jU7-qM-O58">
@@ -865,7 +865,7 @@
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
                                                 </button>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="u5z-Bh-Omz">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="u5z-Bh-Omz" customClass="myPostImageView">
                                                     <rect key="frame" x="92" y="146" width="415" height="276"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="415" id="JKU-06-c0g"/>
@@ -1056,7 +1056,7 @@
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="yJC-81-f42">
                                 <rect key="frame" x="554" y="10" width="30" height="25"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" image="placeholder30.png">
+                                <state key="normal" image="placeholder30">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -1343,7 +1343,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fcR-bO-cwD">
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fcR-bO-cwD">
                                 <rect key="frame" x="285" y="562" width="30" height="30"/>
                                 <state key="normal" title="確認">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -1353,7 +1353,7 @@
                                     <segue destination="pN3-9V-zex" kind="unwind" unwindAction="backToSchedule:" id="QtD-il-4xc"/>
                                 </connections>
                             </button>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" text="行程內容" translatesAutoresizingMaskIntoConstraints="NO" id="r2B-8m-cim">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" text="行程內容" translatesAutoresizingMaskIntoConstraints="NO" id="r2B-8m-cim">
                                 <rect key="frame" x="16" y="433" width="568" height="128"/>
                                 <color key="backgroundColor" red="0.42863864000000002" green="0.72566121459999999" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -1459,7 +1459,7 @@
                                     <rect key="frame" x="0.0" y="0.0" width="567" height="89"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yth-VR-Na7">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yth-VR-Na7">
                                             <rect key="frame" x="8" y="7" width="140" height="74"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="140" id="7ZY-RP-rYS"/>
@@ -1469,7 +1469,7 @@
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ETh-Dq-UBK">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ETh-Dq-UBK">
                                             <rect key="frame" x="148" y="7" width="411" height="74"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="411" id="ZRi-zT-pMt"/>
@@ -1571,7 +1571,7 @@
                                     <action selector="fbLogoutBtnPressed:" destination="hF9-Gp-btD" eventType="valueChanged" id="iP3-00-vqz"/>
                                 </connections>
                             </view>
-                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Tms-9z-S4Y" customClass="FBSDKProfilePictureView">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Tms-9z-S4Y" customClass="FBSDKProfilePictureView">
                                 <rect key="frame" x="16" y="100" width="80" height="80"/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -2191,7 +2191,11 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Title" id="iXE-7M-3eE">
-                        <barButtonItem key="rightBarButtonItem" image="homeBtn" id="HrZ-0y-S9d"/>
+                        <barButtonItem key="rightBarButtonItem" image="homeBtn" id="HrZ-0y-S9d">
+                            <connections>
+                                <segue destination="zs4-Vf-Z1D" kind="unwind" unwindAction="backTotrendView:" id="KeU-od-Lbw"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="calorieLabel" destination="TrI-Mm-KwE" id="iCQ-qr-7nD"/>
@@ -2210,6 +2214,7 @@
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Psd-cG-wmv" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="zs4-Vf-Z1D" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="1467" y="4034"/>
         </scene>
@@ -2623,7 +2628,7 @@
         <image name="earth" width="102" height="101"/>
         <image name="friends" width="89" height="70"/>
         <image name="homeBtn" width="25" height="25"/>
-        <image name="placeholder30.png" width="256" height="256"/>
+        <image name="placeholder30" width="256" height="256"/>
         <image name="schedule" width="52" height="48"/>
         <image name="search" width="63" height="79"/>
         <image name="setting" width="64" height="61"/>

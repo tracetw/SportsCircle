@@ -17,7 +17,7 @@
 #import "LBHamburgerButton.h"
 #import "DKCircleButton.h"
 #import "endRecordingTableViewController.h"
-
+#import "myPostImageView.h"
 
 @interface TrendViewController ()<UITableViewDelegate,UITableViewDataSource>
 {
@@ -30,6 +30,7 @@
     int notidicationNumber; /**< 消息通知數量 */
     PFObject *postWallObject;
     NSString *selectObjectId;
+    //TrendTableViewCell *cell;
 }
 @property (weak, nonatomic) IBOutlet UIView *theListView;
 @property (strong, nonatomic) IBOutlet UIView *theTrendView;
@@ -79,7 +80,7 @@
     //允許ImageView接受使用者互動
     _theTrendView.userInteractionEnabled = YES;
     
-    self.navigationItem.backBarButtonItem=[[UIBarButtonItem alloc]initWithTitle:@"動態首頁" style:UIBarButtonItemStylePlain target:nil action:nil];
+    self.navigationItem.backBarButtonItem=[[UIBarButtonItem alloc]initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
     [self.navigationController.navigationBar setTintColor:[UIColor whiteColor]];
     //返回到grayViewControllor的按鈕名稱改為中文～返回～
     
@@ -385,6 +386,18 @@
     //[cell.userImage addGestureRecognizer:singleTap2];
     cell.userName.tag = indexPath.row;
     
+    UITapGestureRecognizer *singleTap2 =
+    [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(postImagePressed:)];
+    
+    [cell.postImage setUserInteractionEnabled:TRUE];
+    //[cell.userImage setUserInteractionEnabled:TRUE];
+    [cell.postImage addGestureRecognizer:singleTap2];
+    //[cell.userImage addGestureRecognizer:singleTap2];
+    cell.postImage.tag = indexPath.row;
+    
+    postWallObject = postWallArray[cell.postImage.tag];
+    selectObjectId = postWallObject.objectId;
+    cell.postImage.ObjectIdStr=selectObjectId;
     return cell;
 }
 /*
@@ -472,7 +485,14 @@
 
 -(void)userNameLabelPressed:(id)sender
 {
+    
     [self performSegueWithIdentifier: @"goPersonalPageFromTrend" sender:[sender view]];
+}
+
+-(void)postImagePressed:(id)sender
+{
+
+    [self performSegueWithIdentifier: @"homeGoDetailView" sender:[sender view]];
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
@@ -505,8 +525,21 @@
     }
     //進入detail頁面
     if ([[segue identifier] isEqualToString:@"homeGoDetailView"]){
-        endRecordingTableViewController *detailView = (endRecordingTableViewController *)[segue destinationViewController];
-        [detailView getObjectID:selectObjectId];
+        endRecordingTableViewController *controller = (endRecordingTableViewController *)[segue destinationViewController];
+
+        //index.row=sender
+        //NSLog(@"%@",selectObjectId);
+        //selectObjectId=[sender Oid1];
+        //selectObjectId = postWallObject.objectId;
+        //selectObjectId=sender;
+        
+        if ([sender isKindOfClass:[myPostImageView class]]) {
+            [controller getObjectID:[sender ObjectIdStr]];
+        }else{
+            [controller getObjectID:sender];
+        }
+
+        
     }
 
 }
