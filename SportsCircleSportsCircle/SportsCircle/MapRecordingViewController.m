@@ -172,16 +172,16 @@
     
     MKMapSnapshotOptions *options = [[MKMapSnapshotOptions alloc] init];
     
-    CLLocationCoordinate2D coordinate[2];
-    
-    CLLocation *snapshotLocation;
-    CLLocation *snapshotLocation2;
-    //
-    snapshotLocation = locationMutableArray[0];
-    snapshotLocation2 = locationMutableArray.lastObject;
-    //
-    coordinate[0]=CLLocationCoordinate2DMake(snapshotLocation.coordinate.latitude, snapshotLocation.coordinate.longitude);
-    coordinate[1]=CLLocationCoordinate2DMake(snapshotLocation2.coordinate.latitude, snapshotLocation2.coordinate.longitude);
+//    CLLocationCoordinate2D coordinate[2];
+//    
+//    CLLocation *snapshotLocation;
+//    CLLocation *snapshotLocation2;
+//    //
+//    snapshotLocation = locationMutableArray[0];
+//    snapshotLocation2 = locationMutableArray.lastObject;
+//    //
+//    coordinate[0]=CLLocationCoordinate2DMake(snapshotLocation.coordinate.latitude, snapshotLocation.coordinate.longitude);
+//    coordinate[1]=CLLocationCoordinate2DMake(snapshotLocation2.coordinate.latitude, snapshotLocation2.coordinate.longitude);
     
     CLLocationCoordinate2D centerPoint = [self findCenterCoordinate];
     
@@ -230,7 +230,7 @@
         CGColorRef color = CGColorCreate(colorspace, components);
         
         CGContextSetStrokeColorWithColor(context, color);
-        CGContextSetLineWidth(context,3.0f);
+        CGContextSetLineWidth(context,4.0f);
         CGContextBeginPath(context);
         CGColorSpaceRelease(colorspace);
         CGColorRelease(color);
@@ -295,10 +295,9 @@
             CLLocationCoordinate2D coordinate[2];
             coordinate[0] = CLLocationCoordinate2DMake(longDistanceLocationX.coordinate.latitude, longDistanceLocationX.coordinate.longitude);
             coordinate[1] = CLLocationCoordinate2DMake(longDistanceLocationY.coordinate.latitude,longDistanceLocationY.coordinate.longitude);
-            if (locationMutableArray.count<2) {
+            if (locationMutableArray.count<2 || distance == 0) {
                 centerPoint = coordinate[0];
             }
-            
             if (distance > distance2) {
                 distance2 = distance;
                 centerPoint = [self midpointBetweenCoordinate:coordinate[0] andCoordinate:coordinate[1]];
@@ -311,7 +310,7 @@
 -(CLLocationDistance)findLongestDistance{
     
     CLLocationDistance distance;
-    CLLocationDistance distance2 = 0.01;
+    CLLocationDistance distance2 = 0.001;
     
     for (int x=0; x < locationMutableArray.count; x++) {
         for (int y =0; y < locationMutableArray.count; y++) {

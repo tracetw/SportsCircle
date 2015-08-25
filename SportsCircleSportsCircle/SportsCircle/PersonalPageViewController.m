@@ -104,7 +104,7 @@
     // placeholder image
     
     
-    imageView.image = [UIImage imageNamed:@"camera"];
+    imageView.image = [UIImage imageNamed:@"loading"];
     
     imageView.file = (PFFile *)postWallObject[@"image1"]; // remote image
     
@@ -150,12 +150,13 @@
                  forControlEvents:UIControlEventTouchUpInside];
     
     
-    userImage.image = [UIImage imageNamed:@"camera"];
+    userImage.image = [UIImage imageNamed:@"loading"];
     //NSLog(@"user111 %@",user);
     userImage.file = (PFFile *)user[@"userImage"];
     cell.userImage.image = userImage.image;
     [userImage loadInBackground:^(UIImage *image,  NSError * error){
-        cell.userImage.image = image;
+        userImage.image = image;
+        cell.userImage.image = userImage.image;
     }];
 
     

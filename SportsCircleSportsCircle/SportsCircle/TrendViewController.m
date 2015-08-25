@@ -16,6 +16,8 @@
 #import "UIView+WZLBadge.h"
 #import "LBHamburgerButton.h"
 #import "DKCircleButton.h"
+#import "endRecordingTableViewController.h"
+
 
 @interface TrendViewController ()<UITableViewDelegate,UITableViewDataSource>
 {
@@ -26,6 +28,8 @@
     PFImageView *userImage;
     PFUser *currentUser;
     int notidicationNumber; /**< 消息通知數量 */
+    PFObject *postWallObject;
+    NSString *selectObjectId;
 }
 @property (weak, nonatomic) IBOutlet UIView *theListView;
 @property (strong, nonatomic) IBOutlet UIView *theTrendView;
@@ -265,7 +269,7 @@
     cell.sportImg=userSchedulesA[@"image4"];
     */
     
-    PFObject *postWallObject = postWallArray[indexPath.row];
+    postWallObject = postWallArray[indexPath.row];
     PFImageView *imageView = [PFImageView new];
 
 //    NSURL *url = [[NSBundle mainBundle] URLForResource:@"InternetSlowdown_Day" withExtension:@"gif"];
@@ -402,7 +406,15 @@
     NSLog(@"cell title:%@ and row:%li",cell.textLabel.text,indexPath.row);
 }
 */
-
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    postWallObject = postWallArray[indexPath.row];
+    selectObjectId = postWallObject.objectId;
+    //    endRecordingTableViewController *detailPostView = [self.storyboard instantiateViewControllerWithIdentifier:@"endRecordingView"];
+    //    [self.navigationController showViewController:detailPostView sender:nil];
+    [self performSegueWithIdentifier:@"homeGoDetailView" sender:nil];
+    
+}
 - (void) didConfirmBeFriend{   //確認是否有好友邀請名單
     
     //init
@@ -490,6 +502,11 @@
         //NSLog(@"cell.userName.text:%@",[sender text]);
         
         [controller passData:Uname];
+    }
+    //進入detail頁面
+    if ([[segue identifier] isEqualToString:@"homeGoDetailView"]){
+        endRecordingTableViewController *detailView = (endRecordingTableViewController *)[segue destinationViewController];
+        [detailView getObjectID:selectObjectId];
     }
 
 }
