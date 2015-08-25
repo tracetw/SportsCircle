@@ -612,7 +612,7 @@
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="EgT-GI-pOh">
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="EgT-GI-pOh">
                                             <rect key="frame" x="92" y="146" width="415" height="276"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="415" id="BEn-Zb-fkX"/>
@@ -2191,7 +2191,11 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Title" id="iXE-7M-3eE">
-                        <barButtonItem key="rightBarButtonItem" image="homeBtn" id="HrZ-0y-S9d"/>
+                        <barButtonItem key="rightBarButtonItem" image="homeBtn" id="HrZ-0y-S9d">
+                            <connections>
+                                <segue destination="TEF-N4-G76" kind="unwind" unwindAction="backTotrendView:" id="cPe-mX-5Rd"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="calorieLabel" destination="TrI-Mm-KwE" id="iCQ-qr-7nD"/>
@@ -2210,6 +2214,7 @@
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Psd-cG-wmv" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="TEF-N4-G76" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="1467" y="4034"/>
         </scene>
@@ -2354,10 +2359,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="5id-aU-uqS">
-                                <rect key="frame" x="16" y="20" width="568" height="560"/>
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                             </mapView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mvg-nj-jkk">
-                                <rect key="frame" x="528" y="541" width="30" height="30"/>
+                                <rect key="frame" x="528" y="515" width="30" height="30"/>
                                 <state key="normal">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -2368,12 +2373,12 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="arS-UX-S7R" firstAttribute="top" secondItem="mvg-nj-jkk" secondAttribute="bottom" constant="29" id="7hF-Z4-uux"/>
-                            <constraint firstItem="5id-aU-uqS" firstAttribute="top" secondItem="Idx-SW-3Za" secondAttribute="bottom" id="8DK-ZU-QpS"/>
-                            <constraint firstAttribute="bottom" secondItem="5id-aU-uqS" secondAttribute="bottom" constant="20" symbolic="YES" id="FDH-QZ-aIr"/>
-                            <constraint firstItem="5id-aU-uqS" firstAttribute="leading" secondItem="fTh-fq-nX9" secondAttribute="leadingMargin" id="Ioc-HD-ZvO"/>
+                            <constraint firstItem="5id-aU-uqS" firstAttribute="leading" secondItem="fTh-fq-nX9" secondAttribute="leading" id="A43-4b-Sv7"/>
+                            <constraint firstItem="5id-aU-uqS" firstAttribute="bottom" secondItem="arS-UX-S7R" secondAttribute="top" id="Ob6-9O-4Uz"/>
                             <constraint firstAttribute="trailingMargin" secondItem="mvg-nj-jkk" secondAttribute="trailing" constant="26" id="P6h-7O-kwg"/>
-                            <constraint firstItem="5id-aU-uqS" firstAttribute="trailing" secondItem="fTh-fq-nX9" secondAttribute="trailingMargin" id="dgg-xL-qfc"/>
+                            <constraint firstItem="arS-UX-S7R" firstAttribute="top" secondItem="mvg-nj-jkk" secondAttribute="bottom" constant="55" id="PzK-Ya-efd"/>
+                            <constraint firstItem="5id-aU-uqS" firstAttribute="top" secondItem="fTh-fq-nX9" secondAttribute="top" id="VYW-zf-sTC"/>
+                            <constraint firstAttribute="trailing" secondItem="5id-aU-uqS" secondAttribute="trailing" id="eId-6m-grz"/>
                         </constraints>
                     </view>
                     <connections>
@@ -2632,11 +2637,11 @@
         <image name="timerImage" width="70" height="84"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="gpY-tf-boD"/>
         <segue reference="RoM-6D-21i"/>
         <segue reference="XQ8-gg-XLc"/>
-        <segue reference="yfR-iI-cpg"/>
+        <segue reference="gpY-tf-boD"/>
         <segue reference="DbG-qm-mvc"/>
+        <segue reference="kOt-wg-PZb"/>
         <segue reference="5DY-EW-tli"/>
     </inferredMetricsTieBreakers>
 </document>
