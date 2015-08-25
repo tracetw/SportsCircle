@@ -206,7 +206,7 @@
     view.backgroundColor = [UIColor clearColor];
     
     NSString *annotationStr = [annotation subtitle];//每個大頭針的運動名稱會跑來這裡
-    UIImageView *imgView=[[UIImageView alloc]init];
+    UIImageView *imgView= nil;
     //if([annotationStr isEqualToString:@"Archery"])
     //{
     imgView=[[UIImageView alloc]initWithImage:[UIImage imageNamed:annotationStr]];

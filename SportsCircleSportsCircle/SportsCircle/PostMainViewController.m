@@ -31,7 +31,7 @@ typedef enum {
 @property (nonatomic, strong) AKPickerView *pickerView;
 @property (nonatomic, strong) NSArray *titles;
 @property (weak, nonatomic) IBOutlet UILabel *sportsNameLabel;
-
+@property (weak, nonatomic) IBOutlet UIButton *goButton;
 @property (weak, nonatomic) IBOutlet UILabel *infoLabel;
 @property (weak, nonatomic) IBOutlet UIButton *cameraBtn;
 @property (weak, nonatomic) IBOutlet UIButton *ballBtn;
@@ -49,7 +49,7 @@ typedef enum {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    
+    [self initGoButton];
     
     //ImagePicker顯示位置在“AKPickerView.m”裡面修改
     self.pickerView = [[AKPickerView alloc] initWithFrame:self.view.bounds];
@@ -139,7 +139,6 @@ typedef enum {
     //recognizer.cancelsTouchesInView = YES;
     [self.view addGestureRecognizer:recognizer];
     self.view.userInteractionEnabled = YES;
-    
     
 //    [popView.popPicBtn addTarget:self action:@selector(logsomething) forControlEvents:UIControlEventTouchUpInside];
 //    [popView setUserInteractionEnabled:TRUE];
@@ -289,8 +288,10 @@ typedef enum {
         //存檔
         UIImageWriteToSavedPhotosAlbum(image2, nil, nil, nil);
         //按鈕的背景換成剛拍下來的照片
+        [_ballBtn setTitle:@"" forState:UIControlStateNormal];
         [_ballBtn setBackgroundImage:image2 forState:UIControlStateNormal];
         [_ballBtn setFrame:CGRectMake(0, 0, 60, 60)];
+
         //關閉拍照
         [self dismissViewControllerAnimated:YES completion:nil];
     }
@@ -301,6 +302,7 @@ typedef enum {
         //存檔
         UIImageWriteToSavedPhotosAlbum(image3, nil, nil, nil);
         //按鈕的背景換成剛拍下來的照片
+        [_TshirtBtn setTitle:@"" forState:UIControlStateNormal];
         [_TshirtBtn setBackgroundImage:image3 forState:UIControlStateNormal];
         [_TshirtBtn setFrame:CGRectMake(0, 0, 60, 60)];
         //關閉拍照
@@ -313,6 +315,7 @@ typedef enum {
         //存檔
         UIImageWriteToSavedPhotosAlbum(image4, nil, nil, nil);
         //按鈕的背景換成剛拍下來的照片
+        [_PantsBtn setTitle:@"" forState:UIControlStateNormal];
         [_PantsBtn setBackgroundImage:image4 forState:UIControlStateNormal];
         [_PantsBtn setFrame:CGRectMake(0, 0, 60, 60)];
         //關閉拍照
@@ -325,6 +328,7 @@ typedef enum {
         //存檔
         UIImageWriteToSavedPhotosAlbum(image5, nil, nil, nil);
         //按鈕的背景換成剛拍下來的照片
+        [_shoesBtn setTitle:@"" forState:UIControlStateNormal];
         [_shoesBtn setBackgroundImage:image5 forState:UIControlStateNormal];
         [_shoesBtn setFrame:CGRectMake(0, 0, 60, 60)];
         //關閉拍照
@@ -345,7 +349,7 @@ typedef enum {
     //    [pop presentPopoverFromRect:popBtn.frame inView:self.view permittedArrowDirections:UIPopoverArrowDirectionUp animated:YES];
     //設定popover的位置跟
     
-    CGRect rect=CGRectMake(135, 385, 50, 50);
+    CGRect rect=CGRectMake(_ballBtn.frame.origin.x+(_ballBtn.frame.size.width/2.0f),_ballBtn.frame.origin.y+(_ballBtn.frame.size.height/1.5f), 50, 50);
     [popView setFrame:rect];
     [popView setUserInteractionEnabled:YES];
     [popView.popPicBtn setUserInteractionEnabled:YES];
@@ -388,7 +392,7 @@ typedef enum {
 }
 
 - (IBAction)TshirtBtnPressed:(id)sender {
-    CGRect rect=CGRectMake(203, 385, 50, 50);
+    CGRect rect=CGRectMake(_TshirtBtn.frame.origin.x+(_TshirtBtn.frame.size.width/2.0f),_TshirtBtn.frame.origin.y+(_TshirtBtn.frame.size.height/1.5f), 50, 50);
     [popView2 setFrame:rect];
     [popView2 setUserInteractionEnabled:YES];
     [popView2.popPicBtn2 setUserInteractionEnabled:YES];
@@ -424,7 +428,7 @@ typedef enum {
 }
 
 - (IBAction)PantsBtnPressed:(id)sender {
-    CGRect rect=CGRectMake(271, 385, 50, 50);
+    CGRect rect=CGRectMake(_PantsBtn.frame.origin.x+(_PantsBtn.frame.size.width/2.0f),_PantsBtn.frame.origin.y+(_PantsBtn.frame.size.height/1.5f), 50, 50);
     [popView3 setFrame:rect];
     [popView3 setUserInteractionEnabled:YES];
     [popView3.popPicBtn3 setUserInteractionEnabled:YES];
@@ -458,7 +462,7 @@ typedef enum {
     }
 }
 - (IBAction)shoesBtnPressed:(id)sender {
-    CGRect rect=CGRectMake(311, 385, 50, 50);
+    CGRect rect=CGRectMake(_shoesBtn.frame.origin.x+(_shoesBtn.frame.size.width/2.0f),_shoesBtn.frame.origin.y+(_shoesBtn.frame.size.height/1.5f), 50, 50);
     [popView4 setFrame:rect];
     [popView4 setUserInteractionEnabled:YES];
     [popView4.popPicBtn4 setUserInteractionEnabled:YES];
@@ -502,7 +506,7 @@ typedef enum {
         imageData = UIImageJPEGRepresentation(image1,0.1);
         PFFile *imageFile = [PFFile fileWithName:@"image.jpeg" data:imageData];
         if (image1==nil) {
-            imageX= [UIImage imageNamed:@"xib.png"];
+            imageX= [UIImage imageNamed:@"sport mix 5"];
             NSData *imageData2 = UIImageJPEGRepresentation(imageX,0.1);
             PFFile *imageFile2 = [PFFile fileWithName:@"image.jpeg" data:imageData2];
             wallpost[@"image1"] = imageFile2;
@@ -604,7 +608,7 @@ typedef enum {
     }
     
     [view getSportType:sportName];
-    UIImage *mainImage = [UIImage new];
+    UIImage *mainImage = nil;
     if (imageData == nil) {
         mainImage = [UIImage imageNamed:@"xib.png"];
     }else{
@@ -642,6 +646,15 @@ typedef enum {
     };
     [self.navigationController pushViewController:viewcontroller animated:YES];
 
+}
+
+-(void) initGoButton{
+    _goButton.titleLabel.font = [UIFont systemFontOfSize:22];
+    _goButton.layer.cornerRadius = _goButton.bounds.size.width/2;
+    [_goButton setTitleColor:[UIColor colorWithWhite:1 alpha:1.0] forState:UIControlStateNormal];
+    [_goButton setTitleColor:[UIColor colorWithWhite:1 alpha:1.0] forState:UIControlStateSelected];
+    [_goButton setTitleColor:[UIColor colorWithWhite:1 alpha:1.0] forState:UIControlStateHighlighted];
+    _goButton.backgroundColor = [UIColor colorWithRed:57.0f/255.0f green:88.0f/255.0f blue:100.0f/255.0f alpha:1];
 }
 
 /*

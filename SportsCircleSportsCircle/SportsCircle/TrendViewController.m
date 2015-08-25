@@ -15,6 +15,7 @@
 #import "readPostViewController.h"
 #import "UIView+WZLBadge.h"
 #import "LBHamburgerButton.h"
+#import "DKCircleButton.h"
 
 @interface TrendViewController ()<UITableViewDelegate,UITableViewDataSource>
 {
@@ -28,7 +29,7 @@
 }
 @property (weak, nonatomic) IBOutlet UIView *theListView;
 @property (strong, nonatomic) IBOutlet UIView *theTrendView;
-@property (weak, nonatomic) IBOutlet UIButton *goButton;
+@property (weak, nonatomic) IBOutlet DKCircleButton *goButton;
 @property (weak, nonatomic) IBOutlet UIButton *notidicationButton;  /**< 消息通知按鈕 */
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) LBHamburgerButton* buttonHamburgerCloseSmall;
@@ -47,6 +48,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self didConfirmBeFriend];
+    [self initPauseButton];
     
     self.tableView.delaysContentTouches = NO;   //取消tabeViewCell Button的延遲
 //    UIBarButtonItem *list=[[UIBarButtonItem alloc]initWithTitle:@"List" style:UIBarButtonItemStylePlain target:self action:@selector (barListBtnPressed:)];
@@ -109,6 +111,7 @@
     //[cell.contentView.layer setBorderWidth:10.0];
     
     self.tableView.separatorColor=[UIColor whiteColor];
+    
 }
 -(void)reloadDatas
 {
@@ -123,9 +126,8 @@
     [refreshControl endRefreshing];
 }
 
--(void)viewDidAppear:(BOOL)animated
-{
-
+-(void)viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:animated];
     PFQuery *query = [PFQuery queryWithClassName:@"WallPost"];
     [query addDescendingOrder:@"createdAt"];
     postWallArray = [NSArray new];
@@ -237,6 +239,16 @@
     return postWallArray.count;
 }
 
+- (IBAction)addUserImageButtonPressed:(id)sender{
+    UIButton *btn = sender;
+    NSLog(@"%@",btn.titleLabel.text);
+    //PersonalPageViewController *myPersonalPageViewController = [PersonalPageViewController new];
+    //[myPersonalPageViewController passData:btn.titleLabel.text];
+    //[self presentViewController:myPersonalPageViewController animated:YES completion:nil];
+    //[self.navigationController pushViewController:myPersonalPageViewController animated:YES];
+    [self performSegueWithIdentifier:@"goPersonalPageFromTrend" sender:btn.titleLabel.text];
+}
+
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString* cellIdentifier=@"TrendCell";
@@ -255,7 +267,11 @@
     
     PFObject *postWallObject = postWallArray[indexPath.row];
     PFImageView *imageView = [PFImageView new];
-    imageView.image = [UIImage imageNamed:@"camera"]; // placeholder image
+
+//    NSURL *url = [[NSBundle mainBundle] URLForResource:@"InternetSlowdown_Day" withExtension:@"gif"];
+//    imageView.image = [UIImage animatedImageWithAnimatedGIFData:[NSData dataWithContentsOfURL:url]];
+    
+    imageView.image = [UIImage imageNamed:@"loading.jpg"]; // placeholder image
     imageView.file = (PFFile *)postWallObject[@"image1"]; // remote image
     
     //[imageView loadInBackground];
@@ -278,7 +294,7 @@
     
     PFObject *user = postWallObject[@"user"];
     
-    cell.userName.text = @"Name";
+    cell.userName.text = @"";
     
     [user fetchInBackgroundWithBlock:^(PFObject *user,NSError *error){
         
@@ -295,6 +311,16 @@
         
         [cell.contentView.layer setBorderColor:[UIColor whiteColor].CGColor];
         [cell.contentView.layer setBorderWidth:8.0f];
+        
+        // add addUserImageButton button
+        UIButton *addUserImageButton = [UIButton new];
+        addUserImageButton.frame = cell.userImage.frame;
+        [addUserImageButton setTitle:username forState:UIControlStateNormal];
+        [addUserImageButton setTitleColor:[UIColor clearColor] forState:UIControlStateNormal];
+        [cell addSubview:addUserImageButton];
+        [addUserImageButton addTarget:self
+                               action:@selector(addUserImageButtonPressed:)
+                     forControlEvents:UIControlEventTouchUpInside];
         
     }];
     
@@ -443,8 +469,14 @@
         //以下是按cell的使用者名字傳輸的資料
         PersonalPageViewController *controller = (PersonalPageViewController *)[segue destinationViewController];
         
-        //NSLog(@"cell.userName.text:%@",[sender text]);
-        [controller passData:[sender text]];
+        //NSLog(@"cell.userName.text:%d",[sender isMemberOfClass:[UILabel class]]);
+
+        if ([sender isMemberOfClass:[UILabel class]]) {
+            [controller passData:[sender text]];
+        }else{
+            [controller passData:sender];
+        }
+        
         
     }
     //以下是按個人動態按鈕傳輸的資料
@@ -474,4 +506,14 @@
     //[_buttonHamburgerCloseSmall setBackgroundColor:[UIColor blackColor]];
     [_buttonHamburgerCloseSmall addTarget:self action:@selector(barListBtnPressed:) forControlEvents:UIControlEventTouchUpInside];
 }
+
+-(void) initPauseButton{
+    _goButton.titleLabel.font = [UIFont systemFontOfSize:22];
+    _goButton.layer.cornerRadius = _goButton.bounds.size.width/2;
+    [_goButton setTitleColor:[UIColor colorWithWhite:1 alpha:1.0] forState:UIControlStateNormal];
+    [_goButton setTitleColor:[UIColor colorWithWhite:1 alpha:1.0] forState:UIControlStateSelected];
+    [_goButton setTitleColor:[UIColor colorWithWhite:1 alpha:1.0] forState:UIControlStateHighlighted];
+    _goButton.backgroundColor = [UIColor colorWithRed:57.0f/255.0f green:88.0f/255.0f blue:100.0f/255.0f alpha:1];
+}
+
 @end

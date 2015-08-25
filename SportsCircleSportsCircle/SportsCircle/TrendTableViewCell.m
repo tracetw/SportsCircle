@@ -9,6 +9,7 @@
 #import "TrendTableViewCell.h"
 #import "PersonalPageViewController.h"
 #import <Parse/Parse.h>
+
 @implementation TrendTableViewCell
 @synthesize cellObjectId;
 
@@ -18,7 +19,7 @@
     PFQuery *query = [PFQuery queryWithClassName:@"WallPost"];
     [query getObjectInBackgroundWithId:cellObjectId block:^(PFObject *object, NSError *error) {
         if (!error) {
-            NSMutableArray *tmpArray = [NSMutableArray new];
+            NSMutableArray *tmpArray = nil;
             tmpArray = object[@"like"];
             if (tmpArray.count == 0) {
                 [self setLikesButtonNumber:0 likesButton:sender];

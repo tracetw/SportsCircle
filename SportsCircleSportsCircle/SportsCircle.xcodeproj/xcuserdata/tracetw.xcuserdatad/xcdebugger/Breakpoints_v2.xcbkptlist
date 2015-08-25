@@ -40,5 +40,101 @@
             breakpointStackSelectionBehavior = "1">
          </BreakpointContent>
       </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SportsCircle/PersonalPageViewController.h"
+            timestampString = "462034978.005921"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "15"
+            endingLineNumber = "15"
+            landmarkName = "-passData:"
+            landmarkType = "4">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[PersonalPageViewController cellUserName]"
+                  moduleName = "SportsCircle"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/tracetw/Documents/SportsCircle/SportsCircleSportsCircle/SportsCircle/PersonalPageViewController.h"
+                  timestampString = "462091972.274648"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "16"
+                  endingLineNumber = "16"
+                  offsetFromSymbolStart = "12">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[PersonalPageViewController setCellUserName:]"
+                  moduleName = "SportsCircle"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/tracetw/Documents/SportsCircle/SportsCircleSportsCircle/SportsCircle/PersonalPageViewController.h"
+                  timestampString = "462091972.274967"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "16"
+                  endingLineNumber = "16"
+                  offsetFromSymbolStart = "20">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SportsCircle/PersonalPageViewController.h"
+            timestampString = "462034979.469608"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "13"
+            endingLineNumber = "13"
+            landmarkName = "@interface PersonalPageViewController"
+            landmarkType = "2">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[PersonalPageViewController cellUserName]"
+                  moduleName = "SportsCircle"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/tracetw/Documents/SportsCircle/SportsCircleSportsCircle/SportsCircle/PersonalPageViewController.h"
+                  timestampString = "462091972.27645"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "16"
+                  endingLineNumber = "16"
+                  offsetFromSymbolStart = "12">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[PersonalPageViewController setCellUserName:]"
+                  moduleName = "SportsCircle"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/tracetw/Documents/SportsCircle/SportsCircleSportsCircle/SportsCircle/PersonalPageViewController.h"
+                  timestampString = "462091972.276586"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "16"
+                  endingLineNumber = "16"
+                  offsetFromSymbolStart = "20">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
    </Breakpoints>
 </Bucket>

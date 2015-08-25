@@ -33,6 +33,7 @@
 @end
 
 @implementation PersonalPageViewController
+@synthesize cellUserName;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -138,6 +139,15 @@
     
     [cell.userNameBtn setTitle:username forState:UIControlStateNormal];
     
+    // add addUserImageButton button
+    UIButton *addUserImageButton = [UIButton new];
+    addUserImageButton.frame = cell.userImage.frame;
+    [addUserImageButton setTitle:username forState:UIControlStateNormal];
+    [addUserImageButton setTitleColor:[UIColor clearColor] forState:UIControlStateNormal];
+    [cell addSubview:addUserImageButton];
+    [addUserImageButton addTarget:self
+                           action:@selector(addUserImageButtonPressed:)
+                 forControlEvents:UIControlEventTouchUpInside];
     
     
     userImage.image = [UIImage imageNamed:@"camera"];
@@ -192,6 +202,13 @@
     if ([[segue identifier] isEqualToString:@"goEditProfileTableViewController"])
     {
         EditProfileTableViewController *controller = (EditProfileTableViewController *)[segue destinationViewController];
+
+        if ([sender isMemberOfClass:[UIButton class]]) {
+            [controller passValue:usernameStr passSelectUserObjectId:selectUserObjectId];
+        }else{
+            [controller passValue:usernameStr passSelectUserObjectId:sender];
+        }
+        
         [controller passValue:usernameStr passSelectUserObjectId:selectUserObjectId];
     }else if ([[segue identifier] isEqualToString:@"goDetailView"]){
         endRecordingTableViewController *detailView = (endRecordingTableViewController *)[segue destinationViewController];
@@ -269,6 +286,18 @@
         }
     }];
 }
+
+
+- (IBAction)addUserImageButtonPressed:(id)sender{
+    UIButton *btn = sender;
+    NSLog(@"%@",btn.titleLabel.text);
+    //PersonalPageViewController *myPersonalPageViewController = [PersonalPageViewController new];
+    //[myPersonalPageViewController passData:btn.titleLabel.text];
+    //[self presentViewController:myPersonalPageViewController animated:YES completion:nil];
+    //[self.navigationController pushViewController:myPersonalPageViewController animated:YES];
+    [self performSegueWithIdentifier:@"goEditProfileTableViewController" sender:btn.titleLabel.text];
+}
+
 
 /*
 #pragma mark - Navigation
