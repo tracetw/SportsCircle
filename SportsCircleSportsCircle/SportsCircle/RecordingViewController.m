@@ -13,19 +13,7 @@
 #import "DKCircleButton.h"
 #import "ABFillButton.h"
 
-//typedef enum {
-//    Other = 0,
-//    Archery,
-//    Athletics,
-//    Badminton,
-//    Basketball,
-//    Cycling,
-//    Diving,
-//    Taekwondo,
-//    Tennis,
-//    Trampoline,
-//    Volleyball,
-//}sportType;
+#define CARORY_PARAMETER 350.0;
 
 @interface RecordingViewController ()<UINavigationBarDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate,ABFillButtonDelegate>
 {
@@ -44,6 +32,8 @@
     DKCircleButton *pauseBtn;
     BOOL buttonState;
     UIImage *mainPostImage;
+    NSString *userWeight;
+    NSString *calory;
 }
 @property (weak, nonatomic) IBOutlet ABFillButton *stopButton;
 @property (weak, nonatomic) IBOutlet UILabel *miniSecond;
@@ -117,9 +107,15 @@
     
     _sportTypeImage.image = [UIImage imageNamed:sportName];
     
-   
-    
     [self initPauseButton];
+    
+    PFUser *currentUser = [PFUser currentUser];
+    PFQuery *queryPersonalClass = [PFQuery queryWithClassName:@"PersionalInfo"];
+    [queryPersonalClass whereKey:@"user" equalTo:currentUser];
+    [queryPersonalClass findObjectsInBackgroundWithBlock:^(NSArray *array,NSError *error){
+        PFObject *currentUserPersonalInfoClassObject = array[0];
+        userWeight = currentUserPersonalInfoClassObject[@"weight"];
+    }];
     
     
 }
@@ -154,6 +150,8 @@
     objectID = lastPostObject.objectId;
     NSLog(@"%@",lastPostObject);
     
+    
+    
     if ([sportName isEqualToString:@"Athletics"] || [sportName isEqualToString:@"Cycling"]) {
         _mapRecordingImage = [mapRecordingView snapShotRoute];
         NSData *imageData = UIImagePNGRepresentation(_mapRecordingImage);
@@ -168,6 +166,8 @@
     }
     
     lastPostObject[@"recordingTime"] = recordingTime;
+    [lastPostObject saveInBackground];
+    lastPostObject[@"calories"] = calory;
     [lastPostObject saveInBackground];
     [self performSegueWithIdentifier:@"goEndRecording" sender:nil];
     [_stopButton setFillPercent:1.0];
@@ -247,7 +247,17 @@
     _miniSecond.text = [NSString stringWithFormat:@"%02d",ms];
     recordingTime = [NSString stringWithFormat:@"%02d:%02d:%02d",hour,minites,second];
     
+    int weight;
+        if (userWeight == NULL) {
+            weight = 50;
+        }else{
+            weight = [userWeight intValue];
+        }
     
+    NSLog(@"userweight %d",weight);
+    double changeToHour =hour+(minites/60.0)+(second/3600.0);
+    calory = [NSString stringWithFormat:@"%.0f", weight*7*changeToHour];
+    _caloryTextLabel.text = calory;
     if ([sportName isEqualToString:@"Athletics"] || [sportName isEqualToString:@"Cycling"]) {
         float distanceFloat = [mapRecordingView getDistance];
         distance = @(distanceFloat);
@@ -299,7 +309,7 @@
     view.countTime = recordingTime;
     view.speed = speedNo;
     view.distance = distance;
-
+    view.calory = calory;
     view.comingView = @"recordingView";
 
     
@@ -355,19 +365,6 @@
 }
 
 
-
-//-(float)getCaloryParameter{
-//    switch (sportType) {
-//        case :
-//
-//            break;
-//            
-//        default:
-//            break;
-//    }
-//    
-//    
-//}
 
 /*
 #pragma mark - Navigation

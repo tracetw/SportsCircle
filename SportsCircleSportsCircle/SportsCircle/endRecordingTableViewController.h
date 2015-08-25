@@ -12,12 +12,13 @@
 @interface endRecordingTableViewController : UITableViewController
 
 @property (weak, nonatomic) UIImage *snapshotImage;
-@property (weak, nonatomic) NSNumber *speed;
-@property (weak, nonatomic) NSNumber *distance;
-@property (weak, nonatomic) NSString *countTime;
+@property (strong, nonatomic) NSNumber *speed;
+@property (strong, nonatomic) NSNumber *distance;
+@property (strong, nonatomic) NSString *countTime;
 
-@property (weak,nonatomic)  NSString *sendInObjectID;
-@property (weak,nonatomic)  NSString *comingView;
+@property (strong,nonatomic)  NSString *sendInObjectID;
+@property (strong,nonatomic)  NSString *comingView;
+@property (strong,nonatomic) NSString *calory;
 
 -(void)getObjectID:(NSString*)objectID;
 
