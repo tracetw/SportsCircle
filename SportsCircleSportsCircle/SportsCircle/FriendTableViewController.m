@@ -145,11 +145,12 @@
 //        cell.userImage.image = [UIImage imageWithData:userImage];
         
         
-        userImage.image = [UIImage imageNamed:@"camera"];
+        userImage.image = [UIImage imageNamed:@"loading"];
         
         userImage.file = (PFFile *)user[@"userImage"];
         
         [userImage loadInBackground:^(UIImage *image,NSError *error){
+            userImage.image = image;
            cell.userImage.image = userImage.image; 
         }];
         
@@ -171,7 +172,7 @@
         cell.userName.text = username;
         
         userImage = [PFImageView new];
-        userImage.image = [UIImage imageNamed:@"camera"];
+        userImage.image = [UIImage imageNamed:@"loading"];
         userImage.file = (PFFile *)user[@"userImage"];
         
         

@@ -14,6 +14,8 @@
 
 - (void)awakeFromNib {
     // Initialization code
+    _addDelFriends.layer.cornerRadius = 5;
+
 }
 - (IBAction)confirmBtnPressed:(id)sender {
     if ([_addDelFriends.currentTitle isEqual:@"加好友"]) {

@@ -65,6 +65,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     //Setup stopBtn
+    
     [_stopButton configureButtonWithHightlightedShadowAndZoom:YES];
     [_stopButton setEmptyButtonPressing:YES];
     [_stopButton setFillPercent:1.0];
@@ -353,10 +354,12 @@
     // Dispose of any resources that can be recreated.
 }
 
+
+
 //-(float)getCaloryParameter{
 //    switch (sportType) {
-//        case <#constant#>:
-//            <#statements#>
+//        case :
+//
 //            break;
 //            
 //        default:
