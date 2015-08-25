@@ -12,8 +12,8 @@
 
 @interface NotificationTableViewController (){
     NSMutableArray *notidicationArray;  /**< 加好友通知 */
-    NSString *otherPersonObjectId;  /**< 對方objectId */
-    NSString *otherPersonName;  /**< 對方Name */
+    NSString *otherPersonObjectId;      /**< 對方objectId */
+    NSString *otherPersonName;          /**< 對方Name */
 }
 
 @end

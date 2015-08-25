@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#pragma mark UIGestureRecognizerDelegate methods
 @interface TrendViewController : UIViewController
 - (NSInteger) plusWithNumber1:(NSInteger)numbe1 number2:(NSInteger)number2 ;
 @end

@@ -12,7 +12,7 @@
 
 @interface FavoriteSportViewController ()<AKPickerViewDelegate, AKPickerViewDataSource, UITableViewDelegate, UITableViewDataSource>{
     NSMutableArray * sportsItemArray;   /**< 運動項目陣列 */
-    NSString *getSportsName;    /**< 選中的運動項目 */
+    NSString *getSportsName;            /**< 選中的運動項目 */
     BOOL didUpdateItem;
 }
 @property (weak, nonatomic) IBOutlet UITableView *tableView;

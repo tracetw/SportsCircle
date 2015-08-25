@@ -12,11 +12,13 @@
 
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
 #import <FBSDKLoginKit/FBSDKLoginKit.h>
-@interface LoginViewController ()<UITextFieldDelegate, FBSDKLoginButtonDelegate>
-@property (weak, nonatomic) IBOutlet FBSDKLoginButton *fbLoginButtonView;   /**< FB登入按鈕 */
+@interface LoginViewController ()<UITextFieldDelegate, FBSDKLoginButtonDelegate>{
+    PFUser *currentUser;    /**< Parse當前帳戶 */
+}
+@property (weak, nonatomic) IBOutlet FBSDKLoginButton *fbLoginButtonView;           /**< FB登入按鈕 */
 @property (weak, nonatomic) IBOutlet FBSDKProfilePictureView *fbProfilePictureView; /**< FB個人頭像 */
-@property (weak, nonatomic) IBOutlet UITextField *userTextField;    /**< 帳號 */
-@property (weak, nonatomic) IBOutlet UITextField *passwordTextField;    /**< 密碼 */
+@property (weak, nonatomic) IBOutlet UITextField *userTextField;                    /**< 帳號 */
+@property (weak, nonatomic) IBOutlet UITextField *passwordTextField;                /**< 密碼 */
 @end
 
 @implementation LoginViewController
@@ -67,6 +69,15 @@
 
 - (void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:YES];
+    
+    currentUser = [PFUser currentUser];
+    if (currentUser) {
+        NSLog(@"未登出%@",currentUser);
+        [self performSegueWithIdentifier:@"LoginSuccesful" sender:nil];
+    } else {
+        NSLog(@"已登出%@",currentUser);
+    }
+    
     //如果FB是登入的狀態所要執行的方法
     if ([FBSDKAccessToken currentAccessToken] && [FBSDKProfile currentProfile].userID != nil) {
         //[self performSegueWithIdentifier:@"LoginSuccesful" sender:nil];
@@ -140,7 +151,7 @@ didCompleteWithResult:(FBSDKLoginManagerLoginResult *)result
      */
     
     //如果parse 是登入狀態
-    PFUser *currentUser = [PFUser currentUser];
+    currentUser = [PFUser currentUser];
     if (currentUser) {
         NSLog(@"未登出%@",currentUser);
             [self performSegueWithIdentifier:@"LoginSuccesful" sender:nil];
