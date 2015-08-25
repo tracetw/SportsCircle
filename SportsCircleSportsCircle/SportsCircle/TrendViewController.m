@@ -19,7 +19,7 @@
 #import "endRecordingTableViewController.h"
 #import "myPostImageView.h"
 
-@interface TrendViewController ()<UITableViewDelegate,UITableViewDataSource>
+@interface TrendViewController ()<UITableViewDelegate,UITableViewDataSource,UIGestureRecognizerDelegate>
 {
     NSDictionary *postWallDictionary;
     NSArray *postWallArray;
@@ -75,6 +75,7 @@
     
     UITapGestureRecognizer *toTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(toTap)];
     [_theTrendView addGestureRecognizer:toTap];
+        toTap.delegate = self;
     
     
     //允許ImageView接受使用者互動
@@ -564,6 +565,13 @@
     [_goButton setTitleColor:[UIColor colorWithWhite:1 alpha:1.0] forState:UIControlStateSelected];
     [_goButton setTitleColor:[UIColor colorWithWhite:1 alpha:1.0] forState:UIControlStateHighlighted];
     _goButton.backgroundColor = [UIColor colorWithRed:57.0f/255.0f green:88.0f/255.0f blue:100.0f/255.0f alpha:1];
+}
+
+- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch {
+    if (_theListView.isHidden) {
+        return NO;
+    }
+    return YES;
 }
 
 @end

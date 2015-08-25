@@ -10,10 +10,10 @@
 #import <Parse/Parse.h>
 
 @interface DetailImageViewController ()<UIScrollViewDelegate,UIPageViewControllerDelegate>{
-    int targetIndex;    /**< 第幾張照片 */
-    NSInteger totalclothingNumber;    /**< 裝備照片總數 */
-    NSArray *usersPostsArray;   /**< 使用者PO的文章 */
-    UIPageControl *pageControl; /**< 頁面控制小工具 */
+    int targetIndex;                /**< 第幾張照片 */
+    NSInteger totalclothingNumber;  /**< 裝備照片總數 */
+    NSArray *usersPostsArray;       /**< 使用者PO的文章 */
+    UIPageControl *pageControl;     /**< 頁面控制小工具 */
 }
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
 @property (weak, nonatomic) IBOutlet UIScrollView *theScrollView;
