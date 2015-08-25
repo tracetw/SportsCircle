@@ -145,7 +145,7 @@
     userImage.file = (PFFile *)user[@"userImage"];
     cell.userImage.image = userImage.image;
     [userImage loadInBackground:^(UIImage *image,  NSError * error){
-        cell.userImage.image = image;
+        cell.userImage.image = userImage.image;
     }];
 
     

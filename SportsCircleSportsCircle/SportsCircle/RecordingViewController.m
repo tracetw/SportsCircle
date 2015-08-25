@@ -13,6 +13,20 @@
 #import "DKCircleButton.h"
 #import "ABFillButton.h"
 
+//typedef enum {
+//    Other = 0,
+//    Archery,
+//    Athletics,
+//    Badminton,
+//    Basketball,
+//    Cycling,
+//    Diving,
+//    Taekwondo,
+//    Tennis,
+//    Trampoline,
+//    Volleyball,
+//}sportType;
+
 @interface RecordingViewController ()<UINavigationBarDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate,ABFillButtonDelegate>
 {
     int count;
@@ -231,6 +245,8 @@
     _hour.text = [NSString stringWithFormat:@"%02d",hour];
     _miniSecond.text = [NSString stringWithFormat:@"%02d",ms];
     recordingTime = [NSString stringWithFormat:@"%02d:%02d:%02d",hour,minites,second];
+    
+    
     if ([sportName isEqualToString:@"Athletics"] || [sportName isEqualToString:@"Cycling"]) {
         float distanceFloat = [mapRecordingView getDistance];
         distance = @(distanceFloat);
@@ -336,6 +352,19 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+//-(float)getCaloryParameter{
+//    switch (sportType) {
+//        case <#constant#>:
+//            <#statements#>
+//            break;
+//            
+//        default:
+//            break;
+//    }
+//    
+//    
+//}
 
 /*
 #pragma mark - Navigation
