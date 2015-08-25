@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
@@ -2191,15 +2191,7 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Title" id="iXE-7M-3eE">
-                        <barButtonItem key="rightBarButtonItem" image="homeBtn" id="HrZ-0y-S9d">
-                            <connections>
-<<<<<<< HEAD
-                                <segue destination="zs4-Vf-Z1D" kind="unwind" unwindAction="backTotrendView:" id="KeU-od-Lbw"/>
-=======
-                                <segue destination="TEF-N4-G76" kind="unwind" unwindAction="backTotrendView:" id="cPe-mX-5Rd"/>
->>>>>>> 64160dcb38dbd3b8f717af4c6cc091d4ccd8726f
-                            </connections>
-                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" image="homeBtn" id="HrZ-0y-S9d"/>
                     </navigationItem>
                     <connections>
                         <outlet property="calorieLabel" destination="TrI-Mm-KwE" id="iCQ-qr-7nD"/>
@@ -2218,11 +2210,6 @@
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Psd-cG-wmv" userLabel="First Responder" sceneMemberID="firstResponder"/>
-<<<<<<< HEAD
-                <exit id="zs4-Vf-Z1D" userLabel="Exit" sceneMemberID="exit"/>
-=======
-                <exit id="TEF-N4-G76" userLabel="Exit" sceneMemberID="exit"/>
->>>>>>> 64160dcb38dbd3b8f717af4c6cc091d4ccd8726f
             </objects>
             <point key="canvasLocation" x="1467" y="4034"/>
         </scene>

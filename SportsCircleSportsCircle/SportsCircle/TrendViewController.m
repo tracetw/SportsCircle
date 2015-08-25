@@ -81,7 +81,7 @@
     //允許ImageView接受使用者互動
     _theTrendView.userInteractionEnabled = YES;
     
-    self.navigationItem.backBarButtonItem=[[UIBarButtonItem alloc]initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
+    self.navigationItem.backBarButtonItem=[[UIBarButtonItem alloc]initWithTitle:@"動態首頁" style:UIBarButtonItemStylePlain target:nil action:nil];
     [self.navigationController.navigationBar setTintColor:[UIColor whiteColor]];
     //返回到grayViewControllor的按鈕名稱改為中文～返回～
     
@@ -527,20 +527,16 @@
     //進入detail頁面
     if ([[segue identifier] isEqualToString:@"homeGoDetailView"]){
         endRecordingTableViewController *controller = (endRecordingTableViewController *)[segue destinationViewController];
-
-        //index.row=sender
-        //NSLog(@"%@",selectObjectId);
-        //selectObjectId=[sender Oid1];
-        //selectObjectId = postWallObject.objectId;
-        //selectObjectId=sender;
+        
         
         if ([sender isKindOfClass:[myPostImageView class]]) {
             [controller getObjectID:[sender ObjectIdStr]];
+
         }else{
-            [controller getObjectID:sender];
+            [controller getObjectID:selectObjectId];
+            //[controller getObjectID:sender];
         }
 
-        
     }
 
 }
