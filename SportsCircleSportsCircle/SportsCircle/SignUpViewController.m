@@ -12,7 +12,7 @@
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
 #import <FBSDKLoginKit/FBSDKLoginKit.h>
 @interface SignUpViewController ()<UITextFieldDelegate, FBSDKLoginButtonDelegate>
-@property (weak, nonatomic) IBOutlet UITextField *userTextField;    /**< 帳號 */
+@property (weak, nonatomic) IBOutlet UITextField *userTextField;        /**< 帳號 */
 @property (weak, nonatomic) IBOutlet UITextField *passwordTextField;    /**< 密碼 */
 @end
 

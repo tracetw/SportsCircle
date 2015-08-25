@@ -18,27 +18,27 @@
 #import "UIFont+FlatUI.h"
 
 @interface EditProfileTableViewController ()<UITableViewDelegate,UITableViewDataSource,UICollectionViewDataSource, UICollectionViewDelegate,UINavigationControllerDelegate, UIImagePickerControllerDelegate>{
-    NSMutableDictionary *profileDictionary; /**< 存個人資料包在Array裡面 */
-    NSMutableArray *profileAndPictureArray; /**< 存個人資料及照片 */
-    NSMutableDictionary *tempDictionary;    /**< 暫存的Dictionary */
-    NSArray *sportsItemArray;   /**< 運動項目Array */
-    NSArray *selectUserSportsItemArray;  /**< 點擊進來的使用者運動項目Array */
-    BOOL tempDidUpdateSportItem;    /**< 儲存是否有更新喜愛運動項目 */
-    NSInteger totalSportPictureNumber; /**< 運動照片數量 */
-    NSInteger totalClothingPictureNumber;   /**< 裝備照片數量 */
-    NSString *selectUserName;   /**< 點擊進來的使用者名稱 */
-    NSString *selectUserObjectId;    /**< 點擊進來的使用者ObjectId */
-    BOOL didCurrentUser; /**< 是否為當前用戶 */
-    UIImagePickerController *imagePicker;   /**< 選擇上傳照片 */
-    NSMutableArray *friendsArray;  /**< 好友列表 */
-    NSMutableArray *unfriendsArray;    /**< 要求加好友列表 */
-    BOOL didBeFriend;   /**< 已經是好友 */
-    BOOL ConfirmBeFriend;   /**< 確認好友邀請 */
-    BOOL prepareForBeFriend; /**< 準備成為好友 */
-    NSString *otherPersonobjectId;  /**< 準備加入的好友 */
-    NSMutableArray *otherPersonfriendsArray;  /**< 對方好友列表 */
-    NSMutableArray *otherPersonunfriendsArray;    /**< 對方要求加好友列表 */
-    PFUser *currentUser;    /**< 當前使用者 */
+    NSMutableDictionary *profileDictionary;     /**< 存個人資料包在Array裡面 */
+    NSMutableArray *profileAndPictureArray;     /**< 存個人資料及照片 */
+    NSMutableDictionary *tempDictionary;        /**< 暫存的Dictionary */
+    NSArray *sportsItemArray;                   /**< 運動項目Array */
+    NSArray *selectUserSportsItemArray;         /**< 點擊進來的使用者運動項目Array */
+    BOOL tempDidUpdateSportItem;                /**< 儲存是否有更新喜愛運動項目 */
+    NSInteger totalSportPictureNumber;          /**< 運動照片數量 */
+    NSInteger totalClothingPictureNumber;       /**< 裝備照片數量 */
+    NSString *selectUserName;                   /**< 點擊進來的使用者名稱 */
+    NSString *selectUserObjectId;               /**< 點擊進來的使用者ObjectId */
+    BOOL didCurrentUser;                        /**< 是否為當前用戶 */
+    UIImagePickerController *imagePicker;       /**< 選擇上傳照片 */
+    NSMutableArray *friendsArray;               /**< 好友列表 */
+    NSMutableArray *unfriendsArray;             /**< 要求加好友列表 */
+    BOOL didBeFriend;                           /**< 已經是好友 */
+    BOOL ConfirmBeFriend;                       /**< 確認好友邀請 */
+    BOOL prepareForBeFriend;                    /**< 準備成為好友 */
+    NSString *otherPersonobjectId;              /**< 準備加入的好友 */
+    NSMutableArray *otherPersonfriendsArray;    /**< 對方好友列表 */
+    NSMutableArray *otherPersonunfriendsArray;  /**< 對方要求加好友列表 */
+    PFUser *currentUser;                        /**< 當前使用者 */
 }
 @property (weak, nonatomic) IBOutlet UIImageView *userImageView;
 @property (weak, nonatomic) IBOutlet UITableViewCell *nameCell;
@@ -49,7 +49,7 @@
 @property (weak, nonatomic) IBOutlet UITableViewCell *habitCell;
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;  /**< 運動相片 */
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView2; /**< 裝備相片 */
-@property (weak, nonatomic) IBOutlet FUIButton *beFriendButton; /**< 好友按鈕 */
+@property (weak, nonatomic) IBOutlet FUIButton *beFriendButton;         /**< 好友按鈕 */
 @property (weak, nonatomic) IBOutlet UIButton *updataImageBtnPressed;   /**< 更新照片按鈕 */
 
 @end

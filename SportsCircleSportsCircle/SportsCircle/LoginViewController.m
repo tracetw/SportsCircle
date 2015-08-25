@@ -13,10 +13,10 @@
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
 #import <FBSDKLoginKit/FBSDKLoginKit.h>
 @interface LoginViewController ()<UITextFieldDelegate, FBSDKLoginButtonDelegate>
-@property (weak, nonatomic) IBOutlet FBSDKLoginButton *fbLoginButtonView;   /**< FB登入按鈕 */
+@property (weak, nonatomic) IBOutlet FBSDKLoginButton *fbLoginButtonView;           /**< FB登入按鈕 */
 @property (weak, nonatomic) IBOutlet FBSDKProfilePictureView *fbProfilePictureView; /**< FB個人頭像 */
-@property (weak, nonatomic) IBOutlet UITextField *userTextField;    /**< 帳號 */
-@property (weak, nonatomic) IBOutlet UITextField *passwordTextField;    /**< 密碼 */
+@property (weak, nonatomic) IBOutlet UITextField *userTextField;                    /**< 帳號 */
+@property (weak, nonatomic) IBOutlet UITextField *passwordTextField;                /**< 密碼 */
 @end
 
 @implementation LoginViewController
