@@ -9,11 +9,14 @@
 #define EngNum @"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789" //可以輸入英文數字
 #import "LoginViewController.h"
 #import <Parse/Parse.h>
-
+#import "Reachability.h"
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
 #import <FBSDKLoginKit/FBSDKLoginKit.h>
+#import "AppDelegate.h"
 @interface LoginViewController ()<UITextFieldDelegate, FBSDKLoginButtonDelegate>{
     PFUser *currentUser;    /**< Parse當前帳戶 */
+    Reachability *rech;
+
 }
 @property (weak, nonatomic) IBOutlet FBSDKLoginButton *fbLoginButtonView;           /**< FB登入按鈕 */
 @property (weak, nonatomic) IBOutlet FBSDKProfilePictureView *fbProfilePictureView; /**< FB個人頭像 */
@@ -23,14 +26,14 @@
 
 @implementation LoginViewController
 
+
+
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    
 
-    
-    
-    
+
     
     //開啟自動追蹤currentAccessToken
     //[FBSDKProfile enableUpdatesOnAccessTokenChange:YES];
@@ -70,13 +73,12 @@
 - (void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:YES];
     
-    currentUser = [PFUser currentUser];
-    if (currentUser) {
-        NSLog(@"未登出%@",currentUser);
-        [self performSegueWithIdentifier:@"LoginSuccesful" sender:nil];
-    } else {
-        NSLog(@"已登出%@",currentUser);
+    if (!rech) {
+        [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(reachabilityChanged:) name:kReachabilityChangedNotification object:nil];
+        rech = [Reachability reachabilityWithHostName:@"www.apple.com"];
+        [rech startNotifier];
     }
+
     
     //如果FB是登入的狀態所要執行的方法
     if ([FBSDKAccessToken currentAccessToken] && [FBSDKProfile currentProfile].userID != nil) {
@@ -87,7 +89,7 @@
         NSLog(@"FB linkURL = %@",[FBSDKProfile currentProfile].linkURL);
         
         //userID轉長整數資料型態
-        NSLog(@"%li ", [[FBSDKProfile currentProfile].userID integerValue]);
+        NSLog(@"%li ", (long)[[FBSDKProfile currentProfile].userID integerValue]);
 
         [self ifFindFBuserID];
     }else{
@@ -300,6 +302,38 @@ didCompleteWithResult:(FBSDKLoginManagerLoginResult *)result
 -(IBAction)backToLogin:(UIStoryboardSegue *)segue
 {
 }
+
+
+- (void) reachabilityChanged:(NSNotification*)note{
+    
+    NetworkStatus netStatus = [note.object currentReachabilityStatus];
+    if (netStatus == NotReachable) {
+        NSLog(@"目前沒有網路，請檢查您的網路狀態");
+        [self showAlertWithTitle:nil message:@"目前沒有網路，請檢查您的網路狀態"];
+        
+        
+    }else{
+        
+        currentUser = [PFUser currentUser];
+        if (currentUser) {
+            NSLog(@"未登出%@",currentUser);
+            [self performSegueWithIdentifier:@"LoginSuccesful" sender:nil];
+        } else {
+            NSLog(@"已登出%@",currentUser);
+        }
+        
+    }
+}
+
+-(void) showAlertWithTitle:(NSString *)title message:(NSString *)message{
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:title message:message preferredStyle:UIAlertControllerStyleAlert];
+    
+    UIAlertAction *action = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
+    [alert addAction:action];
+    [self dismissViewControllerAnimated:YES completion:nil];
+    [self presentViewController:alert animated:YES completion:nil];
+}
+
 
 //UITextFieldTextDidEndEditingNotification
 /*
