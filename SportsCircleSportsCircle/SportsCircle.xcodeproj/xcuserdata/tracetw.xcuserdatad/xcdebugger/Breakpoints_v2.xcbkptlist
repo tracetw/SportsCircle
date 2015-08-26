@@ -63,12 +63,12 @@
                   moduleName = "SportsCircle"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/tracetw/Documents/SportsCircle/SportsCircleSportsCircle/SportsCircle/PersonalPageViewController.h"
-                  timestampString = "462180446.673727"
+                  timestampString = "462290736.405647"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "16"
                   endingLineNumber = "16"
-                  offsetFromSymbolStart = "12">
+                  offsetFromSymbolStart = "16">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -78,12 +78,12 @@
                   moduleName = "SportsCircle"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/tracetw/Documents/SportsCircle/SportsCircleSportsCircle/SportsCircle/PersonalPageViewController.h"
-                  timestampString = "462180446.673885"
+                  timestampString = "462290736.40581"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "16"
                   endingLineNumber = "16"
-                  offsetFromSymbolStart = "20">
+                  offsetFromSymbolStart = "22">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -111,12 +111,12 @@
                   moduleName = "SportsCircle"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/tracetw/Documents/SportsCircle/SportsCircleSportsCircle/SportsCircle/PersonalPageViewController.h"
-                  timestampString = "462180446.674711"
+                  timestampString = "462290736.406855"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "16"
                   endingLineNumber = "16"
-                  offsetFromSymbolStart = "12">
+                  offsetFromSymbolStart = "16">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -126,12 +126,12 @@
                   moduleName = "SportsCircle"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/tracetw/Documents/SportsCircle/SportsCircleSportsCircle/SportsCircle/PersonalPageViewController.h"
-                  timestampString = "462180446.674957"
+                  timestampString = "462290736.406985"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "16"
                   endingLineNumber = "16"
-                  offsetFromSymbolStart = "20">
+                  offsetFromSymbolStart = "22">
                </Location>
             </Locations>
          </BreakpointContent>

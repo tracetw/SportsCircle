@@ -68,6 +68,7 @@
 		D34A634E1B4CED0700710B1F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D34A634C1B4CED0700710B1F /* Main.storyboard */; };
 		D34A63531B4CED0700710B1F /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = D34A63511B4CED0700710B1F /* LaunchScreen.xib */; };
 		D34A635F1B4CED0700710B1F /* SportsCircleTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D34A635E1B4CED0700710B1F /* SportsCircleTests.m */; };
+		D34F11F11B8DD915007FEE00 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = D34F11F01B8DD915007FEE00 /* Reachability.m */; };
 		D34FCE1E1B7B86870002DE1A /* FUIAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = D34FCDF71B7B86870002DE1A /* FUIAlertView.m */; };
 		D34FCE1F1B7B86870002DE1A /* FUIButton.m in Sources */ = {isa = PBXBuildFile; fileRef = D34FCDF91B7B86870002DE1A /* FUIButton.m */; };
 		D34FCE201B7B86870002DE1A /* FUICellBackgroundView.m in Sources */ = {isa = PBXBuildFile; fileRef = D34FCDFB1B7B86870002DE1A /* FUICellBackgroundView.m */; };
@@ -225,6 +226,8 @@
 		D34A63581B4CED0700710B1F /* SportsCircleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SportsCircleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D34A635D1B4CED0700710B1F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D34A635E1B4CED0700710B1F /* SportsCircleTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SportsCircleTests.m; sourceTree = "<group>"; };
+		D34F11EF1B8DD915007FEE00 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
+		D34F11F01B8DD915007FEE00 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
 		D34FCDF51B7B86870002DE1A /* FlatUIKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlatUIKit.h; sourceTree = "<group>"; };
 		D34FCDF61B7B86870002DE1A /* FUIAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FUIAlertView.h; sourceTree = "<group>"; };
 		D34FCDF71B7B86870002DE1A /* FUIAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FUIAlertView.m; sourceTree = "<group>"; };
@@ -554,6 +557,16 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		D34F11EE1B8DD915007FEE00 /* Reachability */ = {
+			isa = PBXGroup;
+			children = (
+				D34F11EF1B8DD915007FEE00 /* Reachability.h */,
+				D34F11F01B8DD915007FEE00 /* Reachability.m */,
+			);
+			name = Reachability;
+			path = framework/Reachability;
+			sourceTree = "<group>";
+		};
 		D34FCDF41B7B86870002DE1A /* FlatUIKit */ = {
 			isa = PBXGroup;
 			children = (
@@ -606,6 +619,7 @@
 		D3AD4CB71B64DC1F00FC7F8E /* framework */ = {
 			isa = PBXGroup;
 			children = (
+				D34F11EE1B8DD915007FEE00 /* Reachability */,
 				D341CB2A1B84C23C0038D477 /* WZLBadge */,
 				D34FCDF41B7B86870002DE1A /* FlatUIKit */,
 				D30CA20F1B74AA2100CE61AD /* FBSDKCoreKit.framework */,
@@ -765,6 +779,7 @@
 				D34FCE1F1B7B86870002DE1A /* FUIButton.m in Sources */,
 				D34FCE271B7B86870002DE1A /* UIColor+FlatUI.m in Sources */,
 				D34FCE211B7B86870002DE1A /* FUIPopoverBackgroundView.m in Sources */,
+				D34F11F11B8DD915007FEE00 /* Reachability.m in Sources */,
 				705A3D011B817F2F0019F7A8 /* MyImageAnnotationView.m in Sources */,
 				708574CB1B87397200700654 /* MyPointAnnotation.m in Sources */,
 				D34FCE261B7B86870002DE1A /* UIBarButtonItem+FlatUI.m in Sources */,
