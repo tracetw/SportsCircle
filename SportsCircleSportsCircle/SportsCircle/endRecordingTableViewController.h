@@ -11,7 +11,7 @@
 
 @interface endRecordingTableViewController : UITableViewController
 
-@property (weak, nonatomic) UIImage *snapshotImage;
+@property (strong, nonatomic) UIImage *snapshotImage;
 @property (strong, nonatomic) NSNumber *speed;
 @property (strong, nonatomic) NSNumber *distance;
 @property (strong, nonatomic) NSString *countTime;

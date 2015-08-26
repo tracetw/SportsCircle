@@ -130,6 +130,7 @@
     _contentTextLabel.text = sendInObject[@"content"];
     _locatoinLabel.text = sendInObject[@"location"];
     _calorieLabel.text = sendInObject[@"calories"];
+    
 
     if ([_comingView isEqualToString:@"recordingView"]) {
         self.navigationItem.hidesBackButton = YES;
@@ -174,10 +175,16 @@
                 snapshotImage.image = image;
                 _snapshotForImage.image = snapshotImage.image;
             }];
+//            PFFile *imageFile = [PFFile new];
+//            imageFile = sendInObject[@"mapSnapshot"];
+//            NSData *imageData = [imageFile getData];
+//            _snapshotForImage.image = [UIImage imageWithData:imageData];
+        }else{
+            _snapshotForImage.image = _snapshotImage;
         }
         _distanceLabel.text = [NSString stringWithFormat:@"%.2f km",[_distance doubleValue]];
         _speedLabel.text = [NSString stringWithFormat:@" %.1f km/hr",[_speed doubleValue]];
-        _snapshotForImage.image = _snapshotImage;
+        
     }
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;

@@ -317,7 +317,7 @@
 -(CLLocationDistance)findLongestDistance{
     
     CLLocationDistance distance;
-    CLLocationDistance distance2 = 100;
+    CLLocationDistance distance2 = 400;
     
     for (int x=0; x < locationMutableArray.count; x++) {
         for (int y =0; y < locationMutableArray.count; y++) {
