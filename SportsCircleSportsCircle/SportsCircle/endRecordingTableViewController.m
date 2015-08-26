@@ -28,6 +28,11 @@
 @property (weak, nonatomic) IBOutlet UIImageView *snapshotForImage;
 @property (weak, nonatomic) IBOutlet UILabel *speedLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *speedImage;
+@property (weak, nonatomic) IBOutlet UIImageView *equitmentImage;
+@property (weak, nonatomic) IBOutlet UIImageView *clothesImage;
+@property (weak, nonatomic) IBOutlet UIImageView *pantsImage;
+@property (weak, nonatomic) IBOutlet UIImageView *shoesImage;
+@property (weak, nonatomic) IBOutlet UILabel *locatoinLabel;
 
 
 @end
@@ -46,15 +51,57 @@
 //    NSData *mainImageData = [mainImagePFFile getData];
 //    UIImage *mainImage = [UIImage imageWithData:mainImageData];
     PFImageView *mainImage = [PFImageView new];
-    mainImage.image = [UIImage imageNamed:@"camera"];
+    mainImage.image = [UIImage imageNamed:@"loading"];
     mainImage.file = (PFFile *)sendInObject[@"image1"];
     [mainImage loadInBackground:^(UIImage *image,NSError *error){
-        _mainImageView.image = mainImage.image;
+        mainImage.image = image;
+         _mainImageView.image = mainImage.image;
     }];
-    
-    
     _mainImageView.image = mainImage.image;
-
+    
+    PFImageView *equiptmentImage = [PFImageView new];
+    equiptmentImage.image = [UIImage imageNamed:@"ball"];
+    equiptmentImage.file = (PFFile *)sendInObject[@"image2"];
+    [equiptmentImage loadInBackground:^(UIImage *image,NSError *error){
+        if (image != nil) {
+        equiptmentImage.image = image;
+        _equitmentImage.image = equiptmentImage.image;
+        }
+    }];
+    _equitmentImage.image = equiptmentImage.image;
+    
+    PFImageView *clothesImage = [PFImageView new];
+    clothesImage.image = [UIImage imageNamed:@"clothes"];
+    clothesImage.file = (PFFile *)sendInObject[@"image3"];
+    [clothesImage loadInBackground:^(UIImage *image,NSError *error){
+        if (image != nil) {
+        clothesImage.image = image;
+        _clothesImage.image = clothesImage.image;
+        }
+    }];
+    _clothesImage.image = clothesImage.image;
+    
+    PFImageView *pantsImage = [PFImageView new];
+    pantsImage.image = [UIImage imageNamed:@"pants"];
+    pantsImage.file = (PFFile *)sendInObject[@"image4"];
+    [pantsImage loadInBackground:^(UIImage *image,NSError *error){
+        if (image != nil) {
+        pantsImage.image = image;
+        _pantsImage.image = pantsImage.image;
+        }
+    }];
+    _pantsImage.image = pantsImage.image;
+    
+    PFImageView *shoesImage = [PFImageView new];
+    shoesImage.image = [UIImage imageNamed:@"shoes"];
+    shoesImage.file = (PFFile *)sendInObject[@"image5"];
+    [shoesImage loadInBackground:^(UIImage *image,NSError *error){
+        if (image != nil) {
+        shoesImage.image = image;
+        _shoesImage.image = shoesImage.image;
+        }
+    }];
+    _shoesImage.image = shoesImage.image;
     
     NSString *sportType = sendInObject[@"sportsType"];
     _sportTypeImage.image = [UIImage imageNamed:sportType];
@@ -81,14 +128,17 @@
         _userImageView.image = userImage.image;
     }];
     _contentTextLabel.text = sendInObject[@"content"];
-    
+    _locatoinLabel.text = sendInObject[@"location"];
+    _calorieLabel.text = sendInObject[@"calories"];
 
-//    if ([_comingView isEqualToString:@"recordingView"]) {
-//        [self.navigationController setNavigationBarHidden:YES animated:YES];
-//    }
+    if ([_comingView isEqualToString:@"recordingView"]) {
+        self.navigationItem.hidesBackButton = YES;
+    }
 
     if (![_comingView isEqualToString:@"recordingView"]) {
         _countTime = sendInObject[@"recordingTime"];
+        [self.navigationItem.rightBarButtonItem setTintColor:[UIColor clearColor]];
+        [self.navigationItem.rightBarButtonItem setEnabled:NO];
     }
 
    // _totalTimeLabel.text = sendInObject[@"recordingTime"];
@@ -149,8 +199,11 @@
     }else if (indexPath.row == 1)
     {
     return customSecondTableCellHeight;
-    }else
+    }else if (indexPath.row == 2)
         return customThirdTableCellHeight;
+    else{
+        return 125;
+    }
 }
 
 -(void)getObjectID:(NSString*)objectID{

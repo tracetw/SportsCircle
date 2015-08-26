@@ -87,12 +87,14 @@
 
 
 - (IBAction)locatiionBtnPressed:(id)sender {
+    
+
+    MKCoordinateRegion region = _recordingMapView.region;
+    region.center = currentLocation.coordinate;
+    region.span.latitudeDelta = 0.003;
+    region.span.longitudeDelta = 0.003;
     _recordingMapView.userTrackingMode = MKUserTrackingModeFollowWithHeading;
-//    MKCoordinateRegion region = _recordingMapView.region;
-//    region.center = currentLocation.coordinate;
-//    region.span.latitudeDelta = 0.003;
-//    region.span.longitudeDelta = 0.003;
-//    
+//
 //    [_recordingMapView setRegion:region animated:true];
 //    
 }
@@ -188,7 +190,7 @@
     CLLocationDistance distance = [self findLongestDistance];
 
     MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance(centerPoint, 2*distance, 2*distance) ;
-   //    MKCoordinateRegion region;
+   //    MKCoordinateRegion region; distance距離單位為公尺
     //
     //
     options.region =  region;
@@ -287,6 +289,12 @@
     CLLocation *longDistanceLocationY;
     CLLocationCoordinate2D centerPoint;
     CLLocationDistance distance2 = 0.0;
+    
+    CLLocationCoordinate2D beginCoordinate;
+    longDistanceLocationX = locationMutableArray[0];
+    beginCoordinate = CLLocationCoordinate2DMake(longDistanceLocationX.coordinate.latitude, longDistanceLocationX.coordinate.longitude);
+    centerPoint = beginCoordinate;
+    
     for (int x=0; x < locationMutableArray.count; x++) {
         for (int y =0; y < locationMutableArray.count; y++) {
             CLLocationDistance distance = ([locationMutableArray[y] distanceFromLocation:locationMutableArray[x]]);
@@ -294,10 +302,9 @@
             longDistanceLocationY = locationMutableArray[y];
             CLLocationCoordinate2D coordinate[2];
             coordinate[0] = CLLocationCoordinate2DMake(longDistanceLocationX.coordinate.latitude, longDistanceLocationX.coordinate.longitude);
+           
             coordinate[1] = CLLocationCoordinate2DMake(longDistanceLocationY.coordinate.latitude,longDistanceLocationY.coordinate.longitude);
-            if (locationMutableArray.count<2 || distance == 0) {
-                centerPoint = coordinate[0];
-            }
+
             if (distance > distance2) {
                 distance2 = distance;
                 centerPoint = [self midpointBetweenCoordinate:coordinate[0] andCoordinate:coordinate[1]];
@@ -310,7 +317,7 @@
 -(CLLocationDistance)findLongestDistance{
     
     CLLocationDistance distance;
-    CLLocationDistance distance2 = 0.001;
+    CLLocationDistance distance2 = 100;
     
     for (int x=0; x < locationMutableArray.count; x++) {
         for (int y =0; y < locationMutableArray.count; y++) {

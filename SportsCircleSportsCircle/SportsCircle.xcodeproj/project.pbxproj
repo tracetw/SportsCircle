@@ -13,6 +13,7 @@
 		705A3D171B820C270019F7A8 /* searchLocationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 705A3D161B820C270019F7A8 /* searchLocationViewController.m */; };
 		705A3DD81B83336C0019F7A8 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 705A3DD71B83336C0019F7A8 /* MBProgressHUD.m */; };
 		705B4DD51B7B84680019FC7D /* SearchTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 705B4DD41B7B84680019FC7D /* SearchTableViewCell.m */; };
+		70611E9C1B8C55D40028DFF2 /* myPostImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 70611E9B1B8C55D40028DFF2 /* myPostImageView.m */; };
 		7072471C1B7C28AC00034F62 /* scheduleTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7072471B1B7C28AC00034F62 /* scheduleTableViewCell.m */; };
 		7076B5DA1B6FA972004E81EF /* scheduleEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7076B5D91B6FA972004E81EF /* scheduleEditViewController.m */; };
 		7076B5DD1B70D496004E81EF /* SearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7076B5DC1B70D496004E81EF /* SearchViewController.m */; };
@@ -131,6 +132,8 @@
 		705A3DD71B83336C0019F7A8 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
 		705B4DD31B7B84680019FC7D /* SearchTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchTableViewCell.h; sourceTree = "<group>"; };
 		705B4DD41B7B84680019FC7D /* SearchTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchTableViewCell.m; sourceTree = "<group>"; };
+		70611E9A1B8C55D40028DFF2 /* myPostImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = myPostImageView.h; sourceTree = "<group>"; };
+		70611E9B1B8C55D40028DFF2 /* myPostImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = myPostImageView.m; sourceTree = "<group>"; };
 		7072471A1B7C28AC00034F62 /* scheduleTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = scheduleTableViewCell.h; sourceTree = "<group>"; };
 		7072471B1B7C28AC00034F62 /* scheduleTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = scheduleTableViewCell.m; sourceTree = "<group>"; };
 		7076B5D81B6FA972004E81EF /* scheduleEditViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = scheduleEditViewController.h; sourceTree = "<group>"; };
@@ -352,6 +355,8 @@
 				703E3E8B1B722B7300768912 /* TrendTableViewCell.m */,
 				70D4B7DE1B7E2432000C66C7 /* readPostViewController.h */,
 				70D4B7DF1B7E2432000C66C7 /* readPostViewController.m */,
+				70611E9A1B8C55D40028DFF2 /* myPostImageView.h */,
+				70611E9B1B8C55D40028DFF2 /* myPostImageView.m */,
 			);
 			name = Trend;
 			sourceTree = "<group>";
@@ -799,6 +804,7 @@
 				D34FCE2A1B7B86870002DE1A /* UINavigationBar+FlatUI.m in Sources */,
 				766B4CC71B84E5BC00ECC920 /* DKCircleButton.m in Sources */,
 				D30CA20A1B74A9AD00CE61AD /* scheduleTableViewController.m in Sources */,
+				70611E9C1B8C55D40028DFF2 /* myPostImageView.m in Sources */,
 				D34A63451B4CED0700710B1F /* main.m in Sources */,
 				D3E4B0201B72F7160082DE6B /* FavoriteSportViewController.m in Sources */,
 				D3FCA06F1B875D7900AB927E /* PrivacyViewController.m in Sources */,

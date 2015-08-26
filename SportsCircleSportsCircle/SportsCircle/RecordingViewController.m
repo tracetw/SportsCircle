@@ -13,19 +13,7 @@
 #import "DKCircleButton.h"
 #import "ABFillButton.h"
 
-//typedef enum {
-//    Other = 0,
-//    Archery,
-//    Athletics,
-//    Badminton,
-//    Basketball,
-//    Cycling,
-//    Diving,
-//    Taekwondo,
-//    Tennis,
-//    Trampoline,
-//    Volleyball,
-//}sportType;
+#define CARORY_PARAMETER 350.0;
 
 @interface RecordingViewController ()<UINavigationBarDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate,ABFillButtonDelegate>
 {
@@ -41,9 +29,10 @@
     NSNumber *speedNo;
     NSString *recordingTime;
     NSString *objectID;
-    DKCircleButton *pauseBtn;
     BOOL buttonState;
     UIImage *mainPostImage;
+    NSString *userWeight;
+    NSString *calory;
 }
 @property (weak, nonatomic) IBOutlet ABFillButton *stopButton;
 @property (weak, nonatomic) IBOutlet UILabel *miniSecond;
@@ -56,6 +45,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *distanceTextLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *distanceImage;
 @property (strong, nonatomic) IBOutlet UIView *backgroundView;
+@property (weak, nonatomic) IBOutlet DKCircleButton *pauseButton;
 @property (weak, nonatomic) UIImage *mapRecordingImage;
 @end
 
@@ -117,9 +107,15 @@
     
     _sportTypeImage.image = [UIImage imageNamed:sportName];
     
-   
-    
     [self initPauseButton];
+    
+    PFUser *currentUser = [PFUser currentUser];
+    PFQuery *queryPersonalClass = [PFQuery queryWithClassName:@"PersionalInfo"];
+    [queryPersonalClass whereKey:@"user" equalTo:currentUser];
+    [queryPersonalClass findObjectsInBackgroundWithBlock:^(NSArray *array,NSError *error){
+        PFObject *currentUserPersonalInfoClassObject = array[0];
+        userWeight = currentUserPersonalInfoClassObject[@"weight"];
+    }];
     
     
 }
@@ -154,6 +150,8 @@
     objectID = lastPostObject.objectId;
     NSLog(@"%@",lastPostObject);
     
+    
+    
     if ([sportName isEqualToString:@"Athletics"] || [sportName isEqualToString:@"Cycling"]) {
         _mapRecordingImage = [mapRecordingView snapShotRoute];
         NSData *imageData = UIImagePNGRepresentation(_mapRecordingImage);
@@ -168,6 +166,8 @@
     }
     
     lastPostObject[@"recordingTime"] = recordingTime;
+    [lastPostObject saveInBackground];
+    lastPostObject[@"calories"] = calory;
     [lastPostObject saveInBackground];
     [self performSegueWithIdentifier:@"goEndRecording" sender:nil];
     [_stopButton setFillPercent:1.0];
@@ -247,7 +247,17 @@
     _miniSecond.text = [NSString stringWithFormat:@"%02d",ms];
     recordingTime = [NSString stringWithFormat:@"%02d:%02d:%02d",hour,minites,second];
     
+    int weight;
+        if (userWeight == NULL) {
+            weight = 50;
+        }else{
+            weight = [userWeight intValue];
+        }
     
+    NSLog(@"userweight %d",weight);
+    double changeToHour =hour+(minites/60.0)+(second/3600.0);
+    calory = [NSString stringWithFormat:@"%.0f", weight*7*changeToHour];
+    _caloryTextLabel.text = calory;
     if ([sportName isEqualToString:@"Athletics"] || [sportName isEqualToString:@"Cycling"]) {
         float distanceFloat = [mapRecordingView getDistance];
         distance = @(distanceFloat);
@@ -299,7 +309,7 @@
     view.countTime = recordingTime;
     view.speed = speedNo;
     view.distance = distance;
-
+    view.calory = calory;
     view.comingView = @"recordingView";
 
     
@@ -311,35 +321,33 @@
 }
 
 -(void) initPauseButton{
-    pauseBtn = [[DKCircleButton alloc] initWithFrame:CGRectMake(0, 0, 90, 90)];
     
-    pauseBtn.center = CGPointMake(120, 600);
-    pauseBtn.titleLabel.font = [UIFont systemFontOfSize:22];
+    _pauseButton.titleLabel.font = [UIFont systemFontOfSize:22];
+    _pauseButton.layer.cornerRadius = _pauseButton.bounds.size.width/2;
+    [_pauseButton setTitleColor:[UIColor colorWithWhite:1 alpha:1.0] forState:UIControlStateNormal];
+    [_pauseButton setTitleColor:[UIColor colorWithWhite:1 alpha:1.0] forState:UIControlStateSelected];
+    [_pauseButton setTitleColor:[UIColor colorWithWhite:1 alpha:1.0] forState:UIControlStateHighlighted];
     
-    [pauseBtn setTitleColor:[UIColor colorWithWhite:1 alpha:1.0] forState:UIControlStateNormal];
-    [pauseBtn setTitleColor:[UIColor colorWithWhite:1 alpha:1.0] forState:UIControlStateSelected];
-    [pauseBtn setTitleColor:[UIColor colorWithWhite:1 alpha:1.0] forState:UIControlStateHighlighted];
+    [_pauseButton setTitle:NSLocalizedString(@"Pause", nil) forState:UIControlStateNormal];
+    [_pauseButton setTitle:NSLocalizedString(@"Pause", nil) forState:UIControlStateSelected];
+    [_pauseButton setTitle:NSLocalizedString(@"Pause", nil) forState:UIControlStateHighlighted];
     
-    [pauseBtn setTitle:NSLocalizedString(@"Pause", nil) forState:UIControlStateNormal];
-    [pauseBtn setTitle:NSLocalizedString(@"Pause", nil) forState:UIControlStateSelected];
-    [pauseBtn setTitle:NSLocalizedString(@"Pause", nil) forState:UIControlStateHighlighted];
-    
-    [pauseBtn addTarget:self action:@selector(tapOnButton) forControlEvents:UIControlEventTouchUpInside];
-    pauseBtn.backgroundColor = [UIColor colorWithRed:57.0f/255.0f green:88.0f/255.0f blue:100.0f/255.0f alpha:1];
+    [_pauseButton addTarget:self action:@selector(tapOnButton) forControlEvents:UIControlEventTouchUpInside];
+    _pauseButton.backgroundColor = [UIColor colorWithRed:57.0f/255.0f green:88.0f/255.0f blue:100.0f/255.0f alpha:1];
 //    [_backgroundView addSubview:pauseBtn];
-    [_backgroundView insertSubview:pauseBtn belowSubview:_lockScreenView];
+    //[_backgroundView insertSubview:pauseBtn belowSubview:_lockScreenView];
 }
 
 - (void)tapOnButton {
     if (buttonState) {
-        [pauseBtn setTitle:NSLocalizedString(@"Pause", nil) forState:UIControlStateNormal];
-        [pauseBtn setTitle:NSLocalizedString(@"Pause", nil) forState:UIControlStateSelected];
-        [pauseBtn setTitle:NSLocalizedString(@"Pause", nil) forState:UIControlStateHighlighted];
+        [_pauseButton setTitle:NSLocalizedString(@"Pause", nil) forState:UIControlStateNormal];
+        [_pauseButton setTitle:NSLocalizedString(@"Pause", nil) forState:UIControlStateSelected];
+        [_pauseButton setTitle:NSLocalizedString(@"Pause", nil) forState:UIControlStateHighlighted];
         
     } else {
-        [pauseBtn setTitle:NSLocalizedString(@"Start", nil) forState:UIControlStateNormal];
-        [pauseBtn setTitle:NSLocalizedString(@"Start", nil) forState:UIControlStateSelected];
-        [pauseBtn setTitle:NSLocalizedString(@"Start", nil) forState:UIControlStateHighlighted];
+        [_pauseButton setTitle:NSLocalizedString(@"Start", nil) forState:UIControlStateNormal];
+        [_pauseButton setTitle:NSLocalizedString(@"Start", nil) forState:UIControlStateSelected];
+        [_pauseButton setTitle:NSLocalizedString(@"Start", nil) forState:UIControlStateHighlighted];
         
     }
     if ([counter isValid]) {
@@ -355,19 +363,6 @@
 }
 
 
-
-//-(float)getCaloryParameter{
-//    switch (sportType) {
-//        case :
-//
-//            break;
-//            
-//        default:
-//            break;
-//    }
-//    
-//    
-//}
 
 /*
 #pragma mark - Navigation

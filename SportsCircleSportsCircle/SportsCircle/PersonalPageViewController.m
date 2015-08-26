@@ -86,8 +86,9 @@
     refreshControl.attributedTitle = refreshString;
     [refreshView addSubview:refreshControl];
 
-     NSLog(@"edit id= %@",usernameStr);
-    
+    // NSLog(@"edit id= %@",usernameStr);
+    _personalPageTableView.separatorColor=[UIColor clearColor];
+
 }
 
 
@@ -99,6 +100,8 @@
     
     cell = [tableView dequeueReusableCellWithIdentifier:@"personalCell" forIndexPath:indexPath];
     
+    [cell.contentView.layer setBorderColor:[UIColor whiteColor].CGColor];
+    [cell.contentView.layer setBorderWidth:8.0f];
     
     postWallObject = postWallArray[indexPath.row];
     // placeholder image
