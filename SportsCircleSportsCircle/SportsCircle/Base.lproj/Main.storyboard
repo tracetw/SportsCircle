@@ -1952,6 +1952,22 @@
                                     <outlet property="delegate" destination="XGX-px-7Qf" id="cSL-qa-pqa"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pND-2U-OkN" userLabel="pasueBtn" customClass="DKCircleButton">
+                                <rect key="frame" x="63" y="487" width="90" height="90"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="90" id="9ua-p4-Vzu"/>
+                                    <constraint firstAttribute="width" constant="90" id="hFx-yQ-9Dc"/>
+                                </constraints>
+                                <state key="normal">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Calory" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SpQ-8f-Wu3">
+                                <rect key="frame" x="212" y="305" width="85" height="36"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FGk-IW-fVh">
                                 <rect key="frame" x="0.0" y="369" width="600" height="231"/>
                                 <subviews>
@@ -1978,12 +1994,6 @@
                                     <constraint firstAttribute="centerX" secondItem="AJE-u2-2D6" secondAttribute="centerX" id="yNz-7I-axR"/>
                                 </constraints>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Calory" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SpQ-8f-Wu3">
-                                <rect key="frame" x="212" y="305" width="85" height="36"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.94117647058823528" green="0.94117647058823528" blue="0.94117647058823528" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
@@ -1994,6 +2004,7 @@
                             <constraint firstAttribute="centerX" secondItem="Zzj-Wb-cQU" secondAttribute="centerX" constant="-31" id="Eaw-fz-Upv"/>
                             <constraint firstItem="FGk-IW-fVh" firstAttribute="leading" secondItem="zHH-Hq-mPw" secondAttribute="leadingMargin" constant="-16" id="Efn-2h-wby"/>
                             <constraint firstAttribute="centerX" secondItem="SpQ-8f-Wu3" secondAttribute="centerX" constant="45.5" id="EiA-ce-GPV"/>
+                            <constraint firstItem="pND-2U-OkN" firstAttribute="leading" secondItem="zHH-Hq-mPw" secondAttribute="leadingMargin" constant="47" id="G7n-DY-XK5"/>
                             <constraint firstAttribute="centerY" secondItem="SpQ-8f-Wu3" secondAttribute="centerY" constant="-23" id="GEQ-16-Orp"/>
                             <constraint firstItem="SpQ-8f-Wu3" firstAttribute="leading" secondItem="VvD-Ln-yeF" secondAttribute="trailing" constant="29" id="LE9-0t-p42"/>
                             <constraint firstItem="DJM-pE-qEc" firstAttribute="leading" secondItem="64q-PD-pjo" secondAttribute="trailing" constant="20" id="LUk-v5-ThC"/>
@@ -2006,6 +2017,7 @@
                             <constraint firstAttribute="centerY" secondItem="DJM-pE-qEc" secondAttribute="centerY" constant="-23" id="XJq-hd-fiP"/>
                             <constraint firstAttribute="centerX" secondItem="UQQ-GZ-scH" secondAttribute="centerX" constant="-167.5" id="a4t-Iv-h8E"/>
                             <constraint firstAttribute="centerY" secondItem="CmN-AY-xdZ" secondAttribute="centerY" constant="99.5" id="f14-pA-4Yt"/>
+                            <constraint firstItem="prn-lB-qhH" firstAttribute="top" secondItem="pND-2U-OkN" secondAttribute="bottom" constant="23" id="kot-kw-4h9"/>
                             <constraint firstAttribute="centerY" secondItem="05q-8i-8oX" secondAttribute="centerY" constant="94" id="l0h-JW-941"/>
                             <constraint firstAttribute="centerX" secondItem="eI4-jj-he6" secondAttribute="centerX" constant="26.5" id="nfh-MY-jcr"/>
                             <constraint firstItem="DJM-pE-qEc" firstAttribute="top" secondItem="64q-PD-pjo" secondAttribute="top" constant="8" id="qQP-L5-dic"/>
@@ -2024,6 +2036,7 @@
                         <outlet property="lockScreenView" destination="FGk-IW-fVh" id="lOa-sx-sHR"/>
                         <outlet property="miniSecond" destination="UQQ-GZ-scH" id="lCX-HW-woJ"/>
                         <outlet property="minutes" destination="eI4-jj-he6" id="CcZ-eh-FdL"/>
+                        <outlet property="pauseButton" destination="pND-2U-OkN" id="Mcf-WT-YuR"/>
                         <outlet property="second" destination="05q-8i-8oX" id="NyA-eU-MVV"/>
                         <outlet property="sportTypeImage" destination="0RK-M5-Wst" id="GLV-hW-eLR"/>
                         <outlet property="stopButton" destination="596-Xg-0dq" id="nUw-Sh-tD6"/>

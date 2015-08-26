@@ -29,7 +29,6 @@
     NSNumber *speedNo;
     NSString *recordingTime;
     NSString *objectID;
-    DKCircleButton *pauseBtn;
     BOOL buttonState;
     UIImage *mainPostImage;
     NSString *userWeight;
@@ -46,6 +45,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *distanceTextLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *distanceImage;
 @property (strong, nonatomic) IBOutlet UIView *backgroundView;
+@property (weak, nonatomic) IBOutlet DKCircleButton *pauseButton;
 @property (weak, nonatomic) UIImage *mapRecordingImage;
 @end
 
@@ -321,35 +321,33 @@
 }
 
 -(void) initPauseButton{
-    pauseBtn = [[DKCircleButton alloc] initWithFrame:CGRectMake(0, 0, 90, 90)];
     
-    pauseBtn.center = CGPointMake(120, 600);
-    pauseBtn.titleLabel.font = [UIFont systemFontOfSize:22];
+    _pauseButton.titleLabel.font = [UIFont systemFontOfSize:22];
+    _pauseButton.layer.cornerRadius = _pauseButton.bounds.size.width/2;
+    [_pauseButton setTitleColor:[UIColor colorWithWhite:1 alpha:1.0] forState:UIControlStateNormal];
+    [_pauseButton setTitleColor:[UIColor colorWithWhite:1 alpha:1.0] forState:UIControlStateSelected];
+    [_pauseButton setTitleColor:[UIColor colorWithWhite:1 alpha:1.0] forState:UIControlStateHighlighted];
     
-    [pauseBtn setTitleColor:[UIColor colorWithWhite:1 alpha:1.0] forState:UIControlStateNormal];
-    [pauseBtn setTitleColor:[UIColor colorWithWhite:1 alpha:1.0] forState:UIControlStateSelected];
-    [pauseBtn setTitleColor:[UIColor colorWithWhite:1 alpha:1.0] forState:UIControlStateHighlighted];
+    [_pauseButton setTitle:NSLocalizedString(@"Pause", nil) forState:UIControlStateNormal];
+    [_pauseButton setTitle:NSLocalizedString(@"Pause", nil) forState:UIControlStateSelected];
+    [_pauseButton setTitle:NSLocalizedString(@"Pause", nil) forState:UIControlStateHighlighted];
     
-    [pauseBtn setTitle:NSLocalizedString(@"Pause", nil) forState:UIControlStateNormal];
-    [pauseBtn setTitle:NSLocalizedString(@"Pause", nil) forState:UIControlStateSelected];
-    [pauseBtn setTitle:NSLocalizedString(@"Pause", nil) forState:UIControlStateHighlighted];
-    
-    [pauseBtn addTarget:self action:@selector(tapOnButton) forControlEvents:UIControlEventTouchUpInside];
-    pauseBtn.backgroundColor = [UIColor colorWithRed:57.0f/255.0f green:88.0f/255.0f blue:100.0f/255.0f alpha:1];
+    [_pauseButton addTarget:self action:@selector(tapOnButton) forControlEvents:UIControlEventTouchUpInside];
+    _pauseButton.backgroundColor = [UIColor colorWithRed:57.0f/255.0f green:88.0f/255.0f blue:100.0f/255.0f alpha:1];
 //    [_backgroundView addSubview:pauseBtn];
-    [_backgroundView insertSubview:pauseBtn belowSubview:_lockScreenView];
+    //[_backgroundView insertSubview:pauseBtn belowSubview:_lockScreenView];
 }
 
 - (void)tapOnButton {
     if (buttonState) {
-        [pauseBtn setTitle:NSLocalizedString(@"Pause", nil) forState:UIControlStateNormal];
-        [pauseBtn setTitle:NSLocalizedString(@"Pause", nil) forState:UIControlStateSelected];
-        [pauseBtn setTitle:NSLocalizedString(@"Pause", nil) forState:UIControlStateHighlighted];
+        [_pauseButton setTitle:NSLocalizedString(@"Pause", nil) forState:UIControlStateNormal];
+        [_pauseButton setTitle:NSLocalizedString(@"Pause", nil) forState:UIControlStateSelected];
+        [_pauseButton setTitle:NSLocalizedString(@"Pause", nil) forState:UIControlStateHighlighted];
         
     } else {
-        [pauseBtn setTitle:NSLocalizedString(@"Start", nil) forState:UIControlStateNormal];
-        [pauseBtn setTitle:NSLocalizedString(@"Start", nil) forState:UIControlStateSelected];
-        [pauseBtn setTitle:NSLocalizedString(@"Start", nil) forState:UIControlStateHighlighted];
+        [_pauseButton setTitle:NSLocalizedString(@"Start", nil) forState:UIControlStateNormal];
+        [_pauseButton setTitle:NSLocalizedString(@"Start", nil) forState:UIControlStateSelected];
+        [_pauseButton setTitle:NSLocalizedString(@"Start", nil) forState:UIControlStateHighlighted];
         
     }
     if ([counter isValid]) {
