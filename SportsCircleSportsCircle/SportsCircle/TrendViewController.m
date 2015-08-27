@@ -561,6 +561,16 @@
     [_goButton setTitleColor:[UIColor colorWithWhite:1 alpha:1.0] forState:UIControlStateSelected];
     [_goButton setTitleColor:[UIColor colorWithWhite:1 alpha:1.0] forState:UIControlStateHighlighted];
     _goButton.backgroundColor = [UIColor colorWithRed:57.0f/255.0f green:88.0f/255.0f blue:100.0f/255.0f alpha:1];
+    
+    _goButton.layer.shadowColor = [UIColor blackColor].CGColor;
+    _goButton.layer.shadowOffset = CGSizeMake(3.0, 3.0);
+    _goButton.layer.shadowOpacity = YES;
+    
+    
+    
+    _theListView.layer.shadowColor = [UIColor blackColor].CGColor;
+    _theListView.layer.shadowOffset = CGSizeMake(2.0, 0);
+    _theListView.layer.shadowOpacity = 0.7;
 }
 
 - (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch {
