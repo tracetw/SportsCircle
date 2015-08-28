@@ -141,6 +141,13 @@
 }
 - (void)buttonIsEmpty:(ABFillButton *)button
 {
+    UIActivityIndicatorView *spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
+    [spinner setCenter:self.view.center];
+    [self.view addSubview:spinner];
+    
+    [spinner startAnimating];
+    
+    
     NSLog(@"buttonIsEmpty");
     [counter invalidate];
     PFUser *currentUser = [PFUser currentUser];

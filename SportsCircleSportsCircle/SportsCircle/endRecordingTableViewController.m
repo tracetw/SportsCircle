@@ -168,7 +168,7 @@
             _distance = sendInObject[@"distance"];
             _speed = sendInObject[@"speed"];
             
-            _snapshotForImage.image = [UIImage imageNamed:@"camera"];
+            _snapshotForImage.image = [UIImage imageNamed:@"loading"];
             PFImageView *snapshotImage = [PFImageView new];
             snapshotImage.file = sendInObject[@"mapSnapshot"];
             [snapshotImage loadInBackground:^(UIImage *image,NSError *error){

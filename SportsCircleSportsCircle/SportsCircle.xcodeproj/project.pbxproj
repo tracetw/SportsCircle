@@ -173,6 +173,7 @@
 		764C47BA1B735EDE00AC09E8 /* PersonalPageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersonalPageViewController.m; sourceTree = "<group>"; };
 		764C47BC1B735FB700AC09E8 /* PersonalPageTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersonalPageTableViewCell.h; sourceTree = "<group>"; };
 		764C47BD1B735FB700AC09E8 /* PersonalPageTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersonalPageTableViewCell.m; sourceTree = "<group>"; };
+		7657F7CD1B90295D00BDDCAB /* SportsCircle-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SportsCircle-Prefix.pch"; sourceTree = "<group>"; };
 		766225561B8A531A00A639B0 /* ABFillButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABFillButton.h; sourceTree = "<group>"; };
 		766225571B8A531A00A639B0 /* ABFillButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ABFillButton.m; sourceTree = "<group>"; };
 		766669081B674D3900280B20 /* PostMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PostMainViewController.h; sourceTree = "<group>"; };
@@ -469,6 +470,7 @@
 		D34A63411B4CED0700710B1F /* SportsCircle */ = {
 			isa = PBXGroup;
 			children = (
+				7657F7CD1B90295D00BDDCAB /* SportsCircle-Prefix.pch */,
 				D34A63461B4CED0700710B1F /* AppDelegate.h */,
 				D34A63471B4CED0700710B1F /* AppDelegate.m */,
 				D34A63491B4CED0700710B1F /* ViewController.h */,
@@ -961,6 +963,8 @@
 					"$(PROJECT_DIR)",
 					"$(PROJECT_DIR)/framework",
 				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "SportsCircle/SportsCircle-Prefix.pch";
 				INFOPLIST_FILE = SportsCircle/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -987,6 +991,8 @@
 					"$(PROJECT_DIR)",
 					"$(PROJECT_DIR)/framework",
 				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "SportsCircle/SportsCircle-Prefix.pch";
 				INFOPLIST_FILE = SportsCircle/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -994,6 +1000,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 				);
+				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.gjhhj.SportsCircle;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
