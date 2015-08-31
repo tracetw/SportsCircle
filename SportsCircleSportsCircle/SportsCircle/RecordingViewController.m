@@ -13,7 +13,7 @@
 #import "DKCircleButton.h"
 #import "ABFillButton.h"
 
-#define CARORY_PARAMETER 350.0;
+#define CARORY_PARAMETER 7.0
 
 @interface RecordingViewController ()<UINavigationBarDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate,ABFillButtonDelegate>
 {
@@ -131,12 +131,23 @@
 
 -(void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
+    UIApplication  *app = [UIApplication sharedApplication];
+    
+    if (!app.isIdleTimerDisabled)
+        app.idleTimerDisabled = YES;
 }
 - (IBAction)stopButtonPressed:(id)sender {
     [_stopButton setFillPercent:1.0];
 }
 - (void)buttonIsEmpty:(ABFillButton *)button
 {
+    UIActivityIndicatorView *spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
+    [spinner setCenter:self.view.center];
+    [self.view addSubview:spinner];
+    
+    [spinner startAnimating];
+    
+    
     NSLog(@"buttonIsEmpty");
     [counter invalidate];
     PFUser *currentUser = [PFUser currentUser];
@@ -254,9 +265,9 @@
             weight = [userWeight intValue];
         }
     
-    NSLog(@"userweight %d",weight);
+    //NSLog(@"userweight %d",weight);
     double changeToHour =hour+(minites/60.0)+(second/3600.0);
-    calory = [NSString stringWithFormat:@"%.0f", weight*7*changeToHour];
+    calory = [NSString stringWithFormat:@"%.0f", weight*CARORY_PARAMETER*changeToHour];
     _caloryTextLabel.text = calory;
     if ([sportName isEqualToString:@"Athletics"] || [sportName isEqualToString:@"Cycling"]) {
         float distanceFloat = [mapRecordingView getDistance];
@@ -362,7 +373,12 @@
     // Dispose of any resources that can be recreated.
 }
 
-
+-(void)viewDidDisappear:(BOOL)animated{
+    UIApplication  *app = [UIApplication sharedApplication];
+    
+    if (!app.isIdleTimerDisabled)
+        app.idleTimerDisabled = NO;
+}
 
 /*
 #pragma mark - Navigation

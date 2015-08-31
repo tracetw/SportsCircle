@@ -60,7 +60,7 @@
         PFObject *usernameStrObject = userNameEqlUsernameStr[0];
         query = [PFQuery queryWithClassName:@"WallPost"];
         [query whereKey:@"user" equalTo:usernameStrObject];
-        
+        [query addDescendingOrder:@"createdAt"];
         postWallArray = [NSArray new];
         
         [query findObjectsInBackgroundWithBlock:^(NSArray *postWall, NSError *error){

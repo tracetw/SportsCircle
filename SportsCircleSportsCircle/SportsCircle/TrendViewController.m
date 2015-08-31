@@ -283,7 +283,8 @@
     //[imageView loadInBackground];
     cell.postImage.image = imageView.image;
     [imageView loadInBackground:^(UIImage *image,  NSError * error){
-        cell.postImage.image = image;
+        imageView.image = image;
+        cell.postImage.image = imageView.image;
     }];
     
     
@@ -310,6 +311,7 @@
         userImage.file = (PFFile *)user[@"userImage"];
         
         [userImage loadInBackground:^(UIImage *image,NSError *error){
+            userImage.image = image;
             cell.userImage.image = userImage.image;
         }];
         

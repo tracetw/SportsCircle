@@ -1903,13 +1903,13 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Distance" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DJM-pE-qEc">
-                                <rect key="frame" x="382" y="305" width="115" height="36"/>
+                                <rect key="frame" x="362" y="305" width="115" height="36"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="distanceImage" translatesAutoresizingMaskIntoConstraints="NO" id="64q-PD-pjo">
-                                <rect key="frame" x="324" y="297" width="54" height="52"/>
+                                <rect key="frame" x="304" y="297" width="54" height="52"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="54" id="Wnx-Gp-VEG"/>
                                     <constraint firstAttribute="height" constant="52" id="ehV-rT-kSC"/>
@@ -2001,7 +2001,7 @@
                         </subviews>
                         <color key="backgroundColor" red="0.94117647058823528" green="0.94117647058823528" blue="0.94117647058823528" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstAttribute="centerX" secondItem="DJM-pE-qEc" secondAttribute="centerX" constant="-139.5" id="47x-m9-lsz"/>
+                            <constraint firstAttribute="centerX" secondItem="DJM-pE-qEc" secondAttribute="centerX" constant="-119.5" id="47x-m9-lsz"/>
                             <constraint firstAttribute="centerX" secondItem="pyI-QT-khx" secondAttribute="centerX" constant="125.5" id="82o-fv-tyw"/>
                             <constraint firstAttribute="centerY" secondItem="Zzj-Wb-cQU" secondAttribute="centerY" constant="99.5" id="BLV-y9-Mtm"/>
                             <constraint firstAttribute="trailingMargin" secondItem="FGk-IW-fVh" secondAttribute="trailing" constant="-16" id="BNq-du-Tig"/>
@@ -2737,7 +2737,7 @@
         <segue reference="RoM-6D-21i"/>
         <segue reference="XQ8-gg-XLc"/>
         <segue reference="gpY-tf-boD"/>
-        <segue reference="yfR-iI-cpg"/>
+        <segue reference="BAx-0o-OTm"/>
         <segue reference="DbG-qm-mvc"/>
         <segue reference="5DY-EW-tli"/>
     </inferredMetricsTieBreakers>
