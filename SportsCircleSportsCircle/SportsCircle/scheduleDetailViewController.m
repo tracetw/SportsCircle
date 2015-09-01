@@ -10,9 +10,10 @@
 #import <Parse/Parse.h>
 #import "scheduleTableViewController.h"
 
-@interface scheduleDetailViewController ()
+@interface scheduleDetailViewController ()<UITextViewDelegate>
 {
     NSString *scTime;
+    BOOL wasKeyboardDidShow;
 }
 @property (weak, nonatomic) IBOutlet UITextField *scheduleName;
 @property (weak, nonatomic) IBOutlet UITextView *scheduleDetail;
@@ -27,6 +28,23 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    // Do any additional setup after loading the view.
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(keyboardWillShow:)
+                                                 name:UIKeyboardWillShowNotification
+                                               object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(keyboardWillHide:)
+                                                 name:UIKeyboardWillHideNotification
+                                               object:nil];
+    
+    //UITextView *myUITextView = [[UITextView alloc] init];
+    _scheduleDetail.delegate = self;
+    _scheduleDetail.text = @"請輸入行程內容...";
+    _scheduleDetail.textColor = [UIColor darkGrayColor]; //optional
+    
+    
     // Do any additional setup after loading the view.
     NSDateFormatter *format=[[NSDateFormatter alloc]init];
     [format setDateFormat:@"M/d HH:mm"];
@@ -111,6 +129,77 @@
     [alert addAction:ok];
     [self presentViewController:alert animated:YES completion:nil];
 }
+
+
+
+
+#pragma mark keyboard show hide
+
+- (UIView *)findViewThatIsFirstResponder
+{
+    if (self.view.isFirstResponder) {
+        return self.view;
+    }
+    
+    for (UIView *subView in self.view.subviews) {
+        if ([subView isFirstResponder]) {
+            return subView;
+        }
+    }
+    
+    return nil;
+}
+
+- (void)keyboardWillShow:(NSNotification *)aNotification
+{
+    if (!wasKeyboardDidShow) {
+        NSTimeInterval animationDuration =
+        [[[aNotification userInfo] objectForKey:UIKeyboardAnimationDurationUserInfoKey] doubleValue];
+        CGRect frame = self.view.frame;
+        //        frame.origin.y -= 160;
+        UIView *respView = [self findViewThatIsFirstResponder];
+        if (respView.frame.origin.y + respView.frame.size.height > frame.size.height-255) {
+            frame.origin.y -= respView.frame.origin.y + respView.frame.size.height - frame.size.height + 255;
+        }
+        [UIView beginAnimations:@"ResizeForKeyboard" context:nil];
+        [UIView setAnimationDuration:animationDuration];
+        self.view.frame = frame;
+        [UIView commitAnimations];
+        wasKeyboardDidShow = YES;
+    }
+}
+
+- (void)keyboardWillHide:(NSNotification *)aNotification
+{
+    NSTimeInterval animationDuration =
+    [[[aNotification userInfo] objectForKey:UIKeyboardAnimationDurationUserInfoKey] doubleValue];
+    CGRect frame = self.view.frame;
+    frame.origin.y = 0;
+    [UIView beginAnimations:@"ResizeForKeyboard" context:nil];
+    [UIView setAnimationDuration:animationDuration];
+    self.view.frame = frame;
+    [UIView commitAnimations];
+    wasKeyboardDidShow = NO;
+}
+
+- (void)textViewDidBeginEditing:(UITextView *)textView
+{
+    if ([textView.text isEqualToString:@"請輸入行程內容..."]) {
+        textView.text = @"";
+        textView.textColor = [UIColor blackColor]; //optional
+    }
+    [textView becomeFirstResponder];
+}
+
+- (void)textViewDidEndEditing:(UITextView *)textView
+{
+    if ([textView.text isEqualToString:@""]) {
+        textView.text = @"請輸入行程內容...";
+        textView.textColor = [UIColor lightGrayColor]; //optional
+    }
+    [textView resignFirstResponder];
+}
+
 
 /*
  #pragma mark - Navigation

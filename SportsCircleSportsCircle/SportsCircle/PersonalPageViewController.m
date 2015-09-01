@@ -122,6 +122,7 @@
     NSString *sportType = postWallObject[@"sportsType"];
     cell.sportTypeImage.image = [UIImage imageNamed:sportType];
     
+    cell.locationLabel.text = postWallObject[@"location"];
     
     //PFFile *userImage= [postWall objectForKey:@"image"];
     //cell.profileImage.image = [UIImage imageWithData:[profifeImg getData]];

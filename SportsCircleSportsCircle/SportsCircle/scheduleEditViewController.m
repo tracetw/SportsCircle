@@ -35,7 +35,6 @@
     [super viewDidLoad];
     _confirmBtn.hidden=YES;
     
-    
     NSLog(@"edit id= %@",idStr);
     
     PFQuery *query = [PFQuery queryWithClassName:@"schedule"];
@@ -93,4 +92,6 @@
     //解構式～確認回上一頁.原本的黃色那頁已被消滅(線不能直接拉回去.因為RAM會一直疊加上去)
     NSLog(@"scheduleDetailViewController dealloc.");
 }
+
+
 @end
