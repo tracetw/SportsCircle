@@ -130,6 +130,8 @@
     
     _userTextField.keyboardType = UIKeyboardTypeASCIICapable;   //設置鍵盤的類型
     
+    _userTextField.autocorrectionType = UITextAutocorrectionTypeNo; //不自動更正
+    
     _userTextField.delegate = self; //Delegate
     _passwordTextField.delegate = self;
     
