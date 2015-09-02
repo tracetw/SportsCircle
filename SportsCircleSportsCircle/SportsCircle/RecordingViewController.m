@@ -113,8 +113,10 @@
     PFQuery *queryPersonalClass = [PFQuery queryWithClassName:@"PersionalInfo"];
     [queryPersonalClass whereKey:@"user" equalTo:currentUser];
     [queryPersonalClass findObjectsInBackgroundWithBlock:^(NSArray *array,NSError *error){
-        PFObject *currentUserPersonalInfoClassObject = array[0];
-        userWeight = currentUserPersonalInfoClassObject[@"weight"];
+        if (array[0]) {
+            PFObject *currentUserPersonalInfoClassObject = array[0];
+            userWeight = currentUserPersonalInfoClassObject[@"weight"];
+        }
     }];
     
     
