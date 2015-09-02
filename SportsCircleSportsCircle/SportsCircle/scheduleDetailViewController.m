@@ -80,10 +80,10 @@
     [format setDateFormat:@"M/d HH:mm"];
     //NSLog(@"設定時間為: %@",[format stringFromDate:sender.date]);
     
-    scTime = [format stringFromDate:[NSDate date]];
+    //scTime = [format stringFromDate:[NSDate date]];
     
     // Convert date to string
-    //scTime=[format stringFromDate:sender.date];
+    scTime=[format stringFromDate:sender.date];
     
 }
 

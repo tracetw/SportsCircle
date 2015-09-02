@@ -397,9 +397,9 @@
     //[cell.userImage setUserInteractionEnabled:TRUE];
     [cell.postImage addGestureRecognizer:singleTap2];
     //[cell.userImage addGestureRecognizer:singleTap2];
-    cell.postImage.tag = indexPath.row;
+    //cell.postImage.tag = indexPath.row;
     
-    postWallObject = postWallArray[cell.postImage.tag];
+    postWallObject = postWallArray[indexPath.row];
     selectObjectId = postWallObject.objectId;
     cell.postImage.ObjectIdStr=selectObjectId;
     return cell;
