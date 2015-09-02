@@ -68,6 +68,7 @@
 		D34A634E1B4CED0700710B1F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D34A634C1B4CED0700710B1F /* Main.storyboard */; };
 		D34A63531B4CED0700710B1F /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = D34A63511B4CED0700710B1F /* LaunchScreen.xib */; };
 		D34A635F1B4CED0700710B1F /* SportsCircleTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D34A635E1B4CED0700710B1F /* SportsCircleTests.m */; };
+		D34F11F11B8DD915007FEE00 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = D34F11F01B8DD915007FEE00 /* Reachability.m */; };
 		D34FCE1E1B7B86870002DE1A /* FUIAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = D34FCDF71B7B86870002DE1A /* FUIAlertView.m */; };
 		D34FCE1F1B7B86870002DE1A /* FUIButton.m in Sources */ = {isa = PBXBuildFile; fileRef = D34FCDF91B7B86870002DE1A /* FUIButton.m */; };
 		D34FCE201B7B86870002DE1A /* FUICellBackgroundView.m in Sources */ = {isa = PBXBuildFile; fileRef = D34FCDFB1B7B86870002DE1A /* FUICellBackgroundView.m */; };
@@ -172,6 +173,7 @@
 		764C47BA1B735EDE00AC09E8 /* PersonalPageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersonalPageViewController.m; sourceTree = "<group>"; };
 		764C47BC1B735FB700AC09E8 /* PersonalPageTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersonalPageTableViewCell.h; sourceTree = "<group>"; };
 		764C47BD1B735FB700AC09E8 /* PersonalPageTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersonalPageTableViewCell.m; sourceTree = "<group>"; };
+		7657F7CD1B90295D00BDDCAB /* SportsCircle-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SportsCircle-Prefix.pch"; sourceTree = "<group>"; };
 		766225561B8A531A00A639B0 /* ABFillButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABFillButton.h; sourceTree = "<group>"; };
 		766225571B8A531A00A639B0 /* ABFillButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ABFillButton.m; sourceTree = "<group>"; };
 		766669081B674D3900280B20 /* PostMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PostMainViewController.h; sourceTree = "<group>"; };
@@ -225,6 +227,8 @@
 		D34A63581B4CED0700710B1F /* SportsCircleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SportsCircleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D34A635D1B4CED0700710B1F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D34A635E1B4CED0700710B1F /* SportsCircleTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SportsCircleTests.m; sourceTree = "<group>"; };
+		D34F11EF1B8DD915007FEE00 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
+		D34F11F01B8DD915007FEE00 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
 		D34FCDF51B7B86870002DE1A /* FlatUIKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlatUIKit.h; sourceTree = "<group>"; };
 		D34FCDF61B7B86870002DE1A /* FUIAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FUIAlertView.h; sourceTree = "<group>"; };
 		D34FCDF71B7B86870002DE1A /* FUIAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FUIAlertView.m; sourceTree = "<group>"; };
@@ -466,6 +470,7 @@
 		D34A63411B4CED0700710B1F /* SportsCircle */ = {
 			isa = PBXGroup;
 			children = (
+				7657F7CD1B90295D00BDDCAB /* SportsCircle-Prefix.pch */,
 				D34A63461B4CED0700710B1F /* AppDelegate.h */,
 				D34A63471B4CED0700710B1F /* AppDelegate.m */,
 				D34A63491B4CED0700710B1F /* ViewController.h */,
@@ -554,6 +559,16 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		D34F11EE1B8DD915007FEE00 /* Reachability */ = {
+			isa = PBXGroup;
+			children = (
+				D34F11EF1B8DD915007FEE00 /* Reachability.h */,
+				D34F11F01B8DD915007FEE00 /* Reachability.m */,
+			);
+			name = Reachability;
+			path = framework/Reachability;
+			sourceTree = "<group>";
+		};
 		D34FCDF41B7B86870002DE1A /* FlatUIKit */ = {
 			isa = PBXGroup;
 			children = (
@@ -606,6 +621,7 @@
 		D3AD4CB71B64DC1F00FC7F8E /* framework */ = {
 			isa = PBXGroup;
 			children = (
+				D34F11EE1B8DD915007FEE00 /* Reachability */,
 				D341CB2A1B84C23C0038D477 /* WZLBadge */,
 				D34FCDF41B7B86870002DE1A /* FlatUIKit */,
 				D30CA20F1B74AA2100CE61AD /* FBSDKCoreKit.framework */,
@@ -685,7 +701,7 @@
 				TargetAttributes = {
 					D34A633E1B4CED0700710B1F = {
 						CreatedOnToolsVersion = 6.4;
-						DevelopmentTeam = UK6467HR9G;
+						DevelopmentTeam = RJYZ49S9JJ;
 					};
 					D34A63571B4CED0700710B1F = {
 						CreatedOnToolsVersion = 6.4;
@@ -765,6 +781,7 @@
 				D34FCE1F1B7B86870002DE1A /* FUIButton.m in Sources */,
 				D34FCE271B7B86870002DE1A /* UIColor+FlatUI.m in Sources */,
 				D34FCE211B7B86870002DE1A /* FUIPopoverBackgroundView.m in Sources */,
+				D34F11F11B8DD915007FEE00 /* Reachability.m in Sources */,
 				705A3D011B817F2F0019F7A8 /* MyImageAnnotationView.m in Sources */,
 				708574CB1B87397200700654 /* MyPointAnnotation.m in Sources */,
 				D34FCE261B7B86870002DE1A /* UIBarButtonItem+FlatUI.m in Sources */,
@@ -868,7 +885,7 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Chao-Lung Wang (RJYZ49S9JJ)";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -913,7 +930,7 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Chao-Lung Wang (RJYZ49S9JJ)";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
@@ -946,6 +963,8 @@
 					"$(PROJECT_DIR)",
 					"$(PROJECT_DIR)/framework",
 				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "SportsCircle/SportsCircle-Prefix.pch";
 				INFOPLIST_FILE = SportsCircle/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -953,9 +972,10 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.gjhhj.SportsCircle;
+				PRODUCT_BUNDLE_IDENTIFIER = com.charles.SportsCircle;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				TARGETED_DEVICE_FAMILY = 1;
 				VALID_ARCHS = "arm64 armv7";
 			};
 			name = Debug;
@@ -971,6 +991,8 @@
 					"$(PROJECT_DIR)",
 					"$(PROJECT_DIR)/framework",
 				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "SportsCircle/SportsCircle-Prefix.pch";
 				INFOPLIST_FILE = SportsCircle/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -978,9 +1000,11 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.gjhhj.SportsCircle;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.charles.SportsCircle;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				TARGETED_DEVICE_FAMILY = 1;
 				VALID_ARCHS = "arm64 armv7";
 			};
 			name = Release;

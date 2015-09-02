@@ -12,6 +12,7 @@
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
 #import <FBSDKLoginKit/FBSDKLoginKit.h>
 @interface SignUpViewController ()<UITextFieldDelegate, FBSDKLoginButtonDelegate>
+@property (weak, nonatomic) IBOutlet UITextField *oneMore;
 @property (weak, nonatomic) IBOutlet UITextField *userTextField;        /**< 帳號 */
 @property (weak, nonatomic) IBOutlet UITextField *passwordTextField;    /**< 密碼 */
 @end
@@ -22,7 +23,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    
+    _oneMore.hidden = YES;
     //顯示使用者名稱
     [[NSNotificationCenter defaultCenter]
      addObserver:self
@@ -49,7 +50,7 @@
     PFUser *currentUser = [PFUser currentUser];
     if (currentUser) {
         NSLog(@"未登出%@",currentUser);
-        [self performSegueWithIdentifier:@"SignUpSuccesful" sender:nil];
+        //[self performSegueWithIdentifier:@"SignUpSuccesful" sender:nil];
     } else {
         NSLog(@"已登出%@",currentUser);
     //如果FB是登入的狀態所要執行的方法
@@ -128,6 +129,8 @@
     //    _passwordTextField.keyboardAppearance = UIKeyboardAppearanceAlert;
     
     _userTextField.keyboardType = UIKeyboardTypeASCIICapable;   //設置鍵盤的類型
+    
+    _userTextField.autocorrectionType = UITextAutocorrectionTypeNo; //不自動更正
     
     _userTextField.delegate = self; //Delegate
     _passwordTextField.delegate = self;

@@ -20,13 +20,14 @@ typedef enum {
     cameraCategory5
 }cameraCategory;
 
-@interface PostMainViewController ()<AKPickerViewDataSource, AKPickerViewDelegate,UIPopoverControllerDelegate,UINavigationControllerDelegate,UIImagePickerControllerDelegate>
+@interface PostMainViewController ()<AKPickerViewDataSource, AKPickerViewDelegate, UIPopoverControllerDelegate,UINavigationControllerDelegate, UIImagePickerControllerDelegate, UITextFieldDelegate>
 {
     NSString *latitudeStr;
     NSString *longitudeStr;
     NSString *locationStr;
     UIImage *image1,*image2,*image3,*image4,*image5,*imageX;
     NSData *imageData;
+
 }
 @property (nonatomic, strong) AKPickerView *pickerView;
 @property (nonatomic, strong) NSArray *titles;
@@ -49,7 +50,13 @@ typedef enum {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
+    [[NSNotificationCenter defaultCenter]
+     addObserver:self selector:@selector(backgroundTap:)
+     name:UIKeyboardWillHideNotification object:nil];
+    
     [self initGoButton];
+    
+    _contentTextField.delegate = self;
     
     //ImagePicker顯示位置在“AKPickerView.m”裡面修改
     self.pickerView = [[AKPickerView alloc] initWithFrame:self.view.bounds];
@@ -150,6 +157,8 @@ typedef enum {
 //點擊空白處收起鍵盤
 - (void)keyboardResign {
     [self.view endEditing:YES];
+
+    //[self backgroundTap:nil];
     [popView removeFromSuperview];
     [popView2 removeFromSuperview];
     [popView3 removeFromSuperview];
@@ -656,6 +665,85 @@ typedef enum {
     [_goButton setTitleColor:[UIColor colorWithWhite:1 alpha:1.0] forState:UIControlStateHighlighted];
     _goButton.backgroundColor = [UIColor colorWithRed:57.0f/255.0f green:88.0f/255.0f blue:100.0f/255.0f alpha:1];
 }
+
+
+//- (void)textFieldDidBeginEditing:(UITextField *)textField
+//{
+//    [UIView beginAnimations:nil context:NULL];
+//    [UIView setAnimationDuration:0.3];
+//    [UIView setAnimationDelegate:self];
+//    //設定動畫開始時的狀態為目前畫面上的樣子
+//    [UIView setAnimationBeginsFromCurrentState:YES];
+//    textField.frame = CGRectMake(textField.frame.origin.x, textField.frame.origin.y - 10, textField.frame.size.width, textField.frame.size.height);
+//    [UIView commitAnimations]; }
+//- (void)textFieldDidEndEditing:(UITextField *)textField
+//{
+//    [UIView beginAnimations:nil context:NULL];
+//    [UIView setAnimationDuration:0.3];
+//    [UIView setAnimationDelegate:self];
+//    //設定動畫開始時的狀態為目前畫面上的樣子
+//    [UIView setAnimationBeginsFromCurrentState:YES];
+//    textField.frame = CGRectMake(textField.frame.origin.x, textField.frame.origin.y + 210, textField.frame.size.width, textField.frame.size.height);
+//    [UIView commitAnimations]; 
+//}
+
+
+
+
+#pragma mark - 解決虛擬鍵盤擋住UITextField的方法
+- (void)keyboardWillShow:(NSNotification *)noti
+{
+    //鍵盤輸入的界面調整
+    //鍵盤的高度
+    float height = 250;
+    CGRect frame = self.view.frame;
+    frame.size = CGSizeMake(frame.size.width, frame.size.height - height);
+    [UIView beginAnimations:@"Curl"context:nil];//動畫開始
+    [UIView setAnimationDuration:0.30];
+    [UIView setAnimationDelegate:self];
+    [self.view setFrame:frame];
+    [UIView commitAnimations];
+}
+
+-(BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    // When the user presses return, take focus away from the text field so that the keyboard is dismissed.
+    NSTimeInterval animationDuration = 0.30f;
+    [UIView beginAnimations:@"ResizeForKeyboard" context:nil];
+    [UIView setAnimationDuration:animationDuration];
+    CGRect rect = CGRectMake(0.0f, 0.0f, self.view.frame.size.width, self.view.frame.size.height);
+    //CGRect rect = CGRectMake(0.0f, 20.0f, self.view.frame.size.width, self.view.frame.size.height);
+    self.view.frame = rect;
+    [UIView commitAnimations];
+    [textField resignFirstResponder];
+    return YES;
+}
+
+- (void)textFieldDidBeginEditing:(UITextField *)textField
+{
+    CGRect frame = textField.frame;
+    int offset = frame.origin.y + 32 - (self.view.frame.size.height - 250);//鍵盤高度216
+    NSTimeInterval animationDuration = 0.30f;
+    [UIView beginAnimations:@"ResizeForKeyBoard" context:nil];
+    [UIView setAnimationDuration:animationDuration];
+    float width = self.view.frame.size.width;
+    float height = self.view.frame.size.height;
+    if(offset > 0)
+    {
+        CGRect rect = CGRectMake(0.0f, -offset,width,height);
+        self.view.frame = rect;
+    }
+    [UIView commitAnimations];
+}
+
+- (IBAction)backgroundTap:(id)sender {
+    NSTimeInterval animationDuration = 0.30f;
+    [UIView beginAnimations:@"ResizeForKeyboard" context:nil];
+    [UIView setAnimationDuration:animationDuration];
+    CGRect rect = CGRectMake(0.0f, 0.0f, self.view.frame.size.width, self.view.frame.size.height);
+    self.view.frame = rect;
+}
+
 
 /*
 #pragma mark - Navigation

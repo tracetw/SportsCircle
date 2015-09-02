@@ -10,7 +10,11 @@
 #import <Parse/Parse.h>
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
 #import <FBSDKLoginKit/FBSDKLoginKit.h>
-@interface AppDelegate ()
+
+#import "PersonalPageViewController.h"
+@interface AppDelegate (){
+    
+}
 
 @end
 
@@ -29,6 +33,9 @@
     [FBSDKLoginButton class];
     [FBSDKProfilePictureView class];
 
+    
+
+    
 
     //開啟自動追蹤currentAccessToken
     [FBSDKProfile enableUpdatesOnAccessTokenChange:YES];
@@ -71,5 +78,7 @@
                                                 sourceApplication:sourceApplication
                                                        annotation:annotation];
 }
+
+
 
 @end

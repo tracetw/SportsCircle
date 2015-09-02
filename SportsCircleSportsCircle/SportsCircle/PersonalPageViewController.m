@@ -60,7 +60,7 @@
         PFObject *usernameStrObject = userNameEqlUsernameStr[0];
         query = [PFQuery queryWithClassName:@"WallPost"];
         [query whereKey:@"user" equalTo:usernameStrObject];
-        
+        [query addDescendingOrder:@"createdAt"];
         postWallArray = [NSArray new];
         
         [query findObjectsInBackgroundWithBlock:^(NSArray *postWall, NSError *error){
@@ -86,8 +86,9 @@
     refreshControl.attributedTitle = refreshString;
     [refreshView addSubview:refreshControl];
 
-     NSLog(@"edit id= %@",usernameStr);
-    
+    // NSLog(@"edit id= %@",usernameStr);
+    _personalPageTableView.separatorColor=[UIColor clearColor];
+
 }
 
 
@@ -99,6 +100,8 @@
     
     cell = [tableView dequeueReusableCellWithIdentifier:@"personalCell" forIndexPath:indexPath];
     
+    [cell.contentView.layer setBorderColor:[UIColor whiteColor].CGColor];
+    [cell.contentView.layer setBorderWidth:8.0f];
     
     postWallObject = postWallArray[indexPath.row];
     // placeholder image
@@ -119,6 +122,7 @@
     NSString *sportType = postWallObject[@"sportsType"];
     cell.sportTypeImage.image = [UIImage imageNamed:sportType];
     
+    cell.locationLabel.text = postWallObject[@"location"];
     
     //PFFile *userImage= [postWall objectForKey:@"image"];
     //cell.profileImage.image = [UIImage imageWithData:[profifeImg getData]];

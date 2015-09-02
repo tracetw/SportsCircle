@@ -117,7 +117,7 @@
     //[cell.contentView.layer setBorderWidth:10.0];
     
     self.tableView.separatorColor=[UIColor whiteColor];
-    
+
 }
 -(void)reloadDatas
 {
@@ -283,7 +283,8 @@
     //[imageView loadInBackground];
     cell.postImage.image = imageView.image;
     [imageView loadInBackground:^(UIImage *image,  NSError * error){
-        cell.postImage.image = image;
+        imageView.image = image;
+        cell.postImage.image = imageView.image;
     }];
     
     
@@ -294,6 +295,7 @@
     NSString *sportType = postWallObject[@"sportsType"];
     cell.sportTypeImage.image = [UIImage imageNamed:sportType];
     
+    cell.locationLabel.text = postWallObject[@"location"];
     
     
     //PFObject *user = [postWallDictionary objectForKey:@"user"];
@@ -310,6 +312,7 @@
         userImage.file = (PFFile *)user[@"userImage"];
         
         [userImage loadInBackground:^(UIImage *image,NSError *error){
+            userImage.image = image;
             cell.userImage.image = userImage.image;
         }];
         
@@ -561,6 +564,16 @@
     [_goButton setTitleColor:[UIColor colorWithWhite:1 alpha:1.0] forState:UIControlStateSelected];
     [_goButton setTitleColor:[UIColor colorWithWhite:1 alpha:1.0] forState:UIControlStateHighlighted];
     _goButton.backgroundColor = [UIColor colorWithRed:57.0f/255.0f green:88.0f/255.0f blue:100.0f/255.0f alpha:1];
+    
+    _goButton.layer.shadowColor = [UIColor blackColor].CGColor;
+    _goButton.layer.shadowOffset = CGSizeMake(1.0, 1.0);
+    _goButton.layer.shadowOpacity = YES;
+    
+    
+    
+    _theListView.layer.shadowColor = [UIColor blackColor].CGColor;
+    _theListView.layer.shadowOffset = CGSizeMake(1.0, 0);
+    _theListView.layer.shadowOpacity = 0.8;
 }
 
 - (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch {
