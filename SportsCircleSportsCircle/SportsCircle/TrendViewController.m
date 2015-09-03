@@ -493,10 +493,11 @@
     [self performSegueWithIdentifier: @"goPersonalPageFromTrend" sender:[sender view]];
 }
 
--(void)postImagePressed:(id)sender
-{
-
-    [self performSegueWithIdentifier: @"homeGoDetailView" sender:[sender view]];
+-(void)postImagePressed:(id)sender{
+    if (_theListView.isHidden) {
+        [self performSegueWithIdentifier: @"homeGoDetailView" sender:[sender view]];
+    }
+    [self toTap];
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
