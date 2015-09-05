@@ -9,6 +9,8 @@
 #import <UIKit/UIKit.h>
 #import "PersonalPageViewController.h"
 #import "myPostImageView.h"
+typedef void(^presentAlertView)(UIAlertController *);
+
 @interface TrendTableViewCell : UITableViewCell
 
 @property (strong, nonatomic) NSString *cellObjectId;
@@ -20,7 +22,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *userName;
 @property (weak, nonatomic) IBOutlet UIImageView *userImage;
 @property (weak, nonatomic) IBOutlet UIButton *likesButton;
-
+@property (nonatomic,strong) presentAlertView block;
 
 
 

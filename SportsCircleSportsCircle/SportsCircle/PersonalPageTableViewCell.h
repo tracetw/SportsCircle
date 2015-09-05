@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+typedef void(^presentAlertView)(UIAlertController *);
 
 @interface PersonalPageTableViewCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UIButton *userNameBtn;
@@ -16,4 +17,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *timeLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *sportTypeImage;
 @property (weak, nonatomic) IBOutlet UIImageView *userImage;
+@property (strong, nonatomic) NSString *cellObjectId;
+@property (nonatomic,strong) presentAlertView block;
 @end

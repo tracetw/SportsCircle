@@ -259,7 +259,9 @@
 {
     static NSString* cellIdentifier=@"TrendCell";
     TrendTableViewCell *cell=[tableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
-    
+    cell.block = ^(UIAlertController *alert){
+        [self presentViewController:alert animated:YES completion:nil];
+    };
     /*
     NSDictionary *userSchedulesA=postWallArray[indexPath.row];
     //每一筆為NSDictionary

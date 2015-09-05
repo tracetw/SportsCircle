@@ -153,7 +153,7 @@ if ([[segue identifier] isEqualToString:@"goPersonalPage"])
         PFObject * object = [datas objectAtIndex:indexPath.row];
         //NSLog(@"object:%@",object);
         NSString *objectCellId =object[@"username"];
-        //NSString *id1=[NSString stringWithFormat:@"%@",objectCellId];
+        NSString *id1=[NSString stringWithFormat:@"%@",objectCellId];
         UITableViewCell * cell = [self.tableView cellForRowAtIndexPath:indexPath];
         NSLog(@"cell title:%ld , row:%li and objectId:%@",(long)cell.textLabel.text,indexPath.row,objectCellId);
         

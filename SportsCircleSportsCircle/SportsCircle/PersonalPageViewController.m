@@ -103,9 +103,12 @@
     [cell.contentView.layer setBorderColor:[UIColor whiteColor].CGColor];
     [cell.contentView.layer setBorderWidth:8.0f];
     
+    
+    
     postWallObject = postWallArray[indexPath.row];
     // placeholder image
     
+    cell.cellObjectId = postWallObject.objectId;
     
     imageView.image = [UIImage imageNamed:@"loading"];
     
@@ -126,8 +129,10 @@
     
     //PFFile *userImage= [postWall objectForKey:@"image"];
     //cell.profileImage.image = [UIImage imageWithData:[profifeImg getData]];
-    
-    
+    __weak typeof(self) weakself = self;
+    cell.block = ^(UIAlertController *alert){
+        [weakself presentViewController:alert animated:YES completion:nil];
+    };
     
     
     //    PFFile *userImageData = user[@"userImage"];

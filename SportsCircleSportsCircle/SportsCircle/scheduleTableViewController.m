@@ -243,8 +243,8 @@
         PFObject * object = [datas objectAtIndex:indexPath.row];
         NSString *objectCellId = object.objectId;
         //NSString *id1=[NSString stringWithFormat:@"%@",objectCellId];
-        UITableViewCell * cell = [self.tableView cellForRowAtIndexPath:indexPath];
-        NSLog(@"cell title:%@ , row:%li and objectId:%@",cell.textLabel.text,(long)indexPath.row,objectCellId);
+//        UITableViewCell * cell = [self.tableView cellForRowAtIndexPath:indexPath];
+//        NSLog(@"cell title:%@ , row:%li and objectId:%@",cell.textLabel.text,(long)indexPath.row,objectCellId);
         
         //NSDate *object = datas[indexPath.row];
         scheduleEditViewController *controller = (scheduleEditViewController *)[segue destinationViewController];

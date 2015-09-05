@@ -180,8 +180,8 @@ didCompleteWithResult:(FBSDKLoginManagerLoginResult *)result
                     [self performSegueWithIdentifier:@"LoginSuccesful" sender:nil];
                     
                 } else {
-                    NSString *errorString = [error userInfo][@"error"];
-                    NSLog(@"%@",errorString);
+//                    NSString *errorString = [error userInfo][@"error"];
+//                    NSLog(@"%@",errorString);
                 }
             }];
             

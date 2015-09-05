@@ -12,6 +12,30 @@
 
 @implementation TrendTableViewCell
 @synthesize cellObjectId;
+- (IBAction)reportBtnPressed:(id)sender {
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"檢舉" message:@"是否檢舉此貼文為不當貼文" preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+        
+    }];
+    UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"確認" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+//            NSString *to = @"vito5314@hotmail.com";
+//            NSString *subject = cellObjectId;
+//            NSString *cc = @"vito5314@yahoo.com.tw";
+//            NSString *bcc = @"vito5314@hotmail.com";
+//            NSString *mailStr=[NSString stringWithFormat:@"mailto://%@?subject=%@&cc=%@&bcc=%@",to,subject,cc,bcc];
+//            [[UIApplication sharedApplication]openURL:[NSURL URLWithString:mailStr]];
+        
+        NSString *URLEMail=[NSString stringWithFormat: @"mailto:vito5314@hotmail.com?subject=檢舉&body=檢舉編號:%@(請勿更改) \n檢舉原因:&cc=charlesstw@hotmail.com",cellObjectId];
+        
+        NSString *url = [URLEMail stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding ];
+        [[UIApplication sharedApplication]  openURL: [NSURL URLWithString: url]];
+        
+        
+    }];
+    [alertController addAction:cancelAction];
+    [alertController addAction:okAction];
+    self.block(alertController);
+}
 
 - (IBAction)GoodBtnPressed:(id)sender {
     PFUser *currentUser=[PFUser currentUser];
