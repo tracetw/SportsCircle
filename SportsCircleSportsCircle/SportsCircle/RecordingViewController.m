@@ -143,8 +143,16 @@
 }
 - (void)buttonIsEmpty:(ABFillButton *)button
 {
+    UIView *backgroundView = [[UIView alloc]initWithFrame:CGRectMake(self.view.center.x-40,self.view.center.y-40,80,80)];
+    
+    backgroundView.backgroundColor = [UIColor blackColor];
+    
+    backgroundView.layer.cornerRadius = 8;
     UIActivityIndicatorView *spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
+    
     [spinner setCenter:self.view.center];
+    
+    [self.view addSubview:backgroundView];
     [self.view addSubview:spinner];
     
     [spinner startAnimating];

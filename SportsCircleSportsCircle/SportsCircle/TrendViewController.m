@@ -262,6 +262,8 @@
     cell.block = ^(UIAlertController *alert){
         [self presentViewController:alert animated:YES completion:nil];
     };
+    cell.userImage.layer.cornerRadius = cell.userImage.bounds.size.width/2;
+
     /*
     NSDictionary *userSchedulesA=postWallArray[indexPath.row];
     //每一筆為NSDictionary
