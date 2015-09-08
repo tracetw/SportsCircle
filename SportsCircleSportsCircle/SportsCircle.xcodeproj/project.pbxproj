@@ -94,6 +94,7 @@
 		D3541A4D1B787003003F4D15 /* CustomCellBackgroundView.m in Sources */ = {isa = PBXBuildFile; fileRef = D3541A4C1B787003003F4D15 /* CustomCellBackgroundView.m */; };
 		D35B58661B897E3900C51577 /* PrivacyFromRegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D35B58651B897E3900C51577 /* PrivacyFromRegisterViewController.m */; };
 		D38B8D3A1B71B84200124706 /* EditProfileTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D38B8D391B71B84200124706 /* EditProfileTableViewController.m */; };
+		D38EB9B51B9F05A2000B78FE /* StatisticsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D38EB9B41B9F05A2000B78FE /* StatisticsViewController.m */; };
 		D3AD4CA61B64DB9200FC7F8E /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3AD4CA51B64DB9200FC7F8E /* AudioToolbox.framework */; };
 		D3AD4CA81B64DBA100FC7F8E /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3AD4CA71B64DBA100FC7F8E /* CFNetwork.framework */; };
 		D3AD4CAA1B64DBA900FC7F8E /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3AD4CA91B64DBA900FC7F8E /* CoreGraphics.framework */; };
@@ -280,6 +281,8 @@
 		D35B58651B897E3900C51577 /* PrivacyFromRegisterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PrivacyFromRegisterViewController.m; sourceTree = "<group>"; };
 		D38B8D381B71B84200124706 /* EditProfileTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditProfileTableViewController.h; sourceTree = "<group>"; };
 		D38B8D391B71B84200124706 /* EditProfileTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditProfileTableViewController.m; sourceTree = "<group>"; };
+		D38EB9B31B9F05A2000B78FE /* StatisticsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatisticsViewController.h; sourceTree = "<group>"; };
+		D38EB9B41B9F05A2000B78FE /* StatisticsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StatisticsViewController.m; sourceTree = "<group>"; };
 		D3AD4CA51B64DB9200FC7F8E /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		D3AD4CA71B64DBA100FC7F8E /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		D3AD4CA91B64DBA900FC7F8E /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -518,6 +521,8 @@
 				D3FCA06E1B875D7900AB927E /* PrivacyViewController.m */,
 				D35B58641B897E3900C51577 /* PrivacyFromRegisterViewController.h */,
 				D35B58651B897E3900C51577 /* PrivacyFromRegisterViewController.m */,
+				D38EB9B31B9F05A2000B78FE /* StatisticsViewController.h */,
+				D38EB9B41B9F05A2000B78FE /* StatisticsViewController.m */,
 				701F1D871B71BA0D00BD2673 /* Search */,
 				70E3C0CB1B6B9A7300A5C14E /* PopView */,
 				70E3C0D21B6BB15500A5C14E /* schedule */,
@@ -793,6 +798,7 @@
 				D34A63481B4CED0700710B1F /* AppDelegate.m in Sources */,
 				D34FCE2F1B7B86870002DE1A /* UITabBar+FlatUI.m in Sources */,
 				768A20261B6EFD3F005A7E66 /* RecordingViewController.m in Sources */,
+				D38EB9B51B9F05A2000B78FE /* StatisticsViewController.m in Sources */,
 				764C47BB1B735EDE00AC09E8 /* PersonalPageViewController.m in Sources */,
 				D341CB321B84C23C0038D477 /* CAAnimation+WAnimation.m in Sources */,
 				D34FCE241B7B86870002DE1A /* FUITextField.m in Sources */,
