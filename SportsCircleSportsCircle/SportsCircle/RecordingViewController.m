@@ -186,12 +186,48 @@
         
     }
     
+    //NSLog(@"%@",lastPostObject[@"sportsType"]);
+    //NSLog(@"%@",lastPostObject.createdAt);
+    
+    ////////////////////以下是傳到phpmyadmain/////////////////////////////
+    NSString *distanceString = [NSString stringWithFormat:@"%@",distance];
+    NSDictionary *dictionary = @{@"objectiveId":[NSString stringWithFormat:@"%@",objectID], @"calories":[NSString stringWithFormat:@"%@",calory], @"distance":distanceString, @"time":[NSString stringWithFormat:@"%@",recordingTime],@"sportsType":[NSString stringWithFormat:@"%@",lastPostObject[@"sportsType"]],@"createTime":[NSString stringWithFormat:@"%@",lastPostObject.createdAt]};
+    
+    NSError *error = nil;
+    NSData *data = [NSJSONSerialization dataWithJSONObject:dictionary options:0 error:&error];
+    if (error)
+        NSLog(@"%s: JSON encode error: %@", __FUNCTION__, error);
+    
+    // create the request
+    
+    NSURL *url = [NSURL URLWithString:@"http://127.0.0.1:8888/example/untitled.php"];
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
+    [request setHTTPMethod:@"POST"];
+    [request setValue:@"application/json; charset=utf-8" forHTTPHeaderField:@"Content-Type"];
+    [request setHTTPBody:data];
+    
+    // issue the request
+    
+    NSURLResponse *response = nil;
+    NSData *returnData = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
+    if (error)
+        NSLog(@"%s: NSURLConnection error: %@", __FUNCTION__, error);
+    
+    // examine the response
+    
+    NSString *responseString = [[NSString alloc] initWithData:returnData encoding:NSUTF8StringEncoding];
+    NSLog(@"responseString: %@",responseString);
+    /////////////////////////////////////////////
+    
     lastPostObject[@"recordingTime"] = recordingTime;
     [lastPostObject saveInBackground];
     lastPostObject[@"calories"] = calory;
     [lastPostObject saveInBackground];
     [self performSegueWithIdentifier:@"goEndRecording" sender:nil];
     [_stopButton setFillPercent:1.0];
+    
+    
+    
 }
 //- (IBAction)stopButtonLongPressed:(UILongPressGestureRecognizer*)recognizer {
 //    

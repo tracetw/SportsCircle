@@ -606,6 +606,8 @@ typedef enum {
         //        [relation addObject:[PFUser currentUser]];
         wallpost[@"user"] = [PFUser currentUser];//連結現在登入的使用者id
         [wallpost saveInBackground];
+        
+        
     }
     //等連結街設定完再開啟
 }
