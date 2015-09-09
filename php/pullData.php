@@ -71,7 +71,7 @@ for ($i=0 ; $i < count($allSportsType) ; $i++)
 $sportTimeBetween90to120Count = array();
 for ($i=0 ; $i < count($allSportsType) ; $i++)
 {
-	$sql="SELECT *FROM data WHERE time Between '01:30:00' AND '00:120:00' && sportstype = '$allSportsType[$i]'";//WHERE price='200'
+	$sql="SELECT *FROM data WHERE time Between '01:30:00' AND '02:00:00' && sportstype = '$allSportsType[$i]'";//WHERE price='200'
 	$result=mysql_query($sql,$link);//用mysql_query使用sql語法
 // 	echo "$allSportsType[$i]"."時間90~120的紀錄有" .mysql_num_rows($result). "筆";
 // 	echo "，包含" .mysql_num_fields($result). "欄位<BR>";
