@@ -26,6 +26,8 @@
     backgroundThread=[[NSThread alloc] initWithTarget:self selector:@selector(doThreadJob)
                                                object:nil];
     
+
+    
     [backgroundThread start];
 }
 

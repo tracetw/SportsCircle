@@ -18,7 +18,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-        [_StatisticsWebView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"http://192.168.196.133:8888/example/graph.php"]]];
+        [_StatisticsWebView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"http://192.168.196.115:8888/example/graph.php"]]];
 }
 
 - (void)didReceiveMemoryWarning {
