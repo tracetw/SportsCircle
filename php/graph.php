@@ -2,7 +2,7 @@
 <meta charset="utf-8">
 <style>
 body{
-    width:1060px;
+    width:100%;
     margin:50px auto;
 }
 path {  stroke: #fff; }
@@ -40,6 +40,21 @@ rect:hover {  fill:blue; }
 <?php 
 require_once 'pullData.php';
 ?>
+
+<?php
+    $type = array();
+    $sportTimeLess30Count["Other"];
+    //print_r($sportTimeLess30Count);
+    foreach ($sportTimeLess30Count as $key => $value) {
+        if($value != 0){
+            $type[] = $key;
+        }
+    }
+    //print_r($type);
+    //echo "dwdw";
+?>
+
+
 <div id='dashboard'>
 </div>
 <script src="http://d3js.org/d3.v3.min.js"></script>
@@ -56,7 +71,7 @@ function getRandomColor() {
 function dashboard(id, fData){
     var barColor = 'steelblue';
     //function segColor(c){ return {low:"#807dba", mid:"#e08214",high:"#41ab5d"}[c]; }
-	function segColor(c){ return {Other:"#807dba", Archery:"#e08214", Athletics:"#41ab5d", Badminton:getRandomColor(), Basketball:getRandomColor(), BeachVolleyball:getRandomColor(), Cycling:getRandomColor(), Diving:getRandomColor(), Equestrian:getRandomColor(), Fencing:getRandomColor(), Football:getRandomColor(), Gymnastics:getRandomColor(), Handball:getRandomColor(), Hockey:getRandomColor(), Judo:getRandomColor(), Rowing:getRandomColor(), Sailing:getRandomColor(), Shooting:getRandomColor(), Swimming:getRandomColor(), SynchronisedSwimming:getRandomColor(), TableTennis:getRandomColor(), Taekwondo:getRandomColor(), Tennis:getRandomColor(), Trampoline:getRandomColor(), Volleyball:getRandomColor(), WaterPolo:getRandomColor(), Weightlifting:getRandomColor(), Wrestling:getRandomColor()}[c]; }
+	function segColor(c){ return {Other:"#807dba", Archery:"#ffffff", Athletics:"#41ab5d", Badminton:"#e08214", Basketball:getRandomColor(), BeachVolleyball:"#ffffff", Cycling:getRandomColor(), Diving:"#ffffff", Equestrian:"#ffffff", Fencing:"#ffffff", Football:getRandomColor(), Gymnastics:"#ffffff", Handball:"#ffffff", Hockey:getRandomColor(), Judo:"#ffffff", Rowing:"#ffffff", Sailing:"#ffffff", Shooting:"#ffffff", Swimming:getRandomColor(), SynchronisedSwimming:"#ffffff", TableTennis:"#ffffff", Taekwondo:getRandomColor(), Tennis:"#ffffff", Trampoline:"#ffffff", Volleyball:getRandomColor(), WaterPolo:"#ffffff", Weightlifting:"#ffffff", Wrestling:"#ffffff"}[c]; }
     //function segColor(c){ return {Monday:"#807dba", Tuesday:"#e08214", Wednesday:"#41ab5d", Thursday:getRandomColor(), Friday:getRandomColor(), Saturday:getRandomColor(), Sunday:getRandomColor()}[c]; }
    
     // compute total for each state.
@@ -69,7 +84,7 @@ function dashboard(id, fData){
     // function to handle histogram.
     function histoGram(fD){
         var hG={},    hGDim = {t: 60, r: 0, b: 30, l: 0};
-        hGDim.w = 500 - hGDim.l - hGDim.r, 
+        hGDim.w = 300 - hGDim.l - hGDim.r, 
         hGDim.h = 300 - hGDim.t - hGDim.b;
             
         //create svg for histogram.
@@ -244,10 +259,15 @@ function dashboard(id, fData){
     }
 
 
-    // calculate total frequency by segment for all state.
-    var tF = ['Other','Archery','Athletics','Badminton', 'Basketball', 'BeachVolleyball', 'Cycling', 'Diving', 'Equestrian', 'Fencing', 'Football', 'Gymnastics', 'Handball', 'Hockey', 'Judo', 'Rowing', 'Sailing', 'Shooting', 'Swimming', 'SynchronisedSwimming', 'TableTennis', 'Taekwondo', 'Tennis', 'Trampoline', 'Volleyball', 'WaterPolo', 'Weightlifting', 'Wrestling'].map(function(d){ 
+
+    var tF = [<?php for ($i = 0; $i < count($type); $i++) { echo "'$type[$i]',"; } ?>].map(function(d){ 
         return {type:d, freq: d3.sum(fData.map(function(t){ return t.freq[d];}))}; 
-    });    
+    });   
+
+    // calculate total frequency by segment for all state.
+    // var tF = ['Other','Archery','Athletics','Badminton', 'Basketball', 'BeachVolleyball', 'Cycling', 'Diving', 'Equestrian', 'Fencing', 'Football', 'Gymnastics', 'Handball', 'Hockey', 'Judo', 'Rowing', 'Sailing', 'Shooting', 'Swimming', 'SynchronisedSwimming', 'TableTennis', 'Taekwondo', 'Tennis', 'Trampoline', 'Volleyball', 'WaterPolo', 'Weightlifting', 'Wrestling'].map(function(d){ 
+    //     return {type:d, freq: d3.sum(fData.map(function(t){ return t.freq[d];}))}; 
+    // });    
 	// var tF = ['Monday','Tuesday','Wednesday','Thursday', 'Friday', 'Saturday', 'Sunday'].map(function(d){ 
  //        return {type:d, freq: d3.sum(fData.map(function(t){ return t.freq[d];}))}; 
  //    });    

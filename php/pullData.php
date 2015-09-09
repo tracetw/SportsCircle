@@ -7,7 +7,7 @@ if (!$link)
 }
 else
 {
-	echo "success<BR>";
+	//echo "success<BR>";
 }
 // $charset=mysql_client_encoding();
 // echo "最後開啟之資料連結所使用的字級名稱: $charset<BR> ";
