@@ -52,6 +52,15 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    //push設定user pointer
+    PFInstallation *installation = [PFInstallation currentInstallation];
+    installation[@"user"] = [PFUser currentUser];
+    [installation saveInBackground];
+    
+    
+    
+    
     [self didConfirmBeFriend];
     [self initPauseButton];
     

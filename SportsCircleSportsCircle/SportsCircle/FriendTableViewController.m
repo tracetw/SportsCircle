@@ -79,6 +79,7 @@
     refreshControl.attributedTitle = refreshString;
     [refreshView addSubview:refreshControl];
     userImage = [PFImageView new];
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -159,6 +160,7 @@
         
         [cell.addDelFriends setTitle:@"加好友" forState:UIControlStateNormal];
         
+
         
     }
     else if (indexPath.section == 1){//好友cell
@@ -267,6 +269,9 @@
             }else{
                 NSString *addFriendMessage = [NSString stringWithFormat:@"將%@加入好友",searchUserName];
                 UIAlertController *addFriendAlertController = [UIAlertController alertControllerWithTitle:@"加入好友" message:addFriendMessage preferredStyle:UIAlertControllerStyleAlert];
+                UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+                    
+                }];
                 UIAlertAction *confirmAction = [UIAlertAction actionWithTitle:@"確認" style:UIAlertActionStyleDefault handler:^(UIAlertAction *alertActioin){
                     
                     PFObject* queryfriendObject = arrayFriends[0];
@@ -287,10 +292,28 @@
                         [frinendConfirm addUniqueObjectsFromArray:@[queryfriendObject.objectId] forKey:@"unFriends"];
                         [frinendConfirm saveInBackground];
                         
+                        //==========push
+                        
+                       
+                        
+                        PFQuery *pushQuery = [PFInstallation query];
+                        [pushQuery whereKey:@"user" equalTo:queryfriendObject];
+                        // Send push notification to query
+                        PFPush *push = [[PFPush alloc] init];
+                        [push setQuery:pushQuery];
+                        // Set our Installation query
+                        NSString *message = [NSString stringWithFormat:@"%@將你加為好友",currentUser.username];
+//                        [push setMessage:message];
+                        NSDictionary *pushData = [NSDictionary new];
+                        pushData = @{@"alert":message,@"sound":UILocalNotificationDefaultSoundName,@"badge":@"Increment"};
+                        [push setData:pushData];
+                        [push sendPushInBackground];
+                        //------------
                     }];
                     
                 }];
                 [addFriendAlertController addAction:confirmAction];
+                [addFriendAlertController addAction:cancelAction];
                 [self presentViewController:addFriendAlertController animated:YES completion:nil];
                 
                 }
