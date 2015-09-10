@@ -1,5 +1,7 @@
 ## SportsCircle
-Sports circle
+
+![alt text](https://github.com/tracetw/SportsCircle/blob/master/SportsCircleSportsCircle/SportsCircle/SportsCircle.gif)
+
 
 ####參考資料
 
